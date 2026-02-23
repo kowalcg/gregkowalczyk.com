@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+const { title, subtitle } = Astro.props;
+---
+
+<section class="pb-12 pt-8 md:pb-16 md:pt-12">
+  <div class="mx-auto max-w-6xl px-6">
+    <h1
+      class="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+    >
+      <span class="comment-prefix">// </span><span class="gradient-text">{title}</span>
+    </h1>
+    {subtitle && (
+      <p
+        class="max-w-2xl text-base leading-relaxed md:text-lg"
+        style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+      >
+        {subtitle}
+      </p>
+    )}
+  </div>
+</section>

@@ -1,0 +1,127 @@
+---
+interface Link {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+interface Props {
+  name: string;
+  tag: string;
+  tagColor?: 'purple' | 'cyan';
+  description: string;
+  stats: string[];
+  tech: string[];
+  links: Link[];
+  callout?: string;
+  initials?: string;
+}
+
+const {
+  name,
+  tag,
+  tagColor = 'cyan',
+  description,
+  stats,
+  tech,
+  links,
+  callout,
+  initials = '??',
+} = Astro.props;
+
+const tagBg = tagColor === 'purple'
+  ? 'rgba(139, 92, 246, 0.1)'
+  : 'rgba(6, 182, 212, 0.1)';
+const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
+---
+
+<div class="fade-in-up glass-card overflow-hidden p-8 md:p-10">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:gap-10">
+
+    <!-- Left: Details -->
+    <div>
+      <span
+        class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
+        style={`font-family: 'JetBrains Mono', monospace; background-color: ${tagBg}; color: ${tagFg};`}
+      >
+        {tag}
+      </span>
+
+      <h3
+        class="mb-4 text-xl font-bold md:text-2xl"
+        style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e6edf3;"
+      >
+        {name}
+      </h3>
+
+      {callout && (
+        <div
+          class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
+          style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8b5cf6; color: #c4b5fd;"
+        >
+          {callout}
+        </div>
+      )}
+
+      <p
+        class="mb-6 leading-relaxed"
+        style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+      >
+        {description}
+      </p>
+
+      <ul class="mb-6 space-y-2" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+        {stats.map((stat) => (
+          <li class="flex items-start gap-3">
+            <span
+              class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
+              style="background-color: #06b6d4;"
+            ></span>
+            <span>{stat}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mb-6 flex flex-wrap gap-2">
+        {tech.map((t) => (
+          <span
+            class="rounded-full px-3 py-1 text-xs"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8b949e; border: 1px solid rgba(255,255,255,0.08);"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+            style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+          >
+            {link.label} {link.external ? '↗' : '→'}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: Image placeholder -->
+    <div class="flex items-start justify-center md:justify-end">
+      <div
+        class="flex h-24 w-24 items-center justify-center rounded-2xl md:h-32 md:w-32"
+        style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
+      >
+        <span
+          class="text-2xl font-bold opacity-40 md:text-3xl"
+          style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+        >
+          {initials}
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

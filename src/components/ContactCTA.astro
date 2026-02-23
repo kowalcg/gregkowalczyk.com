@@ -1,0 +1,39 @@
+---
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = "Ready to Build Something?",
+  body = "Tell me what's eating your time or budget. I'll tell you if AI or automation can fix it — and exactly how I'd build the solution.",
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <div
+      class="glass-card p-10 text-center md:p-16"
+      style="position: relative; overflow: hidden;"
+    >
+      <h2
+        class="mb-4 text-2xl font-bold md:text-3xl"
+        style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e6edf3;"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mx-auto mb-8 max-w-xl leading-relaxed"
+        style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+      >
+        {body}
+      </p>
+      <a
+        href="/contact"
+        class="inline-block rounded-full px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
+        style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
+      >
+        Let's Build Something
+      </a>
+    </div>
+  </div>
+</section>
