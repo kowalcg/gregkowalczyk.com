@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import PageHero from '../../components/PageHero.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Footer from '../../components/Footer.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout
+  title="Blog | Greg Kowalczyk — AI & Digital Growth Consultant"
+  description="Practical writing on AI implementation, e-commerce automation, app development, and digital growth. Real tools, real numbers, no fluff."
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Writing"
+      subtitle="Practical posts on AI tools, automation, e-commerce systems, and building things that actually work."
+    />
+
+    <section class="py-12 md:py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        {posts.length === 0 ? (
+          <div
+            class="glass-card p-12 text-center"
+            style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+          >
+            <p>First post coming soon.</p>
+          </div>
+        ) : (
+          <div class="flex flex-col gap-6">
+            {posts.map((post) => (
+              <BlogCard
+                title={post.data.title}
+                pubDate={post.data.pubDate}
+                description={post.data.description}
+                slug={post.slug}
+                tag={post.data.tag}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  </script>
+</Layout>
