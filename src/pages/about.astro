@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import About from '../components/About.astro';
+import TechStack from '../components/TechStack.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="About Greg Kowalczyk | AI & Digital Growth Consultant in Oakville"
+  description="Mechanical engineer turned AI tool builder. 28 years of engineering discipline, mid-seven-figure e-commerce brands, and 2 iOS apps shipped as a non-coder. Based in Oakville, Ontario."
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="About Greg"
+      subtitle="Engineer by training. Builder by nature. Based in Oakville, Ontario."
+    />
+    <About />
+    <TechStack />
+
+    <!-- Speaking & Community Section -->
+    <section class="py-16 md:py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2
+          class="mb-12 text-2xl font-bold md:text-3xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+        >
+          <span class="comment-prefix">// </span><span class="gradient-text">Beyond the Work</span>
+        </h2>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-2 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+            >
+              VibeMarketer Community — Speaker
+            </h3>
+            <p
+              class="mb-2 text-sm"
+              style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;"
+            >
+              December 2025
+            </p>
+            <p
+              class="leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+            >
+              Presented on building two App Store iOS apps as a non-coder using VibeCode and Claude Code. Real numbers, real rejections, real results.
+            </p>
+          </div>
+
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-2 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+            >
+              Bronte Harbour Classic 5K — Race Director
+            </h3>
+            <p
+              class="mb-2 text-sm"
+              style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;"
+            >
+              June 21, 2026
+            </p>
+            <p
+              class="leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+            >
+              Co-directing the inaugural Bronte Harbour Classic 5K on Father's Day at Bronte Harbour Park, Oakville. Chip-timed 5K + Kids 1K Fun Run + post-race festival.
+            </p>
+          </div>
+
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-2 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+            >
+              Bronte Runners — Co-Lead
+            </h3>
+            <p
+              class="leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+            >
+              Co-leading the Bronte Runners club in the Oakville/Burlington area. Running community, regular group runs, and race events.
+            </p>
+          </div>
+
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-2 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+            >
+              Building in Public
+            </h3>
+            <p
+              class="leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+            >
+              Sharing what I build and learn — apps, tools, strategies — on LinkedIn and X. If you're figuring out AI as a non-technical founder, follow along.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      heading="Work With Me"
+      body="I take on a limited number of consulting engagements. If you're ready to replace agency costs with AI systems you own, let's talk."
+    />
+  </main>
+  <Footer />
+  <script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  </script>
+</Layout>

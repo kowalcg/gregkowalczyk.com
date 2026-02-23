@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contact Greg Kowalczyk | AI & Digital Growth Consultant"
+  description="Book a call with Greg Kowalczyk. AI & digital growth consulting for businesses ready to replace agency costs with custom AI tools, automation, and e-commerce systems."
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Let's Build Something"
+      subtitle="Tell me what's eating your time or budget. I'll tell you if AI can fix it — and exactly how I'd build the solution."
+    />
+    <Contact />
+  </main>
+  <Footer />
+  <script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  </script>
+</Layout>
