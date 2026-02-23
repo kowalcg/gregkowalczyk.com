@@ -1,0 +1,170 @@
+---
+/**
+ * FAQ.astro — "Common Questions" accordion section
+ * 8 FAQ items with single-open accordion behavior.
+ * Smooth open/close via max-height CSS transitions.
+ * Uses global utility class: gradient-text.
+ */
+
+const faqs = [
+  {
+    question: "How much does AI implementation cost for a small business?",
+    answer:
+      "Custom AI tool development typically runs $5,000-$25,000 depending on complexity and scope. Compare that to $75,000+ per year for agency retainers delivering similar capabilities. Most of my projects deliver ROI within the first quarter. I scope every project with a clear budget before writing a line of code.",
+  },
+  {
+    question: "How long does AI implementation take?",
+    answer:
+      "Most projects deliver working systems in 2-8 weeks. My Chocolat on James project — 100+ pages of strategy plus a custom AI tool — shipped in 6 weeks. Simple automation workflows can be live in days. I don't do 6-month timelines. You get working software fast, then we iterate based on real data.",
+  },
+  {
+    question: "What are the risks of implementing AI in my business?",
+    answer:
+      "The biggest risk is doing nothing while competitors adopt AI tools that cut their costs and speed up their operations. Implementation risks are manageable: I test everything on my own businesses before recommending it, build incrementally so you see results early, and train your team so you're never dependent on me. You own everything I build.",
+  },
+  {
+    question: "How do I choose the right AI consultant?",
+    answer:
+      "Look for someone who builds, not just advises. Ask to see working tools they've deployed, not just strategy documents they've written. Check if they have skin in the game — do they use AI in their own business? I run two mid-seven-figure e-commerce brands on AI tools I built myself. That's the difference between theory and practice.",
+  },
+  {
+    question: "What is an AI readiness assessment?",
+    answer:
+      "It's a practical evaluation of where AI and automation will generate the highest return in your specific business. I look at your operations, identify repetitive manual work, assess your existing tech stack, and prioritize implementation by ROI. Not a generic checklist — a targeted plan with specific tools and timelines. Then I build it.",
+  },
+  {
+    question: "How do I measure AI implementation ROI?",
+    answer:
+      "Track what matters: time saved, costs reduced, revenue generated. For my own brands, the math is simple — $75K-$125K in annual agency costs replaced by $2K in AI tools. For clients, I set measurable benchmarks before building anything. If we can't quantify the return, we don't build it.",
+  },
+  {
+    question: "What AI tools work best for e-commerce businesses?",
+    answer:
+      "It depends on your biggest pain point. For content generation: Claude + custom prompt systems. For email automation: Klaviyo with AI-driven segmentation. For ad optimization: AI-assisted bid management across Google, Amazon, and Meta. For operations: custom automation workflows connecting Shopify, Amazon, and your fulfillment systems. I've built and tested all of these on my own e-commerce brands.",
+  },
+  {
+    question: "Can AI really replace marketing agencies?",
+    answer:
+      "Not entirely — but it can replace the $75K-$125K in repetitive work you're paying agencies to do manually. Content generation, email sequences, social media scheduling, reporting, ad copy testing — all of this can be automated with custom AI tools. You still need strategic thinking. But you don't need to pay agency rates for execution work that AI handles better and faster.",
+  },
+];
+---
+
+<section id="faq" class="py-24 md:py-32" style="background-color: #161b22;">
+  <div class="mx-auto max-w-3xl px-6">
+    <!-- Section Heading -->
+    <h2
+      class="gradient-text mb-16 text-center text-3xl font-bold md:text-4xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+    >
+      Common Questions
+    </h2>
+
+    <!-- Accordion -->
+    <div class="faq-accordion">
+      {faqs.map((faq) => (
+        <div class="faq-item" style="border-bottom: 1px solid #30363d;">
+          {/* Question Button */}
+          <button
+            class="faq-trigger flex w-full items-center justify-between py-5 text-left"
+            type="button"
+            aria-expanded="false"
+            style="font-family: 'Inter', sans-serif; transition: color 200ms ease;"
+          >
+            <span class="faq-question pr-4 text-lg text-[#e6edf3]">
+              {faq.question}
+            </span>
+            <span
+              class="faq-icon flex-shrink-0 text-[#8b949e]"
+              aria-hidden="true"
+              style="transition: transform 300ms ease;"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="10" y1="4" x2="10" y2="16" class="faq-icon-vertical" />
+                <line x1="4" y1="10" x2="16" y2="10" />
+              </svg>
+            </span>
+          </button>
+
+          {/* Answer Panel */}
+          <div
+            class="faq-panel"
+            style="max-height: 0; overflow: hidden; transition: max-height 300ms ease;"
+          >
+            <p
+              class="pb-5 leading-relaxed text-[#8b949e]"
+              style="font-family: 'Inter', sans-serif;"
+            >
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-trigger:hover .faq-question {
+    color: #ffffff;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item.active .faq-icon-vertical {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const accordion = document.querySelector(".faq-accordion");
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll(".faq-item");
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".faq-trigger");
+      const panel = item.querySelector(".faq-panel") as HTMLElement | null;
+
+      if (!trigger || !panel) return;
+
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.contains("active");
+
+        // Close all items first (single-open behavior)
+        items.forEach((otherItem) => {
+          const otherPanel = otherItem.querySelector(".faq-panel") as HTMLElement | null;
+          const otherTrigger = otherItem.querySelector(".faq-trigger");
+          if (otherItem !== item && otherItem.classList.contains("active")) {
+            otherItem.classList.remove("active");
+            if (otherPanel) otherPanel.style.maxHeight = "0";
+            if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // Toggle the clicked item
+        if (isOpen) {
+          item.classList.remove("active");
+          panel.style.maxHeight = "0";
+          trigger.setAttribute("aria-expanded", "false");
+        } else {
+          item.classList.add("active");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          trigger.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+  });
+</script>

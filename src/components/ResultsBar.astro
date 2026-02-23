@@ -1,0 +1,135 @@
+---
+/**
+ * ResultsBar.astro — Animated counter strip
+ * Intersection Observer triggers count-up animation on scroll into view.
+ */
+
+const metrics = [
+  { target: 75, prefix: "$", suffix: "K+", label: "Agency Costs Replaced" },
+  { target: 7, prefix: "Mid-", suffix: " Figures", label: "E-Commerce Revenue" },
+  { target: 2, prefix: "", suffix: "", label: "iOS Apps Shipped" },
+  { target: 100, prefix: "", suffix: "+", label: "Pages Per Client" },
+  { target: 6, prefix: "", suffix: " Weeks", label: "Typical Delivery" },
+];
+---
+
+<section
+  id="results"
+  class="relative overflow-hidden"
+  style="background-color: #161b22;"
+>
+  <!-- Gradient border top -->
+  <div
+    class="absolute inset-x-0 top-0 h-px"
+    style="background: linear-gradient(90deg, transparent, #7c3aed, #3b82f6, #06b6d4, transparent);"
+  ></div>
+
+  <!-- Content -->
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+    <div
+      id="results-bar-grid"
+      class="grid grid-cols-2 gap-8 sm:gap-10 md:flex md:items-center md:justify-around"
+    >
+      {metrics.map((metric) => (
+        <div class="flex flex-col items-center text-center">
+          <span
+            class="counter gradient-text text-3xl font-bold tracking-tight md:text-4xl"
+            style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+            data-target={metric.target}
+            data-prefix={metric.prefix}
+            data-suffix={metric.suffix}
+          >
+            {metric.prefix}0{metric.suffix}
+          </span>
+          <span
+            class="mt-1 text-sm text-[#8b949e]"
+            style="font-family: 'Inter', sans-serif;"
+          >
+            {metric.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Gradient border bottom -->
+  <div
+    class="absolute inset-x-0 bottom-0 h-px"
+    style="background: linear-gradient(90deg, transparent, #06b6d4, #3b82f6, #7c3aed, transparent);"
+  ></div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.getElementById("results-bar-grid");
+    if (!grid) return;
+
+    const counters = grid.querySelectorAll(".counter");
+    let hasAnimated = false;
+
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    function animateCounters() {
+      if (hasAnimated) return;
+      hasAnimated = true;
+
+      counters.forEach((counter) => {
+        const el = counter as HTMLElement;
+        const target = parseInt(el.dataset.target || "0", 10);
+        const prefix = el.dataset.prefix || "";
+        const suffix = el.dataset.suffix || "";
+
+        if (prefersReducedMotion) {
+          // Show final value immediately
+          el.textContent = prefix + target + suffix;
+          return;
+        }
+
+        const duration = 2000; // 2 seconds
+        const startTime = performance.now();
+
+        function easeOutQuart(t: number): number {
+          return 1 - Math.pow(1 - t, 4);
+        }
+
+        function update(currentTime: number) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = easeOutQuart(progress);
+          const currentValue = Math.round(easedProgress * target);
+
+          el.textContent = prefix + currentValue + suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            // Ensure final value is exact
+            el.textContent = prefix + target + suffix;
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    // Intersection Observer — trigger once when section is 25% visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.25,
+      }
+    );
+
+    observer.observe(grid);
+  });
+</script>

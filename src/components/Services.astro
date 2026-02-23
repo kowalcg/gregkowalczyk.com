@@ -1,0 +1,164 @@
+---
+/**
+ * Services.astro — "What I Build" service cards section
+ * 4 cards in a 2x2 grid with gradient-border hover effects.
+ * Uses global utility classes: gradient-text, gradient-border, fade-in-up.
+ */
+
+const services = [
+  {
+    title: "Custom AI Tools",
+    body: "Prompt generators, content systems, analytics dashboards — built for your specific business. Not off-the-shelf SaaS. Custom tools you own and control.",
+    proof: "Built Content Creator PRO for a client in 6 weeks. Running in production daily.",
+    icon: "terminal",
+  },
+  {
+    title: "E-Commerce AI Systems",
+    body: "Product content at scale, inventory automation, multi-channel optimization. Tested on my own brands first — two businesses, mid-seven figures, running on AI tools I built myself.",
+    proof: "5-10x content volume. 90% faster production. Same or better quality.",
+    icon: "cart",
+  },
+  {
+    title: "Marketing Automation",
+    body: "Email sequences, social content workflows, ad optimization, customer journey orchestration. Replace repetitive manual work with systems that run while you sleep.",
+    proof: "Replaced $75K-$125K in agency and freelancer costs with $2K in tools.",
+    icon: "workflow",
+  },
+  {
+    title: "AI Readiness Assessment",
+    body: "Not sure where to start with AI? I audit your operations, identify the highest-ROI automation opportunities, and build a practical implementation roadmap. Then I build it.",
+    proof: "Chocolat on James: $537K business mapped to $1M+ trajectory in 6 weeks.",
+    icon: "compass",
+  },
+];
+---
+
+<section id="services" class="py-24 md:py-32" style="background-color: #0d1117;">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section Heading -->
+    <h2
+      class="gradient-text text-center text-3xl font-bold md:text-4xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+    >
+      What I Build
+    </h2>
+
+    <!-- Section Intro -->
+    <p
+      class="mx-auto mt-4 max-w-2xl text-center text-[#8b949e] mb-16"
+      style="font-family: 'Inter', sans-serif;"
+    >
+      Every project follows one rule: you get a working system, not a strategy
+      deck. I code it, deploy it, and train you to use it.
+    </p>
+
+    <!-- Service Cards Grid -->
+    <div class="grid gap-6 md:grid-cols-2">
+      {services.map((service) => (
+        <div
+          class="fade-in-up gradient-border group p-8 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+          style="background-color: #161b22;"
+        >
+          {/* Icon */}
+          <div
+            class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+            style="background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);"
+          >
+            {service.icon === "terminal" && (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" y1="19" x2="20" y2="19" />
+              </svg>
+            )}
+            {service.icon === "cart" && (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+            )}
+            {service.icon === "workflow" && (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 3 21 3 21 8" />
+                <line x1="4" y1="20" x2="21" y2="3" />
+                <polyline points="21 16 21 21 16 21" />
+                <line x1="15" y1="15" x2="21" y2="21" />
+                <line x1="4" y1="4" x2="9" y2="9" />
+              </svg>
+            )}
+            {service.icon === "compass" && (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+              </svg>
+            )}
+          </div>
+
+          {/* Title */}
+          <h3
+            class="mb-3 text-xl text-[#e6edf3]"
+            style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+          >
+            {service.title}
+          </h3>
+
+          {/* Body */}
+          <p
+            class="mb-4 leading-relaxed text-[#8b949e]"
+            style="font-family: 'Inter', sans-serif;"
+          >
+            {service.body}
+          </p>
+
+          {/* Proof Line */}
+          <p
+            class="text-sm italic text-[#06b6d4]"
+            style="font-family: 'Inter', sans-serif;"
+          >
+            {service.proof}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

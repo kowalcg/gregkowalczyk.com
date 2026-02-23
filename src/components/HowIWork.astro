@@ -1,0 +1,157 @@
+---
+/**
+ * HowIWork.astro — "How I Work" process section
+ * 4 terminal-window cards in a horizontal timeline (vertical on mobile).
+ * Uses global utility classes: gradient-text, fade-in-up.
+ */
+
+const steps = [
+  {
+    fn: "discover",
+    title: "Understand Your Business",
+    body: "I dig into your operations, find the manual work eating your time and budget, and identify exactly where AI and automation will generate the highest return.",
+  },
+  {
+    fn: "build",
+    title: "Code Custom Solutions",
+    body: "I write the code, connect the APIs, build the workflows. Custom tools tailored to how your business actually operates. Not templates. Working software.",
+  },
+  {
+    fn: "deploy",
+    title: "Ship and Go Live",
+    body: "Deploy to production. Test with real data. Train your team to use everything independently. You own the tools. No ongoing dependency.",
+  },
+  {
+    fn: "iterate",
+    title: "Optimize From Real Data",
+    body: "Measure what's happening. Adjust based on results. Add capabilities as needs evolve. If it's manual more than three times, we automate it.",
+  },
+];
+---
+
+<section id="process" class="py-24 md:py-32" style="background-color: #161b22;">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section Heading -->
+    <h2
+      class="gradient-text text-center text-3xl font-bold md:text-4xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+    >
+      How I Work
+    </h2>
+
+    <!-- Section Intro -->
+    <p
+      class="mt-4 text-center text-[#8b949e] mb-16"
+      style="font-family: 'Inter', sans-serif;"
+    >
+      Four steps. No fluff. Working systems at the end.
+    </p>
+
+    <!-- Steps Grid -->
+    <div class="grid gap-6 md:grid-cols-4">
+      {steps.map((step, index) => (
+        <div class="fade-in-up relative">
+          {/* Terminal Window Card */}
+          <div
+            class="h-full overflow-hidden rounded-xl border border-[#30363d]"
+            style="background-color: #0d1117;"
+          >
+            {/* Terminal Top Bar */}
+            <div
+              class="flex items-center gap-2 border-b border-[#30363d] px-4 py-3"
+            >
+              <span
+                class="inline-block h-2 w-2 rounded-full"
+                style="background-color: #ff5f57;"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="inline-block h-2 w-2 rounded-full"
+                style="background-color: #febc2e;"
+                aria-hidden="true"
+              ></span>
+              <span
+                class="inline-block h-2 w-2 rounded-full"
+                style="background-color: #28c840;"
+                aria-hidden="true"
+              ></span>
+            </div>
+
+            {/* Card Content */}
+            <div class="p-6">
+              {/* Function Name with Syntax Highlighting */}
+              <p
+                class="mb-4 text-base"
+                style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+              >
+                <span style="color: #7c3aed;">{step.fn}</span><span style="color: #06b6d4;">()</span>
+              </p>
+
+              {/* Step Title */}
+              <h3
+                class="mb-3 text-lg font-semibold text-[#e6edf3]"
+                style="font-family: 'Inter', sans-serif;"
+              >
+                {step.title}
+              </h3>
+
+              {/* Step Body */}
+              <p
+                class="text-sm leading-relaxed text-[#8b949e]"
+                style="font-family: 'Inter', sans-serif;"
+              >
+                {step.body}
+              </p>
+            </div>
+          </div>
+
+          {/* Connecting Arrow (hidden on last step and on mobile) */}
+          {index < steps.length - 1 && (
+            <div
+              class="pointer-events-none absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 md:block"
+              aria-hidden="true"
+            >
+              <svg
+                width="10"
+                height="16"
+                viewBox="0 0 10 16"
+                fill="none"
+              >
+                <path
+                  d="M1 1l7 7-7 7"
+                  stroke="#30363d"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          )}
+
+          {/* Connecting Arrow for Mobile (vertical, hidden on desktop) */}
+          {index < steps.length - 1 && (
+            <div
+              class="flex justify-center py-3 md:hidden"
+              aria-hidden="true"
+            >
+              <svg
+                width="16"
+                height="10"
+                viewBox="0 0 16 10"
+                fill="none"
+              >
+                <path
+                  d="M1 1l7 7 7-7"
+                  stroke="#30363d"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+/**
+ * TechStack.astro — "Tools I Build With" section
+ * 5 category groups with pill-style tool badges.
+ * Hover: border transitions to accent-blue with subtle glow.
+ * Uses global utility class: fade-in-up.
+ */
+
+const categories = [
+  {
+    label: "AI & Development",
+    tools: ["Claude", "Claude Code", "Cursor AI", "ChatGPT", "Perplexity Pro", "GitHub"],
+  },
+  {
+    label: "Automation",
+    tools: ["N8N", "Zapier", "Make", "Custom APIs"],
+  },
+  {
+    label: "Marketing",
+    tools: ["Klaviyo", "Google Ads", "Meta Ads", "Amazon PPC", "GA4"],
+  },
+  {
+    label: "E-Commerce",
+    tools: ["Shopify", "Amazon Seller Central", "Faire"],
+  },
+  {
+    label: "App Development",
+    tools: ["React Native", "Expo", "VibeCode", "App Store Connect"],
+  },
+];
+---
+
+<section id="stack" class="py-24 md:py-32" style="background-color: #0d1117;">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section Heading -->
+    <h2
+      class="gradient-text mb-4 text-center text-3xl font-bold md:text-4xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+    >
+      Tools I Build With
+    </h2>
+
+    <!-- Section Intro -->
+    <p
+      class="mx-auto mb-16 max-w-2xl text-center text-[#8b949e]"
+      style="font-family: 'Inter', sans-serif;"
+    >
+      I don't just use these tools — I build custom solutions on top of them.
+    </p>
+
+    <!-- Category Groups -->
+    <div class="space-y-10">
+      {categories.map((category) => (
+        <div class="fade-in-up">
+          {/* Category Label */}
+          <p
+            class="mb-4 text-sm uppercase tracking-wider text-[#06b6d4]"
+            style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+          >
+            {category.label}
+          </p>
+
+          {/* Tool Pills */}
+          <div class="flex flex-wrap gap-3">
+            {category.tools.map((tool) => (
+              <span
+                class="tool-pill rounded-lg border border-[#30363d] px-4 py-2 text-sm text-[#e6edf3]"
+                style="background-color: #161b22; font-family: 'Inter', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tool-pill:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+  }
+</style>

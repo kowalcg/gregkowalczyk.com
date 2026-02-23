@@ -1,0 +1,245 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, "https://gregkowalczyk.com");
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://gregkowalczyk.com/#person",
+      "name": "Greg Kowalczyk",
+      "jobTitle": "AI Implementation Consultant",
+      "description": "Mechanical engineer turned AI tool builder. 28 years of engineering discipline applied to building custom AI systems that replace agency work for small and mid-size businesses.",
+      "url": "https://gregkowalczyk.com",
+      "image": "https://gregkowalczyk.com/images/greg-kowalczyk.jpg",
+      "email": "prekoconsult@gmail.com",
+      "telephone": "+1-905-334-9282",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Burlington",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      },
+      "knowsAbout": [
+        "Artificial Intelligence Implementation",
+        "AI Automation for Business",
+        "E-commerce Operations",
+        "Custom AI Tool Development",
+        "Claude AI",
+        "Workflow Automation",
+        "Amazon FBA",
+        "Shopify Development",
+        "Marketing Automation",
+        "Mechanical Engineering"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/gregkowalczyk/"
+      ],
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "TapeGeeks Inc.",
+          "url": "https://tapegeeks.com"
+        },
+        {
+          "@type": "Organization",
+          "name": "GearTOP Inc.",
+          "url": "https://geartopdesign.com"
+        }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://gregkowalczyk.com/#service",
+      "name": "Greg Kowalczyk — AI Implementation Consulting",
+      "description": "Custom AI tool development and automation consulting for small and mid-size businesses. Replace agency costs with AI systems you own.",
+      "url": "https://gregkowalczyk.com",
+      "provider": { "@id": "https://gregkowalczyk.com/#person" },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Burlington",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "Ontario" }
+        },
+        {
+          "@type": "City",
+          "name": "Oakville",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "Ontario" }
+        },
+        {
+          "@type": "City",
+          "name": "Toronto",
+          "containedInPlace": { "@type": "AdministrativeArea", "name": "Ontario" }
+        },
+        {
+          "@type": "Place",
+          "name": "Greater Toronto Area (GTA)"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Ontario",
+          "containedInPlace": { "@type": "Country", "name": "Canada" }
+        }
+      ],
+      "serviceType": [
+        "AI Implementation Consulting",
+        "Custom AI Tool Development",
+        "Business Process Automation",
+        "AI Readiness Assessment",
+        "Marketing Automation",
+        "E-commerce AI Integration",
+        "Workflow Automation with N8N and Zapier",
+        "AI Strategy and Deployment"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://gregkowalczyk.com/#business",
+      "name": "Greg Kowalczyk — AI Implementation Consultant",
+      "description": "Burlington-based AI implementation specialist serving the GTA. Custom AI tools and automation built, deployed, and running in weeks.",
+      "url": "https://gregkowalczyk.com",
+      "telephone": "+1-905-334-9282",
+      "email": "prekoconsult@gmail.com",
+      "founder": { "@id": "https://gregkowalczyk.com/#person" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Burlington",
+        "addressRegion": "ON",
+        "postalCode": "L7R",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.3255,
+        "longitude": -79.7990
+      },
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://gregkowalczyk.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does AI implementation cost for a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom AI tool development typically runs $5,000-$25,000 depending on complexity and scope. Compare that to $75,000+ per year for agency retainers delivering similar capabilities. Most projects deliver ROI within the first quarter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does AI implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most projects deliver working systems in 2-8 weeks. Simple automation workflows can be live in days. Complex custom tools take 4-8 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the risks of implementing AI in my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The biggest risk is doing nothing while competitors adopt AI tools. Implementation risks are manageable with incremental builds, testing on real data, and team training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I choose the right AI consultant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for someone who builds, not just advises. Ask to see working tools they've deployed. Check if they use AI in their own business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an AI readiness assessment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A practical evaluation of where AI and automation will generate the highest return in your specific business, with specific tools and timelines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I measure AI implementation ROI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Track time saved, costs reduced, and revenue generated. Set measurable benchmarks before building anything."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What AI tools work best for e-commerce businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your biggest pain point. Claude for content, Klaviyo for email automation, custom workflows for operations connecting Shopify, Amazon, and fulfillment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can AI really replace marketing agencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI can replace $75K-$125K in repetitive execution work. You still need strategic thinking, but not agency rates for work AI handles better and faster."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title & Description -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Greg Kowalczyk — AI Implementation Consultant" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+
+  <body class="min-h-screen bg-bg-primary text-text-primary font-body antialiased">
+    <slot />
+  </body>
+</html>

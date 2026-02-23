@@ -1,0 +1,58 @@
+---
+/**
+ * Footer.astro — Simple site footer
+ * Copyright, LinkedIn icon, and tagline. Stacks vertically on mobile.
+ */
+---
+
+<footer style="background-color: #0d1117; border-top: 1px solid #30363d;">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
+    <!-- Left: Copyright -->
+    <p
+      class="text-sm text-[#8b949e]"
+      style="font-family: 'Inter', sans-serif;"
+    >
+      &copy; 2026 Greg Kowalczyk. Built with Astro.
+    </p>
+
+    <!-- Center: LinkedIn Icon -->
+    <a
+      href="https://www.linkedin.com/in/gregkowalczyk/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="footer-linkedin text-[#8b949e]"
+      aria-label="Greg Kowalczyk on LinkedIn"
+      style="transition: color 200ms ease;"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+      </svg>
+    </a>
+
+    <!-- Right: Tagline -->
+    <p
+      class="text-sm text-[#8b949e]"
+      style="font-family: 'Inter', sans-serif;"
+    >
+      AI Implementation Consultant &middot; Burlington, Ontario
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer-linkedin:hover {
+    color: #e6edf3;
+  }
+</style>

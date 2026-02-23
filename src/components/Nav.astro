@@ -1,0 +1,196 @@
+---
+/**
+ * Nav.astro — Sticky navigation bar
+ * Fixed to top, transparent -> solid on scroll, hamburger mobile menu.
+ */
+
+const navLinks = [
+  { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
+  { label: "Results", href: "#results" },
+  { label: "About", href: "#about" },
+  { label: "Stack", href: "#stack" },
+  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo / Name -->
+      <a
+        href="/"
+        class="text-lg font-semibold tracking-tight transition-opacity hover:opacity-80"
+        style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+      >
+        <span class="gradient-text">Greg Kowalczyk</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="hidden items-center gap-6 md:flex">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm text-[#8b949e] transition-colors duration-200 hover:text-[#e6edf3]"
+              style="font-family: 'Inter', sans-serif;"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="hamburger-btn"
+        type="button"
+        class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+        <span
+          id="hamburger-line-1"
+          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+        ></span>
+        <span
+          id="hamburger-line-2"
+          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+        ></span>
+        <span
+          id="hamburger-line-3"
+          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+        ></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Panel -->
+  <div
+    id="mobile-menu"
+    class="pointer-events-none fixed inset-x-0 top-0 z-40 translate-y-[-100%] opacity-0 transition-all duration-300 ease-in-out md:hidden"
+    style="background-color: rgba(13, 17, 23, 0.98); backdrop-filter: blur(16px);"
+  >
+    <div class="px-4 pb-8 pt-20 sm:px-6">
+      <ul class="flex flex-col gap-4">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="mobile-nav-link block rounded-lg px-4 py-3 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-[#161b22] hover:text-[#e6edf3]"
+              style="font-family: 'Inter', sans-serif;"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <!-- Mobile CTA -->
+      <div class="mt-6 border-t border-[#30363d] pt-6">
+        <a
+          href="#contact"
+          class="mobile-nav-link block rounded-lg px-4 py-3 text-center text-base font-semibold text-white"
+          style="background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4); font-family: 'Inter', sans-serif;"
+        >
+          Let's Build Something
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer so content below is not hidden under the fixed nav -->
+<div class="h-16"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("site-nav");
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const line1 = document.getElementById("hamburger-line-1");
+    const line2 = document.getElementById("hamburger-line-2");
+    const line3 = document.getElementById("hamburger-line-3");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+    if (!nav || !hamburgerBtn || !mobileMenu || !line1 || !line2 || !line3) return;
+
+    let isMenuOpen = false;
+
+    // ---------- Scroll: transparent -> solid ----------
+    function updateNavBackground() {
+      if (window.scrollY > 20) {
+        nav.style.backgroundColor = "rgba(13, 17, 23, 0.95)";
+        nav.style.backdropFilter = "blur(16px)";
+        nav.style.WebkitBackdropFilter = "blur(16px)";
+        nav.style.borderBottom = "1px solid #30363d";
+      } else if (!isMenuOpen) {
+        nav.style.backgroundColor = "transparent";
+        nav.style.backdropFilter = "none";
+        nav.style.WebkitBackdropFilter = "none";
+        nav.style.borderBottom = "1px solid transparent";
+      }
+    }
+
+    window.addEventListener("scroll", updateNavBackground, { passive: true });
+    updateNavBackground();
+
+    // ---------- Hamburger toggle ----------
+    function openMenu() {
+      isMenuOpen = true;
+      hamburgerBtn.setAttribute("aria-expanded", "true");
+      mobileMenu.classList.remove("pointer-events-none", "translate-y-[-100%]", "opacity-0");
+      mobileMenu.classList.add("pointer-events-auto", "translate-y-0", "opacity-100");
+      // Animate hamburger to X
+      line1.style.transform = "translateY(7px) rotate(45deg)";
+      line2.style.opacity = "0";
+      line3.style.transform = "translateY(-7px) rotate(-45deg)";
+      // Lock body scroll
+      document.body.style.overflow = "hidden";
+      // Ensure nav stays solid while menu open
+      nav.style.backgroundColor = "rgba(13, 17, 23, 0.95)";
+      nav.style.backdropFilter = "blur(16px)";
+      nav.style.WebkitBackdropFilter = "blur(16px)";
+    }
+
+    function closeMenu() {
+      isMenuOpen = false;
+      hamburgerBtn.setAttribute("aria-expanded", "false");
+      mobileMenu.classList.add("pointer-events-none", "translate-y-[-100%]", "opacity-0");
+      mobileMenu.classList.remove("pointer-events-auto", "translate-y-0", "opacity-100");
+      // Reset hamburger lines
+      line1.style.transform = "none";
+      line2.style.opacity = "1";
+      line3.style.transform = "none";
+      // Unlock body scroll
+      document.body.style.overflow = "";
+      // Re-evaluate nav background
+      updateNavBackground();
+    }
+
+    hamburgerBtn.addEventListener("click", () => {
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close on link click
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isMenuOpen) {
+        closeMenu();
+      }
+    });
+  });
+</script>

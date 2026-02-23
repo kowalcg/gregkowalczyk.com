@@ -1,0 +1,209 @@
+---
+/**
+ * About.astro — About Greg section
+ * Bio, headshot with gradient border, and career timeline.
+ * Two-column layout on desktop (60/40), stacked on mobile (image first).
+ */
+
+const timelineEntries = [
+  {
+    years: "1997-2011",
+    title: "Engineering Leadership",
+    subtitle: "(SMS-Siemag/Siemens)",
+    dotColor: "#7c3aed",
+  },
+  {
+    years: "2011-Present",
+    title: "Independent Consulting",
+    subtitle: "",
+    dotColor: "#3b82f6",
+  },
+  {
+    years: "2014-Present",
+    title: "E-Commerce Entrepreneur",
+    subtitle: "(GearTOP + TapeGeeks)",
+    dotColor: "#3b82f6",
+  },
+  {
+    years: "2024-Present",
+    title: "AI Tool Builder",
+    subtitle: "",
+    dotColor: "#06b6d4",
+  },
+];
+---
+
+<section id="about" class="py-24 md:py-32" style="background-color: #161b22;">
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Section Heading -->
+    <h2
+      class="mb-16 text-center text-3xl font-bold md:text-4xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+    >
+      About Greg
+    </h2>
+
+    <!-- Bio + Headshot Grid -->
+    <div class="fade-in-up grid grid-cols-1 items-start gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
+
+      <!-- Image Column (shows first on mobile via order) -->
+      <div class="flex flex-col items-center order-first lg:order-last">
+        <!-- Headshot with gradient border -->
+        <div
+          class="relative overflow-hidden rounded-2xl"
+          style="width: 300px; padding: 3px; background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);"
+        >
+          <div
+            class="relative h-full w-full overflow-hidden rounded-2xl"
+            style="background-color: #161b22;"
+          >
+            <!-- Fallback gradient background -->
+            <div
+              class="absolute inset-0 flex items-center justify-center"
+              style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.15));"
+            >
+              <span
+                class="text-5xl opacity-30"
+                style="font-family: 'JetBrains Mono', monospace; color: #8b949e;"
+              >
+                GK
+              </span>
+            </div>
+            <img
+              src="/images/greg-headshot.jpg"
+              alt="Greg Kowalczyk"
+              class="relative z-10 w-full object-cover"
+              style="aspect-ratio: 3 / 4;"
+              loading="lazy"
+              onerror="this.style.display='none';"
+            />
+          </div>
+        </div>
+        <!-- Location -->
+        <p
+          class="mt-4 text-center text-sm"
+          style="font-family: 'Inter', sans-serif; color: #8b949e;"
+        >
+          Burlington, Ontario
+        </p>
+      </div>
+
+      <!-- Text Column -->
+      <div class="order-last lg:order-first">
+        <div class="space-y-4" style="font-family: 'Inter', sans-serif;">
+          <p class="leading-relaxed" style="color: #8b949e;">
+            I'm an engineer who builds things. For 14 years at SMS-Siemag (Siemens subsidiary), I led engineering teams on global-scale industrial projects — Chief Engineer, then Manager of Engineering for a 70-person department.
+          </p>
+          <p class="leading-relaxed" style="color: #8b949e;">
+            In 2011, I went independent. In 2014, I started building e-commerce brands with my daughter. Two brands. Mid-seven figures. Learned SEO, ads, and marketing by doing it — not by reading about it. Spent $2M+ on advertising across Google, Amazon, and Meta.
+          </p>
+          <p class="leading-relaxed" style="color: #8b949e;">
+            In 2024, I went all-in on AI. Built custom tools that replaced $75K+ in agency costs. Shipped two iOS apps as a non-coder. Started helping other businesses do the same thing.
+          </p>
+          <p class="leading-relaxed" style="color: #e6edf3;">
+            Now I build AI systems for businesses that want working solutions, not strategy decks. Everything I recommend, I've tested on my own businesses first. With my own money.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Timeline -->
+    <div class="fade-in-up mt-20">
+      <!-- Desktop: Horizontal Timeline -->
+      <div class="hidden md:block">
+        <div class="relative">
+          <!-- Gradient connecting line -->
+          <div
+            class="absolute top-3 left-0 right-0 h-0.5"
+            style="background: linear-gradient(90deg, #7c3aed, #3b82f6, #3b82f6, #06b6d4);"
+          ></div>
+
+          <!-- Timeline entries -->
+          <div class="grid grid-cols-4 gap-4">
+            {timelineEntries.map((entry) => (
+              <div class="relative pt-8">
+                <!-- Dot -->
+                <div
+                  class="absolute top-0 left-0 h-6 w-6 rounded-full border-4"
+                  style={`background-color: ${entry.dotColor}; border-color: #161b22; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                ></div>
+                <!-- Year -->
+                <p
+                  class="mb-1 text-sm"
+                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #06b6d4;"
+                >
+                  {entry.years}
+                </p>
+                <!-- Title -->
+                <p
+                  class="font-semibold"
+                  style="font-family: 'Inter', sans-serif; color: #e6edf3;"
+                >
+                  {entry.title}
+                </p>
+                <!-- Subtitle -->
+                {entry.subtitle && (
+                  <p
+                    class="text-sm"
+                    style="font-family: 'Inter', sans-serif; color: #8b949e;"
+                  >
+                    {entry.subtitle}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile: Vertical Timeline -->
+      <div class="block md:hidden">
+        <div class="relative ml-3">
+          <!-- Gradient vertical line -->
+          <div
+            class="absolute top-0 bottom-0 left-0 w-0.5"
+            style="background: linear-gradient(180deg, #7c3aed, #3b82f6, #3b82f6, #06b6d4);"
+          ></div>
+
+          <!-- Timeline entries -->
+          <div class="flex flex-col gap-8">
+            {timelineEntries.map((entry) => (
+              <div class="relative pl-8">
+                <!-- Dot -->
+                <div
+                  class="absolute top-0.5 -left-[9px] h-5 w-5 rounded-full border-4"
+                  style={`background-color: ${entry.dotColor}; border-color: #161b22; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                ></div>
+                <!-- Year -->
+                <p
+                  class="mb-1 text-sm"
+                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #06b6d4;"
+                >
+                  {entry.years}
+                </p>
+                <!-- Title -->
+                <p
+                  class="font-semibold"
+                  style="font-family: 'Inter', sans-serif; color: #e6edf3;"
+                >
+                  {entry.title}
+                </p>
+                <!-- Subtitle -->
+                {entry.subtitle && (
+                  <p
+                    class="text-sm"
+                    style="font-family: 'Inter', sans-serif; color: #8b949e;"
+                  >
+                    {entry.subtitle}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

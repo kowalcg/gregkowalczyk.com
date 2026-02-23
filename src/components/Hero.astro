@@ -1,0 +1,170 @@
+---
+/**
+ * Hero.astro — Full-viewport hero section
+ * Typing effect, gradient headline, headshot, dot grid background.
+ */
+---
+
+<section
+  id="hero"
+  class="dot-grid relative flex min-h-screen items-center overflow-hidden"
+  style="background-color: #0d1117;"
+>
+  <div class="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
+      <!-- Text Content (left on desktop, top on mobile) -->
+      <div class="w-full text-center lg:w-[60%] lg:text-left">
+        <!-- Typing Effect Line -->
+        <div
+          class="mb-4 text-sm sm:text-base"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #06b6d4; min-height: 1.75rem;"
+        >
+          <span id="typing-text"></span><span class="typing-cursor"></span>
+        </div>
+
+        <!-- H1 Headline -->
+        <h1
+          class="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+        >
+          <span class="gradient-text">
+            I Build AI Systems That Replace Agency Work
+          </span>
+        </h1>
+
+        <!-- Sub-headline -->
+        <p
+          class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#8b949e] sm:text-lg lg:mx-0"
+          style="font-family: 'Inter', sans-serif;"
+        >
+          28 years of engineering. Mid-seven-figure e-commerce brands. Now I
+          build custom AI tools and automation that save businesses $75K+ per
+          year — deployed and running in weeks, not months.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="mb-4">
+          <a
+            href="#contact"
+            class="inline-block rounded-lg px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d1117]"
+            style="background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4); font-family: 'Inter', sans-serif;"
+          >
+            Let's Build Something
+          </a>
+        </div>
+
+        <!-- Location Subtext -->
+        <p
+          class="text-sm text-[#8b949e]"
+          style="font-family: 'Inter', sans-serif;"
+        >
+          Based in Burlington, Ontario — serving the GTA and beyond
+        </p>
+      </div>
+
+      <!-- Headshot Area (right on desktop, bottom on mobile) -->
+      <div class="flex w-full justify-center lg:w-[40%]">
+        <div
+          class="relative h-[280px] w-[280px] overflow-hidden rounded-2xl sm:h-[320px] sm:w-[320px]"
+          style="padding: 3px; background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);"
+        >
+          <!-- Inner container with rounded corners -->
+          <div class="relative h-full w-full overflow-hidden rounded-2xl" style="background-color: #161b22;">
+            <!-- Fallback gradient background -->
+            <div
+              class="absolute inset-0 flex items-center justify-center"
+              style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.15));"
+            >
+              <span
+                class="text-5xl text-[#8b949e] opacity-30"
+                style="font-family: 'JetBrains Mono', monospace;"
+              >
+                GK
+              </span>
+            </div>
+            <!-- Actual headshot image -->
+            <img
+              src="/images/greg-headshot.jpg"
+              alt="Greg Kowalczyk - AI Implementation Consultant in Burlington, Ontario"
+              class="relative z-10 h-full w-full object-cover"
+              loading="eager"
+              onerror="this.style.display='none';"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const typingEl = document.getElementById("typing-text");
+    if (!typingEl) return;
+
+    const phrases = [
+      "> AI Implementation Specialist",
+      "> E-Commerce Systems Builder",
+      "> Custom Tool Developer",
+      "> Marketing Automation Engineer",
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const TYPE_SPEED = 60;
+    const DELETE_SPEED = 30;
+    const PAUSE_AFTER_TYPING = 3000;
+    const PAUSE_AFTER_DELETING = 400;
+
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      // Show the first phrase statically
+      typingEl.textContent = phrases[0];
+      return;
+    }
+
+    function tick() {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        // Typing forward
+        charIndex++;
+        typingEl.textContent = currentPhrase.substring(0, charIndex);
+
+        if (charIndex === currentPhrase.length) {
+          // Finished typing this phrase — pause then delete
+          setTimeout(() => {
+            isDeleting = true;
+            tick();
+          }, PAUSE_AFTER_TYPING);
+          return;
+        }
+
+        setTimeout(tick, TYPE_SPEED);
+      } else {
+        // Deleting backward
+        charIndex--;
+        typingEl.textContent = currentPhrase.substring(0, charIndex);
+
+        if (charIndex === 0) {
+          // Finished deleting — move to next phrase
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, PAUSE_AFTER_DELETING);
+          return;
+        }
+
+        setTimeout(tick, DELETE_SPEED);
+      }
+    }
+
+    // Start the loop
+    setTimeout(tick, 600);
+  });
+</script>
