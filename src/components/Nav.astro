@@ -37,7 +37,7 @@ const navLinks = [
             <a
               href={link.href}
               class="text-sm text-[#8b949e] transition-colors duration-200 hover:text-[#e6edf3]"
-              style="font-family: 'Inter', sans-serif;"
+              style="font-family: 'Outfit', sans-serif;"
             >
               {link.label}
             </a>
@@ -73,7 +73,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     class="pointer-events-none fixed inset-x-0 top-0 z-40 translate-y-[-100%] opacity-0 transition-all duration-300 ease-in-out md:hidden"
-    style="background-color: rgba(13, 17, 23, 0.98); backdrop-filter: blur(16px);"
+    style="background-color: rgba(15, 10, 30, 0.98); backdrop-filter: blur(16px);"
   >
     <div class="px-4 pb-8 pt-20 sm:px-6">
       <ul class="flex flex-col gap-4">
@@ -81,8 +81,8 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="mobile-nav-link block rounded-lg px-4 py-3 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-[#161b22] hover:text-[#e6edf3]"
-              style="font-family: 'Inter', sans-serif;"
+              class="mobile-nav-link block rounded-lg px-4 py-3 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-white/5 hover:text-[#e6edf3]"
+              style="font-family: 'Outfit', sans-serif;"
             >
               {link.label}
             </a>
@@ -90,11 +90,11 @@ const navLinks = [
         ))}
       </ul>
       <!-- Mobile CTA -->
-      <div class="mt-6 border-t border-[#30363d] pt-6">
+      <div class="mt-6 border-t border-white/10 pt-6">
         <a
           href="#contact"
-          class="mobile-nav-link block rounded-lg px-4 py-3 text-center text-base font-semibold text-white"
-          style="background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4); font-family: 'Inter', sans-serif;"
+          class="mobile-nav-link block rounded-full px-4 py-3 text-center text-base font-semibold text-white"
+          style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
         >
           Let's Build Something
         </a>
@@ -123,10 +123,10 @@ const navLinks = [
     // ---------- Scroll: transparent -> solid ----------
     function updateNavBackground() {
       if (window.scrollY > 20) {
-        nav.style.backgroundColor = "rgba(13, 17, 23, 0.95)";
+        nav.style.backgroundColor = "rgba(15, 10, 30, 0.75)";
         nav.style.backdropFilter = "blur(16px)";
         nav.style.WebkitBackdropFilter = "blur(16px)";
-        nav.style.borderBottom = "1px solid #30363d";
+        nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.08)";
       } else if (!isMenuOpen) {
         nav.style.backgroundColor = "transparent";
         nav.style.backdropFilter = "none";
@@ -151,7 +151,7 @@ const navLinks = [
       // Lock body scroll
       document.body.style.overflow = "hidden";
       // Ensure nav stays solid while menu open
-      nav.style.backgroundColor = "rgba(13, 17, 23, 0.95)";
+      nav.style.backgroundColor = "rgba(15, 10, 30, 0.75)";
       nav.style.backdropFilter = "blur(16px)";
       nav.style.WebkitBackdropFilter = "blur(16px)";
     }

@@ -1,8 +1,8 @@
 ---
 /**
  * Services.astro — "What I Build" service cards section
- * 4 cards in a 2x2 grid with gradient-border hover effects.
- * Uses global utility classes: gradient-text, gradient-border, fade-in-up.
+ * 4 cards in a 2x2 grid with glass-card hover effects.
+ * Uses global utility classes: gradient-text, glass-card, glass-card-hover, fade-in-up, comment-prefix.
  */
 
 const services = [
@@ -33,20 +33,20 @@ const services = [
 ];
 ---
 
-<section id="services" class="py-24 md:py-32" style="background-color: #0d1117;">
+<section id="services" class="py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Section Heading -->
     <h2
-      class="gradient-text text-center text-3xl font-bold md:text-4xl"
+      class="text-center text-3xl font-bold md:text-4xl"
       style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
     >
-      What I Build
+      <span class="comment-prefix">// </span><span class="gradient-text">What I Build</span>
     </h2>
 
     <!-- Section Intro -->
     <p
       class="mx-auto mt-4 max-w-2xl text-center text-[#8b949e] mb-16"
-      style="font-family: 'Inter', sans-serif;"
+      style="font-family: 'Outfit', sans-serif;"
     >
       Every project follows one rule: you get a working system, not a strategy
       deck. I code it, deploy it, and train you to use it.
@@ -56,13 +56,12 @@ const services = [
     <div class="grid gap-6 md:grid-cols-2">
       {services.map((service) => (
         <div
-          class="fade-in-up gradient-border group p-8 transition-all duration-300 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]"
-          style="background-color: #161b22;"
+          class="fade-in-up glass-card glass-card-hover overflow-hidden group p-8"
         >
           {/* Icon */}
           <div
             class="mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
-            style="background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);"
+            style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);"
           >
             {service.icon === "terminal" && (
               <svg
@@ -145,7 +144,7 @@ const services = [
           {/* Body */}
           <p
             class="mb-4 leading-relaxed text-[#8b949e]"
-            style="font-family: 'Inter', sans-serif;"
+            style="font-family: 'Outfit', sans-serif;"
           >
             {service.body}
           </p>
@@ -153,7 +152,7 @@ const services = [
           {/* Proof Line */}
           <p
             class="text-sm italic text-[#06b6d4]"
-            style="font-family: 'Inter', sans-serif;"
+            style="font-family: 'Outfit', sans-serif;"
           >
             {service.proof}
           </p>

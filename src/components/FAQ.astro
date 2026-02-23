@@ -3,7 +3,7 @@
  * FAQ.astro — "Common Questions" accordion section
  * 8 FAQ items with single-open accordion behavior.
  * Smooth open/close via max-height CSS transitions.
- * Uses global utility class: gradient-text.
+ * Uses global utility classes: gradient-text, comment-prefix.
  */
 
 const faqs = [
@@ -50,26 +50,26 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="py-24 md:py-32" style="background-color: #161b22;">
+<section id="faq" class="py-24 md:py-32">
   <div class="mx-auto max-w-3xl px-6">
     <!-- Section Heading -->
     <h2
-      class="gradient-text mb-16 text-center text-3xl font-bold md:text-4xl"
+      class="mb-16 text-center text-3xl font-bold md:text-4xl"
       style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
     >
-      Common Questions
+      <span class="comment-prefix">// </span><span class="gradient-text">Common Questions</span>
     </h2>
 
     <!-- Accordion -->
     <div class="faq-accordion">
       {faqs.map((faq) => (
-        <div class="faq-item" style="border-bottom: 1px solid #30363d;">
+        <div class="faq-item" style="border-bottom: 1px solid rgba(255,255,255,0.06);">
           {/* Question Button */}
           <button
             class="faq-trigger flex w-full items-center justify-between py-5 text-left"
             type="button"
             aria-expanded="false"
-            style="font-family: 'Inter', sans-serif; transition: color 200ms ease;"
+            style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
           >
             <span class="faq-question pr-4 text-lg text-[#e6edf3]">
               {faq.question}
@@ -102,7 +102,7 @@ const faqs = [
           >
             <p
               class="pb-5 leading-relaxed text-[#8b949e]"
-              style="font-family: 'Inter', sans-serif;"
+              style="font-family: 'Outfit', sans-serif;"
             >
               {faq.answer}
             </p>

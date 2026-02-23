@@ -10,19 +10,19 @@ const timelineEntries = [
     years: "1997-2011",
     title: "Engineering Leadership",
     subtitle: "(SMS-Siemag/Siemens)",
-    dotColor: "#7c3aed",
+    dotColor: "#8b5cf6",
   },
   {
     years: "2011-Present",
     title: "Independent Consulting",
     subtitle: "",
-    dotColor: "#3b82f6",
+    dotColor: "#8b5cf6",
   },
   {
     years: "2014-Present",
     title: "E-Commerce Entrepreneur",
     subtitle: "(GearTOP + TapeGeeks)",
-    dotColor: "#3b82f6",
+    dotColor: "#06b6d4",
   },
   {
     years: "2024-Present",
@@ -33,14 +33,14 @@ const timelineEntries = [
 ];
 ---
 
-<section id="about" class="py-24 md:py-32" style="background-color: #161b22;">
+<section id="about" class="py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Section Heading -->
     <h2
       class="mb-16 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
     >
-      About Greg
+      <span class="comment-prefix">// </span><span class="gradient-text">About Greg</span>
     </h2>
 
     <!-- Bio + Headshot Grid -->
@@ -51,16 +51,16 @@ const timelineEntries = [
         <!-- Headshot with gradient border -->
         <div
           class="relative overflow-hidden rounded-2xl"
-          style="width: 300px; padding: 3px; background: linear-gradient(135deg, #7c3aed, #3b82f6, #06b6d4);"
+          style="width: 300px; padding: 3px; background: linear-gradient(135deg, #8b5cf6, #06b6d4);"
         >
           <div
             class="relative h-full w-full overflow-hidden rounded-2xl"
-            style="background-color: #161b22;"
+            style="background: rgba(255,255,255,0.05);"
           >
             <!-- Fallback gradient background -->
             <div
               class="absolute inset-0 flex items-center justify-center"
-              style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.15));"
+              style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));"
             >
               <span
                 class="text-5xl opacity-30"
@@ -82,7 +82,7 @@ const timelineEntries = [
         <!-- Location -->
         <p
           class="mt-4 text-center text-sm"
-          style="font-family: 'Inter', sans-serif; color: #8b949e;"
+          style="font-family: 'Outfit', sans-serif; color: #8b949e;"
         >
           Burlington, Ontario
         </p>
@@ -90,7 +90,7 @@ const timelineEntries = [
 
       <!-- Text Column -->
       <div class="order-last lg:order-first">
-        <div class="space-y-4" style="font-family: 'Inter', sans-serif;">
+        <div class="space-y-4" style="font-family: 'Outfit', sans-serif;">
           <p class="leading-relaxed" style="color: #8b949e;">
             I'm an engineer who builds things. For 14 years at SMS-Siemag (Siemens subsidiary), I led engineering teams on global-scale industrial projects — Chief Engineer, then Manager of Engineering for a 70-person department.
           </p>
@@ -116,7 +116,7 @@ const timelineEntries = [
           <!-- Gradient connecting line -->
           <div
             class="absolute top-3 left-0 right-0 h-0.5"
-            style="background: linear-gradient(90deg, #7c3aed, #3b82f6, #3b82f6, #06b6d4);"
+            style="background: linear-gradient(90deg, #8b5cf6, #06b6d4);"
           ></div>
 
           <!-- Timeline entries -->
@@ -126,7 +126,7 @@ const timelineEntries = [
                 <!-- Dot -->
                 <div
                   class="absolute top-0 left-0 h-6 w-6 rounded-full border-4"
-                  style={`background-color: ${entry.dotColor}; border-color: #161b22; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                  style={`background-color: ${entry.dotColor}; border-color: #0f0a1e; box-shadow: 0 0 0 2px ${entry.dotColor};`}
                 ></div>
                 <!-- Year -->
                 <p
@@ -138,7 +138,7 @@ const timelineEntries = [
                 <!-- Title -->
                 <p
                   class="font-semibold"
-                  style="font-family: 'Inter', sans-serif; color: #e6edf3;"
+                  style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
                 >
                   {entry.title}
                 </p>
@@ -146,7 +146,7 @@ const timelineEntries = [
                 {entry.subtitle && (
                   <p
                     class="text-sm"
-                    style="font-family: 'Inter', sans-serif; color: #8b949e;"
+                    style="font-family: 'Outfit', sans-serif; color: #8b949e;"
                   >
                     {entry.subtitle}
                   </p>
@@ -163,7 +163,7 @@ const timelineEntries = [
           <!-- Gradient vertical line -->
           <div
             class="absolute top-0 bottom-0 left-0 w-0.5"
-            style="background: linear-gradient(180deg, #7c3aed, #3b82f6, #3b82f6, #06b6d4);"
+            style="background: linear-gradient(180deg, #8b5cf6, #06b6d4);"
           ></div>
 
           <!-- Timeline entries -->
@@ -173,7 +173,7 @@ const timelineEntries = [
                 <!-- Dot -->
                 <div
                   class="absolute top-0.5 -left-[9px] h-5 w-5 rounded-full border-4"
-                  style={`background-color: ${entry.dotColor}; border-color: #161b22; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                  style={`background-color: ${entry.dotColor}; border-color: #0f0a1e; box-shadow: 0 0 0 2px ${entry.dotColor};`}
                 ></div>
                 <!-- Year -->
                 <p
@@ -185,7 +185,7 @@ const timelineEntries = [
                 <!-- Title -->
                 <p
                   class="font-semibold"
-                  style="font-family: 'Inter', sans-serif; color: #e6edf3;"
+                  style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
                 >
                   {entry.title}
                 </p>
@@ -193,7 +193,7 @@ const timelineEntries = [
                 {entry.subtitle && (
                   <p
                     class="text-sm"
-                    style="font-family: 'Inter', sans-serif; color: #8b949e;"
+                    style="font-family: 'Outfit', sans-serif; color: #8b949e;"
                   >
                     {entry.subtitle}
                   </p>

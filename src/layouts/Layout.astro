@@ -212,7 +212,7 @@ const structuredData = {
     <!-- Google Fonts (preconnect + non-blocking load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Title & Description -->
     <title>{title}</title>
@@ -244,7 +244,12 @@ const structuredData = {
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
 
-  <body class="min-h-screen bg-bg-primary text-text-primary font-body antialiased">
+  <body class="noise-overlay min-h-screen bg-bg-primary text-text-primary font-body antialiased">
+    <!-- Floating gradient orbs for glass refraction depth -->
+    <div class="orb orb-purple" aria-hidden="true"></div>
+    <div class="orb orb-blue" aria-hidden="true"></div>
+    <div class="orb orb-cyan" aria-hidden="true"></div>
+
     <slot />
   </body>
 </html>

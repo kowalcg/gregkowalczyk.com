@@ -2,7 +2,7 @@
 /**
  * HowIWork.astro — "How I Work" process section
  * 4 terminal-window cards in a horizontal timeline (vertical on mobile).
- * Uses global utility classes: gradient-text, fade-in-up.
+ * Uses global utility classes: gradient-text, glass-card, fade-in-up, comment-prefix.
  */
 
 const steps = [
@@ -29,20 +29,20 @@ const steps = [
 ];
 ---
 
-<section id="process" class="py-24 md:py-32" style="background-color: #161b22;">
+<section id="process" class="py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Section Heading -->
     <h2
-      class="gradient-text text-center text-3xl font-bold md:text-4xl"
+      class="text-center text-3xl font-bold md:text-4xl"
       style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
     >
-      How I Work
+      <span class="comment-prefix">// </span><span class="gradient-text">How I Work</span>
     </h2>
 
     <!-- Section Intro -->
     <p
       class="mt-4 text-center text-[#8b949e] mb-16"
-      style="font-family: 'Inter', sans-serif;"
+      style="font-family: 'Outfit', sans-serif;"
     >
       Four steps. No fluff. Working systems at the end.
     </p>
@@ -53,12 +53,11 @@ const steps = [
         <div class="fade-in-up relative">
           {/* Terminal Window Card */}
           <div
-            class="h-full overflow-hidden rounded-xl border border-[#30363d]"
-            style="background-color: #0d1117;"
+            class="glass-card overflow-hidden h-full"
           >
             {/* Terminal Top Bar */}
             <div
-              class="flex items-center gap-2 border-b border-[#30363d] px-4 py-3"
+              class="flex items-center gap-2 border-b border-white/10 px-4 py-3"
             >
               <span
                 class="inline-block h-2 w-2 rounded-full"
@@ -84,13 +83,13 @@ const steps = [
                 class="mb-4 text-base"
                 style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
               >
-                <span style="color: #7c3aed;">{step.fn}</span><span style="color: #06b6d4;">()</span>
+                <span style="color: #8b5cf6;">{step.fn}</span><span style="color: #06b6d4;">()</span>
               </p>
 
               {/* Step Title */}
               <h3
                 class="mb-3 text-lg font-semibold text-[#e6edf3]"
-                style="font-family: 'Inter', sans-serif;"
+                style="font-family: 'Outfit', sans-serif;"
               >
                 {step.title}
               </h3>
@@ -98,7 +97,7 @@ const steps = [
               {/* Step Body */}
               <p
                 class="text-sm leading-relaxed text-[#8b949e]"
-                style="font-family: 'Inter', sans-serif;"
+                style="font-family: 'Outfit', sans-serif;"
               >
                 {step.body}
               </p>
@@ -119,7 +118,7 @@ const steps = [
               >
                 <path
                   d="M1 1l7 7-7 7"
-                  stroke="#30363d"
+                  stroke="rgba(255,255,255,0.15)"
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -142,7 +141,7 @@ const steps = [
               >
                 <path
                   d="M1 1l7 7 7-7"
-                  stroke="#30363d"
+                  stroke="rgba(255,255,255,0.15)"
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
