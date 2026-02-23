@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Projects | Greg Kowalczyk — AI & Digital Growth Consultant"
+  description="Apps, tools, and systems built by Greg Kowalczyk. Two iOS apps live in the App Store, custom AI tools, automation systems, and more — all built using AI-assisted development."
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Things I've Built"
+      subtitle="Not client decks. Not demos. Actual tools, apps, and systems deployed and running in the real world."
+    />
+
+    <section class="py-12 md:py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="flex flex-col gap-8">
+
+          <ProjectCard
+            name="SunUp by GearTOP"
+            tag="iOS App · Live"
+            tagColor="cyan"
+            initials="SU"
+            description="Personalized UV safety app that calculates your real burn time based on skin type, live UV index, and cloud cover. Features 48-hour UV forecasts, family mode for multiple profiles, AQI tracking, and sun protection product recommendations. Built as a non-coder using AI-assisted development."
+            stats={[
+              "Live in the App Store since September 2025",
+              "Covers UV Index, AQI, burn time calculation, and family profiles",
+              "Integrates real-time UV and air quality data via location services",
+              "Built for GearTOP's sun protection product line",
+            ]}
+            tech={["React Native", "Expo", "VibeCode", "Claude Code", "iOS"]}
+            links={[
+              { label: "View on App Store", href: "https://apps.apple.com", external: true },
+            ]}
+          />
+
+          <ProjectCard
+            name="RunMate Pro"
+            tag="iOS App · Live"
+            tagColor="purple"
+            initials="RM"
+            callout="39 App Store rejections before final approval"
+            description="GPS run tracking app with shoe mileage management, route history, and injury prevention tools. Tracks every run, monitors shoe wear across multiple pairs, and surfaces insights to help runners avoid overuse injuries. Built for TapeGeeks' running and recovery community."
+            stats={[
+              "Live in the App Store since September 2025",
+              "GPS tracking, shoe mileage, route management, injury prevention",
+              "Approved after 39 App Store review rejections — every one documented and resolved",
+              "Built by a non-coder using AI-assisted development tools",
+            ]}
+            tech={["React Native", "Expo", "VibeCode", "Claude Code", "iOS"]}
+            links={[
+              { label: "View on App Store", href: "https://apps.apple.com", external: true },
+            ]}
+          />
+
+          <ProjectCard
+            name="Content Creator PRO"
+            tag="AI Web App"
+            tagColor="cyan"
+            initials="CC"
+            description="Custom web application for generating platform-specific AI prompts. Built for a client running a $537K/year business who needed to produce professional content without hiring an agency. Generates tailored prompts for Instagram, email, Google Ads, product descriptions, and more — all maintaining consistent brand voice."
+            stats={[
+              "Deployed on GitHub Pages — live and used daily",
+              "Generates prompts for 8+ content formats and platforms",
+              "Built and delivered in 6 weeks",
+              "Replaced $35K+/year agency content costs",
+            ]}
+            tech={["HTML", "CSS", "JavaScript", "Claude API", "GitHub Pages"]}
+            links={[
+              { label: "Ask me about this", href: "/contact" },
+            ]}
+          />
+
+          <ProjectCard
+            name="Multi-Platform Analytics Dashboard"
+            tag="Automation · Internal"
+            tagColor="purple"
+            initials="AD"
+            description="Custom analytics system aggregating data from Shopify, Amazon Seller Central, Google Analytics 4, and Meta Ads into a unified view. Replaced 4 hours of manual Monday morning reporting with an automated overnight workflow. Built for internal use across GearTOP and TapeGeeks."
+            stats={[
+              "Aggregates data from 4 platforms: Shopify, Amazon, Google, Meta",
+              "Automated nightly data refresh via N8N workflows",
+              "Eliminated 4+ hours of manual reporting per week",
+              "Custom metrics tracking: ACOS, ROAS, organic vs. paid split",
+            ]}
+            tech={["N8N", "Shopify API", "Amazon SP-API", "Google Analytics API", "Meta API"]}
+            links={[
+              { label: "Ask me about this", href: "/contact" },
+            ]}
+          />
+
+          <ProjectCard
+            name="gregkowalczyk.com"
+            tag="Web · This Site"
+            tagColor="cyan"
+            initials="GK"
+            description="This website. Built with Astro 5 and a custom glassmorphism design system. Static site deployed on Vercel with full SEO implementation — JSON-LD structured data, Open Graph, sitemap, canonical URLs. Design inspired by the Viable Edge Glass-UI pattern."
+            stats={[
+              "Built with Astro 5 (static) + Tailwind CSS v4",
+              "Custom Glass-UI design system with frosted cards and floating orbs",
+              "JSON-LD structured data: Person, ProfessionalService, LocalBusiness, FAQPage",
+              "Auto-deployed to Vercel on every push",
+            ]}
+            tech={["Astro 5", "Tailwind CSS v4", "Vercel", "Glass-UI"]}
+            links={[
+              { label: "You're already here", href: "/" },
+            ]}
+          />
+
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      heading="Want to Build Something Like This?"
+      body="I build custom tools, apps, and systems for businesses that want to stop paying agencies and start owning their technology."
+    />
+  </main>
+  <Footer />
+
+  <script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  </script>
+</Layout>
