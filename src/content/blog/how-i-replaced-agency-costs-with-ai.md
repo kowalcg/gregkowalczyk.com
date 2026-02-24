@@ -1,6 +1,6 @@
 ---
 title: "How I Replaced $75K in Agency Costs With $2K in AI Tools"
-description: "The exact tools, systems, and approach I used to eliminate agency dependency across two mid-seven-figure e-commerce brands — and what I'd do differently today."
+description: "The exact tools, systems, and approach I used to eliminate agency dependency across two e-commerce brands — and what I'd do differently today."
 pubDate: 2026-02-23
 tag: "AI Strategy"
 ---
@@ -11,7 +11,7 @@ For years I paid agencies to do work I now do better, faster, and cheaper with A
 
 ## The Before State
 
-Two e-commerce brands. Mid-seven figures in combined revenue. Paying:
+Two e-commerce brands, built and running since 2014. Paying:
 
 - $35K/year for content agency (product descriptions, blog posts, email copy)
 - $25K/year for social media management
@@ -45,4 +45,4 @@ You don't need to code. I'm a mechanical engineer. I built everything using Clau
 
 ---
 
-*Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two mid-seven-figure e-commerce brands built on AI tools he developed himself.*
+*Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two e-commerce brands built and running since 2014, powered by AI tools he developed himself.*
