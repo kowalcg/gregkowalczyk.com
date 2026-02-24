@@ -21,9 +21,41 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-CA', {
   month: 'long',
   day: 'numeric',
 });
+
+const wordCount = post.body.split(/\s+/).length;
+const readingTime = Math.ceil(wordCount / 230);
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "author": {
+    "@type": "Person",
+    "name": post.data.author,
+    "url": "https://gregkowalczyk.com/about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Greg Kowalczyk",
+    "url": "https://gregkowalczyk.com"
+  },
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": post.data.updatedDate?.toISOString() ?? post.data.pubDate.toISOString(),
+  "url": `https://gregkowalczyk.com/blog/${post.slug}`,
+  "image": post.data.image ?? "/images/og-default.jpg"
+};
 ---
 
-<Layout title={`${post.data.title} | Greg Kowalczyk`} description={post.data.description}>
+<Layout
+  title={`${post.data.title} | Greg Kowalczyk`}
+  description={post.data.description}
+  ogType="article"
+  ogImage={post.data.image ?? "/images/og-default.jpg"}
+  articlePublishedTime={post.data.pubDate.toISOString()}
+  articleModifiedTime={post.data.updatedDate?.toISOString()}
+  articleAuthor={post.data.author}
+>
   <Nav />
   <main>
     <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
@@ -54,11 +86,21 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-CA', {
         </h1>
 
         <p
-          class="text-lg leading-relaxed"
+          class="mb-4 text-lg leading-relaxed"
           style="font-family: 'Outfit', sans-serif; color: #8b949e;"
         >
           {post.data.description}
         </p>
+
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#8b949e]"
+             style="font-family: 'Outfit', sans-serif;">
+          <span>{post.data.author} · {post.data.authorTitle}</span>
+          <span>~{readingTime} min read</span>
+          <span style="color: rgba(139,92,246,0.7); font-size: 0.7rem;">v{post.data.version}</span>
+          {post.data.updatedDate && (
+            <span>Updated: {post.data.updatedDate.toLocaleDateString('en-CA', {year:'numeric',month:'long',day:'numeric'})}</span>
+          )}
+        </div>
       </header>
 
       <div class="prose-blog">
@@ -71,6 +113,8 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-CA', {
   </main>
   <Footer />
 </Layout>
+
+<script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
 
 <style>
   .prose-blog {
@@ -107,5 +151,20 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-CA', {
     padding: 0.125rem 0.375rem;
     border-radius: 4px;
     color: #06b6d4;
+  }
+  .prose-blog table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+    font-size: 0.9rem;
+  }
+  .prose-blog th, .prose-blog td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+  }
+  .prose-blog th {
+    color: #e6edf3;
+    background: rgba(255, 255, 255, 0.04);
   }
 </style>

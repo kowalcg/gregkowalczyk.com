@@ -3,6 +3,9 @@ title: "How I Replaced $75K in Agency Costs With $2K in AI Tools"
 description: "The exact tools, systems, and approach I used to eliminate agency dependency across two e-commerce brands — and what I'd do differently today."
 pubDate: 2026-02-23
 tag: "AI Strategy"
+author: "Greg Kowalczyk"
+authorTitle: "AI & Digital Growth Consultant"
+version: "1.0"
 ---
 
 # How I Replaced $75K in Agency Costs With $2K in AI Tools
