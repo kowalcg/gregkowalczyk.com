@@ -47,6 +47,21 @@ const faqs = [
     answer:
       "Not entirely — but it can replace the $75K-$125K in repetitive work you're paying agencies to do manually. Content generation, email sequences, social media scheduling, reporting, ad copy testing — all of this can be automated with custom AI tools. You still need strategic thinking. But you don't need to pay agency rates for execution work that AI handles better and faster.",
   },
+  {
+    question: "Can you help my brick-and-mortar store go online?",
+    answer:
+      "Yes — and this is where real experience beats theory. I've built two product brands from zero to multi-platform e-commerce since 2014. I know exactly what breaks when you first launch on Amazon, why Shopify stores don't convert out of the box, and how to avoid the expensive mistakes most businesses make trying to figure it out alone. I coach you through the setup and build the AI tools that make it scale.",
+  },
+  {
+    question: "Do you work with service businesses like contractors or trades?",
+    answer:
+      "Yes. Electricians, landscapers, plumbers, HVAC — any local service business that's invisible online. I build your digital foundation: professional website, Google Business Profile, and local SEO. Then I optimize it for LLM search so AI assistants recommend you when people search for your services. The next generation finds local businesses by asking Siri, ChatGPT, and Google. I make sure you show up in all of them.",
+  },
+  {
+    question: "What does it cost to get started selling online?",
+    answer:
+      "Platform fees are low — Shopify starts at $39/month, Amazon at $39.99/month. The real investment is the setup: getting listings right, content optimized, and systems in place so you don't waste money on ads before the foundation is solid. My coaching engagements typically run $3,000–$8,000 for the initial setup phase. After that you're running independently with AI tools I've built for you.",
+  },
 ];
 ---
 
@@ -128,7 +143,7 @@ const faqs = [
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initFAQ() {
     const accordion = document.querySelector(".faq-accordion");
     if (!accordion) return;
 
@@ -166,5 +181,11 @@ const faqs = [
         }
       });
     });
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFAQ);
+  } else {
+    initFAQ();
+  }
 </script>
