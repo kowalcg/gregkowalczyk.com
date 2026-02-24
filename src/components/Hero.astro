@@ -97,7 +97,7 @@
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initHero() {
     const typingEl = document.getElementById("typing-text");
     if (!typingEl) return;
 
@@ -165,5 +165,11 @@
 
     // Start the loop
     setTimeout(tick, 600);
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHero);
+  } else {
+    initHero();
+  }
 </script>

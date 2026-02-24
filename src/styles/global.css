@@ -48,6 +48,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Prevent horizontal overflow on mobile */
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Mobile Touch Optimization
+   Eliminate 300ms tap delay and ensure all interactive elements are tappable.
+   ========================================================================== */
+
+a, button, [role="button"], input, select, textarea, label {
+  touch-action: manipulation;
+}
+
+/* Remove default tap highlight on mobile — elements have their own hover styles */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure all links are visibly tappable */
+a {
+  cursor: pointer;
+}
+
+/* Minimum tap target size for accessibility (Apple HIG: 44pt, Material: 48dp) */
+@media (max-width: 767px) {
+  nav a, footer a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Disable heavy backdrop-filter on mobile to prevent rendering bugs in some browsers */
+@media (max-width: 767px) {
+  .glass-card,
+  .glass-card-light {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(15, 10, 30, 0.85);
+  }
+}
+
+/* Disable orb animations on mobile for performance */
+@media (max-width: 767px) {
+  .orb {
+    animation: none;
+    opacity: 0.5;
+  }
 }
 
 /* Monospace headings by default */

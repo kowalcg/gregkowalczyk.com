@@ -62,7 +62,7 @@ const metrics = [
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initResultsBar() {
     const grid = document.getElementById("results-bar-grid");
     if (!grid) return;
 
@@ -133,5 +133,11 @@ const metrics = [
     );
 
     observer.observe(grid);
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initResultsBar);
+  } else {
+    initResultsBar();
+  }
 </script>

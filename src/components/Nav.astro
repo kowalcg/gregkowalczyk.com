@@ -56,7 +56,8 @@ const navLinks = [
       <button
         id="hamburger-btn"
         type="button"
-        class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+        class="relative z-50 flex h-12 w-12 flex-col items-center justify-center gap-[5px] md:hidden"
+        style="touch-action: manipulation; -webkit-tap-highlight-color: transparent;"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
       >
@@ -88,8 +89,8 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="mobile-nav-link block rounded-lg px-4 py-3 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-white/5 hover:text-[#e6edf3]"
-              style="font-family: 'Outfit', sans-serif;"
+              class="mobile-nav-link block rounded-lg px-4 py-4 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-white/5 hover:text-[#e6edf3]"
+              style="font-family: 'Outfit', sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; min-height: 52px; display: flex; align-items: center;"
             >
               {link.label}
             </a>
@@ -114,7 +115,7 @@ const navLinks = [
 <div class="h-16"></div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function initNav() {
     const nav = document.getElementById("site-nav");
     const hamburgerBtn = document.getElementById("hamburger-btn");
     const mobileMenu = document.getElementById("mobile-menu");
@@ -199,5 +200,12 @@ const navLinks = [
         closeMenu();
       }
     });
-  });
+  }
+
+  // Safe init: works whether DOMContentLoaded has fired or not
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNav);
+  } else {
+    initNav();
+  }
 </script>
