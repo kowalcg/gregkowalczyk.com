@@ -89,6 +89,30 @@
               />
             </div>
 
+            <!-- Budget Range -->
+            <div>
+              <label
+                for="contact-budget"
+                class="mb-2 block text-sm text-[#8b949e]"
+                style="font-family: 'Outfit', sans-serif;"
+              >
+                Approximate Budget
+              </label>
+              <select
+                id="contact-budget"
+                name="budget"
+                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#e6edf3] outline-none"
+                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+              >
+                <option value="" style="background: #0f0a1e;">Not sure yet</option>
+                <option value="under-2k" style="background: #0f0a1e;">Under $2,000</option>
+                <option value="2k-5k" style="background: #0f0a1e;">$2,000 – $5,000</option>
+                <option value="5k-10k" style="background: #0f0a1e;">$5,000 – $10,000</option>
+                <option value="10k-25k" style="background: #0f0a1e;">$10,000 – $25,000</option>
+                <option value="25k-plus" style="background: #0f0a1e;">$25,000+</option>
+              </select>
+            </div>
+
             <!-- Message -->
             <div>
               <label
@@ -264,9 +288,15 @@
 </section>
 
 <style>
-  .contact-input:focus {
+  .contact-input:focus,
+  select.contact-input:focus {
     border-color: #06b6d4;
     box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+  }
+
+  select.contact-input option {
+    background: #0f0a1e;
+    color: #e6edf3;
   }
 
   .contact-link:hover {

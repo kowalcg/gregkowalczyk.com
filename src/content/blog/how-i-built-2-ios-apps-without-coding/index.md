@@ -37,7 +37,7 @@ I went from zero apps to two live App Store products in roughly 12 weeks. Everyt
 
 I used three tools. Nothing else.
 
-**VibeCode** — The foundation. You describe a screen in plain English and it generates the React Native component. You don't write code; you write instructions. VibeCode scaffolds the entire project, manages the Expo framework, and handles the architecture that would take a developer weeks to set up from scratch.
+**VibeCode** — The foundation. You describe a screen in plain English and it generates the React Native component. You don't write code; you write instructions. VibeCode scaffolds the entire project, manages the Expo framework, and handles the architecture that would take a developer weeks to set up from scratch. (Referral code **GREG** gets you $10 credit when you sign up.)
 
 **Claude Code** — The co-developer. This isn't a chatbot. It lives in your project folder, reads your files, executes code, and explains exactly what's broken and why. When something failed, I'd describe the problem and Claude Code would diagnose it, suggest the fix, and verify the result. It operates like a developer inside your project — not an advisor on the sideline.
 
@@ -129,7 +129,7 @@ SunUp took ~6 weeks. RunMate Pro took 8–10 weeks, extended by a 3-week GPS deb
 The core tools — VibeCode, Cursor AI, and Claude Code — run approximately $70–300/month depending on usage tier. The Apple Developer Program is $99/year. Compare that to $50,000–$200,000+ for a professional developer to build a comparable custom app.
 
 **What is VibeCode?**
-VibeCode is a no-code app building platform built on React Native and Expo. You describe screens and features in plain English; VibeCode generates the underlying code. It's the entry point that makes mobile app development accessible without a coding background. (Greg's referral code is **GREG** for $10 credit.)
+VibeCode is a no-code app building platform built on React Native and Expo. You describe screens and features in plain English; VibeCode generates the underlying code. It's the entry point that makes mobile app development accessible without a coding background.
 
 **What is Claude Code?**
 Claude Code is an AI coding assistant that runs in your terminal, reads your project files, and operates directly within your codebase — executing commands, debugging, and building features. Unlike a chatbot, it takes action inside your project rather than just advising from the outside.

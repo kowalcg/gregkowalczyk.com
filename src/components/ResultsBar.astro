@@ -117,7 +117,7 @@ const metrics = [
       });
     }
 
-    // Intersection Observer — trigger once when section is 25% visible
+    // Intersection Observer — trigger once when any part of section is visible
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -127,12 +127,20 @@ const metrics = [
           }
         });
       },
-      {
-        threshold: 0.25,
-      }
+      { threshold: 0 }
     );
 
     observer.observe(grid);
+
+    // Fallback: if element is already in viewport when script runs, animate directly
+    setTimeout(() => {
+      if (!hasAnimated) {
+        const rect = grid.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          animateCounters();
+        }
+      }
+    }, 200);
   }
 
   if (document.readyState === "loading") {
