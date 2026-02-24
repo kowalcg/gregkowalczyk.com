@@ -1,0 +1,32 @@
+[     612ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    1597ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/auth_warmup:0
+[    5394ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5441ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5565ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5573ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[   28106ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1VQYekqP9bz2EF5YUzOadYf7eAF_cdcuJ&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   32939ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1J8sSri4Aj0R_1weM1udPmjHPbsyX7p4P&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   37581ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1YEHIEqlXro39yVwxsvX4l7FYQGcU3epI&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   42182ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1MI6PMYTMdW2VZuiLuJHpJRzsQpR5lYiL&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   54270ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=13CrdSrLeIcIz9rjYLhdxIEbrBsSmUII9&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   58704ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1CpLpejrQDEdDompi8YoUzWq6UGv896zj&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   60656ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1zKvgExBWzAgdPgnm4AnE9h1jUfH0NEBa&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   62174ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1x6uMlWYJC3WvvWYzlOkfGWFILetJmUPq&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   63626ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=19JhKf7oWojCCfH_X_BpM9pt62as8pTul&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   65148ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1aLDqm3jOktlpY2gk1SwpqTuZ-uu-vCxo&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   65648ms] [ERROR] Framing 'https://docs.google.com/' violates the following report-only Content Security Policy directive: "frame-ancestors 'self'". The violation has been logged, but no further action has been taken.
+ @ :0
+[   65649ms] [ERROR] Framing 'https://docs.google.com/' violates the following report-only Content Security Policy directive: "frame-ancestors 'self'". The violation has been logged, but no further action has been taken.
+ @ :0
+[   65666ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/drawings/u/0/preload?source=drive:20:739
+[   65684ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/document/u/0/preload?source=drive:20:547
+[   65708ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/presentation/u/0/preload?source=drive:20:1097
+[   65708ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://drive.google.com/file/u/0/preload?source=drive:11:636
+[   65754ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/spreadsheets/u/0/preload?source=drive:11:16550
+[   65760ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/videos/u/0/preload?source=drive:20:713

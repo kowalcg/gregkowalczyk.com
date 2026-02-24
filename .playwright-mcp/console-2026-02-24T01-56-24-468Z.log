@@ -1,0 +1,27 @@
+[     887ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    1815ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/auth_warmup:0
+[    5490ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5505ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5508ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[    5510ms] [ERROR] Failed to load resource: net::ERR_FAILED @ chrome-extension://invalid/:0
+[   27245ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1VQYekqP9bz2EF5YUzOadYf7eAF_cdcuJ&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   32254ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1J8sSri4Aj0R_1weM1udPmjHPbsyX7p4P&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   65958ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/drawings/u/0/preload?source=drive:20:739
+[   65964ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/presentation/u/0/preload?source=drive:20:1097
+[   66040ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/document/u/0/preload?source=drive:20:547
+[   66061ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://drive.google.com/file/u/0/preload?source=drive:11:636
+[   66079ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/spreadsheets/u/0/preload?source=drive:11:16550
+[   66084ms] Error: DOCS_initialLoadTiming is not defined.
+    at https://docs.google.com/videos/u/0/preload?source=drive:20:713
+[   66093ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1YEHIEqlXro39yVwxsvX4l7FYQGcU3epI&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   85465ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1MI6PMYTMdW2VZuiLuJHpJRzsQpR5lYiL&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   90900ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=13CrdSrLeIcIz9rjYLhdxIEbrBsSmUII9&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[   94830ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://blobcomments-pa.clients6.google.com/v1/metadata?docId=1zKvgExBWzAgdPgnm4AnE9h1jUfH0NEBa&revisionId&userLocale=en&timeZoneId=Etc%2FGMT%2B5&documentResourceKey.resourceKey&forceImportEnabled=true&populateExperimentConfig=true&key=AIzaSyD_InbmSFufIEps5UAt2NmB_3LvBH3Sz_8&%24unique=gc078:0
+[   95164ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1CpLpejrQDEdDompi8YoUzWq6UGv896zj&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[  100238ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1zKvgExBWzAgdPgnm4AnE9h1jUfH0NEBa&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0
+[  104206ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://drive.google.com/drivesharing/clientmodel?id=1x6uMlWYJC3WvvWYzlOkfGWFILetJmUPq&foreignService=explorer&authuser=0&origin=https%3A%2F%2Fdrive.google.com:0

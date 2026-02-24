@@ -42,7 +42,7 @@ const articleJsonLd = {
   },
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": post.data.updatedDate?.toISOString() ?? post.data.pubDate.toISOString(),
-  "url": `https://gregkowalczyk.com/blog/${post.slug}`,
+  "url": `https://gregkowalczyk.com/news/${post.slug}`,
   "image": post.data.image ?? "/images/og-default.jpg"
 };
 ---
