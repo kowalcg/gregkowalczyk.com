@@ -15,6 +15,8 @@ I'm a mechanical engineer. My last coding experience was Visual Basic in univers
 
 In September 2025, I shipped two iOS apps to the App Store. Here's exactly how I did it — and why the experience changed how I think about what's possible for any small business owner.
 
+> **I walked through this full journey live at VibeMarketer in December 2025.** The interactive session covers every stage — the tools, the GPS nightmare, the 39 rejections, and the before/after numbers. [Explore the full session →](https://kowalcg.github.io/vibemarketer-mentor-session-11dec2025/)
+
 ## Why I Decided to Build Apps
 
 I've run two e-commerce brands — GearTOP (sun protection gear) and TapeGeeks (athletic tape and recovery products) — since 2014. Both sell on Amazon and Shopify. The problem with that model: Amazon customers don't give you their email address. You get the transaction, then you lose them.
