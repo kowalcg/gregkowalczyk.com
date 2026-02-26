@@ -168,7 +168,7 @@ Proof, Not Promises
 About Greg
 
 ### Bio:
-I'm an engineer who builds things. For 14 years at SMS-Siemag (Siemens subsidiary), I led engineering teams on global-scale industrial projects — Chief Engineer, then Manager of Engineering for a 70-person department.
+I'm an engineer who builds things. For 14 years at SMS-Siemag (prior PRO-ECO LTD), I led engineering teams on global-scale industrial projects — Chief Engineer, then Manager of Engineering for a 70-person department.
 
 In 2011, I went independent. In 2014, I started building e-commerce brands with my daughter. Two brands. Mid-seven figures. Learned SEO, ads, and marketing by doing it — not by reading about it. Spent $2M+ on advertising across Google, Amazon, and Meta. Made every mistake. Then built systems so I wouldn't make them twice.
 
