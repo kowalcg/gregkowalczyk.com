@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://gregkowalczyk.com',
+  site: 'https://www.gregkowalczyk.com',
   output: 'static',
   adapter: vercel(),
   integrations: [sitemap()],
