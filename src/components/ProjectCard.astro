@@ -15,6 +15,7 @@ interface Props {
   links: Link[];
   callout?: string;
   initials?: string;
+  image?: string;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   links,
   callout,
   initials = '??',
+  image,
 } = Astro.props;
 
 const tagBg = tagColor === 'purple'
@@ -108,19 +110,33 @@ const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
       </div>
     </div>
 
-    <!-- Right: Image placeholder -->
+    <!-- Right: Screenshot or initials fallback -->
     <div class="flex items-start justify-center md:justify-end">
-      <div
-        class="flex h-24 w-24 items-center justify-center rounded-2xl md:h-32 md:w-32"
-        style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
-      >
-        <span
-          class="text-2xl font-bold opacity-40 md:text-3xl"
-          style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+      {image ? (
+        <div
+          class="overflow-hidden rounded-2xl md:w-48 w-36"
+          style="border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 16/10;"
         >
-          {initials}
-        </span>
-      </div>
+          <img
+            src={image}
+            alt={`${name} screenshot`}
+            class="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div
+          class="flex h-24 w-24 items-center justify-center rounded-2xl md:h-32 md:w-32"
+          style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
+        >
+          <span
+            class="text-2xl font-bold opacity-40 md:text-3xl"
+            style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+          >
+            {initials}
+          </span>
+        </div>
+      )}
     </div>
 
   </div>
