@@ -38,84 +38,85 @@ const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
 ---
 
 <div class="fade-in-up glass-card overflow-hidden p-8 md:p-10">
-  <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:gap-10">
+  {image ? (
+    <!-- Layout with screenshot: text left, large image right -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
 
-    <!-- Left: Details -->
-    <div>
-      <span
-        class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
-        style={`font-family: 'JetBrains Mono', monospace; background-color: ${tagBg}; color: ${tagFg};`}
-      >
-        {tag}
-      </span>
-
-      <h3
-        class="mb-4 text-xl font-bold md:text-2xl"
-        style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e6edf3;"
-      >
-        {name}
-      </h3>
-
-      {callout && (
-        <div
-          class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
-          style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8b5cf6; color: #c4b5fd;"
+      <!-- Left: Details -->
+      <div>
+        <span
+          class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
+          style={`font-family: 'JetBrains Mono', monospace; background-color: ${tagBg}; color: ${tagFg};`}
         >
-          {callout}
-        </div>
-      )}
+          {tag}
+        </span>
 
-      <p
-        class="mb-6 leading-relaxed"
-        style="font-family: 'Outfit', sans-serif; color: #8b949e;"
-      >
-        {description}
-      </p>
+        <h3
+          class="mb-4 text-xl font-bold md:text-2xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e6edf3;"
+        >
+          {name}
+        </h3>
 
-      <ul class="mb-6 space-y-2" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
-        {stats.map((stat) => (
-          <li class="flex items-start gap-3">
+        {callout && (
+          <div
+            class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8b5cf6; color: #c4b5fd;"
+          >
+            {callout}
+          </div>
+        )}
+
+        <p
+          class="mb-6 text-sm leading-relaxed md:text-base"
+          style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+        >
+          {description}
+        </p>
+
+        <ul class="mb-6 space-y-2 text-sm md:text-base" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+          {stats.map((stat) => (
+            <li class="flex items-start gap-3">
+              <span
+                class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                style="background-color: #06b6d4;"
+              ></span>
+              <span>{stat}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mb-6 flex flex-wrap gap-2">
+          {tech.map((t) => (
             <span
-              class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-              style="background-color: #06b6d4;"
-            ></span>
-            <span>{stat}</span>
-          </li>
-        ))}
-      </ul>
+              class="rounded-full px-3 py-1 text-xs"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8b949e; border: 1px solid rgba(255,255,255,0.08);"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
 
-      <div class="mb-6 flex flex-wrap gap-2">
-        {tech.map((t) => (
-          <span
-            class="rounded-full px-3 py-1 text-xs"
-            style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8b949e; border: 1px solid rgba(255,255,255,0.08);"
-          >
-            {t}
-          </span>
-        ))}
+        <div class="flex flex-wrap gap-3">
+          {links.map((link) => (
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+            >
+              {link.label} {link.external ? '↗' : '→'}
+            </a>
+          ))}
+        </div>
       </div>
 
-      <div class="flex flex-wrap gap-3">
-        {links.map((link) => (
-          <a
-            href={link.href}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noopener noreferrer' : undefined}
-            class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-            style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
-          >
-            {link.label} {link.external ? '↗' : '→'}
-          </a>
-        ))}
-      </div>
-    </div>
-
-    <!-- Right: Screenshot or initials fallback -->
-    <div class="flex items-end justify-center md:justify-end">
-      {image ? (
+      <!-- Right: Large screenshot -->
+      <div class="flex items-end justify-center lg:justify-end">
         <div
-          class="overflow-hidden rounded-2xl w-full md:w-72"
-          style="border: 1px solid rgba(255,255,255,0.10); aspect-ratio: 16/10; box-shadow: 0 8px 32px rgba(0,0,0,0.3);"
+          class="overflow-hidden rounded-2xl w-full"
+          style="border: 1px solid rgba(255,255,255,0.10); aspect-ratio: 16/10; box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);"
         >
           <img
             src={image}
@@ -124,7 +125,83 @@ const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
             loading="lazy"
           />
         </div>
-      ) : (
+      </div>
+
+    </div>
+  ) : (
+    <!-- Layout without screenshot: text with initials -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:gap-10">
+
+      <div>
+        <span
+          class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
+          style={`font-family: 'JetBrains Mono', monospace; background-color: ${tagBg}; color: ${tagFg};`}
+        >
+          {tag}
+        </span>
+
+        <h3
+          class="mb-4 text-xl font-bold md:text-2xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e6edf3;"
+        >
+          {name}
+        </h3>
+
+        {callout && (
+          <div
+            class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8b5cf6; color: #c4b5fd;"
+          >
+            {callout}
+          </div>
+        )}
+
+        <p
+          class="mb-6 leading-relaxed"
+          style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+        >
+          {description}
+        </p>
+
+        <ul class="mb-6 space-y-2" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+          {stats.map((stat) => (
+            <li class="flex items-start gap-3">
+              <span
+                class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                style="background-color: #06b6d4;"
+              ></span>
+              <span>{stat}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="mb-6 flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <span
+              class="rounded-full px-3 py-1 text-xs"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8b949e; border: 1px solid rgba(255,255,255,0.08);"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          {links.map((link) => (
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+            >
+              {link.label} {link.external ? '↗' : '→'}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex items-end justify-center md:justify-end">
         <div
           class="flex h-24 w-24 items-center justify-center rounded-2xl md:h-32 md:w-32"
           style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
@@ -136,8 +213,8 @@ const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
             {initials}
           </span>
         </div>
-      )}
-    </div>
+      </div>
 
-  </div>
+    </div>
+  )}
 </div>
