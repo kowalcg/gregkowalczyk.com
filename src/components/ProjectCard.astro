@@ -111,11 +111,11 @@ const tagFg = tagColor === 'purple' ? '#8b5cf6' : '#06b6d4';
     </div>
 
     <!-- Right: Screenshot or initials fallback -->
-    <div class="flex items-start justify-center md:justify-end">
+    <div class="flex items-end justify-center md:justify-end">
       {image ? (
         <div
-          class="overflow-hidden rounded-2xl md:w-48 w-36"
-          style="border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 16/10;"
+          class="overflow-hidden rounded-2xl w-full md:w-72"
+          style="border: 1px solid rgba(255,255,255,0.10); aspect-ratio: 16/10; box-shadow: 0 8px 32px rgba(0,0,0,0.3);"
         >
           <img
             src={image}
