@@ -12,7 +12,7 @@ interface Props {
 import '../styles/global.css';
 
 const { title, description, ogType, ogImage, articlePublishedTime, articleModifiedTime, articleAuthor } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, "https://gregkowalczyk.com");
+const canonicalURL = new URL(Astro.url.pathname, "https://www.gregkowalczyk.com");
 
 const structuredData = {
   "@context": "https://schema.org",

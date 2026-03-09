@@ -1,5 +1,13 @@
 {
   "framework": "astro",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "gregkowalczyk.com" }],
+      "destination": "https://www.gregkowalczyk.com/:path*",
+      "permanent": true
+    }
+  ]
 }
