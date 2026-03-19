@@ -3,11 +3,17 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import PageHero from '../../components/PageHero.astro';
-import BlogCard from '../../components/BlogCard.astro';
 import Footer from '../../components/Footer.astro';
 
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featured = posts.find(p => p.data.featured) || posts[0];
+const remaining = posts.filter(p => p.slug !== featured?.slug);
+
+function readingTime(body: string) {
+  return Math.ceil(body.split(/\s+/).length / 230);
+}
 ---
 
 <Layout
@@ -21,47 +27,155 @@ const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.
       subtitle="Practical posts on AI tools, automation, e-commerce systems, and building things that actually work."
     />
 
-    <section class="py-12 md:py-16">
+    <section class="py-8 pb-20">
       <div class="mx-auto max-w-6xl px-6">
+
         {posts.length === 0 ? (
-          <div
-            class="glass-card p-12 text-center"
-            style="font-family: 'Outfit', sans-serif; color: #8b949e;"
-          >
+          <div class="glass-card p-12 text-center" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
             <p>First post coming soon.</p>
           </div>
         ) : (
-          <div class="flex flex-col gap-6">
-            {posts.map((post) => (
-              <BlogCard
-                title={post.data.title}
-                pubDate={post.data.pubDate}
-                description={post.data.description}
-                slug={post.slug}
-                tag={post.data.tag}
-              />
-            ))}
-          </div>
+          <>
+            {/* ── Featured post ── */}
+            {featured && (
+              <a
+                href={`/news/${featured.slug}`}
+                class="group block rounded-2xl overflow-hidden mb-10 transition-all duration-300 hover:-translate-y-1"
+                style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); text-decoration: none;"
+              >
+                <div class="grid md:grid-cols-2 gap-0">
+
+                  {/* Image side */}
+                  <div class="min-h-[240px] md:min-h-[340px] relative overflow-hidden">
+                    {featured.data.image ? (
+                      <img
+                        src={featured.data.image}
+                        alt={featured.data.imageAlt ?? featured.data.title}
+                        class="absolute inset-0 w-full h-full object-cover"
+                        width="1200"
+                        height="630"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    ) : (
+                      <div class="absolute inset-0" style="background: linear-gradient(135deg, #0d0d1a 0%, #0a1628 100%);">
+                        <div class="absolute inset-0 opacity-20" style="background: radial-gradient(circle at 30% 70%, #06b6d4 0%, transparent 60%);"></div>
+                      </div>
+                    )}
+                    <div class="absolute top-5 left-5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+                      style="background: rgba(6,182,212,0.9); color: #030712; font-family: 'JetBrains Mono', monospace;">
+                      Featured
+                    </div>
+                  </div>
+
+                  {/* Content side */}
+                  <div class="p-8 md:p-10 flex flex-col justify-center">
+                    {featured.data.tag && (
+                      <div class="mb-4">
+                        <span class="rounded-full px-3 py-1 text-xs"
+                          style="font-family: 'JetBrains Mono', monospace; background: rgba(6,182,212,0.1); color: #06b6d4;">
+                          {featured.data.tag}
+                        </span>
+                      </div>
+                    )}
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight transition-colors duration-200 group-hover:text-[#38bdf8]"
+                      style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">
+                      {featured.data.title}
+                    </h2>
+                    <p class="text-sm leading-relaxed mb-6" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                      {featured.data.description}
+                    </p>
+                    <div class="flex items-center justify-between flex-wrap gap-3">
+                      <div class="flex items-center gap-2 text-xs" style="font-family: 'Outfit', sans-serif; color: #6b7280;">
+                        <span>{featured.data.author}</span>
+                        <span>&middot;</span>
+                        <time datetime={featured.data.pubDate.toISOString()}>
+                          {featured.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </time>
+                        <span>&middot;</span>
+                        <span>{readingTime(featured.body)} min read</span>
+                      </div>
+                      <span class="text-sm font-semibold flex items-center gap-1 transition-all duration-200 group-hover:translate-x-1"
+                        style="font-family: 'Outfit', sans-serif; color: #06b6d4;">
+                        Read &rarr;
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+            )}
+
+            {/* ── Post grid ── */}
+            {remaining.length > 0 && (
+              <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {remaining.map((post) => (
+                  <a
+                    href={`/news/${post.slug}`}
+                    class="group block rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); text-decoration: none;"
+                  >
+                    {/* Thumbnail */}
+                    <div class="h-44 relative overflow-hidden">
+                      {post.data.image ? (
+                        <img
+                          src={post.data.image}
+                          alt={post.data.imageAlt ?? post.data.title}
+                          class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          width="800"
+                          height="420"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div class="absolute inset-0" style="background: linear-gradient(135deg, #0d0d1a 0%, #0a1628 100%);">
+                          <div class="absolute inset-0 opacity-15" style="background: radial-gradient(circle at 50% 50%, #06b6d4 0%, transparent 70%);"></div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Card content */}
+                    <div class="p-6">
+                      {post.data.tag && (
+                        <div class="mb-3">
+                          <span class="rounded-full px-3 py-1 text-xs"
+                            style="font-family: 'JetBrains Mono', monospace; background: rgba(6,182,212,0.1); color: #06b6d4;">
+                            {post.data.tag}
+                          </span>
+                        </div>
+                      )}
+                      <h3 class="text-base font-bold mb-3 leading-snug transition-colors duration-200 group-hover:text-[#38bdf8]"
+                        style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">
+                        {post.data.title}
+                      </h3>
+                      <p class="text-sm leading-relaxed mb-4 line-clamp-2" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                        {post.data.description}
+                      </p>
+                      <div class="flex items-center justify-between text-xs" style="font-family: 'Outfit', sans-serif; color: #6b7280;">
+                        <time datetime={post.data.pubDate.toISOString()}>
+                          {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </time>
+                        <span style="color: #06b6d4; font-weight: 600;">{readingTime(post.body)} min read</span>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            )}
+          </>
         )}
+
       </div>
     </section>
   </main>
   <Footer />
-
-  <script>
-    document.querySelectorAll('.fade-in-up').forEach((el) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(el);
-    });
-  </script>
 </Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
