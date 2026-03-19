@@ -7,6 +7,8 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "App Development"
 featured: true
+image: "/images/blog/how-i-built-2-ios-apps-without-coding.jpg"
+imageAlt: "Hands holding iPhone with polished app interface, circuit board technology in background"
 ---
 
 # I Built 2 iOS Apps at 55 Without Writing a Line of Code

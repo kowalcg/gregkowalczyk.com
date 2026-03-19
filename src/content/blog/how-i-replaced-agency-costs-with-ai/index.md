@@ -7,6 +7,8 @@ author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
 version: "1.1"
 updatedDate: 2026-02-24
+image: "/images/blog/how-i-replaced-agency-costs-with-ai.jpg"
+imageAlt: "Money stacks dissolving into glowing AI tool interfaces representing agency cost savings"
 ---
 
 # How I Replaced $75K in Agency Costs With $2K in AI Tools

@@ -6,6 +6,8 @@ tag: "AI Strategy"
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
+image: "/images/blog/what-businesses-get-wrong-about-ai.jpg"
+imageAlt: "Business executive in boardroom reviewing AI strategy dashboard with warning indicators"
 ---
 
 # What Most Businesses Get Wrong About AI (And What Actually Works)
