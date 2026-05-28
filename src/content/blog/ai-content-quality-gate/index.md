@@ -5,10 +5,8 @@ pubDate: 2026-05-28
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
-tag: "AI content"
+tag: "AI & SEO"
 featured: false
-image: "/images/blog/ai-content-quality-gate.jpg"
-imageAlt: "A detailed photorealistic scene of a person reviewing a digital checklist on a modern laptop, surrounded by notes and ch"
 ---
 
 <h1 style="color:#1e3a8a; font-size:2.2rem; font-weight:700; line-height:1.25; margin-bottom:12px">AI content quality gate before publishing: my Part 4 system for fixing one AI-written blog post</h1>
