@@ -1,153 +1,220 @@
 ---
-title: "AI Search Optimization for Small Business | Greg Kowalczyk"
-description: "Uncover Greg Kowalczyk's 2026 multi-site SEO strategy, transforming small business with AI search optimization."
+title: "AI Search Optimization for Small Business in 2026"
+description: "How I’m turning TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder into one SEO/AEO sales engine."
 pubDate: 2026-07-02
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
-version: "1.0"
-tag: "AI search optimization"
+version: "1.1"
+tag: "AI & SEO"
 featured: false
+image: "/images/blog/ai-search-optimization-2026.svg"
+imageAlt: "Four connected websites feeding an AI search and SEO sales engine"
 ---
 
-<h1 style="font-size:2.2rem; font-weight:700; line-height:1.25; margin-bottom:12px">AI search optimization for small business: my 2026 multi-site sales engine</h1>
+# AI Search Optimization for Small Business in 2026
 
-<p style="margin-bottom:16px; line-height:1.75">I’m turning four small websites into one owned media sales machine in 2026: TapeGeeks sells the products, RunMate Pro earns runner attention, Bronte Harbour Classic creates local authority, and SportsClinicFinder catches the “I need help” intent. That is my practical version of <strong>AI search optimization for small business</strong> — not chasing hacks, not praying for one viral post, but building connected answers that Google, Perplexity, ChatGPT, Gemini, and real buyers can understand.</p>
+I’m building a four-site search engine for my own businesses right now.
 
-<p style="margin-bottom:16px; line-height:1.75">I’m 55 years old. Mechanical engineer by training. Corporate from 1997 to 2011, including Chief Engineer at SMS-Siemag running a 70-person department. Then e-commerce with my daughter in 2014. Since then I’ve managed $2M+ in ad spend, built mid-seven-figure revenue across GearTop and TapeGeeks, shipped 2 iOS apps without a traditional coding background, and survived 39 App Store rejections before RunMate Pro went live. Not theory. Scars. “Greg Kowalczyk AI search optimization for small business” is the clunky label, but the work behind it is the system I wish I had when AI search started eating the old SEO playbook.</p>
+Not a theory. Not a deck. A working system.
 
-<div style="background: rgba(59,130,246,0.12); border: 2px solid rgba(59,130,246,0.4); border-radius: 12px; padding: 20px; margin: 20px 0">
-  <p style="margin-bottom:0; line-height:1.75"><strong>Quick answer:</strong> AI search optimization for small business means publishing clear, connected, answer-first pages across owned sites so search engines and AI tools can cite your brand as the best answer. My workflow uses TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder as one ecosystem: product, app, race, and clinic intent.</p>
-</div>
+TapeGeeks sells the products. RunMate Pro earns the active-lifestyle audience. Bronte Harbour Classic gives us community proof. SportsClinicFinder catches the injury and clinic intent when someone needs professional help.
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">The four-site model</h2>
+That is what **AI search optimization for small business** means to me in 2026: clear, connected, answer-first pages that Google, Bing, AI Overviews, Perplexity, ChatGPT, Gemini, and real buyers can understand.
 
-<p style="margin-bottom:16px; line-height:1.75">A multi-site SEO strategy works only when every site has a distinct job and the links between them match how a buyer actually moves from question to purchase. Otherwise it is just more maintenance. More logins. More mess.</p>
+> **Quick answer:** AI search optimization means building pages that answer buyer questions directly, connect to the right next step, and make your brand easy for search engines and LLMs to cite. My current system connects TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder into one owned media sales machine.
 
-<p style="margin-bottom:16px; line-height:1.75">TapeGeeks is the commerce engine. Kinesiology tape. Performance tape. Mouth tape. Adult and kids nasal strips. The money is there, so the content has to connect education to products without sounding like a desperate coupon page.</p>
+## The four-site model I’m running today
 
-<p style="margin-bottom:16px; line-height:1.75">RunMate Pro is the runner acquisition engine. It is a free iPhone running app with GPS tracking, shoe mileage, route history, and injury-prevention education. I built it at 55 after <a href="/blog/runmate-pro-39-app-store-rejections/" style="text-decoration:underline">39 App Store rejections</a>. That changed how I think about search: the page is not the product, but it often becomes the first proof that the product is real.</p>
+Every site needs one job. If it doesn’t have a job, it becomes another login and another maintenance problem.
 
-<p style="margin-bottom:16px; line-height:1.75">Bronte Harbour Classic is the community proof engine. The inaugural race is Sunday, June 21, 2026 at Bronte Heritage Waterfront Park in Oakville, Ontario. Kids 1K at 8:00 AM. Chip-timed 5K at 8:30 AM. Father’s Day Festival until 3:00 PM. Real place. Real runners. Real sponsors. Real photos coming.</p>
+Here is the system as of today:
 
-<p style="margin-bottom:16px; line-height:1.75">SportsClinicFinder is the professional care engine. If someone searches for help with an injury, I do not want TapeGeeks pretending tape fixes everything. It doesn’t. SportsClinicFinder gives the ecosystem a place to point people when a physiotherapist, chiropractor, athletic therapist, or sports medicine clinic is the better answer.</p>
+| Site | Job | What it sells or supports |
+|---|---|---|
+| TapeGeeks | Commerce engine | Kinesiology tape, performance tape, mouth tape, adult nasal strips, kids nasal strips, wholesale clinic buyers |
+| RunMate Pro | Audience engine | Free iPhone running app, GPS tracking, shoe mileage, routes, injury-prevention habits |
+| Bronte Harbour Classic | Community proof engine | Father’s Day run/walk, Kids 1K, 5K, 10K, Oakville active lifestyle audience |
+| SportsClinicFinder | Care layer | Physiotherapy, chiropractic, athletic therapy, sports medicine discovery |
 
-<p style="margin-bottom:16px; line-height:1.75">Small sites can win. But they need jobs. Greg Kowalczyk AI search optimization for small business starts by giving each property one role, then making the relationship between those roles painfully obvious.</p>
+The mistake most businesses make is pushing every searcher straight to a product page.
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">My SEO AEO workflow</h2>
+That is lazy.
 
-<p style="margin-bottom:16px; line-height:1.75">The best SEO AEO workflow in 2026 is still boring: answer the question first, prove the answer with specifics, connect the next step, and keep the page technically clean.</p>
+If someone is searching for “best free running app for iPhone,” they do not need kinesiology tape first. They need RunMate Pro. If they are searching for “knee pain running,” maybe they need education, tape, shoe mileage tracking, or a physiotherapist. The job is to route them correctly.
 
-<p style="margin-bottom:16px; line-height:1.75">Honestly, most “answer engine optimization” advice is just old SEO wearing an AI hat. FAQs help. Schema helps. But the page still needs to say something specific enough to be quoted. Gartner predicted traditional search engine volume would drop 25% by 2026 because of AI chatbots and virtual agents, which means the click is no longer the only prize; the citation matters too. Source: <a href="https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Gartner, February 2024</a>.</p>
+That is where the system starts to work.
 
-<p style="margin-bottom:16px; line-height:1.75">My workflow is simple. I use Perplexity for source discovery, ChatGPT for topic mapping, Claude for first drafts and restructuring, Cursor for code and site edits, and VibeCode when I want to prototype app or landing-page ideas fast. Then I check Google Search Console, Bing Webmaster Tools, live page rendering, internal links, and whether the page answers a real question in the first 100 words.</p>
+## Why this matters for Google and AI answers
 
-<p style="margin-bottom:16px; line-height:1.75">And I write answer blocks that sound like they came from a person who has actually sold the thing, not from a tool trying to hit a word count.</p>
+Classic SEO still matters. Titles. Meta descriptions. Internal links. Sitemaps. Search Console. Bing submissions. Page speed. Canonicals.
 
-<p style="margin-bottom:16px; line-height:1.75">TapeGeeks content should answer: “What kinesiology tape should a recreational runner use?” RunMate Pro content should answer: “How do I track shoe mileage on iPhone?” Bronte Harbour Classic content should answer: “Is there a flat Father’s Day 5K in Oakville?” SportsClinicFinder content should answer: “When should a runner see a physio for knee pain?” One page. One job.</p>
+But AI search adds another requirement: your page has to be quotable.
 
-<p style="margin-bottom:16px; line-height:1.75">That is the Greg Kowalczyk AI search optimization for small business pattern: one human question, one direct answer, one proof point, one useful next step.</p>
+A vague page is hard to cite. A clear answer block is easy to cite.
 
-<table style="width:100%; border-collapse:collapse; margin:30px 0; font-size:0.95rem">
-  <thead><tr style="background:#1e3a8a">
-    <th style="padding:12px; text-align:left; border:1px solid #e5e7eb">Feature</th>
-    <th style="padding:12px; text-align:left; border:1px solid #e5e7eb">Single-site SEO/AEO stack</th>
-    <th style="padding:12px; text-align:left; border:1px solid #e5e7eb">Multi-site owned media engine</th>
-    <th style="padding:12px; text-align:left; border:1px solid #e5e7eb">Best for</th>
-  </tr></thead>
-  <tbody>
-    <tr style="background:#f9fafb"><td style="padding:10px; border:1px solid #e5e7eb">Core structure</td><td style="padding:10px; border:1px solid #e5e7eb">One domain, one content calendar, one offer path; practical for a service site using WordPress, GA4, Google Search Console, and a simple CRM.</td><td style="padding:10px; border:1px solid #e5e7eb">Several focused sites such as TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder, each targeting a distinct audience and intent cluster.</td><td style="padding:10px; border:1px solid #e5e7eb">Small businesses starting with AI search optimization, then expanding into a defensible multi-site SEO strategy.</td></tr>
-    <tr><td style="padding:10px; border:1px solid #e5e7eb">Typical monthly software cost</td><td style="padding:10px; border:1px solid #e5e7eb">About $0-$250/month: Google Search Console and GA4 are free; WordPress hosting often $10-$40/month; Ahrefs Starter starts at $29/month; Semrush Pro is about $139.95/month.</td><td style="padding:10px; border:1px solid #e5e7eb">About $150-$600+/month depending on hosting, email, analytics, rank tracking, and automation; Ahrefs Lite is about $129/month and Semrush Guru is about $249.95/month.</td><td style="padding:10px; border:1px solid #e5e7eb">Builders who want an owned media sales machine without immediately hiring a full agency team.</td></tr>
-    <tr style="background:#f9fafb"><td style="padding:10px; border:1px solid #e5e7eb">SEO AEO workflow</td><td style="padding:10px; border:1px solid #e5e7eb">Publish one helpful article per search intent, add a concise AEO quick answer near the top, tighten headings, add FAQs, and update pages from Search Console query data.</td><td style="padding:10px; border:1px solid #e5e7eb">Map each site to a specific answer engine optimization role: product education, local authority, event demand, clinic discovery, partner leads, and cross-site internal referral paths.</td><td style="padding:10px; border:1px solid #e5e7eb">Practical builder case studies where Google, ChatGPT, Perplexity, and Gemini need clear entities, answers, and proof points.</td></tr>
-    <tr><td style="padding:10px; border:1px solid #e5e7eb">Real use case</td><td style="padding:10px; border:1px solid #e5e7eb">A local clinic, coach, consultant, or ecommerce niche site trying to rank for service pages, comparison posts, and “best option for me” searches.</td><td style="padding:10px; border:1px solid #e5e7eb">TapeGeeks can capture product and tape-education demand; RunMate Pro can own running performance content; Bronte Harbour Classic can build event and community search; SportsClinicFinder can convert healthcare discovery traffic.</td><td style="padding:10px; border:1px solid #e5e7eb">Operators turning content into leads, sponsors, affiliate revenue, clinic bookings, ecommerce sales, or event registrations.</td></tr>
-    <tr style="background:#f9fafb"><td style="padding:10px; border:1px solid #e5e7eb">Main risk</td><td style="padding:10px; border:1px solid #e5e7eb">Too narrow: one site has limited topical surface area, fewer internal link angles, and fewer ways to test offers.</td><td style="padding:10px; border:1px solid #e5e7eb">Too scattered: needs consistent publishing, analytics discipline, entity clarity, and internal links to relevant Greg posts instead of random cross-linking.</td><td style="padding:10px; border:1px solid #e5e7eb">Teams that can document the system, review data weekly, and avoid building four half-finished websites instead of one compounding engine.</td></tr>
-  </tbody>
-</table>
+So I’m adding these patterns across the network:
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">How I connect products, apps, events, and clinics</h2>
+- short “quick answer” sections near the top
+- explicit entity names: TapeGeeks, RunMate Pro, Bronte Harbour Classic, SportsClinicFinder
+- FAQ-style answers
+- clear comparison tables
+- internal links that match the buyer journey
+- product links only when the searcher is ready for a product
+- responsible care links when the problem needs a clinic, not a tape roll
 
-<p style="margin-bottom:16px; line-height:1.75">An owned media sales machine gets stronger when each page sends the reader to the next most useful owned asset instead of dumping everyone into the same checkout page.</p>
+That is the difference between “content” and an owned media sales system.
 
-<p style="margin-bottom:16px; line-height:1.75">Most people get this wrong: they send every visitor straight to a product page. That is backwards for a cold searcher who is still trying to understand a pain point, a training problem, or a local event. If someone is on mile 18 of a 22-miler, feeling sharp medial knee pain mid-stride during taper two weeks out from the Mississauga Marathon, they do not need a hard sell for tape first. They need guidance on stopping rules, load, symptoms, and when to see a professional.</p>
+## The TapeGeeks role: turn education into orders
 
-<p style="margin-bottom:16px; line-height:1.75">Same with a beginner at mile 2.6 of a first 5K back, feeling a deep arch ache after the finish on a cold October morning. A product may help later. The first job is to answer the fear: “Did I injure something, or is this normal training soreness?”</p>
+TapeGeeks already has search traffic. The problem is that a lot of it enters through blog posts, not product pages.
 
-<p style="margin-bottom:16px; line-height:1.75">About 22% of recreational runners (JOSPT 2021) deal with running-related injury problems in a given period, so the content has to respect the difference between education and diagnosis. A 2022 JOSPT meta-analysis of 14 trials found that the evidence around injury-prevention approaches is mixed and context-specific. That is exactly why I do not want every injury query ending on a product page.</p>
+That tells me what to fix.
 
-<p style="margin-bottom:16px; line-height:1.75">This is where the ecosystem beats a single-site blog. A RunMate Pro training article can point to shoe mileage tracking. A TapeGeeks guide can explain taping basics and breathing products. Bronte Harbour Classic can give the person a real goal on the calendar. Or SportsClinicFinder can catch the situations where self-care is not enough.</p>
+The blog is doing its job: it earns attention. Now the commercial pages need to earn the next click.
 
-<p style="margin-bottom:16px; line-height:1.75">McKinsey’s 2025 AI research found that organizations are moving from experimentation to workflow redesign, which matches what I’m seeing in my $75K+ consulting work: the winners are not the people with the fanciest prompt; they are the people who rebuild the operating system around AI-assisted work. Source: <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">McKinsey State of AI</a>.</p>
+So the current TapeGeeks work is focused on:
 
-<p style="margin-bottom:16px; line-height:1.75">This doesn’t work for fake ecosystems. If you have four thin sites with copied articles and no real product, no event, no app, and no customer proof, skip this entirely. Build one useful site first.</p>
+- kinesiology tape pages
+- performance tape pages
+- bulk tape and wholesale clinic pages
+- Breathe+ mouth tape
+- adult nasal strips
+- kids nasal strips
+- blog-to-product internal links
+- professional buyer language for physios, chiropractors, clinics, and athletic therapists
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">The operating system I am actually running</h2>
+I’m not trying to make TapeGeeks sound like a medical site. That would be a mistake.
 
-<p style="margin-bottom:16px; line-height:1.75">My 2026 operating system for answer engine optimization is a daily loop of measurement, publishing, internal linking, technical checks, and real-world feedback.</p>
+TapeGeeks should sound like what it is: a product and education brand built around active people, clinics, race-day support, and practical recovery tools.
 
-<p style="margin-bottom:16px; line-height:1.75">I track clicks, impressions, CTR, average position, indexed pages, Bing submissions, and which pages are becoming the first door into the ecosystem. On July 2, 2026, my last-7-day snapshot looked like this: TapeGeeks had 520 clicks and 45,829 impressions, Bronte Harbour Classic had 253 clicks and 13,619 impressions, RunMate Pro had 10 clicks and 1,304 impressions, and SportsClinicFinder had 1 click and 294 impressions.</p>
+## The RunMate Pro role: earn the athlete before the sale
 
-<p style="margin-bottom:16px; line-height:1.75">Tiny numbers in places. Useful numbers. The Bronte Harbour Classic “average 5K time” article was already pulling reach before the race became a mature brand. TapeGeeks blog posts were getting traffic, but product pages were underrepresented. RunMate Pro had one clear winner: the best free running apps for iOS post. That tells me where to work next.</p>
+RunMate Pro is not a side project anymore.
 
-<p style="margin-bottom:16px; line-height:1.75">The truth is, AI search optimization for small business is not separate from classic SEO. It is classic SEO with tighter answers, better entity connections, stronger proof, and more discipline about internal links. Harvard Business Review has written about how generative AI changes knowledge work by shifting more value to judgment and framing, not just output speed. Source: <a href="https://hbr.org/2023/06/how-generative-ai-can-augment-human-creativity" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Harvard Business Review</a>.</p>
+It is an audience engine.
 
-<p style="margin-bottom:16px; line-height:1.75">I also like a16z’s framing that AI-native products change the interface between users and software, because that is exactly what is happening with search: users no longer only browse blue links; they ask for a synthesized answer and then check the sources. Source: <a href="https://a16z.com/ai-native-products/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Andreessen Horowitz</a>.</p>
+A runner, walker, gym-goer, CrossFitter, or everyday athlete needs cardio. Running and walking are the simplest cardio tools most people can actually stick with. RunMate Pro gives them a free way to track the habit.
 
-<p style="margin-bottom:16px; line-height:1.75">So my content has to be quotable. My internal links have to be obvious. My pages have to load. My claims have to be specific. Greg Kowalczyk AI search optimization for small business is not magic; it is a publishing and measurement habit.</p>
+The app connects to the rest of the system because it solves problems before someone buys anything:
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">What I would copy first if you are behind</h2>
+- GPS tracking
+- shoe mileage tracking
+- route history
+- simple training records
+- injury-prevention education
+- privacy-first running data
 
-<p style="margin-bottom:16px; line-height:1.75">The fastest way to copy this system is to map your business into four roles: revenue page, trust page, education page, and next-step page.</p>
+That gives us a clean search path:
 
-<p style="margin-bottom:16px; line-height:1.75">You do not need four domains. Start with four page types. One page sells. One proves you are real. One teaches. One routes the person to the right next action. If you have more assets later — an app, a local event, a directory, a newsletter, a YouTube channel — connect them only when they make the buyer journey clearer.</p>
+1. Person searches for a free running app.
+2. They find RunMate Pro.
+3. They learn about shoe mileage, injury prevention, and training consistency.
+4. When they need tape, breathing support, or clinic help, we have the next step ready.
 
-<p style="margin-bottom:16px; line-height:1.75">My internal links are doing this now. A TapeGeeks article about taping can link to the <a href="https://tapegeeks.com/collections/performance-tape" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">TapeGeeks Performance Tape collection</a>. A RunMate Pro article can link to <a href="https://runmatepro.com" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">RunMate Pro</a> for shoe tracking. A Bronte Harbour Classic page can point runners to training content. A SportsClinicFinder page can help when pain is not a DIY problem.</p>
+That is better than trying to sell tape to a cold visitor on the first click.
 
-<p style="margin-bottom:16px; line-height:1.75">And on gregkowalczyk.com, I document the builder side: <a href="/blog/building-ios-app-without-coding/" style="text-decoration:underline">building an iOS app without coding</a>, <a href="/blog/claude-ai-for-business/" style="text-decoration:underline">using Claude AI for business</a>, <a href="/blog/how-to-use-cursor-ai/" style="text-decoration:underline">how I use Cursor AI</a>, and <a href="/blog/vibecode-app-builder-review/" style="text-decoration:underline">my VibeCode app builder review</a>. Those posts are not random. They make me a searchable entity tied to AI-assisted building, e-commerce, apps, and owned media.</p>
+## The Bronte Harbour Classic role: proof in the real world
 
-<p style="margin-bottom:16px; line-height:1.75">Greg Kowalczyk AI search optimization for small business is the label. The actual work is publishing useful pages, connecting them, and checking the data every week.</p>
+The Bronte Harbour Classic is not only a runner race.
 
-<div style="display:flex; gap:20px; margin:30px 0; flex-wrap:wrap">
-  <div style="flex:1; min-width:260px; background:rgba(16,185,129,0.12); border-left:4px solid #10b981; padding:20px; border-radius:8px">
-    <h3 style="margin-top:0; font-size:1.2rem">Best for</h3>
-    <ul style="line-height:1.7; padding-left:20px">
-      <li style="line-height:1.6">Small businesses with at least 2 real assets: product, service, app, event, store, clinic, newsletter, or local community.</li>
-      <li style="line-height:1.6">Founders who can publish weekly and review Google Search Console numbers without outsourcing every decision.</li>
-      <li style="line-height:1.6">E-commerce brands where education, comparison, use cases, and after-purchase support all influence the sale.</li>
-      <li style="line-height:1.6">Operators who are willing to connect content to actual inventory, app usage, event signups, or booked appointments.</li>
-    </ul>
-  </div>
-  <div style="flex:1; min-width:260px; background:rgba(239,68,68,0.12); border-left:4px solid #ef4444; padding:20px; border-radius:8px">
-    <h3 style="margin-top:0; font-size:1.2rem">Not ideal for</h3>
-    <ul style="line-height:1.7; padding-left:20px">
-      <li style="line-height:1.6">Businesses with no clear offer, no proof, and no willingness to publish specific answers.</li>
-      <li style="line-height:1.6">Founders looking for a 7-day SEO trick instead of a 6-month owned media build.</li>
-      <li style="line-height:1.6">Sites in regulated categories where claims need legal or clinical review before publishing.</li>
-    </ul>
-  </div>
-</div>
+It is a Father’s Day run/walk and community event for runners, walkers, kids, gym-goers, CrossFitters, active families, and people who want a healthy cardio goal.
 
-<h2 style="font-size:1.75rem; background:#1e3a8a; padding:14px 20px; border-radius:6px; border-left:5px solid #C8E63C; font-weight:600; margin-top:40px; margin-bottom:0">Frequently Asked Questions</h2>
+The 2026 inaugural race was a success. Now we are preparing 2027.
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">What is AI search optimization for small business?</h3>
-<p style="margin-bottom:16px; line-height:1.75">AI search optimization for small business is the practice of making your pages easy for Google AI Overviews, ChatGPT, Perplexity, Gemini, Bing, and classic search engines to quote, summarize, and trust. It requires clear answers, named entities, source-backed claims, internal links, technical health, and pages that solve buyer questions before asking for the sale.</p>
+The next version is already a go:
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">How is answer engine optimization different from SEO?</h3>
-<p style="margin-bottom:16px; line-height:1.75">Answer engine optimization is SEO with more pressure on clarity. Classic SEO often aims for rankings and clicks. AEO also aims to be cited inside AI-generated answers. Gartner predicted search volume could drop 25% by 2026 because of AI assistants, so small businesses need pages that answer directly even when fewer users click.</p>
+- Kids 1K
+- 5K
+- 10K
+- Father’s Day positioning
+- Oakville / Bronte Harbour community
+- active lifestyle, not elite-only racing
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">Do I need multiple websites for a multi-site SEO strategy?</h3>
-<p style="margin-bottom:16px; line-height:1.75">No. A multi-site SEO strategy only works when the sites are genuinely different assets, like my product store, running app, race site, and clinic directory. If you only have one business, build one strong site with four page types first: revenue, proof, education, and next step. More domains add work and can dilute focus.</p>
+This matters because Google and AI systems need real-world signals.
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">What tools do I use for my SEO AEO workflow?</h3>
-<p style="margin-bottom:16px; line-height:1.75">I use Perplexity for research, ChatGPT for topic mapping, Claude for drafting and editing, Cursor for code and site changes, VibeCode for fast app or page prototypes, Google Search Console for performance data, and Bing Webmaster Tools for IndexNow submissions. Tools help, but the workflow matters more than the tool stack.</p>
+A real event gives us those signals: location, results, photos, sponsors, vendors, volunteers, community partners, and a clear annual story. It makes TapeGeeks and RunMate Pro more credible because they are tied to an actual active-living community, not just product pages.
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">Why does Greg Kowalczyk AI search optimization for small business use TapeGeeks and RunMate Pro together?</h3>
-<p style="margin-bottom:16px; line-height:1.75">Greg Kowalczyk AI search optimization for small business uses TapeGeeks and RunMate Pro together because runners often move from training questions to gear questions to injury-prevention questions. RunMate Pro earns attention through the free running app. TapeGeeks captures product intent. Bronte Harbour Classic adds community proof, and SportsClinicFinder handles care-related searches.</p>
+## The SportsClinicFinder role: don’t pretend tape fixes everything
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">Where should a small business start if the site has no traffic?</h3>
-<p style="margin-bottom:16px; line-height:1.75">Start with one painful buyer question and answer it better than your product page does. Then add one proof page, one education page, and one next-step page. Do not build five domains because I have four assets. I built these from real products, a real app, a real race, and a real directory idea.</p>
+This is important.
 
-<h3 style="font-size:1.2rem; font-weight:600; margin-top:28px; margin-bottom:12px">How often do I check the numbers?</h3>
-<p style="margin-bottom:16px; line-height:1.75">I check Search Console and Bing data weekly, then look for pages that are becoming the first door into the system. If a post gets impressions but no clicks, I tighten the title and answer block. If a page gets traffic but sends nobody deeper, I fix the internal links. Small boring checks beat big quarterly surprises.</p>
+Tape is useful. Nasal strips are useful. Run tracking is useful.
 
-<p style="margin-bottom:16px; line-height:1.75">My next step is not another theory post. I’m tightening the TapeGeeks product pages, linking the runner education content into RunMate Pro, building Bronte Harbour Classic authority before and after race day, and making SportsClinicFinder useful enough to deserve the clinic-intent traffic. If you want to see the commerce layer of this owned media sales machine, start with the <a href="https://tapegeeks.com/collections/performance-tape" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding:14px 28px; text-decoration:none; border-radius:8px; display:inline-block; margin:10px 0; font-weight:600">TapeGeeks Performance Tape collection</a> and watch how the pages connect from there. Then build your version. One real answer at a time.</p>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is AI search optimization for small business?", "acceptedAnswer": {"@type": "Answer", "text": "AI search optimization for small business is the practice of making your pages easy for Google AI Overviews, ChatGPT, Perplexity, Gemini, Bing, and classic search engines to quote, summarize, and trust. It requires clear answers, named entities, source-backed claims, internal links, technical health, and pages that solve buyer questions before asking for the sale."}}, {"@type": "Question", "name": "How is answer engine optimization different from SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Answer engine optimization is SEO with more pressure on clarity. Classic SEO often aims for rankings and clicks. AEO also aims to be cited inside AI-generated answers. Gartner predicted search volume could drop 25% by 2026 because of AI assistants, so small businesses need pages that answer directly even when fewer users click."}}, {"@type": "Question", "name": "Do I need multiple websites for a multi-site SEO strategy?", "acceptedAnswer": {"@type": "Answer", "text": "No. A multi-site SEO strategy only works when the sites are genuinely different assets, like my product store, running app, race site, and clinic directory. If you only have one business, build one strong site with four page types first: revenue, proof, education, and next step. More domains add work and can dilute focus."}}, {"@type": "Question", "name": "What tools do I use for my SEO AEO workflow?", "acceptedAnswer": {"@type": "Answer", "text": "I use Perplexity for research, ChatGPT for topic mapping, Claude for drafting and editing, Cursor for code and site changes, VibeCode for fast app or page prototypes, Google Search Console for performance data, and Bing Webmaster Tools for IndexNow submissions. Tools help, but the workflow matters more than the tool stack."}}, {"@type": "Question", "name": "Why does Greg Kowalczyk AI search optimization for small business use TapeGeeks and RunMate Pro together?", "acceptedAnswer": {"@type": "Answer", "text": "Greg Kowalczyk AI search optimization for small business uses TapeGeeks and RunMate Pro together because runners often move from training questions to gear questions to injury-prevention questions. RunMate Pro earns attention through the free running app. TapeGeeks captures product intent. Bronte Harbour Classic adds community proof, and SportsClinicFinder handles care-related searches."}}, {"@type": "Question", "name": "Where should a small business start if the site has no traffic?", "acceptedAnswer": {"@type": "Answer", "text": "Start with one painful buyer question and answer it better than your product page does. Then add one proof page, one education page, and one next-step page. Do not build five domains because I have four assets. I built these from real products, a real app, a real race, and a real directory idea."}}, {"@type": "Question", "name": "How often do I check the numbers?", "acceptedAnswer": {"@type": "Answer", "text": "I check Search Console and Bing data weekly, then look for pages that are becoming the first door into the system. If a post gets impressions but no clicks, I tighten the title and answer block. If a page gets traffic but sends nobody deeper, I fix the internal links. Small boring checks beat big quarterly surprises."}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI search optimization for small business: my 2026 multi-site sales engine", "description": "Uncover Greg Kowalczyk's 2026 multi-site SEO strategy, transforming small business with AI search optimization.", "url": "", "datePublished": "2026-07-02", "dateModified": "2026-07-02", "author": {"@type": "Person", "name": "Greg Kowalczyk", "jobTitle": "CEO & Co-Founder, TapeGeeks Inc.", "description": "Mechanical Engineer (B.Eng) turned e-commerce entrepreneur. Co-founder of TapeGeeks Inc. and GearTOP. Builder of RunMate Pro and SunUp by GearTOP iOS apps (live in App Store since Sept 2025). Race Co-Director, Bronte Harbour Classic 5K. 14+ years building consumer products.", "url": "https://www.linkedin.com/in/gregkowalczyk/", "sameAs": ["https://www.linkedin.com/in/gregkowalczyk/"]}, "publisher": {"@type": "Organization", "name": "Gregkowalczyk", "url": ""}}</script>
+But not every pain point belongs on a product page.
+
+If someone has real pain, recurring pain, swelling, weakness, numbness, or an injury that changes how they move, they may need a physiotherapist, chiropractor, athletic therapist, or sports medicine clinic.
+
+That is why SportsClinicFinder belongs in the ecosystem.
+
+It lets us route serious clinic-intent searches responsibly instead of pretending every issue can be solved with a product.
+
+That builds trust. It also expands search coverage.
+
+## The operating loop
+
+This system only works if it runs every day.
+
+Here is the loop I’m using now:
+
+1. Check Google Search Console and Bing signals.
+2. Find pages getting impressions but weak clicks.
+3. Improve the title, answer block, internal links, or commercial CTA.
+4. Add entity language so AI systems understand the relationships.
+5. Submit changed URLs through IndexNow.
+6. Verify the live page.
+7. Record what changed and what we expect to happen.
+
+That is the boring part. It is also the part most people skip.
+
+Most AI search advice is too abstract. Mine is not. I’m making the changes, checking the pages, submitting URLs, and watching the data.
+
+## What I would copy first
+
+If I were starting from zero, I would not build four sites.
+
+I would build four page types:
+
+- one page that sells
+- one page that proves the business is real
+- one page that teaches
+- one page that routes the buyer to the next step
+
+Then I would connect them.
+
+That is the whole system in simple form.
+
+If you already have multiple assets — a product store, an app, an event, a directory, a YouTube channel, a newsletter — then the job is not “publish more.” The job is to make each asset do one job and link them in the order a real buyer moves.
+
+That is what I am doing with TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder.
+
+## FAQ
+
+### What is AI search optimization for small business?
+
+AI search optimization is the process of making your pages easy for search engines and AI answer tools to understand, summarize, and cite. It combines classic SEO with answer-first writing, clear entities, internal links, FAQs, and proof.
+
+### Is AEO different from SEO?
+
+AEO is not separate from SEO. It is SEO with more pressure on clarity. A page still needs technical health and rankings, but it also needs short answers that an AI system can quote accurately.
+
+### Do small businesses need multiple websites?
+
+No. Multiple websites only help when each one has a distinct role. Most small businesses should start with one strong site and four page types: sell, prove, teach, and route.
+
+### Why connect products, apps, events, and directories?
+
+Because real buyers do not move in a straight line. They search, compare, train, attend events, buy products, and sometimes need professional help. A connected ecosystem gives each searcher the right next step.
+
+### What is the biggest risk?
+
+The biggest risk is scattered execution. Four weak sites are worse than one strong site. The system works only when every page has a job, every link has a reason, and the data is reviewed consistently.
+
+## Bottom line
+
+I do not want websites that sit there.
+
+I want websites that work.
+
+TapeGeeks, RunMate Pro, Bronte Harbour Classic, and SportsClinicFinder are being turned into one connected sales and search machine. Not overnight. Not by guessing. By shipping pages, connecting intent, checking data, and improving the system every day.
+
+That is the work.
