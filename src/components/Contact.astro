@@ -4,7 +4,14 @@
  * Two-column layout: form (60%) + contact info card (40%).
  * Stacks vertically on mobile.
  * Uses global utility classes: gradient-text, glass-card, comment-prefix.
+ *
+ * Submits directly to a Google Sheet via an Apps Script Web App (doPost),
+ * fetched client-side — no third-party form service, no server needed.
+ * Static site (output: 'static'). See docs/contact-form-sheets-setup.md
+ * for the one-time Google Sheet + Apps Script setup.
  */
+
+const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_ML3CvocH7NY2C6TnMP8CUDSkFtt0On3-M_DTpkFxBw_fixC2hvvZr6D/exec';
 ---
 
 <section id="contact" class="py-24 md:py-32">
@@ -31,8 +38,7 @@
       <!-- Left Column: Contact Form -->
       <div>
         <div class="glass-card p-8">
-          <!-- Replace action="#" with your actual Formspree endpoint, e.g. action="https://formspree.io/f/YOUR_ID" -->
-          <form action="#" method="POST" class="space-y-6">
+          <form id="contact-form" class="space-y-6" data-webhook={SHEETS_WEBHOOK_URL}>
             <!-- Name -->
             <div>
               <label
@@ -133,14 +139,29 @@
               ></textarea>
             </div>
 
+            <!-- Honeypot (spam trap — hidden from real users, bots fill it) -->
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="contact-website">Website</label>
+              <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
+
             <!-- Submit Button -->
             <button
               type="submit"
-              class="w-full cursor-pointer rounded-full px-8 py-4 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.02]"
+              id="contact-submit"
+              class="w-full cursor-pointer rounded-full px-8 py-4 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
               style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
             >
               Send Message
             </button>
+
+            <!-- Status message -->
+            <p
+              id="contact-status"
+              class="hidden text-sm"
+              style="font-family: 'Outfit', sans-serif;"
+              role="status"
+            ></p>
           </form>
         </div>
       </div>
@@ -303,3 +324,69 @@
     color: #e6edf3;
   }
 </style>
+
+<script>
+  // Submits the contact form to a Google Sheet via an Apps Script Web App.
+  // Apps Script Web Apps don't return CORS headers, so we fire the request
+  // with mode: 'no-cors' — the response is opaque (we can't read it), but
+  // the request itself completes and the row lands in the sheet. We treat
+  // a network-level failure (webhook unreachable, DNS, etc.) as the only
+  // failure case we can actually detect.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const status = document.getElementById('contact-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !status) return;
+
+    const webhookUrl = form.dataset.webhook;
+    const honeypot = (form.querySelector('#contact-website') as HTMLInputElement | null)?.value;
+
+    // Bot filled the hidden field — silently pretend success, send nothing.
+    if (honeypot) {
+      form.reset();
+      showStatus('Thanks — I\'ll be in touch soon.', false);
+      return;
+    }
+
+    if (!webhookUrl || webhookUrl.startsWith('REPLACE_WITH')) {
+      showStatus('Form isn\'t connected yet — please email me directly instead.', true);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const formData = new FormData(form);
+      const params = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        params.append(key, String(value));
+      }
+      params.append('pageUrl', window.location.href);
+
+      await fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+      });
+
+      form.reset();
+      showStatus('Thanks for reaching out — I\'ll reply personally within a day or two.', false);
+    } catch {
+      showStatus('Something went wrong sending that — please email me directly instead.', true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+
+  function showStatus(message: string, isError: boolean) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.remove('hidden');
+    status.style.color = isError ? '#f87171' : '#4ade80';
+  }
+</script>
