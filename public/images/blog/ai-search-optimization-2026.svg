@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AI search optimization sales engine</title>
+  <desc id="desc">Four connected website nodes feeding into search and AI answer engines</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#030712"/>
+      <stop offset="0.55" stop-color="#0a1628"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1">
+      <stop offset="0" stop-color="#06b6d4" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.22"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="210" cy="120" r="170" fill="#06b6d4" opacity="0.16" filter="url(#glow)"/>
+  <circle cx="1000" cy="520" r="220" fill="#8b5cf6" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="620" cy="330" r="150" fill="#c8e63c" opacity="0.08" filter="url(#glow)"/>
+
+  <text x="70" y="92" fill="#e6edf3" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">AI Search Optimization</text>
+  <text x="72" y="132" fill="#8b949e" font-family="Inter, Arial, sans-serif" font-size="22">Four owned assets. One sales engine.</text>
+
+  <g stroke="#06b6d4" stroke-width="3" opacity="0.65" fill="none">
+    <path d="M300 235 C430 220, 500 300, 610 315"/>
+    <path d="M300 395 C430 410, 500 340, 610 315"/>
+    <path d="M900 235 C770 220, 720 300, 610 315"/>
+    <path d="M900 395 C770 410, 720 340, 610 315"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <g transform="translate(80,185)">
+      <rect width="250" height="100" rx="18" fill="url(#card)" stroke="#38bdf8" opacity="0.95"/>
+      <text x="24" y="42" fill="#e6edf3" font-size="24" font-weight="700">TapeGeeks</text>
+      <text x="24" y="70" fill="#cbd5e1" font-size="15">Commerce engine</text>
+    </g>
+    <g transform="translate(80,345)">
+      <rect width="250" height="100" rx="18" fill="url(#card)" stroke="#38bdf8" opacity="0.95"/>
+      <text x="24" y="42" fill="#e6edf3" font-size="24" font-weight="700">RunMate Pro</text>
+      <text x="24" y="70" fill="#cbd5e1" font-size="15">Audience engine</text>
+    </g>
+    <g transform="translate(870,185)">
+      <rect width="250" height="100" rx="18" fill="url(#card)" stroke="#c8e63c" opacity="0.95"/>
+      <text x="24" y="42" fill="#e6edf3" font-size="22" font-weight="700">Bronte Classic</text>
+      <text x="24" y="70" fill="#cbd5e1" font-size="15">Community proof</text>
+    </g>
+    <g transform="translate(870,345)">
+      <rect width="250" height="100" rx="18" fill="url(#card)" stroke="#c8e63c" opacity="0.95"/>
+      <text x="24" y="42" fill="#e6edf3" font-size="22" font-weight="700">SportsClinicFinder</text>
+      <text x="24" y="70" fill="#cbd5e1" font-size="15">Care layer</text>
+    </g>
+    <g transform="translate(500,255)">
+      <rect width="220" height="120" rx="24" fill="#0f172a" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="110" y="45" fill="#e6edf3" font-size="24" font-weight="800" text-anchor="middle">SEO + AEO</text>
+      <text x="110" y="75" fill="#c8e63c" font-size="16" font-weight="700" text-anchor="middle">Google · Bing · LLMs</text>
+      <text x="110" y="99" fill="#8b949e" font-size="14" text-anchor="middle">Answers → clicks → sales</text>
+    </g>
+  </g>
+
+  <text x="72" y="560" fill="#cbd5e1" font-family="JetBrains Mono, monospace" font-size="18">Built by Greg Kowalczyk · practical systems, not strategy decks</text>
+</svg>
