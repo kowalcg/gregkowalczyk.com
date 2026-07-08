@@ -71,6 +71,24 @@ That one constraint quietly dictates good architecture. It forces stable URLs, s
 
 If you're building any event — race, festival, conference — I'd give you the same advice: pick the promise first ("this link works forever"), and let the promise force the architecture.
 
+## How to build a permanent archive for your own event
+
+If you run a race, a festival, or any recurring event and want to steal this playbook, here's the sequence I'd follow. None of it requires a developer on staff — I'm a mechanical engineer who builds with AI in the loop, not a programmer.
+
+**1. Own the domain and the site.** Not a page on a registration platform, not a Facebook event — a domain you control. This is the single decision everything else depends on. Platforms come and go; your domain renews for about $20 a year.
+
+**2. Go static.** A static site generator (we use Astro) means no database, no server, nothing that decays or bills monthly. Your event site becomes a pile of files that any host can serve for free, essentially forever.
+
+**3. Design URLs for decades, not seasons.** Give every edition its own path — /2026/, /2027/ — and let the homepage always point to the current year. Never reuse or repurpose an edition's URL. Boring URL discipline is what "permanent" actually means in practice.
+
+**4. Own your media.** Photos on a photographer's delivery platform or a social album will disappear. Move them to storage you control — object storage like Cloudflare R2 costs effectively nothing at race-gallery scale — and serve them from your own domain.
+
+**5. Publish results as pages, not PDFs.** A results PDF on a timing vendor's server is a dead link waiting to happen. Pages you host are searchable, linkable, and yours.
+
+**6. Only then, print the URL on something physical.** The QR code goes on the medal *after* the URL scheme is locked. Physical objects outlive redesigns; the link they carry has to as well.
+
+Do those six things and your event has a compounding digital asset that most ten-year-old races don't have. Skip them and you're renting your history from vendors.
+
 ## FAQ
 
 ### Why do most race websites disappear after the event?
