@@ -19,7 +19,7 @@ Go look up almost any local 5K from three years ago. The registration page is de
 
 That's the norm. Race websites are treated as disposable — built for registration season, abandoned after the finish line. When we launched the Mercedes-Benz Oakville Bronte Harbour Classic this June, we made the opposite decision before the first runner registered: **nothing gets deleted. Ever.**
 
-> **Quick Answer:** We built a permanent public archive at [bronteharbourclassic.com/2026/](https://www.bronteharbourclassic.com/2026/) holding every result, 81 sponsor and vendor pages, and 1,843 searchable race photos and drone videos from our inaugural 5K — and committed to keeping it online indefinitely. Every finisher medal carries a QR code pointing to it. The rule we run the site by: that URL must never return a 404.
+> **Quick Answer:** We built a permanent public archive at [bronteharbourclassic.com/2026/](https://www.bronteharbourclassic.com/2026/) holding every result, 80 sponsor and vendor pages, and 1,843 searchable race photos and drone videos from our inaugural 5K — and committed to keeping it online indefinitely. Every finisher medal carries a QR code pointing to it. The rule we run the site by: that URL must never return a 404.
 
 ## The moment that made the decision obvious
 
@@ -37,7 +37,7 @@ The archive lives at one permanent URL: [bronteharbourclassic.com/2026/](https:/
 
 **The results and the story.** Prize winners, the sold-out numbers, the day itself — written up as pages, not a PDF attachment that dies when a timing platform changes vendors.
 
-**Every partner, permanently.** All 81 sponsors, vendors, and organizers from 2026 — 21 sponsors, 53 vendors, 7 organizing groups — have their own mini landing page in the archive. Not a logo in a footer: a real page with their story, their role in the race, and actual race-day photos they appear in. I'll write a full article about why we did this (it changed our partner conversations more than anything else we built), but the short version: a local business that backed a first-year community race deserves better than being scrubbed from the site in November.
+**Every partner, permanently.** All 80 sponsors, vendors, and organizers from 2026 — 21 sponsors, 52 vendors, 7 organizing groups — have their own mini landing page in the archive. Not a logo in a footer: a real page with their story, their role in the race, and actual race-day photos they appear in. I'll write a full article about why we did this (it changed our partner conversations more than anything else we built), but the short version: a local business that backed a first-year community race deserves better than being scrubbed from the site in November.
 
 **All 1,843 photos and videos, searchable.** Every photo from race day is in a [free public gallery](https://www.bronteharbourclassic.com/photos/) where runners can search by bib number, name, or moment — start line, course, finish line, Kids 1K, festival, awards. The drone footage of the whole morning is in there too, cut into nine watchable chapters. AI handles the organization; 92% of bibs were detected and indexed automatically. That's Part 2 of this series.
 
@@ -57,7 +57,7 @@ I run e-commerce brands, so I think about this the way I think about any compoun
 
 **For runners:** the race doesn't end. People came back to the photo gallery for weeks after race day. A finisher can send their parents a link, not a screenshot. A kid who ran the 1K will be able to find that morning when they're twenty. This is the experience layer, and it's the reason people bring friends back next year.
 
-**For sponsors and vendors:** proof, not promises. When we talk to a partner about 2027, we don't hand them a deck describing hypothetical exposure. We send them a live page showing exactly how their brand appeared at the 2026 race — including photos our AI tagged them in. With 81 of those pages live, renewal conversations start from evidence.
+**For sponsors and vendors:** proof, not promises. When we talk to a partner about 2027, we don't hand them a deck describing hypothetical exposure. We send them a live page showing exactly how their brand appeared at the 2026 race — including photos our AI tagged them in. With 80 of those pages live, renewal conversations start from evidence.
 
 One honest caveat: I can't yet prove the archive converts into 2027 registrations — the race is three weeks behind us and that data doesn't exist yet. What I can measure today is behavior: people kept returning to the gallery for weeks after race day, and partners reply to a live page faster than they ever replied to a PDF. I'll publish the registration numbers when I have them.
 
