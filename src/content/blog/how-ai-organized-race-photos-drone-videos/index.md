@@ -7,7 +7,7 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/how-ai-organized-race-photos-drone-videos.jpg"
-imageAlt: "A runner crossing the finish line under the red Mercedes-Benz Oakville arch at the Bronte Harbour Classic 5K, Bronte Heritage Waterfront Park, Oakville"
+imageAlt: "800+ runners launching under the red Mercedes-Benz Oakville arch at the start of the Bronte Harbour Classic 5K, Bronte Heritage Waterfront Park, Oakville"
 ---
 
 # How AI Organized 1,800+ Race Photos (and Drone Videos)
@@ -53,6 +53,8 @@ The honest limitation: if a runner searches their bib and comes up short, that d
 Nine drone chapters covered the full morning — the start corral filling along Ontario Street facing west, the course along the waterfront, and the festival spread across the park. Bib detection doesn't help here; a drone shot from height doesn't resolve individual bib numbers, and video isn't a single frame to run OCR against anyway.
 
 So the drone footage is organized differently: by chapter and moment rather than by runner, sitting in the same [photo gallery](https://www.bronteharbourclassic.com/photos/) as the stills. It's the wide view that complements the close-up, and it's the piece people share the most — watching 875 people fill a street from above hits differently than any single ground-level photo.
+
+We cut a condensed version into an [official highlights video](https://www.youtube.com/watch?v=7Yw_J63emeg) that's now on the race homepage. It's become our best recruiting tool for 2027 — nothing sells a first-time runner on next year's race like watching this year's finish line.
 
 ## The economics: why giving 1,843 photos away for free actually works
 
