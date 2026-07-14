@@ -14,7 +14,7 @@ imageAlt: "800+ runners launching under the red Mercedes-Benz Oakville arch at t
 
 *This is Part 2 of **Building a Digital-First Race** — a series on the digital and AI decisions behind the Mercedes-Benz Oakville Bronte Harbour Classic 5K, and why we made them. Last time: [why we archived every race forever](/news/why-we-archived-every-race-forever). Coming up: why every sponsor and vendor gets a permanent web page, why our medals have QR codes, and how we built a race website that grows instead of starting over.*
 
-Two photographers and a drone team spent three hours on Bronte Heritage Waterfront Park on Father's Day and came back with 1,843 photos and videos. That's the easy part. The hard part is what happens next: somewhere in that pile is exactly the handful of frames that matter to each of the 875 people who ran. A finisher doesn't want a folder. They want *their* photos — the ones with their bib number in them, found in under a minute, for free.
+Four photographers and a drone team spent three hours on Bronte Heritage Waterfront Park on Father's Day and came back with 1,843 photos and videos. That's the easy part. The hard part is what happens next: somewhere in that pile is exactly the handful of frames that matter to each of the 875 people who ran. A finisher doesn't want a folder. They want *their* photos — the ones with their bib number in them, found in under a minute, for free.
 
 That's a search problem, not a photography problem, and we built it as one.
 
@@ -32,7 +32,7 @@ The constraint we set: a runner types their bib number, and within seconds sees 
 
 The pipeline has three stages, and none of them required us to hire anyone.
 
-**Ingest.** Every photo from both photographers and the drone operator lands in one folder, named by camera and sequence, nothing manual yet.
+**Ingest.** Every photo from all four photographers and the drone operator lands in one folder, named by camera and sequence, nothing manual yet.
 
 **Tag.** Each photo runs through [Google Cloud Vision's text detection API](https://cloud.google.com/vision/docs/ocr), which reads any text in the frame — including the printed numbers on a runner's bib. We match detected numbers against our registration list, and where a match is confident, the photo gets tagged with that bib number automatically. A single photo often has six or seven runners in it, so it can carry six or seven bib tags.
 
