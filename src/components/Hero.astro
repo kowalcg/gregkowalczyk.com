@@ -9,33 +9,31 @@ import { yearsInEngineering } from '../data/site';
 
 <section
   id="hero"
-  class="dot-grid relative flex min-h-screen items-center overflow-hidden"
+  class="dot-grid relative flex min-h-[88vh] items-center overflow-hidden"
 >
-  <div class="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
       <!-- Text Content (left on desktop, top on mobile) -->
       <div class="w-full text-center lg:w-[60%] lg:text-left">
-        <!-- Typing Effect Line -->
-        <div
-          class="mb-4 text-sm sm:text-base"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #06b6d4; min-height: 1.75rem;"
+        <!-- Eyebrow — the one place the accent appears above the fold -->
+        <p
+          class="mb-5 text-sm sm:text-base"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #e5341f; letter-spacing: 0.08em;"
         >
-          <span id="typing-text"></span><span class="typing-cursor"></span>
-        </div>
+          AI implementation &middot; built, not advised
+        </p>
 
         <!-- H1 Headline -->
         <h1
-          class="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+          class="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl"
+          style="font-family: 'Outfit', sans-serif; color: #fafaf9; letter-spacing: -0.035em; line-height: 1.04; text-wrap: balance;"
         >
-          <span class="gradient-text">
-            I Build AI Systems That Replace Agency Work
-          </span>
+          I build AI systems that replace agency work.
         </h1>
 
         <!-- Sub-headline -->
         <p
-          class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#8b949e] sm:text-lg lg:mx-0"
+          class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#8b8b8a] sm:text-lg lg:mx-0"
           style="font-family: 'Outfit', sans-serif;"
         >
           {yearsInEngineering} years of engineering. Two e-commerce brands built and run since 2014. Now I
@@ -47,16 +45,14 @@ import { yearsInEngineering } from '../data/site';
         <div class="mb-4">
           <a
             href="/contact"
-            class="inline-block rounded-full px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#06b6d4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0a1e]"
-            style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
-          >
-            Let's Build Something
-          </a>
+            class="inline-block rounded-full px-8 py-4 text-base font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e5341f] focus-visible:ring-offset-2 focus-visible:ring-offset-[#111113]"
+            style="background: #d62d17; font-family: 'Outfit', sans-serif;"
+          >Book a call</a>
         </div>
 
         <!-- Location Subtext -->
         <p
-          class="text-sm text-[#8b949e]"
+          class="text-sm text-[#8b8b8a]"
           style="font-family: 'Outfit', sans-serif;"
         >
           Based in Oakville, Ontario — serving the GTA and beyond
@@ -67,17 +63,17 @@ import { yearsInEngineering } from '../data/site';
       <div class="flex w-full justify-center lg:w-[40%]">
         <div
           class="relative h-[280px] w-[280px] overflow-hidden rounded-2xl sm:h-[320px] sm:w-[320px]"
-          style="padding: 3px; background: linear-gradient(135deg, #8b5cf6, #06b6d4);"
+          style="padding: 1px; background: rgba(255,255,255,0.14);"
         >
           <!-- Inner container with rounded corners -->
           <div class="relative h-full w-full overflow-hidden rounded-2xl" style="background-color: rgba(255, 255, 255, 0.05);">
             <!-- Fallback gradient background -->
             <div
               class="absolute inset-0 flex items-center justify-center"
-              style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));"
+              style="background: rgba(229, 52, 31, 0.10);"
             >
               <span
-                class="text-5xl text-[#8b949e] opacity-30"
+                class="text-5xl text-[#8b8b8a] opacity-30"
                 style="font-family: 'JetBrains Mono', monospace;"
               >
                 GK
@@ -98,81 +94,3 @@ import { yearsInEngineering } from '../data/site';
   </div>
 </section>
 
-<script>
-  function initHero() {
-    const typingEl = document.getElementById("typing-text");
-    if (!typingEl) return;
-
-    const phrases = [
-      "> AI Implementation Specialist",
-      "> E-Commerce Systems Builder",
-      "> Custom Tool Developer",
-      "> Marketing Automation Engineer",
-      "> Local Business Digital Strategist",
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    const TYPE_SPEED = 60;
-    const DELETE_SPEED = 30;
-    const PAUSE_AFTER_TYPING = 3000;
-    const PAUSE_AFTER_DELETING = 400;
-
-    // Respect reduced motion preference
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      // Show the first phrase statically
-      typingEl.textContent = phrases[0];
-      return;
-    }
-
-    function tick() {
-      const currentPhrase = phrases[phraseIndex];
-
-      if (!isDeleting) {
-        // Typing forward
-        charIndex++;
-        typingEl.textContent = currentPhrase.substring(0, charIndex);
-
-        if (charIndex === currentPhrase.length) {
-          // Finished typing this phrase — pause then delete
-          setTimeout(() => {
-            isDeleting = true;
-            tick();
-          }, PAUSE_AFTER_TYPING);
-          return;
-        }
-
-        setTimeout(tick, TYPE_SPEED);
-      } else {
-        // Deleting backward
-        charIndex--;
-        typingEl.textContent = currentPhrase.substring(0, charIndex);
-
-        if (charIndex === 0) {
-          // Finished deleting — move to next phrase
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(tick, PAUSE_AFTER_DELETING);
-          return;
-        }
-
-        setTimeout(tick, DELETE_SPEED);
-      }
-    }
-
-    // Start the loop
-    setTimeout(tick, 600);
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHero);
-  } else {
-    initHero();
-  }
-</script>

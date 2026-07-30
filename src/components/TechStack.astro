@@ -35,14 +35,14 @@ const categories = [
     <!-- Section Heading -->
     <h2
       class="mb-4 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+      style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
     >
       <span class="comment-prefix">// </span><span class="gradient-text">Tools I Build With</span>
     </h2>
 
     <!-- Section Intro -->
     <p
-      class="mx-auto mb-16 max-w-2xl text-center text-[#8b949e]"
+      class="mx-auto mb-16 max-w-2xl text-center text-[#8b8b8a]"
       style="font-family: 'Outfit', sans-serif;"
     >
       I don't just use these tools — I build custom solutions on top of them.
@@ -54,8 +54,8 @@ const categories = [
         <div class="fade-in-up">
           {/* Category Label */}
           <p
-            class="mb-4 text-sm uppercase tracking-wider text-[#06b6d4]"
-            style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+            class="mb-4 text-sm uppercase tracking-wider text-[#e5341f]"
+            style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
           >
             {category.label}
           </p>
@@ -64,7 +64,7 @@ const categories = [
           <div class="flex flex-wrap gap-3">
             {category.tools.map((tool) => (
               <span
-                class="tool-pill rounded-lg border border-white/[0.06] px-4 py-2 text-sm text-[#e6edf3]"
+                class="tool-pill rounded-lg border border-white/[0.06] px-4 py-2 text-sm text-[#fafaf9]"
                 style="background: rgba(255,255,255,0.03); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;"
               >
                 {tool}
@@ -79,8 +79,8 @@ const categories = [
 
 <style>
   .tool-pill:hover {
-    border-color: rgba(6, 182, 212, 0.5);
-    box-shadow: 0 0 16px rgba(6, 182, 212, 0.15);
+    border-color: rgba(229, 52, 31, 0.5);
+    box-shadow: 0 0 16px rgba(229, 52, 31, 0.15);
     transform: translateY(-1px);
   }
 </style>

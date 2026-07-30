@@ -22,7 +22,7 @@ const metrics = [
   <!-- Gradient border top (subtler) -->
   <div
     class="absolute inset-x-0 top-0 h-px"
-    style="background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.5), rgba(6, 182, 212, 0.5), transparent);"
+    style="background: linear-gradient(90deg, transparent, rgba(229, 52, 31, 0.55), transparent);"
   ></div>
 
   <!-- Content -->
@@ -38,7 +38,7 @@ const metrics = [
         >
           <span
             class="counter gradient-text text-3xl font-bold tracking-tight md:text-4xl"
-            style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+            style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
             data-target={metric.target}
             data-prefix={metric.prefix}
             data-suffix={metric.suffix}
@@ -46,7 +46,7 @@ const metrics = [
             {metric.prefix}0{metric.suffix}
           </span>
           <span
-            class="mt-1 text-sm text-[#8b949e]"
+            class="mt-1 text-sm text-[#8b8b8a]"
             style="font-family: 'Outfit', sans-serif;"
           >
             {metric.label}
@@ -59,7 +59,7 @@ const metrics = [
   <!-- Gradient border bottom (subtler) -->
   <div
     class="absolute inset-x-0 bottom-0 h-px"
-    style="background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), rgba(139, 92, 246, 0.5), transparent);"
+    style="background: linear-gradient(90deg, transparent, rgba(229, 52, 31, 0.5), rgba(229, 52, 31, 0.5), transparent);"
   ></div>
 </section>
 

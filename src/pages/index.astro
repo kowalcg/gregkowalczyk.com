@@ -8,7 +8,6 @@ import CaseStudies from '../components/CaseStudies.astro';
 import ProjectsPreview from '../components/ProjectsPreview.astro';
 import CommercialConsultingBlock from '../components/CommercialConsultingBlock.astro';
 import AboutTeaser from '../components/AboutTeaser.astro';
-import Testimonials from '../components/Testimonials.astro';
 import AsHeardOn from '../components/AsHeardOn.astro';
 import FAQ from '../components/FAQ.astro';
 import BlogPreview from '../components/BlogPreview.astro';
@@ -23,18 +22,24 @@ import Footer from '../components/Footer.astro';
 >
   <Nav />
   <main>
+    {/* Order reworked July 2026. Previously twelve sections with four
+        consecutive "more about me" blocks, and the strongest proof — two named
+        podcast appearances — buried at position nine. Now: claim, numbers,
+        third-party proof, offer, evidence, objections, ask. */}
     <Hero />
     <ResultsBar />
+    <AsHeardOn />
     <ServicesPreview />
     <CaseStudies />
     <ProjectsPreview />
-    <CommercialConsultingBlock />
     <AboutTeaser />
-    <Testimonials />
-    <AsHeardOn />
+    <CommercialConsultingBlock />
     <FAQ />
     <BlogPreview />
     <ContactCTA />
+    {/* <Testimonials /> is out of the page until there are real, permissioned
+        client quotes. The component renders nothing while its array is empty,
+        so this is belt-and-braces. */}
   </main>
   <Footer />
 

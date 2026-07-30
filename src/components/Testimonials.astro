@@ -35,12 +35,12 @@ const testimonials: Testimonial[] = [
     <!-- Section Heading -->
     <h2
       class="mb-4 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+      style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
     >
       <span class="comment-prefix">// </span><span class="gradient-text">What Clients Say</span>
     </h2>
     <p
-      class="mx-auto mb-16 max-w-2xl text-center text-[#8b949e]"
+      class="mx-auto mb-16 max-w-2xl text-center text-[#8b8b8a]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Results from businesses that made the switch from agencies to AI systems.
@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
           <!-- Quote mark -->
           <div
             class="mb-4 text-4xl leading-none"
-            style="color: rgba(139, 92, 246, 0.4); font-family: Georgia, serif;"
+            style="color: rgba(229, 52, 31, 0.4); font-family: Georgia, serif;"
             aria-hidden="true"
           >
             &ldquo;
@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
           <!-- Quote text -->
           <p
             class="mb-6 flex-1 leading-relaxed"
-            style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+            style="font-family: 'Outfit', sans-serif; color: #8b8b8a;"
           >
             {t.quote}
           </p>
@@ -72,11 +72,11 @@ const testimonials: Testimonial[] = [
             <!-- Avatar placeholder -->
             <div
               class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full"
-              style="background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(6,182,212,0.3)); border: 1px solid rgba(255,255,255,0.1);"
+              style="background: rgba(229, 52, 31, 0.10); border: 1px solid rgba(255,255,255,0.1);"
             >
               <span
                 class="text-xs font-semibold"
-                style="color: #8b949e; font-family: 'JetBrains Mono', monospace;"
+                style="color: #8b8b8a; font-family: 'JetBrains Mono', monospace;"
               >
                 {t.name.split(' ').map((n: string) => n[0]).join('').slice(0, 2)}
               </span>
@@ -86,13 +86,13 @@ const testimonials: Testimonial[] = [
             <div>
               <p
                 class="font-semibold"
-                style="font-family: 'Outfit', sans-serif; color: #e6edf3; font-size: 0.875rem;"
+                style="font-family: 'Outfit', sans-serif; color: #fafaf9; font-size: 0.875rem;"
               >
                 {t.name}
               </p>
               <p
                 class="text-xs"
-                style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+                style="font-family: 'Outfit', sans-serif; color: #8b8b8a;"
               >
                 {t.title}, {t.company}
               </p>

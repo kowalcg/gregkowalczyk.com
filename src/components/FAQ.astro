@@ -16,7 +16,7 @@ import { faqs } from '../data/faqs';
     <!-- Section Heading -->
     <h2
       class="mb-16 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+      style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
     >
       <span class="comment-prefix">// </span><span class="gradient-text">Common Questions</span>
     </h2>
@@ -32,11 +32,11 @@ import { faqs } from '../data/faqs';
             aria-expanded="false"
             style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
           >
-            <span class="faq-question pr-4 text-lg text-[#e6edf3]">
+            <span class="faq-question pr-4 text-lg text-[#fafaf9]">
               {faq.question}
             </span>
             <span
-              class="faq-icon flex-shrink-0 text-[#8b949e]"
+              class="faq-icon flex-shrink-0 text-[#8b8b8a]"
               aria-hidden="true"
               style="transition: transform 300ms ease;"
             >
@@ -62,7 +62,7 @@ import { faqs } from '../data/faqs';
             style="max-height: 0; overflow: hidden; transition: max-height 300ms ease;"
           >
             <p
-              class="pb-5 leading-relaxed text-[#8b949e]"
+              class="pb-5 leading-relaxed text-[#8b8b8a]"
               style="font-family: 'Outfit', sans-serif;"
             >
               {faq.answer}

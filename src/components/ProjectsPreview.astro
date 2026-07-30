@@ -31,11 +31,11 @@ const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length
   <div class="mx-auto max-w-6xl px-6">
     <h2
       class="mb-4 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+      style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
     >
       <span class="comment-prefix">// </span><span class="gradient-text">Things I've Built</span>
     </h2>
-    <p class="mb-12 text-center" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+    <p class="mb-12 text-center" style="font-family: 'Outfit', sans-serif; color: #8b8b8a;">
       Not demos. Real tools, apps, and systems deployed and running.
     </p>
 
@@ -44,8 +44,8 @@ const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length
         const href = hasDetail(project) ? `/projects/${project.slug}/` : '/projects';
         const accent =
           project.data.tagColor === 'purple'
-            ? { bg: 'rgba(139, 92, 246, 0.1)', fg: '#8b5cf6' }
-            : { bg: 'rgba(6, 182, 212, 0.1)', fg: '#06b6d4' };
+            ? { bg: 'rgba(229, 52, 31, 0.1)', fg: '#e5341f' }
+            : { bg: 'rgba(229, 52, 31, 0.1)', fg: '#e5341f' };
         return (
           <a
             href={href}
@@ -54,9 +54,9 @@ const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length
             <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
               <div
                 class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
-                style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
+                style="background: rgba(229, 52, 31, 0.10); border: 1px solid rgba(255,255,255,0.08);"
               >
-                <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">
+                <span style="font-family: 'JetBrains Mono', monospace; color: #fafaf9; opacity: 0.5; font-weight: bold;">
                   {initialsFor(project.data.name, project.data.initials)}
                 </span>
               </div>
@@ -71,11 +71,11 @@ const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length
                 </div>
                 <h3
                   class="mb-2 text-lg font-bold"
-                  style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+                  style="font-family: 'JetBrains Mono', monospace; color: #fafaf9;"
                 >
                   {project.data.name}
                 </h3>
-                <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b8b8a;">
                   {project.data.description}
                 </p>
               </div>
@@ -89,7 +89,7 @@ const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length
       <a
         href="/projects"
         class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
-        style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+        style="background: rgba(255,255,255,0.06); color: #fafaf9; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
       >
         View All Projects →
       </a>

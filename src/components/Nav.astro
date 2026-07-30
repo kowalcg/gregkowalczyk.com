@@ -24,7 +24,7 @@ const navLinks = [
       <a
         href="/"
         class="text-lg font-semibold tracking-tight transition-opacity hover:opacity-80"
-        style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+        style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
       >
         <span class="gradient-text">Greg Kowalczyk</span>
       </a>
@@ -35,7 +35,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="text-sm text-[#8b949e] transition-colors duration-200 hover:text-[#e6edf3]"
+              class="text-sm text-[#8b8b8a] transition-colors duration-200 hover:text-[#fafaf9]"
               style="font-family: 'Outfit', sans-serif;"
             >
               {link.label}
@@ -48,10 +48,8 @@ const navLinks = [
       <a
         href="/contact"
         class="hidden rounded-full px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 md:inline-block"
-        style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
-      >
-        Book a Call
-      </a>
+        style="background: #d62d17; font-family: 'Outfit', sans-serif;"
+      >Book a call</a>
 
       <!-- Mobile Hamburger Button -->
       <button
@@ -64,15 +62,15 @@ const navLinks = [
       >
         <span
           id="hamburger-line-1"
-          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[#fafaf9] transition-all duration-300 ease-in-out"
         ></span>
         <span
           id="hamburger-line-2"
-          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[#fafaf9] transition-all duration-300 ease-in-out"
         ></span>
         <span
           id="hamburger-line-3"
-          class="block h-[2px] w-6 rounded-full bg-[#e6edf3] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[#fafaf9] transition-all duration-300 ease-in-out"
         ></span>
       </button>
     </div>
@@ -82,7 +80,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     class="pointer-events-none fixed inset-x-0 top-0 z-40 translate-y-[-100%] opacity-0 transition-all duration-300 ease-in-out md:hidden"
-    style="background-color: rgba(15, 10, 30, 0.98); backdrop-filter: blur(16px);"
+    style="background-color: rgba(10, 10, 11, 0.98); backdrop-filter: blur(16px);"
   >
     <div class="px-4 pb-8 pt-20 sm:px-6">
       <ul class="flex flex-col gap-4">
@@ -90,7 +88,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="mobile-nav-link block rounded-lg px-4 py-4 text-lg text-[#8b949e] transition-colors duration-200 hover:bg-white/5 hover:text-[#e6edf3]"
+              class="mobile-nav-link block rounded-lg px-4 py-4 text-lg text-[#8b8b8a] transition-colors duration-200 hover:bg-white/5 hover:text-[#fafaf9]"
               style="font-family: 'Outfit', sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; min-height: 52px; display: flex; align-items: center;"
             >
               {link.label}
@@ -103,10 +101,8 @@ const navLinks = [
         <a
           href="/contact"
           class="mobile-nav-link block rounded-full px-4 py-3 text-center text-base font-semibold text-white"
-          style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
-        >
-          Book a Call
-        </a>
+          style="background: #d62d17; font-family: 'Outfit', sans-serif;"
+        >Book a call</a>
       </div>
     </div>
   </div>
@@ -132,7 +128,7 @@ const navLinks = [
     // ---------- Scroll: transparent -> solid ----------
     function updateNavBackground() {
       if (window.scrollY > 20) {
-        nav.style.backgroundColor = "rgba(15, 10, 30, 0.75)";
+        nav.style.backgroundColor = "rgba(10, 10, 11, 0.75)";
         nav.style.backdropFilter = "blur(16px)";
         nav.style.WebkitBackdropFilter = "blur(16px)";
         nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.08)";
@@ -160,7 +156,7 @@ const navLinks = [
       // Lock body scroll
       document.body.style.overflow = "hidden";
       // Ensure nav stays solid while menu open
-      nav.style.backgroundColor = "rgba(15, 10, 30, 0.75)";
+      nav.style.backgroundColor = "rgba(10, 10, 11, 0.75)";
       nav.style.backdropFilter = "blur(16px)";
       nav.style.WebkitBackdropFilter = "blur(16px)";
     }

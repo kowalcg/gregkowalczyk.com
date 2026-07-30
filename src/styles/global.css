@@ -13,18 +13,29 @@
    ========================================================================== */
 
 @theme {
-  /* --- Colors --- */
-  --color-bg-primary: #0f0a1e;
-  --color-bg-secondary: rgba(255, 255, 255, 0.05);
-  --color-bg-tertiary: rgba(255, 255, 255, 0.08);
-  --color-text-primary: #e6edf3;
-  --color-text-secondary: #8b949e;
-  --color-accent-purple: #8b5cf6;
-  --color-accent-blue: #3b82f6;
-  --color-accent-cyan: #06b6d4;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-glow: rgba(6, 182, 212, 0.15);
-  --color-glow-strong: rgba(6, 182, 212, 0.25);
+  /* --- Colors — "Signal": near-black, paper white, one red ---
+     Replaces the purple->cyan gradient palette (July 2026). The accent is
+     deliberately rationed: eyebrows, one rule, the primary button, link hover.
+     Nothing else. It earns attention because almost nothing else uses it.
+
+     Contrast, measured against #0a0a0b:
+       --color-fg          #fafaf9  18.9:1
+       --color-fg-muted    #8b8b8a   6.3:1
+       --color-accent      #e5341f   4.5:1  (AA for body text)
+     --color-accent-fill is a half-stop deeper so white button labels clear
+     AA (4.9:1); #e5341f behind white text would land at 4.34:1 and fail. */
+  --color-bg-primary: #0a0a0b;
+  --color-bg-elevated: #111113;
+  --color-bg-secondary: rgba(255, 255, 255, 0.04);
+  --color-bg-tertiary: rgba(255, 255, 255, 0.07);
+  --color-text-primary: #fafaf9;
+  --color-text-secondary: #8b8b8a;
+  --color-accent: #e5341f;
+  --color-accent-fill: #d62d17;
+  --color-accent-soft: rgba(229, 52, 31, 0.12);
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-glow: rgba(229, 52, 31, 0.14);
+  --color-glow-strong: rgba(229, 52, 31, 0.22);
 
   /* --- Font Families --- */
   --font-heading: "JetBrains Mono", "Fira Code", monospace;
@@ -41,8 +52,8 @@ html {
 }
 
 body {
-  background-color: #0f0a1e;
-  color: #e6edf3;
+  background-color: #0a0a0b;
+  color: #fafaf9;
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +97,7 @@ a {
   .glass-card-light {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: rgba(15, 10, 30, 0.85);
+    background: rgba(10, 10, 11, 0.85);
   }
 }
 
@@ -106,14 +117,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Focus ring for accessibility */
 :focus-visible {
-  outline: 2px solid #06b6d4;
+  outline: 2px solid #e5341f;
   outline-offset: 2px;
 }
 
 /* Selection highlight */
 ::selection {
-  background-color: rgba(139, 92, 246, 0.3);
-  color: #e6edf3;
+  background-color: rgba(229, 52, 31, 0.3);
+  color: #fafaf9;
 }
 
 /* ==========================================================================
@@ -141,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+  background: linear-gradient(90deg, #e5341f, #e5341f);
   border-radius: 16px 16px 0 0;
   pointer-events: none;
 }
@@ -157,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(6, 182, 212, 0.15), 0 12px 48px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 40px rgba(229, 52, 31, 0.15), 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Light Glass Variant ---
@@ -178,7 +189,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+  background: linear-gradient(90deg, #e5341f, #e5341f);
   border-radius: 12px 12px 0 0;
   pointer-events: none;
 }
@@ -197,10 +208,10 @@ h1, h2, h3, h4, h5, h6 {
    Usage: <span class="gradient-text">Text here</span>
    ------------------------------------------------------------------ */
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Kept as a class so no markup had to change, but headings are now solid.
+     Gradient headline text cost real contrast — the purple half of the old
+     ramp sat near 4:1 — and was the strongest "template" signal on the site. */
+  color: #fafaf9;
 }
 
 /* --- Code Comment Heading ---
@@ -209,63 +220,21 @@ h1, h2, h3, h4, h5, h6 {
    ------------------------------------------------------------------ */
 .comment-prefix {
   font-family: "JetBrains Mono", "Fira Code", monospace;
-  color: rgba(139, 148, 158, 0.5);
+  color: #e5341f;
   font-weight: 400;
 }
 
-/* --- Noise Overlay ---
-   Subtle grain texture over the entire page.
-   Applied to a fixed pseudo-element on body or a wrapper.
+/* --- Noise Overlay — retired July 2026 ---
+   The page was running five decorative systems at once (orbs, noise, dot grid,
+   glass blur, gradient). The grain and the orbs are gone; the dot grid is the
+   one remaining texture. The class is a no-op so <body> markup is unchanged.
    ------------------------------------------------------------------ */
-.noise-overlay::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
 
-/* --- Floating Gradient Orbs ---
-   Background depth elements for glass refraction.
+/* --- Floating Gradient Orbs — retired July 2026 ---
+   Collapsed to display:none rather than deleted so the three <div class="orb">
+   elements in Layout.astro stay harmless. Remove both together later.
    ------------------------------------------------------------------ */
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(120px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.orb-purple {
-  width: 600px;
-  height: 600px;
-  background: rgba(139, 92, 246, 0.12);
-  top: -10%;
-  left: -5%;
-  animation: orb-drift-1 25s ease-in-out infinite;
-}
-
-.orb-blue {
-  width: 500px;
-  height: 500px;
-  background: rgba(59, 130, 246, 0.08);
-  top: 40%;
-  right: -10%;
-  animation: orb-drift-2 30s ease-in-out infinite;
-}
-
-.orb-cyan {
-  width: 400px;
-  height: 400px;
-  background: rgba(6, 182, 212, 0.08);
-  bottom: -5%;
-  left: 20%;
-  animation: orb-drift-3 20s ease-in-out infinite;
-}
+.orb { display: none; }
 
 @keyframes orb-drift-1 {
   0%, 100% { transform: translate(0, 0); }
@@ -300,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
   inset: -1px;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+  background: #d62d17;
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -335,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(
-    rgba(139, 148, 158, 0.06) 1px,
+    rgba(139, 139, 138, 0.06) 1px,
     transparent 1px
   );
   background-size: 24px 24px;
@@ -415,7 +384,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   width: 3px;
   height: 1em;
-  background-color: #06b6d4;
+  background-color: #e5341f;
   margin-left: 2px;
   vertical-align: text-bottom;
   animation: cursor-blink 1s step-end infinite;
