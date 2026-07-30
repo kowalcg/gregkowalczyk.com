@@ -187,6 +187,44 @@ const articleJsonLd = {
      astro.config.mjs — the template already renders the page's only <h1>.
      Hiding them with display:none used to leave two <h1>s in the markup. */
 
+  /* ── Two-column do/don't comparison ───────────────
+     The only structure in the converted posts with no markdown equivalent.
+     Authored as <div class="compare"> with two children rather than the
+     inline-styled flexbox the original HTML posts used. */
+  .prose-blog .compare {
+    display: flex;
+    gap: 1.25rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .prose-blog .compare > div {
+    flex: 1;
+    min-width: 260px;
+    padding: 1.25rem 1.25rem 0.5rem;
+    border-radius: 12px;
+  }
+
+  .prose-blog .compare-good {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid #10b981;
+  }
+
+  .prose-blog .compare-bad {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+  }
+
+  .prose-blog .compare h3 {
+    margin-top: 0;
+    font-size: 1.05rem;
+  }
+
+  .prose-blog .compare p:last-child,
+  .prose-blog .compare ul:last-child {
+    margin-bottom: 0.75rem;
+  }
+
   /* ── Section headings ────────────────────────────── */
   .prose-blog h2 {
     font-family: 'Outfit', sans-serif;
