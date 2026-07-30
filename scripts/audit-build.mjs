@@ -50,6 +50,27 @@ const REVENUE_PATTERNS = [
 /** Fabricated or unfinished content that must never reach production. */
 const PLACEHOLDER_MARKERS = ['Client Name', 'Company Name', 'Lorem ipsum', 'TODO:', 'REPLACE_WITH'];
 
+/**
+ * Client identities that must never appear in shipped HTML.
+ *
+ * The rule is: case-study *figures and results are fine* — they're the whole
+ * point — but the client must not be identifiable. Describe them by category
+ * ("a long-established specialty retailer"), never by name.
+ *
+ * This check reads the raw HTML, not the visible text, because Astro renders
+ * `<!-- -->` comments into the output. A comment reading
+ * `<!-- Card 3: Auto Shop — D.JANC Workshop -->` shipped a client's name to
+ * production for months. Use `{/* ... *␘/}` for anything that shouldn't render.
+ */
+const CLIENT_NAMES = [
+  'D.JANC',
+  'DJANC',
+  'Chocolat on James',
+  'Chocolat',
+  'Todd McDaniel',
+  'Pharmex',
+];
+
 if (process.argv.includes('--selftest')) {
   const mustFlag = [
     'a $537K/year business',
@@ -211,6 +232,14 @@ for (const file of pages) {
   // 9. Placeholder/fabricated content must never ship.
   for (const marker of PLACEHOLDER_MARKERS) {
     if (visibleText.includes(marker)) fail('placeholder-content', `${page} — "${marker}"`);
+  }
+
+  // 9b. No client identities anywhere in the HTML — including comments, which
+  //     Astro renders. Checked against `html`, not `visibleText`, on purpose.
+  for (const name of CLIENT_NAMES) {
+    if (new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(html)) {
+      fail('client-name-in-output', `${page} — "${name}"`);
+    }
   }
 
   // 10. Every JSON-LD block must be parseable

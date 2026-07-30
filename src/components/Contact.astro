@@ -139,7 +139,8 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
               ></textarea>
             </div>
 
-            <!-- Honeypot (spam trap — hidden from real users, bots fill it) -->
+            {/* Hidden field. Astro's {/* */} comments are not rendered, so this
+                stays out of the HTML — a <!-- --> comment would label the trap. */}
             <div class="absolute -left-[9999px]" aria-hidden="true">
               <label for="contact-website">Website</label>
               <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
