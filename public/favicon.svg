@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-label="Greg Kowalczyk">
-  <!-- Hot Steel palette. Solid oxide tile with graphite letters rather than
-       oxide letters on a dark tile: at 16px in a dark browser tab a dark
-       background disappears into the chrome, so the tile has to be the mark. -->
-  <rect width="32" height="32" rx="7" fill="#e05a24"/>
+  <!-- Orange tile, black letters — the same move the deck makes with its
+       "Quick Wins" block. Black on #f06000 is 6.4:1; white would be 3.3:1. -->
+  <rect width="32" height="32" rx="7" fill="#f06000"/>
   <text x="16" y="22.5"
         font-family="'JetBrains Mono','SFMono-Regular',ui-monospace,Menlo,Consolas,monospace"
         font-size="17" font-weight="700" letter-spacing="-0.5"
-        fill="#131417" text-anchor="middle">GK</text>
+        fill="#000000" text-anchor="middle">GK</text>
 </svg>

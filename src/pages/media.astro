@@ -68,7 +68,7 @@ const kindLabel: Record<string, string> = {
               <div class="mb-3 flex flex-wrap items-center gap-3">
                 <span
                   class="rounded-full px-3 py-1 text-xs"
-                  style="font-family: 'JetBrains Mono', monospace; background: rgba(224, 90, 36, 0.12); color: #f0a878;"
+                  style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.12); color: #ff8a3d;"
                 >
                   {kindLabel[item.kind]}
                 </span>
@@ -76,13 +76,13 @@ const kindLabel: Record<string, string> = {
                   <time
                     datetime={item.date}
                     class="text-sm"
-                    style="font-family: 'JetBrains Mono', monospace; color: #e05a24;"
+                    style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
                   >
                     {fmtDate(item.date)}
                   </time>
                 )}
                 {item.durationLabel && (
-                  <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #8e8b86;">
+                  <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
                     {item.durationLabel}
                   </span>
                 )}
@@ -90,16 +90,16 @@ const kindLabel: Record<string, string> = {
 
               <h2
                 class="mb-1 text-xl font-bold md:text-2xl"
-                style="font-family: 'Outfit', sans-serif; color: #ece8e3;"
+                style="font-family: 'Outfit', sans-serif; color: #ffffff;"
               >
                 {item.title}
               </h2>
 
-              <p class="mb-4 text-sm" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+              <p class="mb-4 text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
                 {item.show}{item.hosts ? ` · with ${item.hosts}` : ''}
               </p>
 
-              <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+              <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
                 {item.summary}
               </p>
 
@@ -108,7 +108,7 @@ const kindLabel: Record<string, string> = {
                   {item.topics.map((topic) => (
                     <li
                       class="rounded-full px-3 py-1 text-xs"
-                      style="font-family: 'Outfit', sans-serif; color: #8e8b86; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+                      style="font-family: 'Outfit', sans-serif; color: #798897; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
                     >
                       {topic}
                     </li>
@@ -123,7 +123,7 @@ const kindLabel: Record<string, string> = {
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                    style="background: rgba(255,255,255,0.06); color: #ece8e3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                    style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
                   >
                     {link.label} ↗
                   </a>
@@ -151,14 +151,14 @@ const kindLabel: Record<string, string> = {
             <div class="fade-in-up glass-card p-8">
               <h3
                 class="mb-2 text-lg font-bold"
-                style="font-family: 'JetBrains Mono', monospace; color: #ece8e3;"
+                style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
               >
                 {item.title}
               </h3>
-              <p class="mb-3 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #e05a24;">
+              <p class="mb-3 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
                 {item.show}{item.dateLabel ? ` · ${item.dateLabel}` : ''}
               </p>
-              <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+              <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
                 {item.summary}
               </p>
               {item.links.map((link) => (
@@ -167,7 +167,7 @@ const kindLabel: Record<string, string> = {
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                  style="background: rgba(255,255,255,0.06); color: #ece8e3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                  style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
                 >
                   {link.label} ↗
                 </a>
@@ -179,19 +179,19 @@ const kindLabel: Record<string, string> = {
         <div class="mt-10 glass-card p-8">
           <h3
             class="mb-3 text-lg font-bold"
-            style="font-family: 'JetBrains Mono', monospace; color: #ece8e3;"
+            style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
           >
             Booking
           </h3>
-          <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+          <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
             Available for podcasts, panels, and workshops on building with AI as a non-developer,
             running product brands on Amazon and Shopify, and what actually works when a small
             business tries to automate. I bring working tools, not slides about the future.
           </p>
           <a
             href="/contact"
-            class="inline-block rounded-full px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:scale-105"
-            style="background: #c4441a; font-family: 'Outfit', sans-serif;"
+            class="inline-block rounded-full px-5 py-2 text-sm font-semibold  transition-all duration-200 hover:scale-105"
+            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
           >Book a call</a>
         </div>
       </div>

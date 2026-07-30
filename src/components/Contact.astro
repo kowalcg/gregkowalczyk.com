@@ -26,7 +26,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
 
     <!-- Section Intro -->
     <p
-      class="mx-auto mb-16 max-w-2xl text-center text-[#8e8b86]"
+      class="mx-auto mb-16 max-w-2xl text-center text-[#798897]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Tell me what's eating your time or budget. I'll tell you if AI can fix it
@@ -43,17 +43,17 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <div>
               <label
                 for="contact-name"
-                class="mb-2 block text-sm text-[#8e8b86]"
+                class="mb-2 block text-sm text-[#798897]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Name <span class="text-[#e05a24]">*</span>
+                Name <span class="text-[#f06000]">*</span>
               </label>
               <input
                 type="text"
                 id="contact-name"
                 name="name"
                 required
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ece8e3] placeholder-[#8e8b86]/50 outline-none"
+                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
                 style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
@@ -62,17 +62,17 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <div>
               <label
                 for="contact-email"
-                class="mb-2 block text-sm text-[#8e8b86]"
+                class="mb-2 block text-sm text-[#798897]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Email <span class="text-[#e05a24]">*</span>
+                Email <span class="text-[#f06000]">*</span>
               </label>
               <input
                 type="email"
                 id="contact-email"
                 name="email"
                 required
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ece8e3] placeholder-[#8e8b86]/50 outline-none"
+                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
                 style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
@@ -81,7 +81,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <div>
               <label
                 for="contact-company"
-                class="mb-2 block text-sm text-[#8e8b86]"
+                class="mb-2 block text-sm text-[#798897]"
                 style="font-family: 'Outfit', sans-serif;"
               >
                 Company
@@ -90,7 +90,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 type="text"
                 id="contact-company"
                 name="company"
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ece8e3] placeholder-[#8e8b86]/50 outline-none"
+                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
                 style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
@@ -99,7 +99,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <div>
               <label
                 for="contact-budget"
-                class="mb-2 block text-sm text-[#8e8b86]"
+                class="mb-2 block text-sm text-[#798897]"
                 style="font-family: 'Outfit', sans-serif;"
               >
                 Approximate Budget
@@ -107,15 +107,15 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
               <select
                 id="contact-budget"
                 name="budget"
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ece8e3] outline-none"
+                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] outline-none"
                 style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               >
-                <option value="" style="background: #1a1c20;">Not sure yet</option>
-                <option value="under-2k" style="background: #1a1c20;">Under $2,000</option>
-                <option value="2k-5k" style="background: #1a1c20;">$2,000 – $5,000</option>
-                <option value="5k-10k" style="background: #1a1c20;">$5,000 – $10,000</option>
-                <option value="10k-25k" style="background: #1a1c20;">$10,000 – $25,000</option>
-                <option value="25k-plus" style="background: #1a1c20;">$25,000+</option>
+                <option value="" style="background: #1a1a1a;">Not sure yet</option>
+                <option value="under-2k" style="background: #1a1a1a;">Under $2,000</option>
+                <option value="2k-5k" style="background: #1a1a1a;">$2,000 – $5,000</option>
+                <option value="5k-10k" style="background: #1a1a1a;">$5,000 – $10,000</option>
+                <option value="10k-25k" style="background: #1a1a1a;">$10,000 – $25,000</option>
+                <option value="25k-plus" style="background: #1a1a1a;">$25,000+</option>
               </select>
             </div>
 
@@ -123,10 +123,10 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <div>
               <label
                 for="contact-message"
-                class="mb-2 block text-sm text-[#8e8b86]"
+                class="mb-2 block text-sm text-[#798897]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Message <span class="text-[#e05a24]">*</span>
+                Message <span class="text-[#f06000]">*</span>
               </label>
               <textarea
                 id="contact-message"
@@ -134,7 +134,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 required
                 rows="5"
                 placeholder="What manual work or agency costs would you like to eliminate?"
-                class="contact-input w-full resize-y rounded-xl border border-white/10 px-4 py-3 text-[#ece8e3] placeholder-[#8e8b86]/50 outline-none"
+                class="contact-input w-full resize-y rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
                 style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               ></textarea>
             </div>
@@ -150,8 +150,8 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <button
               type="submit"
               id="contact-submit"
-              class="w-full cursor-pointer rounded-full px-8 py-4 text-base font-semibold text-white transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
-              style="background: #c4441a; font-family: 'Outfit', sans-serif;"
+              class="w-full cursor-pointer rounded-full px-8 py-4 text-base font-semibold  transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+              style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
             >
               Send Message
             </button>
@@ -175,7 +175,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <!-- Email -->
             <a
               href="mailto:prekoconsult@gmail.com"
-              class="contact-link flex items-center gap-3 text-[#8e8b86]"
+              class="contact-link flex items-center gap-3 text-[#798897]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -183,7 +183,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#e05a24"
+                stroke="#f06000"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -199,7 +199,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
             <!-- Phone -->
             <a
               href="tel:+19053349282"
-              class="contact-link flex items-center gap-3 text-[#8e8b86]"
+              class="contact-link flex items-center gap-3 text-[#798897]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -207,7 +207,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#e05a24"
+                stroke="#f06000"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -224,7 +224,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
               href="https://www.linkedin.com/in/gregkowalczyk/"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#8e8b86]"
+              class="contact-link flex items-center gap-3 text-[#798897]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -232,7 +232,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#e05a24"
+                stroke="#f06000"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -251,14 +251,14 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
               href="https://x.com/kowalcg"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#8e8b86]"
+              class="contact-link flex items-center gap-3 text-[#798897]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
                 width="18"
                 height="18"
                 viewBox="0 0 24 24"
-                fill="#e05a24"
+                fill="#f06000"
                 class="flex-shrink-0"
                 aria-hidden="true"
               >
@@ -272,7 +272,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
               href="https://www.facebook.com/Kowalcg/"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#8e8b86]"
+              class="contact-link flex items-center gap-3 text-[#798897]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -280,7 +280,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
                 height="20"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#e05a24"
+                stroke="#f06000"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -298,7 +298,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
 
           <!-- Location -->
           <p
-            class="text-sm text-[#8e8b86]"
+            class="text-sm text-[#798897]"
             style="font-family: 'Outfit', sans-serif;"
           >
             Based in Oakville, Ontario — serving the Greater Toronto Area and beyond
@@ -312,17 +312,17 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwIA71enMA3_
 <style>
   .contact-input:focus,
   select.contact-input:focus {
-    border-color: #e05a24;
-    box-shadow: 0 0 0 3px rgba(224, 90, 36, 0.2);
+    border-color: #f06000;
+    box-shadow: 0 0 0 3px rgba(240, 96, 0, 0.2);
   }
 
   select.contact-input option {
-    background: #1a1c20;
-    color: #ece8e3;
+    background: #1a1a1a;
+    color: #ffffff;
   }
 
   .contact-link:hover {
-    color: #ece8e3;
+    color: #ffffff;
   }
 </style>
 

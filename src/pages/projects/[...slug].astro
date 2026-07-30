@@ -60,13 +60,13 @@ const schema: Record<string, unknown> = {
           <span
             class="rounded-full px-3 py-1 text-xs"
             style={`font-family: 'JetBrains Mono', monospace; background: ${
-              d.tagColor === 'purple' ? 'rgba(224, 90, 36, 0.1)' : 'rgba(224, 90, 36, 0.1)'
-            }; color: ${d.tagColor === 'purple' ? '#e05a24' : '#e05a24'};`}
+              d.tagColor === 'purple' ? 'rgba(240, 96, 0, 0.1)' : 'rgba(240, 96, 0, 0.1)'
+            }; color: ${d.tagColor === 'purple' ? '#f06000' : '#f06000'};`}
           >
             {d.tag}
           </span>
           {d.year && (
-            <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #8e8b86;">
+            <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
               {d.year}
             </span>
           )}
@@ -79,7 +79,7 @@ const schema: Record<string, unknown> = {
           <span class="gradient-text">{d.name}</span>
         </h1>
 
-        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
           {d.description}
         </p>
       </header>
@@ -95,12 +95,12 @@ const schema: Record<string, unknown> = {
 
       {d.stats.length > 0 && (
         <div class="glass-card mb-12 p-8">
-          <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #8e8b86;">
+          <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #798897;">
             {d.stats.map((stat) => (
               <li class="flex items-start gap-3">
                 <span
                   class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
-                  style="background-color: #e05a24;"
+                  style="background-color: #f06000;"
                 ></span>
                 <span>{stat}</span>
               </li>
@@ -118,7 +118,7 @@ const schema: Record<string, unknown> = {
           {d.tech.map((t) => (
             <span
               class="rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8e8b86; border: 1px solid rgba(255,255,255,0.08);"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.08);"
             >
               {t}
             </span>
@@ -134,7 +134,7 @@ const schema: Record<string, unknown> = {
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: rgba(255,255,255,0.06); color: #ece8e3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
             >
               {link.label} {link.external ? '↗' : '→'}
             </a>
@@ -145,8 +145,8 @@ const schema: Record<string, unknown> = {
       <p class="mt-12">
         <a
           href="/projects"
-          class="text-sm transition-colors duration-200 hover:text-[#ece8e3]"
-          style="font-family: 'Outfit', sans-serif; color: #8e8b86;"
+          class="text-sm transition-colors duration-200 hover:text-[#ffffff]"
+          style="font-family: 'Outfit', sans-serif; color: #798897;"
         >
           ← All projects
         </a>

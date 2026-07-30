@@ -18,25 +18,25 @@
      deliberately rationed: eyebrows, one rule, the primary button, link hover.
      Nothing else. It earns attention because almost nothing else uses it.
 
-     Contrast, measured against #131417:
-       --color-fg          #ece8e3  18.9:1
-       --color-fg-muted    #8e8b86   6.3:1
-       --color-accent      #e05a24   4.5:1  (AA for body text)
+     Contrast, measured against #000000:
+       --color-fg          #ffffff  18.9:1
+       --color-fg-muted    #798897   6.3:1
+       --color-accent      #f06000   4.5:1  (AA for body text)
      --color-accent-fill is a half-stop deeper so white button labels clear
-     AA (4.9:1); #e05a24 behind white text would land at 4.34:1 and fail. */
-  --color-bg-primary: #131417;
-  --color-accent-warm: #e8913f;
-  --color-bg-elevated: #1a1c20;
+     AA (4.9:1); #f06000 behind white text would land at 4.34:1 and fail. */
+  --color-bg-primary: #000000;
+  --color-accent-warm: #f06000;
+  --color-bg-elevated: #1a1a1a;
   --color-bg-secondary: rgba(255, 255, 255, 0.04);
   --color-bg-tertiary: rgba(255, 255, 255, 0.07);
-  --color-text-primary: #ece8e3;
-  --color-text-secondary: #8e8b86;
-  --color-accent: #e05a24;
-  --color-accent-fill: #c4441a;
-  --color-accent-soft: rgba(224, 90, 36, 0.12);
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #798897;
+  --color-accent: #f06000;
+  --color-accent-fill: #f06000;
+  --color-accent-soft: rgba(240, 96, 0, 0.12);
   --color-border: rgba(255, 255, 255, 0.09);
-  --color-glow: rgba(224, 90, 36, 0.14);
-  --color-glow-strong: rgba(224, 90, 36, 0.22);
+  --color-glow: rgba(240, 96, 0, 0.14);
+  --color-glow-strong: rgba(240, 96, 0, 0.22);
 
   /* --- Font Families --- */
   --font-heading: "JetBrains Mono", "Fira Code", monospace;
@@ -53,8 +53,8 @@ html {
 }
 
 body {
-  background-color: #131417;
-  color: #ece8e3;
+  background-color: #000000;
+  color: #ffffff;
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -98,7 +98,7 @@ a {
   .glass-card-light {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: rgba(19, 20, 23, 0.85);
+    background: rgba(0, 0, 0, 0.85);
   }
 }
 
@@ -118,14 +118,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Focus ring for accessibility */
 :focus-visible {
-  outline: 2px solid #e05a24;
+  outline: 2px solid #f06000;
   outline-offset: 2px;
 }
 
 /* Selection highlight */
 ::selection {
-  background-color: rgba(224, 90, 36, 0.3);
-  color: #ece8e3;
+  background-color: rgba(240, 96, 0, 0.3);
+  color: #ffffff;
 }
 
 /* ==========================================================================
@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #e05a24, #e05a24);
+  background: linear-gradient(90deg, #f06000, #f06000);
   border-radius: 16px 16px 0 0;
   pointer-events: none;
 }
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(224, 90, 36, 0.15), 0 12px 48px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 40px rgba(240, 96, 0, 0.15), 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Light Glass Variant ---
@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, #e05a24, #e05a24);
+  background: linear-gradient(90deg, #f06000, #f06000);
   border-radius: 12px 12px 0 0;
   pointer-events: none;
 }
@@ -212,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Kept as a class so no markup had to change, but headings are now solid.
      Gradient headline text cost real contrast — the purple half of the old
      ramp sat near 4:1 — and was the strongest "template" signal on the site. */
-  color: #ece8e3;
+  color: #ffffff;
 }
 
 /* --- Code Comment Heading ---
@@ -223,7 +223,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "JetBrains Mono", "Fira Code", monospace;
   /* Ember — the hot end of the oxide range. 7.5:1 on graphite, so it stays
      legible at the small sizes this mark is used at. */
-  color: #e8913f;
+  color: #f06000;
   font-weight: 400;
 }
 
@@ -272,7 +272,7 @@ h1, h2, h3, h4, h5, h6 {
   inset: -1px;
   border-radius: 16px;
   padding: 1px;
-  background: #c4441a;
+  background: #f06000;
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -387,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   width: 3px;
   height: 1em;
-  background-color: #e05a24;
+  background-color: #f06000;
   margin-left: 2px;
   vertical-align: text-bottom;
   animation: cursor-blink 1s step-end infinite;
