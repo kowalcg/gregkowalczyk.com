@@ -52,6 +52,19 @@ const kindLabel: Record<string, string> = {
         <div class="flex flex-col gap-6">
           {appearances.map((item) => (
             <article id={slugify(item.title)} class="fade-in-up glass-card p-8">
+              <div class="flex flex-col gap-6 sm:flex-row sm:items-start">
+                {item.artwork && (
+                  <img
+                    src={item.artwork}
+                    alt={`${item.show} cover art`}
+                    width="112"
+                    height="112"
+                    loading="lazy"
+                    class="h-24 w-24 flex-shrink-0 rounded-lg object-cover sm:h-28 sm:w-28"
+                    style="border: 1px solid rgba(255,255,255,0.10);"
+                  />
+                )}
+                <div class="min-w-0 flex-1">
               <div class="mb-3 flex flex-wrap items-center gap-3">
                 <span
                   class="rounded-full px-3 py-1 text-xs"
@@ -115,6 +128,8 @@ const kindLabel: Record<string, string> = {
                     {link.label} ↗
                   </a>
                 ))}
+              </div>
+                </div>
               </div>
             </article>
           ))}

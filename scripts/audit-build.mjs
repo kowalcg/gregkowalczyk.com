@@ -185,6 +185,12 @@ for (const file of pages) {
     if (!resolves(rel)) fail('missing-social-image', `${page} ${prop} → ${rel}`);
   }
 
+  // 2b. Every <img> must resolve. A body image that 404s is invisible in
+  //      testing and permanent in production.
+  for (const m of html.matchAll(/<img[^>]+src="(\/[^"]+)"/g)) {
+    if (!resolves(m[1])) fail('broken-image', `${page} → ${m[1]}`);
+  }
+
   // 3. Exactly one <h1> per page
   const h1s = [...html.matchAll(/<h1[\s>]/g)].length;
   if (h1s !== 1) fail('h1-count', `${page} has ${h1s} <h1> (expected 1)`);

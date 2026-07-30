@@ -7,11 +7,12 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "AI automation"
 featured: false
+image: "/images/blog/ai-agents-small-business.jpg"
+imageAlt: "Greg Kowalczyk using AI agents, Claude Code, Cursor, Perplexity, and custom workflows to automate small business operations"
 ---
 
 I built 2 live iOS apps at 55, with no traditional coding background, and the surprise was not that AI could write code — it was that AI could finally carry the dull business work between decisions. If you run a small business in 2026, automate the repeatable admin first: research, inbox triage, customer follow-up, SOP drafting, lead prep, basic reporting, and internal tool building with Claude Code, Hermes Agent, Cursor, Perplexity, and custom workflows. Not content. Not “an AI CEO.” Not a fake employee with a cartoon avatar. Start where dropped balls cost money. I learned this the hard way across GearTop, TapeGeeks, $75K+ in consulting work, $2M+ in managed ad spend, and 39 App Store rejections before RunMate Pro made it through review. This guide to **AI agents for small business owners 2026 on gregkowalczyk.com** is for founders who can sell, hire, ship, and manage cash — but do not want to become software engineers.
 
-![Greg Kowalczyk using AI agents, Claude Code, Cursor, Perplexity, and custom workflows to automate small business operations](/images/blog/ai-agents-small-business-owners-2026.jpg)
 
 > **Quick answer:** Small business owners should automate research, inbox triage, customer follow-up, reporting, SOPs, and internal tools before touching sales calls or public content. Use Perplexity for sourced research, Claude for reasoning, Cursor and Claude Code for app-like tools, and Hermes Agent for repeatable multi-step work.
 

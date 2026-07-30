@@ -41,6 +41,8 @@ export interface MediaItem {
   durationLabel?: string;
   /** Canonical URL for the appearance — used in schema. */
   url: string;
+  /** Show cover art, pulled from the podcast's own RSS <itunes:image>. */
+  artwork?: string;
   links: MediaLink[];
   summary: string;
   topics?: string[];
@@ -57,6 +59,7 @@ export const media: MediaItem[] = [
     duration: 'PT1H25M4S',
     durationLabel: '1 hr 25 min',
     url: 'https://podcasts.apple.com/ca/podcast/he-talks-to-ai-while-walking-the-dog-greg-kowalczyk/id1100488294?i=1000769484484',
+    artwork: '/images/media/truth-about-fi.webp',
     links: [
       {
         label: 'Apple Podcasts',
@@ -81,6 +84,7 @@ export const media: MediaItem[] = [
     duration: 'PT1H9M57S',
     durationLabel: '1 hr 10 min',
     url: 'https://rockstarinnercircle.com/podcasts/ai-greg-kowalcyzk-charles-sathmary/',
+    artwork: '/images/media/your-life-your-terms.webp',
     links: [
       { label: 'Rock Star Inner Circle', href: 'https://rockstarinnercircle.com/podcasts/ai-greg-kowalcyzk-charles-sathmary/' },
       {
@@ -111,6 +115,7 @@ export const media: MediaItem[] = [
     hosts: 'Tom & Nick Karadza (Rock Star Inner Circle)',
     date: '2020-12-02',
     url: 'https://www.youtube.com/watch?v=LjCDdJWowSM',
+    artwork: '/images/media/your-life-your-terms.webp',
     links: [{ label: 'Watch on YouTube', href: 'https://www.youtube.com/watch?v=LjCDdJWowSM' }],
     summary:
       'Brian Zammit and I came back to cover what had changed on Amazon: listing hijackers and pirated listings, shifting marketplace rules, and where online retail was heading.',
@@ -125,6 +130,7 @@ export const media: MediaItem[] = [
     duration: 'PT1H10M35S',
     durationLabel: '1 hr 11 min',
     url: 'https://www.youtube.com/watch?v=uTJEX53rWBY',
+    artwork: '/images/media/your-life-your-terms.webp',
     links: [{ label: 'Watch on YouTube', href: 'https://www.youtube.com/watch?v=uTJEX53rWBY' }],
     summary:
       'The first long conversation about the e-commerce side: private labelling, wholesaling, working with agents in China, shipping strategy, and building a brand on Amazon from nothing.',

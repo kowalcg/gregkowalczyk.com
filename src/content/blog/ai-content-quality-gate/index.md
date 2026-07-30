@@ -7,6 +7,8 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "AI & SEO"
 featured: false
+image: "/images/blog/ai-content-quality-gate.jpg"
+imageAlt: "A pre-publish checklist: search intent, human voice, sourced stats, valid schema, resolving internal links"
 ---
 
 One AI-written blog post does not go live on gregkowalczyk.com until it survives a 47-point AI content quality gate. That gate is how I turn a useful Claude draft into a post that covers the keyword, sounds like me, earns trust, gives LLMs quotable facts, and fits the same SEO pipeline I use on the TapeGeeks Shopify blog. I’m 55 years old, a mechanical engineer by training, and not a traditional developer. I built 2 live iOS apps at 55, shipped RunMate Pro after 39 App Store rejections, and still run GearTOP and TapeGeeks while building this personal site on Astro and Vercel. So I care less about theory and more about repeatable systems. If I do a task three times, I turn it into a checklist. The Greg Kowalczyk AI content quality gate is exactly that: a pre-publish inspection for AI-assisted writing, built from 28 years of engineering and business experience, $75K+ in consulting work, and real Shopify content tests.
