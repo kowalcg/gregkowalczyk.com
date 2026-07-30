@@ -221,9 +221,13 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL.href} />
 
-    <!-- Favicons -->
+    <!-- Favicons. apple-touch-icon was missing entirely, so iOS home-screen
+         saves fell back to a screenshot of the page. theme-color tints the
+         browser chrome on Android and iOS Safari to match the ground. -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#131417" />
 
     <!-- RSS -->
     <link
