@@ -242,6 +242,14 @@ for (const file of pages) {
     }
   }
 
+  // 9c. Scroll-reveal elements start at opacity:0 and are only shown when an
+  //     IntersectionObserver adds `.visible`. A page that uses .fade-in-up but
+  //     never adds that exact class renders blank below the fold — which is
+  //     what shipped on /media/ when its observer added `is-visible` instead.
+  if (html.includes('fade-in-up') && !/classList\.add\(\s*['"]visible['"]\s*\)/.test(html)) {
+    fail('fade-in-never-revealed', `${page} — uses .fade-in-up with no observer adding .visible`);
+  }
+
   // 10. Every JSON-LD block must be parseable
   for (const m of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
     try {

@@ -2,7 +2,7 @@
 name: "Magpie"
 tag: "Internal Tool · Live"
 tagColor: "purple"
-initials: "MG"
+image: "/images/projects/magpie.webp"
 description: "A shared visual brain for the team. Drop in a link, a screenshot, or a highlighted quote and Magpie enriches it — title, summary, category, thumbnail — then makes it searchable across every brand. Built because research kept getting done twice by different people."
 stats:
   - "Drag-and-drop, paste, browser extension, and mobile share-sheet capture"
