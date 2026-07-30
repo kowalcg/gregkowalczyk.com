@@ -8,14 +8,14 @@
 const timelineEntries = [
   {
     years: "1997-2011",
-    title: "Engineering Leadership",
-    subtitle: "(SMS-Siemag/Siemens)",
+    title: "Draftsman to Manager of Engineering",
+    subtitle: "(PRO-ECO / SMS-Siemag)",
     dotColor: "#f06000",
   },
   {
-    years: "2011-Present",
-    title: "Independent Consulting",
-    subtitle: "",
+    years: "2011-2019",
+    title: "Consulting Engineer",
+    subtitle: "(independent, multiple companies)",
     dotColor: "#f06000",
   },
   {
@@ -25,9 +25,15 @@ const timelineEntries = [
     dotColor: "#f06000",
   },
   {
-    years: "2024-Present",
-    title: "AI Tool Builder",
+    years: "2019-Present",
+    title: "E-Commerce Consulting",
     subtitle: "",
+    dotColor: "#f06000",
+  },
+  {
+    years: "2022-Present",
+    title: "Building With AI",
+    subtitle: "(Jarvis, then Jasper, then ChatGPT and Claude)",
     dotColor: "#f06000",
   },
 ];
@@ -92,13 +98,13 @@ const timelineEntries = [
       <div class="order-last lg:order-first">
         <div class="space-y-4" style="font-family: 'Outfit', sans-serif;">
           <p class="leading-relaxed" style="color: #798897;">
-            I'm an engineer who builds things. For 14 years at SMS-Siemag (prior PRO-ECO LTD), I led engineering teams on global-scale industrial projects — Chief Engineer, then Manager of Engineering for a 70-person department.
+            I'm an engineer who builds things. I graduated in 1997 and started as a draftsman, then designer, then design team leader, and finally Manager of Engineering for a 70-person department at PRO-ECO / SMS-Siemag — fourteen years on global-scale industrial projects.
           </p>
           <p class="leading-relaxed" style="color: #798897;">
-            In 2011, I went independent. In 2014, I started building e-commerce brands with my daughter. Two brands, running ever since. Learned SEO, ads, and marketing by doing it — not by reading about it. Spent $2M+ on advertising across Google, Amazon, and Meta.
+            In 2011 I left the corporate job and spent the next eight years as a consulting engineer, working across a lot of different companies. In 2014 I started building e-commerce brands with my daughter — two of them, running ever since. I learned SEO, ads, and marketing by doing it rather than reading about it, and spent $2M+ on advertising across Google, Amazon, and Meta. From 2019 the consulting shifted to e-commerce.
           </p>
           <p class="leading-relaxed" style="color: #798897;">
-            In 2024, I went all-in on AI. Built custom tools that replaced $75K+ in agency costs. Shipped two iOS apps as a non-coder. Started helping other businesses do the same thing.
+            I started using AI in production in 2022 — Jarvis first, then Jasper, well before most people had heard of any of it. When ChatGPT and Claude arrived I went deep. Since then: custom tools that replaced $75K+ in agency costs, two iOS apps shipped without a coding background, and a lot of other businesses helped to do the same.
           </p>
           <p class="leading-relaxed" style="color: #ffffff;">
             Now I build AI systems for businesses that want working solutions, not strategy decks. Everything I recommend, I've tested on my own businesses first. With my own money.
@@ -120,7 +126,7 @@ const timelineEntries = [
           ></div>
 
           <!-- Timeline entries -->
-          <div class="grid grid-cols-4 gap-4">
+          <div class="grid gap-4" style={`grid-template-columns: repeat(${timelineEntries.length}, minmax(0, 1fr));`}>
             {timelineEntries.map((entry) => (
               <div class="relative pt-8">
                 <!-- Dot -->

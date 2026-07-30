@@ -1,3 +1,9 @@
+> **Archived plan — February 2026. Do not copy figures from this file.**
+> The "28 years engineering" and "mid-seven-figure brands" lines below were both
+> wrong and are no longer used anywhere on the site. Engineering ran 1997–2019
+> (22 years) and revenue figures never appear in public content.
+> Source of truth: `src/data/site.ts`.
+
 # Multi-Page Redesign Implementation Plan
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.

@@ -22,7 +22,7 @@ From ongoing agency retainers → one-time builds they own.
 
 ### Unique Mechanism
 **The Engineer-Operator-Builder Stack**: Greg isn't one thing. He's three things stacked:
-1. **28-year engineer** (systems thinking, automation mindset, precision)
+1. **22-year engineer** (systems thinking, automation mindset, precision)
 2. **Mid-seven-figure e-commerce operator** (tests everything on his own businesses first)
 3. **AI tool builder** (actually codes, deploys, and ships working systems)
 
@@ -52,11 +52,11 @@ No traditional consultant has all three. Consultants advise. Developers code but
 - **Psychology:** Specificity angle (exact dollar amounts) + Social proof angle (did it for himself first) + Risk reversal (you own what gets built).
 
 ### Angle 3: The Engineer's Advantage
-- **The angle:** 28 years of engineering discipline applied to AI implementation — systems thinking that consultants and marketers simply don't have.
+- **The angle:** 22 years of engineering discipline applied to AI implementation — systems thinking that consultants and marketers simply don't have.
 - **Why it works:** Engineers are trusted for precision, reliability, and systems thinking. In a market full of marketing-background "AI consultants," Greg's engineering pedigree is genuinely rare. Business owners trust engineers to build things that work.
 - **Headline direction:** "28 Years of Engineering. Now I Build AI Systems That Replace Agency Work." / "Engineer-Built AI. Not Consultant-Advised AI."
 - **When to use:** When targeting analytically-minded prospects (other engineers, operators, finance-types) who distrust marketing people. Strong for B2B and manufacturing/industrial businesses exploring AI.
-- **Psychology:** Unique mechanism angle (the engineering background IS the mechanism) + Credibility through specificity (28 years, not "extensive experience").
+- **Psychology:** Unique mechanism angle (the engineering background IS the mechanism) + Credibility through specificity (22 years, not "extensive experience").
 
 ### Angle 4: The Operator Who Builds
 - **The angle:** Greg runs mid-seven-figure e-commerce brands AND builds AI tools — everything he recommends is tested on his own businesses first, with his own money.

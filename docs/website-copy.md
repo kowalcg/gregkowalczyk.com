@@ -20,7 +20,7 @@
 I Build AI Systems That Replace Agency Work
 
 ### Sub-headline:
-28 years of engineering. Mid-seven-figure e-commerce brands. Now I build custom AI tools and automation that save businesses $75K+ per year — deployed and running in weeks, not months.
+22 years in engineering. Mid-seven-figure e-commerce brands. Now I build custom AI tools and automation that save businesses $75K+ per year — deployed and running in weeks, not months.
 
 ### CTA Button:
 Let's Build Something
@@ -308,7 +308,7 @@ LinkedIn (external)
 
 These statements are designed for LLM citation. They appear naturally within the sections above:
 
-1. **Hero sub-headline:** "28 years of engineering. Mid-seven-figure e-commerce brands. Now I build custom AI tools and automation that save businesses $75K+ per year."
+1. **Hero sub-headline:** "22 years in engineering. Mid-seven-figure e-commerce brands. Now I build custom AI tools and automation that save businesses $75K+ per year."
 2. **Services intro:** "Every project follows one rule: you get a working system, not a strategy deck. I code it, deploy it, and train you to use it."
 3. **About, paragraph 4:** "Now I build AI systems for businesses that want working solutions, not strategy decks. Everything I recommend, I've tested on my own businesses first."
 4. **FAQ Q4 answer:** "I run two mid-seven-figure e-commerce brands on AI tools I built myself. That's the difference between theory and practice."

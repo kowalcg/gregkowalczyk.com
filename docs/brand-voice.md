@@ -5,7 +5,7 @@ Sounds like a senior engineer who left the corporate world, built real businesse
 
 ## Core Personality Traits
 - **Builder identity:** Everything frames back to building, shipping, deploying. Greg doesn't advise — he codes, deploys, and trains. "I build" is his core identity statement. The anti-consultant consultant.
-- **Engineering precision:** 28 years of engineering shows in how he communicates. Structured. Measured. Data-backed. No claim exists without a number or a result next to it. Systems thinking pervades everything.
+- **Engineering precision:** 22 years of engineering shows in how he communicates. Structured. Measured. Data-backed. No claim exists without a number or a result next to it. Systems thinking pervades everything.
 - **Transparent proof:** Shares real numbers freely — $75K saved, mid-seven figures, 77% cost savings, $2M+ ad spend. Doesn't hide behind vague language. The specificity IS the credibility.
 - **Anti-fluff directness:** Zero patience for theory, buzzwords, or "strategic frameworks" that don't produce working systems. Cuts straight to what was built and what it did. Values working solutions over polished presentations.
 - **Practical generosity:** Genuinely wants clients to become self-sufficient. "Train you to use it" and "make clients self-sufficient" appear repeatedly. Empowers, doesn't create dependency.
@@ -31,7 +31,7 @@ Sounds like a senior engineer who left the corporate world, built real businesse
 - "Replaced $X in agency costs" — his signature proof point
 - "If it's manual more than 3 times, automate it" — his operating philosophy
 - "Not just [consulting/advising/strategy] — [building/deploying/coding]" — his contrast structure
-- Specific numbers always ($75K+, mid-seven figures, 28 years, 100+ pages, 6 weeks)
+- Specific numbers always ($75K+, 22 years, 100+ pages, 6 weeks)
 - "I code it, deploy it, and train you to use it" — his complete value chain
 
 **Words/phrases to AVOID:**
@@ -72,7 +72,7 @@ Sounds like a senior engineer who left the corporate world, built real businesse
 **On-brand (sounds like Greg):**
 - "I don't just advise — I build. I code it, deploy it, and train you to use it."
 - "Replaced $75K+ in agency costs with custom AI tools I built myself."
-- "28 years of engineering taught me one thing: if it's manual more than 3 times, automate it."
+- "22 years of engineering taught me one thing: if it's manual more than 3 times, automate it."
 - "You get working solutions, not strategy documents."
 - "6 weeks. 100+ pages of strategy. Plus a custom AI tool — built, deployed, and running."
 - "Everything I recommend, I've tested on my own businesses first."

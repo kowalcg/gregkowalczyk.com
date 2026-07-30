@@ -95,7 +95,7 @@ GearTop: 4.6/5 stars, 2,400+ Amazon reviews. Same $29.99 as Columbia. CleverHike
 
 TapeGeeks: specific Amazon ratings for each product line, professional validator mentions (physios, coaches, trainers), Breathe+ tagline ("Better Sleep Through Better Breathing").
 
-This site: $2M+ in ad spend managed. 39 App Store rejections before approval. Two live iOS apps built without a coding background. 28 years of engineering experience applied to AI systems.
+This site: $2M+ in ad spend managed. 39 App Store rejections before approval. Two live iOS apps built without a coding background. 22 years of engineering experience applied to AI systems.
 
 When these proof points are in the voice file, the AI uses them naturally. When they're not, the AI invents generic-sounding credibility signals that nobody believes.
 

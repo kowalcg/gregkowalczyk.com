@@ -52,7 +52,7 @@ Around that core it adds:
 
 React Native and Expo, scaffolded in VibeCode, with Claude Code doing the heavy lifting on
 logic and API integration. I do not have a software development background — I'm a
-mechanical engineer who spent 28 years in industrial equipment design.
+mechanical engineer who spent 22 years in industrial equipment design.
 
 What made it possible wasn't that AI writes code. It's that AI closes the gap between
 *knowing what the thing should do* and *having a working build to test*. I could specify
