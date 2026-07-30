@@ -16,6 +16,7 @@ interface Props {
 import '../styles/global.css';
 import { faqs } from '../data/faqs';
 import { yearsInEngineering } from '../data/site';
+import { appearances, mediaSameAs, slugify } from '../data/media';
 import Analytics from '../components/Analytics.astro';
 
 const {
@@ -70,14 +71,22 @@ const graph: Record<string, unknown>[] = [
         "Answer Engine Optimization",
         "Mechanical Engineering"
       ],
+      /**
+       * sameAs is the entity-disambiguation signal. "Greg Kowalczyk" is a
+       * contested SERP — two obituaries for a different Gregory Kowalczyk and
+       * several namesakes rank above this site — so every verifiable
+       * third-party profile and media appearance is listed as corroboration.
+       */
       "sameAs": [
         "https://www.linkedin.com/in/gregkowalczyk/",
         "https://x.com/kowalcg",
         "https://www.facebook.com/Kowalcg/",
         "https://github.com/kowalcg",
-        "https://rockstarinnercircle.com/podcasts/ai-greg-kowalcyzk-charles-sathmary/",
-        "https://podcasts.apple.com/ca/podcast/he-talks-to-ai-while-walking-the-dog-greg-kowalczyk/id1100488294?i=1000769484484"
+        ...mediaSameAs,
       ],
+      "subjectOf": appearances.map((m) => ({
+        "@id": `${SITE}/media/#${slugify(m.title)}`,
+      })),
       "worksFor": [
         {
           "@type": "Organization",

@@ -1,0 +1,205 @@
+---
+/**
+ * /media/ — Podcasts, talks, and teaching.
+ *
+ * This content previously lived as hand-rolled cards inside about.astro with no
+ * structured data at all. It has its own route now because it does a specific
+ * job: consolidating the "Greg Kowalczyk" entity on a brand SERP that is
+ * currently shared with two obituaries and several namesakes. Every appearance
+ * emits PodcastEpisode/Event schema tied to the Person node.
+ */
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+import { appearances, ongoing, mediaSchema, slugify } from '../data/media';
+import { SITE_URL } from '../data/site';
+
+const schema = mediaSchema(SITE_URL);
+
+const fmtDate = (iso?: string) =>
+  iso
+    ? new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-CA', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+      })
+    : undefined;
+
+const kindLabel: Record<string, string> = {
+  podcast: 'Podcast',
+  talk: 'Talk',
+  teaching: 'Teaching',
+};
+---
+
+<Layout
+  title="Podcasts, Talks & Press | Greg Kowalczyk"
+  description="Podcast appearances, talks, and teaching by Greg Kowalczyk — building AI tools without a coding background, e-commerce operations, and organizing the Bronte Harbour Classic."
+  extraSchema={schema}
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Media"
+      subtitle="Conversations about building with AI, running product brands, and shipping software without a development team."
+    />
+
+    <section class="pb-8">
+      <div class="mx-auto max-w-4xl px-6">
+        <div class="flex flex-col gap-6">
+          {appearances.map((item) => (
+            <article id={slugify(item.title)} class="fade-in-up glass-card p-8">
+              <div class="mb-3 flex flex-wrap items-center gap-3">
+                <span
+                  class="rounded-full px-3 py-1 text-xs"
+                  style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.12); color: #a78bfa;"
+                >
+                  {kindLabel[item.kind]}
+                </span>
+                {item.date && (
+                  <time
+                    datetime={item.date}
+                    class="text-sm"
+                    style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;"
+                  >
+                    {fmtDate(item.date)}
+                  </time>
+                )}
+                {item.durationLabel && (
+                  <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #8b949e;">
+                    {item.durationLabel}
+                  </span>
+                )}
+              </div>
+
+              <h2
+                class="mb-1 text-xl font-bold md:text-2xl"
+                style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
+              >
+                {item.title}
+              </h2>
+
+              <p class="mb-4 text-sm" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                {item.show}{item.hosts ? ` · with ${item.hosts}` : ''}
+              </p>
+
+              <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                {item.summary}
+              </p>
+
+              {item.topics && item.topics.length > 0 && (
+                <ul class="mb-6 flex flex-wrap gap-2 p-0" style="list-style: none;">
+                  {item.topics.map((topic) => (
+                    <li
+                      class="rounded-full px-3 py-1 text-xs"
+                      style="font-family: 'Outfit', sans-serif; color: #8b949e; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);"
+                    >
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="flex flex-wrap gap-3">
+                {item.links.map((link) => (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                    style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                  >
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16 pt-8 md:pb-24">
+      <div class="mx-auto max-w-4xl px-6">
+        <h2
+          class="mb-8 text-2xl font-bold md:text-3xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+        >
+          <span class="comment-prefix">// </span><span class="gradient-text">Teaching &amp; Community</span>
+        </h2>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {ongoing.map((item) => (
+            <div class="fade-in-up glass-card p-8">
+              <h3
+                class="mb-2 text-lg font-bold"
+                style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+              >
+                {item.title}
+              </h3>
+              <p class="mb-3 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;">
+                {item.show}{item.dateLabel ? ` · ${item.dateLabel}` : ''}
+              </p>
+              <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                {item.summary}
+              </p>
+              {item.links.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                  style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                >
+                  {link.label} ↗
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-10 glass-card p-8">
+          <h3
+            class="mb-3 text-lg font-bold"
+            style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+          >
+            Booking
+          </h3>
+          <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+            Available for podcasts, panels, and workshops on building with AI as a non-developer,
+            running product brands on Amazon and Shopify, and what actually works when a small
+            business tries to automate. I bring working tools, not slides about the future.
+          </p>
+          <a
+            href="/contact"
+            class="inline-block rounded-full px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:scale-105"
+            style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); font-family: 'Outfit', sans-serif;"
+          >
+            Get in touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+  <Footer />
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</Layout>

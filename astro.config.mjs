@@ -78,7 +78,10 @@ const lastmodMap = buildLastmodMap();
 export default defineConfig({
   site: SITE,
   output: 'static',
-  adapter: vercel(),
+  // webAnalytics injects Vercel's own pageview script — no extra dependency.
+  // (@vercel/speed-insights was skipped: its optional @sveltejs/kit peer drags
+  // in a conflicting vite major and breaks `npm install` on this tree.)
+  adapter: vercel({ webAnalytics: { enabled: true } }),
   markdown: {
     remarkPlugins: [remarkStripH1],
   },
