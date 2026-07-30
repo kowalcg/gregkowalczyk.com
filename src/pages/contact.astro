@@ -16,6 +16,90 @@ import Footer from '../components/Footer.astro';
       title="Let's Build Something"
       subtitle="Tell me what's eating your time or budget. I'll tell you if AI can fix it — and exactly how I'd build the solution."
     />
+
+    {/*
+      This page was 142 words — the thinnest on the site — yet it ranks
+      (17 impressions, avg position 18.3 over 90 days). Setting expectations
+      before the form also filters out mismatched enquiries.
+    */}
+    <section class="pb-4">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {[
+            {
+              step: '01',
+              title: 'You send the problem',
+              body:
+                "Not a spec — a problem. “We pay an agency $4K a month to write listings.” “Nobody knows yesterday's numbers until Thursday.” That's enough for me to tell you whether it's worth building.",
+            },
+            {
+              step: '02',
+              title: 'I reply within two business days',
+              body:
+                "Usually with a straight answer and a rough range. If AI is the wrong tool for your problem, I'll say so — that costs me a project and saves you a lot more.",
+            },
+            {
+              step: '03',
+              title: 'We scope it before anything is built',
+              body:
+                'A fixed scope and a fixed budget, agreed up front. Builds typically run $5,000–$25,000 and ship in 2–8 weeks. Coaching engagements run $3,000–$8,000.',
+            },
+          ].map((item) => (
+            <div class="fade-in-up glass-card p-8">
+              <p
+                class="mb-3 text-sm"
+                style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;"
+              >
+                {item.step}
+              </p>
+              <h2
+                class="mb-3 text-lg font-bold"
+                style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
+              >
+                {item.title}
+              </h2>
+              <p class="leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="fade-in-up glass-card p-8">
+            <h2
+              class="mb-4 text-lg font-bold"
+              style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
+            >
+              Good fit
+            </h2>
+            <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+              <li>You run a business that already works and want to take cost or manual effort out of it.</li>
+              <li>You're paying an agency for execution work — content, reporting, email, listings, ad copy.</li>
+              <li>You sell on Shopify, Amazon, or both, and your systems don't talk to each other.</li>
+              <li>You want to own the tool at the end, not rent it.</li>
+              <li>You're a local service business that's effectively invisible online.</li>
+            </ul>
+          </div>
+
+          <div class="fade-in-up glass-card p-8">
+            <h2
+              class="mb-4 text-lg font-bold"
+              style="font-family: 'Outfit', sans-serif; color: #e6edf3;"
+            >
+              Probably not a fit
+            </h2>
+            <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+              <li>You want a strategy deck. I build working systems; the plan comes with the build.</li>
+              <li>You need a full-time developer on staff — that's a hire, not a project.</li>
+              <li>The budget is under a few thousand dollars. Say so anyway and I'll point you at tools you can run yourself.</li>
+              <li>You want AI added because it sounds good. If there's no number it moves, I'll tell you.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <Contact />
   </main>
   <Footer />
