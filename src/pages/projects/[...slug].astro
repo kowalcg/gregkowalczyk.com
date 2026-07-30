@@ -1,0 +1,159 @@
+---
+/**
+ * /projects/<slug>/ — per-project build story.
+ *
+ * Only projects with a markdown body get a page. These exist to serve the
+ * proof-of-work long tail identified in docs/keyword-strategy.md — queries like
+ * "how to build an ios app without coding" or "mcp server for amazon sellers",
+ * where first-hand evidence beats a directory listing.
+ */
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_URL } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects
+    .filter((p) => (p.body ?? '').trim().length > 0)
+    .map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+
+const pageUrl = `${SITE_URL}/projects/${project.slug}/`;
+
+const schema: Record<string, unknown> = {
+  '@type': d.schemaType,
+  '@id': `${pageUrl}#project`,
+  name: d.name,
+  description: d.description,
+  url: pageUrl,
+  ...(d.image ? { image: new URL(d.image, SITE_URL).href } : {}),
+  ...(d.year ? { datePublished: d.year } : {}),
+  ...(d.schemaType === 'SoftwareApplication'
+    ? {
+        applicationCategory: 'BusinessApplication',
+        ...(d.platform ? { operatingSystem: d.platform } : {}),
+      }
+    : {}),
+  creator: { '@id': `${SITE_URL}/#person` },
+  ...(d.tech.length ? { keywords: d.tech.join(', ') } : {}),
+};
+---
+
+<Layout
+  title={`${d.name} | Built by Greg Kowalczyk`}
+  description={d.description}
+  ogImage={d.image}
+  extraSchema={[schema]}
+>
+  <Nav />
+  <main>
+    <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <header class="mb-10">
+        <div class="mb-4 flex flex-wrap items-center gap-3">
+          <span
+            class="rounded-full px-3 py-1 text-xs"
+            style={`font-family: 'JetBrains Mono', monospace; background: ${
+              d.tagColor === 'purple' ? 'rgba(139, 92, 246, 0.1)' : 'rgba(6, 182, 212, 0.1)'
+            }; color: ${d.tagColor === 'purple' ? '#8b5cf6' : '#06b6d4'};`}
+          >
+            {d.tag}
+          </span>
+          {d.year && (
+            <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #8b949e;">
+              {d.year}
+            </span>
+          )}
+        </div>
+
+        <h1
+          class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace;"
+        >
+          <span class="gradient-text">{d.name}</span>
+        </h1>
+
+        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+          {d.description}
+        </p>
+      </header>
+
+      {d.image && (
+        <div
+          class="mb-12 overflow-hidden rounded-2xl"
+          style="border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
+        >
+          <img src={d.image} alt={`${d.name} screenshot`} class="w-full" loading="lazy" />
+        </div>
+      )}
+
+      {d.stats.length > 0 && (
+        <div class="glass-card mb-12 p-8">
+          <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+            {d.stats.map((stat) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                  style="background-color: #06b6d4;"
+                ></span>
+                <span>{stat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="prose-blog">
+        <Content />
+      </div>
+
+      {d.tech.length > 0 && (
+        <div class="mt-12 flex flex-wrap gap-2">
+          {d.tech.map((t) => (
+            <span
+              class="rounded-full px-3 py-1 text-xs"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #8b949e; border: 1px solid rgba(255,255,255,0.08);"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {d.links.length > 0 && (
+        <div class="mt-8 flex flex-wrap gap-3">
+          {d.links.map((link) => (
+            <a
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style="background: rgba(255,255,255,0.06); color: #e6edf3; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+            >
+              {link.label} {link.external ? '↗' : '→'}
+            </a>
+          ))}
+        </div>
+      )}
+
+      <p class="mt-12">
+        <a
+          href="/projects"
+          class="text-sm transition-colors duration-200 hover:text-[#e6edf3]"
+          style="font-family: 'Outfit', sans-serif; color: #8b949e;"
+        >
+          ← All projects
+        </a>
+      </p>
+    </article>
+
+    <ContactCTA />
+  </main>
+  <Footer />
+</Layout>

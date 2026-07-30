@@ -1,0 +1,100 @@
+---
+/**
+ * /projects/ — all builds, rendered from the projects content collection.
+ *
+ * Cards used to be hardcoded here and duplicated again in
+ * components/ProjectsPreview.astro. Both now read src/content/projects, so
+ * there is one place to edit a description.
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import PageHero from '../../components/PageHero.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_URL } from '../../data/site';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+/** A project with a body gets its own page; otherwise the card is the whole thing. */
+const hasDetail = (p: (typeof projects)[number]) => (p.body ?? '').trim().length > 0;
+
+const itemListSchema = {
+  '@type': 'ItemList',
+  '@id': `${SITE_URL}/projects/#list`,
+  name: 'Projects by Greg Kowalczyk',
+  numberOfItems: projects.length,
+  itemListElement: projects.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: p.data.name,
+    url: hasDetail(p) ? `${SITE_URL}/projects/${p.slug}/` : `${SITE_URL}/projects/`,
+  })),
+};
+---
+
+<Layout
+  title="Projects | Greg Kowalczyk — AI & Digital Growth Consultant"
+  description="Apps, tools, and systems built by Greg Kowalczyk: two iOS apps live in the App Store, a 12,770-clinic national directory, an Amazon seller intelligence MCP server, and more — all built with AI-assisted development."
+  extraSchema={[itemListSchema]}
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Things I've Built"
+      subtitle="Not client decks. Not demos. Actual tools, apps, and systems deployed and running in the real world."
+    />
+
+    <section class="py-12 md:py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="flex flex-col gap-8">
+          {projects.map((project) => (
+            <ProjectCard
+              name={project.data.name}
+              tag={project.data.tag}
+              tagColor={project.data.tagColor}
+              image={project.data.image}
+              initials={project.data.initials}
+              callout={project.data.callout}
+              description={project.data.description}
+              stats={project.data.stats}
+              tech={project.data.tech}
+              links={[
+                ...(hasDetail(project)
+                  ? [{ label: 'Read the build story', href: `/projects/${project.slug}/`, external: false }]
+                  : []),
+                ...project.data.links,
+              ]}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      heading="Want to Build Something Like This?"
+      body="I build custom tools, apps, and systems for businesses that want to stop paying agencies and start owning their technology."
+    />
+  </main>
+  <Footer />
+
+  <script>
+    document.querySelectorAll('.fade-in-up').forEach((el) => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(el);
+    });
+  </script>
+</Layout>

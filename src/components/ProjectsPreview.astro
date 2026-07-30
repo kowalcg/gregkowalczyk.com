@@ -1,4 +1,30 @@
 ---
+/**
+ * ProjectsPreview.astro — homepage teaser for /projects/.
+ *
+ * Previously hardcoded its own copy of each project's name, tag and description,
+ * duplicating the projects page — and the fourth card had drifted outside the
+ * flex container, so it rendered outside the grid. It now reads the entries
+ * marked `featured: true` in src/content/projects, so the two cannot diverge.
+ */
+import { getCollection } from 'astro:content';
+
+const featured = (await getCollection('projects', ({ data }) => data.featured && !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+/** Initials for the tile when a project doesn't specify them. */
+const initialsFor = (name: string, explicit?: string) =>
+  explicit ??
+  name
+    .replace(/[^a-zA-Z ]/g, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+
+const hasDetail = (p: (typeof featured)[number]) => (p.body ?? '').trim().length > 0;
 ---
 
 <section class="py-24 md:py-32">
@@ -9,88 +35,55 @@
     >
       <span class="comment-prefix">// </span><span class="gradient-text">Things I've Built</span>
     </h2>
-    <p
-      class="mb-12 text-center"
-      style="font-family: 'Outfit', sans-serif; color: #8b949e;"
-    >
+    <p class="mb-12 text-center" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
       Not demos. Real tools, apps, and systems deployed and running.
     </p>
 
     <div class="flex flex-col gap-6">
-
-      <div class="fade-in-up glass-card p-8">
-        <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
-          <div
-            class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
-            style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
+      {featured.map((project) => {
+        const href = hasDetail(project) ? `/projects/${project.slug}/` : '/projects';
+        const accent =
+          project.data.tagColor === 'purple'
+            ? { bg: 'rgba(139, 92, 246, 0.1)', fg: '#8b5cf6' }
+            : { bg: 'rgba(6, 182, 212, 0.1)', fg: '#06b6d4' };
+        return (
+          <a
+            href={href}
+            class="fade-in-up glass-card block p-8 transition-all duration-200 hover:scale-[1.01]"
           >
-            <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">SU</span>
-          </div>
-          <div>
-            <div class="mb-2 flex items-center gap-3">
-              <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(6, 182, 212, 0.1); color: #06b6d4;">iOS App · Live</span>
+            <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
+              <div
+                class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
+                style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
+              >
+                <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">
+                  {initialsFor(project.data.name, project.data.initials)}
+                </span>
+              </div>
+              <div>
+                <div class="mb-2 flex flex-wrap items-center gap-3">
+                  <span
+                    class="rounded-full px-3 py-1 text-xs"
+                    style={`font-family: 'JetBrains Mono', monospace; background: ${accent.bg}; color: ${accent.fg};`}
+                  >
+                    {project.data.tag}
+                  </span>
+                </div>
+                <h3
+                  class="mb-2 text-lg font-bold"
+                  style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
+                >
+                  {project.data.name}
+                </h3>
+                <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">
+                  {project.data.description}
+                </p>
+              </div>
             </div>
-            <h3 class="mb-2 text-lg font-bold" style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">SunUp by GearTOP</h3>
-            <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">Personalized UV safety app — burn time by skin type, 48-hour UV forecasts, family mode, AQI. Live in the App Store. Built as a non-coder.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-in-up glass-card p-8">
-        <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
-          <div
-            class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
-            style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
-          >
-            <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">RM</span>
-          </div>
-          <div>
-            <div class="mb-2 flex items-center gap-3">
-              <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">iOS App · Live</span>
-            </div>
-            <h3 class="mb-2 text-lg font-bold" style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">RunMate Pro</h3>
-            <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">GPS run tracking + shoe mileage management + injury prevention. Approved after 39 App Store rejections. Live since September 2025.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-in-up glass-card p-8">
-        <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
-          <div
-            class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
-            style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(255,255,255,0.08);"
-          >
-            <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">CC</span>
-          </div>
-          <div>
-            <div class="mb-2 flex items-center gap-3">
-              <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(6, 182, 212, 0.1); color: #06b6d4;">AI Web App</span>
-            </div>
-            <h3 class="mb-2 text-lg font-bold" style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">Content Creator PRO</h3>
-            <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">Custom AI prompt generator for a $537K/year business. Replaced a content agency. Deployed on GitHub Pages and used daily.</p>
-          </div>
-        </div>
-      </div>
-
+          </a>
+        );
+      })}
     </div>
-
-      <div class="fade-in-up glass-card p-8">
-        <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
-          <div
-            class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl"
-            style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(139, 92, 246, 0.15)); border: 1px solid rgba(255,255,255,0.08);"
-          >
-            <span style="font-family: 'JetBrains Mono', monospace; color: #e6edf3; opacity: 0.5; font-weight: bold;">SC</span>
-          </div>
-          <div>
-            <div class="mb-2 flex items-center gap-3">
-              <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(6, 182, 212, 0.1); color: #06b6d4;">Web Directory · Live</span>
-            </div>
-            <h3 class="mb-2 text-lg font-bold" style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;">SportClinicFinder.com</h3>
-            <p class="text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #8b949e;">Canada-wide sports clinic directory — 12,770 clinics, 521 cities. Search by city, injury, or specialty. Free for patients and clinics.</p>
-          </div>
-        </div>
-      </div>
 
     <div class="mt-10 text-center">
       <a

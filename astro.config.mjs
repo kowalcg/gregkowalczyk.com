@@ -52,12 +52,24 @@ function buildLastmodMap() {
     // No blog dir yet — nothing to map.
   }
 
+  // Project detail pages — mtime of the entry file.
+  const projectDir = 'src/content/projects';
+  try {
+    for (const file of readdirSync(projectDir)) {
+      if (!file.endsWith('.md')) continue;
+      const slug = file.replace(/\.md$/, '');
+      map.set(`${SITE}/projects/${slug}/`, statSync(join(projectDir, file)).mtime.toISOString());
+    }
+  } catch {
+    // No projects collection yet.
+  }
+
   // Static pages — fall back to source mtime.
   const pageFiles = {
     [`${SITE}/`]: 'src/pages/index.astro',
     [`${SITE}/about/`]: 'src/pages/about.astro',
     [`${SITE}/services/`]: 'src/pages/services.astro',
-    [`${SITE}/projects/`]: 'src/pages/projects.astro',
+    [`${SITE}/projects/`]: 'src/pages/projects/index.astro',
     [`${SITE}/contact/`]: 'src/pages/contact.astro',
     [`${SITE}/media/`]: 'src/pages/media.astro',
     [`${SITE}/news/`]: 'src/pages/news/index.astro',
