@@ -41,8 +41,10 @@ export interface MediaItem {
   durationLabel?: string;
   /** Canonical URL for the appearance — used in schema. */
   url: string;
-  /** Show cover art, pulled from the podcast's own RSS <itunes:image>. */
+  /** Show cover art (podcast RSS <itunes:image>) or the video thumbnail. */
   artwork?: string;
+  /** Set when the appearance is watchable on YouTube — adds VideoObject schema. */
+  youtubeId?: string;
   links: MediaLink[];
   summary: string;
   topics?: string[];
@@ -115,7 +117,8 @@ export const media: MediaItem[] = [
     hosts: 'Tom & Nick Karadza (Rock Star Inner Circle)',
     date: '2020-12-02',
     url: 'https://www.youtube.com/watch?v=LjCDdJWowSM',
-    artwork: '/images/media/your-life-your-terms.webp',
+    artwork: '/images/media/ylyt-2020-amazon-updates.webp',
+    youtubeId: 'LjCDdJWowSM',
     links: [{ label: 'Watch on YouTube', href: 'https://www.youtube.com/watch?v=LjCDdJWowSM' }],
     summary:
       'Brian Zammit and I came back to cover what had changed on Amazon: listing hijackers and pirated listings, shifting marketplace rules, and where online retail was heading.',
@@ -130,7 +133,8 @@ export const media: MediaItem[] = [
     duration: 'PT1H10M35S',
     durationLabel: '1 hr 11 min',
     url: 'https://www.youtube.com/watch?v=uTJEX53rWBY',
-    artwork: '/images/media/your-life-your-terms.webp',
+    artwork: '/images/media/ylyt-2018-ecommerce-empires.webp',
+    youtubeId: 'uTJEX53rWBY',
     links: [{ label: 'Watch on YouTube', href: 'https://www.youtube.com/watch?v=uTJEX53rWBY' }],
     summary:
       'The first long conversation about the e-commerce side: private labelling, wholesaling, working with agents in China, shipping strategy, and building a brand on Amazon from nothing.',
@@ -193,6 +197,18 @@ export function mediaSchema(siteUrl: string) {
     ...(item.kind === 'podcast'
       ? { actor: { '@id': `${siteUrl}/#person` } }
       : { performer: { '@id': `${siteUrl}/#person` } }),
+    ...(item.youtubeId
+      ? {
+          video: {
+            '@type': 'VideoObject',
+            name: item.title,
+            description: item.summary,
+            embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+            thumbnailUrl: item.artwork ? `${siteUrl}${item.artwork}` : undefined,
+            ...(item.date ? { uploadDate: item.date } : {}),
+          },
+        }
+      : {}),
   }));
 }
 
