@@ -1,38 +1,34 @@
 ---
 /**
- * Testimonials.astro — Client testimonials / social proof section
- * Three glass cards in a responsive grid.
- * TODO: Replace placeholder content with real client quotes when available.
+ * Testimonials.astro — Real client quotes only.
+ *
+ * ⚠️ This component previously shipped three INVENTED quotes attributed to
+ * "Client Name / Business Owner / Company Name" under the heading "What Clients
+ * Say". They were live in production. Never do that again — an empty section is
+ * honest, a fabricated one is not.
+ *
+ * Rules for adding an entry:
+ *   1. The quote must be something the person actually said or wrote.
+ *   2. Real name, real title, real company — no placeholders, no composites.
+ *   3. You must have their explicit permission to publish it.
+ *
+ * The section renders nothing while this array is empty, so it is safe to
+ * deploy as-is.
  */
 
-const testimonials = [
-  {
-    // TODO: Replace with real testimonial
-    quote: "Greg built an AI content system that replaced work we were paying $3,000/month for. The output quality is better and we don't wait days for turnaround anymore.",
-    name: "Client Name",
-    title: "Business Owner",
-    company: "Company Name",
-    placeholder: true,
-  },
-  {
-    // TODO: Replace with real testimonial
-    quote: "We had no visibility into our daily numbers. Greg set up an automated reporting dashboard in a weekend. Now I see everything by 6am without anyone pulling a single spreadsheet.",
-    name: "Client Name",
-    title: "E-Commerce Operator",
-    company: "Company Name",
-    placeholder: true,
-  },
-  {
-    // TODO: Replace with real testimonial
-    quote: "I expected a strategy document. I got a working system. That's the difference — Greg actually builds the thing, not just the plan.",
-    name: "Client Name",
-    title: "Founder",
-    company: "Company Name",
-    placeholder: true,
-  },
+interface Testimonial {
+  quote: string;
+  name: string;
+  title: string;
+  company: string;
+}
+
+const testimonials: Testimonial[] = [
+  // Awaiting real quotes — candidates: Chocolat on James, Todd McDaniel, Pharmex.
 ];
 ---
 
+{testimonials.length > 0 && (
 <section class="py-24 md:py-32">
   <div class="mx-auto max-w-6xl px-6">
     <!-- Section Heading -->
@@ -97,7 +93,7 @@ const testimonials = [
                 class="text-xs"
                 style="font-family: 'Outfit', sans-serif; color: #8b949e;"
               >
-                {t.title}{t.company !== "Company Name" ? `, ${t.company}` : ""}
+                {t.title}, {t.company}
               </p>
             </div>
           </div>
@@ -106,3 +102,4 @@ const testimonials = [
     </div>
   </div>
 </section>
+)}

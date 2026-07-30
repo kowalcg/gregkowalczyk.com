@@ -3,6 +3,8 @@
  * Footer.astro — Simple site footer
  * Copyright, LinkedIn icon, and tagline. Stacks vertically on mobile.
  */
+
+import { currentYear } from '../data/site';
 ---
 
 <footer style="background-color: #0f0a1e; border-top: 1px solid rgba(255,255,255,0.08);">
@@ -12,7 +14,7 @@
       class="text-sm text-[#8b949e]"
       style="font-family: 'Outfit', sans-serif;"
     >
-      &copy; 2026 Greg Kowalczyk. Built with Astro.
+      &copy; {currentYear} Greg Kowalczyk. Built with Astro.
     </p>
 
     <!-- Center: Social Icons -->

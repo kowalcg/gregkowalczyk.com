@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import Footer from '../../components/Footer.astro';
+import { SITE_URL } from '../../data/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -25,28 +26,32 @@ const formattedDate = post.data.pubDate.toLocaleDateString('en-CA', {
 const wordCount = post.body.split(/\s+/).length;
 const readingTime = Math.ceil(wordCount / 230);
 
+/**
+ * BlogPosting schema.
+ *
+ * This is passed into <Layout> via `extraSchema` rather than rendered after the
+ * component. Rendering it outside <Layout> put the <script> tag *after*
+ * </html> in the built file — invalid document structure that parsers can drop.
+ *
+ * Every URL uses the canonical www host; mixing in the apex splits the entity
+ * across two identities in Google's index.
+ */
+const postUrl = `${SITE_URL}/news/${post.slug}/`;
+
 const articleJsonLd = {
-  "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "@id": `${postUrl}#article`,
   "headline": post.data.title,
   "description": post.data.description,
-  "author": {
-    "@type": "Person",
-    "name": post.data.author,
-    "url": "https://www.linkedin.com/in/gregkowalczyk/",
-    "image": "https://gregkowalczyk.com/images/greg-headshot.jpg",
-    "jobTitle": post.data.authorTitle,
-    "sameAs": "https://www.linkedin.com/in/gregkowalczyk/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Greg Kowalczyk",
-    "url": "https://gregkowalczyk.com"
-  },
+  "author": { "@id": `${SITE_URL}/#person` },
+  "publisher": { "@id": `${SITE_URL}/#person` },
   "datePublished": post.data.pubDate.toISOString(),
-  "dateModified": post.data.updatedDate?.toISOString() ?? post.data.pubDate.toISOString(),
-  "url": `https://gregkowalczyk.com/news/${post.slug}`,
-  "image": post.data.image ?? "/images/og-default.jpg"
+  "dateModified": (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  "url": postUrl,
+  "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl },
+  "image": new URL(post.data.image ?? "/images/og-default.jpg", SITE_URL).href,
+  "wordCount": wordCount,
+  ...(post.data.tag ? { "keywords": post.data.tag } : {}),
 };
 ---
 
@@ -56,8 +61,9 @@ const articleJsonLd = {
   ogType="article"
   ogImage={post.data.image ?? "/images/og-default.jpg"}
   articlePublishedTime={post.data.pubDate.toISOString()}
-  articleModifiedTime={post.data.updatedDate?.toISOString()}
+  articleModifiedTime={(post.data.updatedDate ?? post.data.pubDate).toISOString()}
   articleAuthor={post.data.author}
+  extraSchema={[articleJsonLd]}
 >
   <Nav />
   <main>
@@ -168,8 +174,6 @@ const articleJsonLd = {
   <Footer />
 </Layout>
 
-<script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
-
 <style is:global>
   /* ── Base prose ─────────────────────────────────── */
   .prose-blog {
@@ -179,10 +183,9 @@ const articleJsonLd = {
     line-height: 1.85;
   }
 
-  /* ── Hide duplicate H1 (markdown content starts with # title) ── */
-  .prose-blog h1 {
-    display: none;
-  }
+  /* Markdown H1s are stripped at build time by the remark plugin in
+     astro.config.mjs — the template already renders the page's only <h1>.
+     Hiding them with display:none used to leave two <h1>s in the markup. */
 
   /* ── Section headings ────────────────────────────── */
   .prose-blog h2 {

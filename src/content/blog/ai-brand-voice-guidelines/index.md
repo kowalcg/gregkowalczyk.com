@@ -123,7 +123,7 @@ The reason I have 6 separate voice files instead of one is that these brands are
 
 TapeGeeks is confident and clinical. It doesn't hedge. It tells you how to tape your knee in four minutes because the audience doesn't want to read 800 words to get the answer.
 
-Bronte Harbour Classic (the 5K race I co-direct) is warm, community-forward, and local. It mentions Bronte Harbour Park. It references Father's Day. It's welcoming to first-timers in a way that would sound wrong for TapeGeeks.
+Bronte Harbour Classic (the race I direct) is warm, community-forward, and local. It mentions Bronte Harbour Park. It references Father's Day. It's welcoming to first-timers in a way that would sound wrong for TapeGeeks.
 
 This site is skeptical and specific. It names numbers. It pushes back on generic advice.
 

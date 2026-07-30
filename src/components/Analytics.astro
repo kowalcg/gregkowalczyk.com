@@ -1,0 +1,45 @@
+---
+/**
+ * Analytics.astro — GA4 + Microsoft Clarity.
+ *
+ * The site shipped with zero instrumentation until July 2026, so there was no
+ * way to know what any page actually did. Both tags are inert until their IDs
+ * are set, which keeps local dev and preview builds clean.
+ *
+ * Set these in Vercel (Project → Settings → Environment Variables) and in a
+ * local .env for testing. The PUBLIC_ prefix is required for Astro to expose
+ * them to the client bundle.
+ *
+ *   PUBLIC_GA4_ID=G-XXXXXXXXXX
+ *   PUBLIC_CLARITY_ID=xxxxxxxxxx
+ *
+ * Nothing renders in dev regardless, so local page views never pollute the data.
+ */
+
+const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
+const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID;
+const enabled = import.meta.env.PROD;
+---
+
+{enabled && GA4_ID && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+    <script is:inline define:vars={{ GA4_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA4_ID);
+    </script>
+  </>
+)}
+
+{enabled && CLARITY_ID && (
+  <script is:inline define:vars={{ CLARITY_ID }}>
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1;
+      t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CLARITY_ID);
+  </script>
+)}

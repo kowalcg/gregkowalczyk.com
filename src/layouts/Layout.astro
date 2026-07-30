@@ -7,24 +7,47 @@ interface Props {
   articlePublishedTime?: string;
   articleModifiedTime?: string;
   articleAuthor?: string;
+  /** Emit the FAQPage node. Only set this on pages that visibly render <FAQ />. */
+  showFaq?: boolean;
+  /** Page-specific JSON-LD nodes (BlogPosting, PodcastEpisode, etc.) appended to the @graph. */
+  extraSchema?: Record<string, unknown>[];
 }
 
 import '../styles/global.css';
+import { faqs } from '../data/faqs';
+import { yearsInEngineering } from '../data/site';
+import Analytics from '../components/Analytics.astro';
 
-const { title, description, ogType, ogImage, articlePublishedTime, articleModifiedTime, articleAuthor } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, "https://www.gregkowalczyk.com");
+const {
+  title,
+  description,
+  ogType,
+  ogImage,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+  showFaq = false,
+  extraSchema = [],
+} = Astro.props;
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
+/**
+ * Canonical host. Every schema @id, url, and social image must use this exact
+ * origin — mixing apex and www splits the entity across two URLs in Google's
+ * index, which is what was happening before July 2026.
+ */
+const SITE = "https://www.gregkowalczyk.com";
+const canonicalURL = new URL(Astro.url.pathname, SITE);
+const socialImage = new URL(ogImage ?? "/images/og-default.jpg", SITE).href;
+
+const graph: Record<string, unknown>[] = [
     {
       "@type": "Person",
-      "@id": "https://gregkowalczyk.com/#person",
+      "@id": `${SITE}/#person`,
       "name": "Greg Kowalczyk",
       "jobTitle": "AI & Digital Growth Consultant",
-      "description": "Mechanical engineer turned AI tool builder. 28 years of engineering discipline applied to building custom AI systems that replace agency work for small and mid-size businesses.",
-      "url": "https://gregkowalczyk.com",
-      "image": "https://gregkowalczyk.com/images/greg-kowalczyk.jpg",
+      "description": `Mechanical engineer turned AI tool builder. ${yearsInEngineering} years of engineering discipline applied to building custom AI systems that replace agency work for small and mid-size businesses.`,
+      "url": SITE,
+      "image": `${SITE}/images/greg-headshot.jpg`,
       "email": "prekoconsult@gmail.com",
       "telephone": "+1-905-334-9282",
       "address": {
@@ -35,22 +58,25 @@ const structuredData = {
       },
       "knowsAbout": [
         "Artificial Intelligence Implementation",
-        "AI Consultant Oakville",
-        "AI Implementation Consultant GTA",
         "AI Automation for Business",
-        "E-commerce Operations",
         "Custom AI Tool Development",
+        "Model Context Protocol (MCP)",
+        "E-commerce Operations",
         "Claude AI",
         "Workflow Automation",
         "Amazon FBA",
         "Shopify Development",
         "Marketing Automation",
+        "Answer Engine Optimization",
         "Mechanical Engineering"
       ],
       "sameAs": [
         "https://www.linkedin.com/in/gregkowalczyk/",
         "https://x.com/kowalcg",
-        "https://www.facebook.com/Kowalcg/"
+        "https://www.facebook.com/Kowalcg/",
+        "https://github.com/kowalcg",
+        "https://rockstarinnercircle.com/podcasts/ai-greg-kowalcyzk-charles-sathmary/",
+        "https://podcasts.apple.com/ca/podcast/he-talks-to-ai-while-walking-the-dog-greg-kowalczyk/id1100488294?i=1000769484484"
       ],
       "worksFor": [
         {
@@ -67,11 +93,11 @@ const structuredData = {
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://gregkowalczyk.com/#service",
+      "@id": `${SITE}/#service`,
       "name": "Greg Kowalczyk — AI Implementation Consulting",
       "description": "Custom AI tool development and automation consulting for small and mid-size businesses. Replace agency costs with AI systems you own.",
-      "url": "https://gregkowalczyk.com",
-      "provider": { "@id": "https://gregkowalczyk.com/#person" },
+      "url": SITE,
+      "provider": { "@id": `${SITE}/#person` },
       "areaServed": [
         {
           "@type": "City",
@@ -80,7 +106,7 @@ const structuredData = {
         },
         {
           "@type": "City",
-          "name": "Oakville",
+          "name": "Burlington",
           "containedInPlace": { "@type": "AdministrativeArea", "name": "Ontario" }
         },
         {
@@ -108,24 +134,21 @@ const structuredData = {
         "Workflow Automation with N8N and Zapier",
         "AI Strategy and Deployment",
         "E-Commerce Launch Consulting",
-        "E-Commerce Consulting Oakville",
-        "Shopify Consultant for Small Business",
         "Amazon and Shopify Setup and Optimization",
-        "Local Business Digital Marketing",
         "Local SEO and Google Business Profile Optimization",
-        "LLM Search Optimization",
+        "Answer Engine Optimization for LLM Search",
         "Brick-and-Mortar to E-Commerce Transition"
       ]
     },
     {
       "@type": "LocalBusiness",
-      "@id": "https://gregkowalczyk.com/#business",
+      "@id": `${SITE}/#business`,
       "name": "Greg Kowalczyk — AI & Digital Growth Consultant",
       "description": "Oakville-based AI implementation specialist serving the GTA. Custom AI tools and automation built, deployed, and running in weeks.",
-      "url": "https://gregkowalczyk.com",
+      "url": SITE,
       "telephone": "+1-905-334-9282",
       "email": "prekoconsult@gmail.com",
-      "founder": { "@id": "https://gregkowalczyk.com/#person" },
+      "founder": { "@id": `${SITE}/#person` },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Oakville",
@@ -146,78 +169,29 @@ const structuredData = {
         "closes": "17:00"
       }
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://gregkowalczyk.com/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How much does AI implementation cost for a small business?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Custom AI tool development typically runs $5,000-$25,000 depending on complexity and scope. Compare that to $75,000+ per year for agency retainers delivering similar capabilities. Most projects deliver ROI within the first quarter."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does AI implementation take?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Most projects deliver working systems in 2-8 weeks. Simple automation workflows can be live in days. Complex custom tools take 4-8 weeks."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the risks of implementing AI in my business?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The biggest risk is doing nothing while competitors adopt AI tools. Implementation risks are manageable with incremental builds, testing on real data, and team training."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I choose the right AI consultant?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Look for someone who builds, not just advises. Ask to see working tools they've deployed. Check if they use AI in their own business."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is an AI readiness assessment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A practical evaluation of where AI and automation will generate the highest return in your specific business, with specific tools and timelines."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I measure AI implementation ROI?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Track time saved, costs reduced, and revenue generated. Set measurable benchmarks before building anything."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What AI tools work best for e-commerce businesses?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It depends on your biggest pain point. Claude for content, Klaviyo for email automation, custom workflows for operations connecting Shopify, Amazon, and fulfillment."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can AI really replace marketing agencies?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "AI can replace $75K-$125K in repetitive execution work. You still need strategic thinking, but not agency rates for work AI handles better and faster."
-          }
-        }
-      ]
-    }
-  ]
-};
+];
+
+/**
+ * FAQPage is only valid on pages that visibly render the FAQ. It used to be
+ * emitted on every URL — including /contact/, /projects/ and all blog posts —
+ * which violates Google's structured data guidelines. Questions are generated
+ * from src/data/faqs.ts so the markup always matches the accordion.
+ */
+if (showFaq) {
+  graph.push({
+    "@type": "FAQPage",
+    "@id": `${canonicalURL.href}#faq`,
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+    })),
+  });
+}
+
+graph.push(...extraSchema);
+
+const structuredData = { "@context": "https://schema.org", "@graph": graph };
 ---
 
 <!doctype html>
@@ -242,13 +216,21 @@ const structuredData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
 
-    <!-- Open Graph -->
+    <!-- RSS -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Greg Kowalczyk — News"
+      href={new URL("/rss.xml", SITE).href}
+    />
+
+    <!-- Open Graph (image must be absolute — relative URLs are ignored by most scrapers) -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType ?? "website"} />
     <meta property="og:site_name" content="Greg Kowalczyk — AI & Digital Growth Consultant" />
-    <meta property="og:image" content={ogImage ?? "/images/og-default.jpg"} />
+    <meta property="og:image" content={socialImage} />
     {articlePublishedTime && <meta property="article:published_time" content={articlePublishedTime} />}
     {articleModifiedTime && <meta property="article:modified_time" content={articleModifiedTime} />}
     {articleAuthor && <meta property="article:author" content={articleAuthor} />}
@@ -257,13 +239,15 @@ const structuredData = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage ?? "/images/og-default.jpg"} />
+    <meta name="twitter:image" content={socialImage} />
 
     <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <Analytics />
   </head>
 
   <body class="noise-overlay min-h-screen bg-bg-primary text-text-primary font-body antialiased">

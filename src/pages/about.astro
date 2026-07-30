@@ -6,11 +6,12 @@ import About from '../components/About.astro';
 import TechStack from '../components/TechStack.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import { yearsInEngineering } from '../data/site';
 ---
 
 <Layout
   title="About Greg Kowalczyk | AI & Digital Growth Consultant in Oakville"
-  description="Mechanical engineer turned AI tool builder. 28 years of engineering discipline, two e-commerce brands running since 2014, and 2 iOS apps shipped as a non-coder. Based in Oakville, Ontario."
+  description={`Mechanical engineer turned AI tool builder. ${yearsInEngineering} years of engineering discipline, two e-commerce brands running since 2014, and 2 iOS apps shipped as a non-coder. Based in Oakville, Ontario.`}
 >
   <Nav />
   <main>
@@ -150,19 +151,19 @@ import Footer from '../components/Footer.astro';
               class="mb-2 text-lg font-bold"
               style="font-family: 'JetBrains Mono', monospace; color: #e6edf3;"
             >
-              Bronte Harbour Classic 5K — Race Director
+              Bronte Harbour Classic — Executive Race Director
             </h3>
             <p
               class="mb-2 text-sm"
               style="font-family: 'JetBrains Mono', monospace; color: #06b6d4;"
             >
-              June 21, 2026
+              Inaugural race: June 21, 2026 · 2027 edition in planning
             </p>
             <p
               class="mb-4 leading-relaxed"
               style="font-family: 'Outfit', sans-serif; color: #8b949e;"
             >
-              Co-directing the inaugural Bronte Harbour Classic 5K on Father's Day at Bronte Harbour Park, Oakville. Chip-timed 5K + Kids 1K Fun Run + post-race festival.
+              The inaugural Bronte Harbour Classic ran on Father's Day at Bronte Harbour Park in Oakville — a chip-timed 5K, a Kids 1K Fun Run, and an all-day post-race festival. Planning is underway for 2027, which expands the event to 1K, 5K, and 10K distances.
             </p>
             <a
               href="https://www.bronteharbourclassic.com"

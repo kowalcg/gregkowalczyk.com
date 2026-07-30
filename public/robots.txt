@@ -20,4 +20,4 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://gregkowalczyk.com/sitemap-index.xml
+Sitemap: https://www.gregkowalczyk.com/sitemap-index.xml
