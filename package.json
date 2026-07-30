@@ -4,9 +4,11 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/audit-build.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "audit": "node scripts/audit-build.mjs",
+    "audit:selftest": "node scripts/audit-build.mjs --selftest"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",

@@ -113,7 +113,7 @@ I have watched this fail in my own work: a draft looks clean, passes a basic SEO
 
 ### Expertise: what the reader can verify
 
-My background is not “AI thought leader.” Good. I do not want that label. My background is mechanical engineering, manufacturing leadership, e-commerce, paid media, Shopify operations, and AI-assisted building. I have managed $2M+ in ad spend, run mid-seven-figure combined brands with GearTOP and TapeGeeks, presented to the VibeMarketer community, and done $75K+ in consulting work helping businesses apply AI in practical ways.
+My background is not “AI thought leader.” Good. I do not want that label. My background is mechanical engineering, manufacturing leadership, e-commerce, paid media, Shopify operations, and AI-assisted building. I have managed $2M+ in ad spend, run two product brands in GearTOP and TapeGeeks, presented to the VibeMarketer community, and done $75K+ in consulting work helping businesses apply AI in practical ways.
 
 That is the expertise layer. Not because it makes every opinion right, but because it gives context. A reader can decide whether my advice fits their situation. A non-technical founder building a small app will hear me differently than a venture-backed engineering team with 20 developers. Fair.
 

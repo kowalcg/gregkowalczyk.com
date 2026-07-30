@@ -1,14 +1,17 @@
 # gregkowalczyk.com — Personal Brand & Consulting Website
 
-**Live site:** https://gregkowalczyk.com
-**Deployed on:** Vercel
+**Live site:** https://www.gregkowalczyk.com (the apex 301s to `www` — `www` is canonical)
+**Deployed on:** Vercel (auto-deploys on push to `main`)
 **DNS:** Namecheap
 
 ---
 
 ## What This Is
 
-Personal brand website for Greg Kowalczyk — Mechanical Engineer turned AI implementation consultant and e-commerce entrepreneur based in Oakville, Ontario, Canada. The site positions Greg as an AI consultant who builds real tools (not just advice), targeting SMBs in the GTA.
+Personal brand and consulting website for Greg Kowalczyk — mechanical engineer turned AI
+tool builder and e-commerce operator, based in Oakville, Ontario. The site does two jobs:
+it establishes authority (podcasts, talks, build stories) and it generates consulting
+leads.
 
 ---
 
@@ -16,153 +19,126 @@ Personal brand website for Greg Kowalczyk — Mechanical Engineer turned AI impl
 
 | Layer | Tool |
 |-------|------|
-| Framework | Astro 5 (static site) |
-| Styling | Tailwind CSS v4 |
-| Fonts | Outfit (body) + JetBrains Mono (code/accent) via Google Fonts |
-| Deployment | Vercel |
-| Sitemap | @astrojs/sitemap |
-| Build output | `dist/` (static HTML) |
+| Framework | Astro 5 (static output) |
+| Styling | Tailwind CSS v4 + a custom Glass-UI system in `src/styles/global.css` |
+| Fonts | Outfit (body) + JetBrains Mono (code/accent), non-blocking Google Fonts |
+| Content | Astro content collections — `blog` and `projects` |
+| Deployment | Vercel via `@astrojs/vercel`, web analytics enabled through the adapter |
+| Sitemap | `@astrojs/sitemap` with a `serialize` hook that emits `lastmod` |
+| Feed | `@astrojs/rss` at `/rss.xml` |
+| Build output | `dist/` |
+
+---
+
+## Commands
+
+```bash
+npm run dev        # localhost:4321
+npm run build      # production build -> dist/
+npm run preview    # serve dist/ locally
+
+node scripts/audit-build.mjs   # post-build correctness gate — run after every build
+```
 
 ---
 
 ## Project Structure
 
 ```
-gregkowalczyk.com/
-├── src/
-│   ├── components/         # All page section components
-│   │   ├── Nav.astro         # Sticky nav with mobile hamburger menu
-│   │   ├── Hero.astro        # Animated typing headline, CTA buttons
-│   │   ├── ResultsBar.astro  # Animated metric counters (revenue, clients, etc.)
-│   │   ├── Services.astro    # Service cards with glass-card styling
-│   │   ├── HowIWork.astro    # Process timeline (terminal-styled steps)
-│   │   ├── CaseStudies.astro # Split-layout case study cards
-│   │   ├── About.astro       # Bio with gradient timeline
-│   │   ├── TechStack.astro   # Pill-badge tech stack display
-│   │   ├── FAQ.astro         # Accordion FAQ (single-open behavior)
-│   │   ├── Contact.astro     # Contact form + info card with social links
-│   │   └── Footer.astro      # 3-column footer with social icons
-│   ├── layouts/
-│   │   └── Layout.astro      # Base HTML layout, SEO meta, JSON-LD structured data
-│   ├── pages/
-│   │   └── index.astro       # Main page — assembles all components
-│   └── styles/
-│       └── global.css        # Design system: CSS vars, glass-UI tokens, animations
-├── docs/
-│   ├── brand-voice.md        # Brand voice guide
-│   ├── positioning.md        # Positioning strategy
-│   ├── keyword-strategy.md   # SEO keyword research
-│   ├── website-copy.md       # Approved website copy
-│   └── visual-direction.md   # Visual design system documentation
-├── public/                   # Static assets (favicon, images)
-├── astro.config.mjs          # Astro config (Vercel adapter, Tailwind, sitemap)
-├── vercel.json               # Vercel deployment config
-└── package.json
+src/
+├── components/          # One file per page section
+├── content/
+│   ├── blog/<slug>/index.md      # 14 posts
+│   ├── projects/<slug>.md        # 12 projects; a body means it gets a detail page
+│   └── config.ts                 # collection schemas
+├── data/
+│   ├── faqs.ts          # single source for the FAQ accordion AND the FAQPage schema
+│   ├── media.ts         # podcasts/talks + their PodcastEpisode schema
+│   └── site.ts          # values that drift with time (years in business, current year)
+├── layouts/Layout.astro # head, meta, canonical, and the JSON-LD @graph
+├── pages/
+│   ├── index / about / services / contact / media
+│   ├── news/            # blog index + [...slug]
+│   ├── projects/        # index + [...slug]
+│   └── rss.xml.js
+└── styles/global.css    # design system: CSS vars, glass tokens, animations
+scripts/audit-build.mjs  # fails the build on the defects listed below
+docs/                    # brand voice, positioning, keyword strategy, website copy
+public/                  # favicons, images, robots.txt, verification files
 ```
 
 ---
 
-## Page Sections (top to bottom)
+## Rules that exist for a reason
 
-1. **Nav** — Sticky top nav with logo, anchor links, "Book a Call" CTA, mobile hamburger
-2. **Hero** — Animated typing headline cycling through offer types, two CTAs (Book a Call / See My Work)
-3. **Results Bar** — Animated counters: revenue generated, clients, projects, hours saved
-4. **Services** — Four service cards: AI Readiness Assessment, Custom AI Tool Dev, Marketing Automation, E-commerce AI Integration
-5. **How I Work** — 4-step process: Diagnose → Build → Deploy → Optimize (terminal card style)
-6. **Case Studies** — Split layout cards: SunUp iOS app, TapeGeeks content system, RunMate Pro
-7. **About** — Bio, engineering background, gradient career timeline
-8. **Tech Stack** — Pill badges: Claude AI, N8N, Zapier, Klaviyo, Shopify, Amazon, React Native, etc.
-9. **FAQ** — 8 questions covering cost, timeline, ROI, risk, agency replacement
-10. **Contact** — Contact form (name, email, message, budget range) + info card with social links
-11. **Footer** — Links, social icons (LinkedIn, X, Facebook), location, copyright
+Each of these corresponds to a bug that shipped to production. Please don't undo them.
 
----
+**Never publish a testimonial that isn't real.** `Testimonials.astro` shipped three
+fabricated quotes attributed to "Client Name / Business Owner / Company Name" under the
+heading "What Clients Say". The array is now empty and the section renders nothing while
+it is. Real name, real company, real permission — or leave it empty.
 
-## Design System — Glass UI
+**No revenue figures in public-facing content.** Cost-replacement figures ("replaced $75K
+in agency costs") are fine. Brand revenue and client revenue are not.
 
-The site uses a custom glassmorphism design system built in `global.css`:
+**Everything canonical is `www`.** Schema `@id`/`url`, OG images, sitemap, robots. Mixing
+apex and `www` split the entity across two identities in Google's index.
 
-- **Background:** Deep space dark (`#030712`) with noise texture overlay
-- **Glass cards:** `backdrop-filter: blur(20px)` + semi-transparent borders + subtle inner glow
-- **Floating orbs:** Three large gradient blobs (purple, blue, cyan) that drift and create background light sources for glass refraction
-- **Accent colors:** Electric blue (`#60a5fa`), cyan, purple
-- **Typography:** Outfit for body/headings, JetBrains Mono for code blocks and terminal cards
-- **Animations:** Scroll-reveal fade-ins, animated counters, typing effect, orb drift
-- **Reference:** Inspired by ViableEdge glass card UI pattern
+**`FAQPage` only on pages that visibly render the FAQ.** Pass `showFaq={true}` to the
+layout. It used to be emitted on every URL, including `/contact/` and every blog post,
+which violates Google's structured-data guidelines.
 
----
+**FAQ copy lives in `src/data/faqs.ts`.** The accordion and the schema both read it. When
+they were maintained separately they drifted to 11 questions vs. 8.
 
-## SEO Implementation
+**Page-specific JSON-LD goes through the `extraSchema` prop**, never rendered after
+`<Layout>` — doing that emitted the `<script>` *after* `</html>`.
 
-- Canonical URLs via `Layout.astro`
-- Open Graph + Twitter Card meta tags on every page
-- JSON-LD Structured Data (4 schemas):
-  - `Person` — Greg's full profile, skills, social profiles
-  - `ProfessionalService` — consulting services, service area (GTA/Ontario)
-  - `LocalBusiness` — Oakville address, geo coordinates, hours
-  - `FAQPage` — 8 FAQ Q&A pairs for rich results
-- Sitemap via `@astrojs/sitemap`
-- Social `sameAs` array: LinkedIn, X (Twitter), Facebook
+**Time-varying numbers come from `src/data/site.ts`.** "10+ Years in E-Commerce" was 12 by
+the time anyone noticed, and the footer was hardcoded to 2026.
+
+**Verify media dates against the source RSS feed.** The site listed two podcast
+appearances as "2019 & 2021"; the feeds show 2018 and 2020.
+
+**Blog posts are markdown, not pasted HTML.** Two posts were inline-styled HTML and so
+inherited nothing from `.prose-blog`. They were also where every dead link and every piece
+of rogue schema lived.
+
+**Run `node scripts/audit-build.mjs` after building.** It fails on dead internal links,
+missing or relative social images, pages without exactly one `<h1>`, content after
+`</html>`, FAQ schema whose questions aren't visible on the page, apex-host URLs in
+schema, unparseable JSON-LD, missing canonicals, and sitemap URLs without `lastmod`.
 
 ---
 
-## Deployment
+## Analytics
 
-**Platform:** Vercel (auto-deploys on push to `main`)
-**DNS:** Configured via Namecheap → Vercel nameservers
-**Build command:** `npm run build`
-**Output:** `dist/` (static HTML, no SSR)
+GA4 and Microsoft Clarity load from `src/components/Analytics.astro` and are **inert until
+their IDs are set** — nothing renders in dev, so local traffic never pollutes the data.
+Set these in Vercel → Settings → Environment Variables:
 
----
-
-## Development Commands
-
-```bash
-npm install          # Install dependencies
-npm run dev          # Local dev server → localhost:4321
-npm run build        # Production build → dist/
-npm run preview      # Preview production build locally
+```
+PUBLIC_GA4_ID=G-XXXXXXXXXX
+PUBLIC_CLARITY_ID=xxxxxxxxxx
 ```
 
----
-
-## Change Log
-
-### v1.0.0 — Initial Build
-- Full 9-section consulting website built with Astro + Tailwind
-- Deployed to Vercel, DNS configured via Namecheap
-- Custom domain gregkowalczyk.com live
-
-### v1.1.0 — Lighthouse Font Optimization
-- Converted Google Fonts loading to non-blocking (preconnect + async strategy)
-- Improved Lighthouse performance score
-
-### v1.2.0 — Glass-UI Redesign
-- Full visual overhaul to glassmorphism design system
-- Added Outfit + JetBrains Mono fonts
-- Floating gradient orbs as background light sources
-- Frosted glass cards across all sections
-- Noise texture overlay on body
-- Scroll-reveal animations on all sections
-
-### v1.3.0 — Location Correction
-- Updated all location references from Burlington → Oakville, Ontario
-- Updated: Hero, About, Contact, Footer components
-- Updated: index.astro meta tags
-- Updated: JSON-LD structured data address and LocalBusiness schema
-
-### v1.4.0 — Social Media Expansion
-- Added X (Twitter) and Facebook profiles alongside existing LinkedIn
-- Updated JSON-LD `sameAs` array with all three platforms
-- Footer: expanded from 1 to 3 social icons with hover effects
-- Contact section: added X and Facebook links
-- Social handles: LinkedIn (`/in/gregkowalczyk/`), X (`@kowalcg`), Facebook (`Kowalcg`)
+Vercel Web Analytics is enabled through the adapter. `@vercel/speed-insights` is
+deliberately not installed: its optional `@sveltejs/kit` peer pulls a conflicting Vite
+major and breaks `npm install`.
 
 ---
 
-## Contact
+## After deploying content changes
 
-Greg Kowalczyk
-prekoconsult@gmail.com
-905-334-9282
-Oakville, Ontario, Canada
+1. Resubmit `sitemap-index.xml` in Search Console. Google did not re-download it between
+   2026-04-09 and this refresh, and two posts were never discovered as a result.
+2. Run `./submit-indexnow.sh` to push URLs to Bing/IndexNow.
+
+---
+
+## A note on this working copy
+
+The repo lives inside a synced Google Drive folder. `dist/`, `.vercel/`, `.astro/` and
+`node_modules/` are gitignored but still physically present, so every build pushes a few
+hundred MB through Drive sync. Consider moving the working copy to `~/Sites/` — the
+canonical copy is on GitHub either way.

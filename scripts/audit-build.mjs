@@ -19,6 +19,80 @@ const DIST = 'dist';
 const PUBLIC = 'public';
 const CANONICAL_HOST = 'https://www.gregkowalczyk.com';
 
+/**
+ * No revenue figures in public content.
+ *
+ * Deliberately narrow. All of these are fine and must NOT trip:
+ *   tool pricing        "Shopify starts at $39/month"
+ *   cost replacement    "replaced $75K in annual agency costs"
+ *   budget managed      "$2M+ in ad spend managed"
+ *   project pricing     "builds run $5,000–$25,000"
+ *   incremental result  "+$115K annual revenue from margin adjustments"
+ *
+ * What's banned is stating what a business *earns* — Greg's brands or a
+ * client's. A bare "$X/month" carries no signal on its own, so every pattern
+ * requires revenue context.
+ *
+ * Run `node scripts/audit-build.mjs --selftest` after editing these.
+ */
+const REVENUE_PATTERNS = [
+  /mid[- ]seven[- ]figure/i,
+  /\$[\d.,]+\s*[KMB]?\s*(?:\/|per\s+|a\s+)(?:month|mo|year|yr|annum)\s+(?:business|brand|company|store|shop)/i,
+  /(?:business|brand|company|store|shop)\s+(?:doing|earning|making|generating|turning over)\s+\$[\d.,]/i,
+  /revenue (?:of|is|was|hit|reached|at) \$[\d.,]/i,
+  /(?:scaled|grew|took|built)(?:\s+\w+){0,3}\s+to \$[\d.,]+\s*[KMB]?\s*(?:\/|per\s+|a\s+)(?:month|year)/i,
+  // Absolute revenue only, and only where the figure and the word sit on the
+  // same line — a stat tile renders its number and label as separate elements
+  // that only become adjacent after tag stripping.
+  /(?<![+]\s?)(?<!additional )(?<!extra )(?<!incremental )\$[\d.,]+\s*[KMB]?[ \t]+(?:in[ \t]+)?(?:annual[ \t]+|monthly[ \t]+|yearly[ \t]+)?(?:revenue|turnover)\b/i,
+];
+
+/** Fabricated or unfinished content that must never reach production. */
+const PLACEHOLDER_MARKERS = ['Client Name', 'Company Name', 'Lorem ipsum', 'TODO:', 'REPLACE_WITH'];
+
+if (process.argv.includes('--selftest')) {
+  const mustFlag = [
+    'a $537K/year business',
+    'mid-seven-figure brands',
+    'scaled his business to $700K/month',
+    'revenue of $1.2M last year',
+    'a store doing $80K a month',
+    '$537K in annual revenue',
+    'grew the shop to $50K per month',
+  ];
+  const mustPass = [
+    'Shopify starts at $39/month',
+    'Claude is $20/month',
+    'competitors charge $249/month',
+    'replaced $75K in annual agency costs',
+    '$2M+ in ad spend managed',
+    'builds run $5,000-$25,000',
+    'coaching runs $3,000-$8,000',
+    '+$115K annual revenue from margin adjustments alone',
+    '$115K \n\n Revenue from Pricing Alone',
+  ];
+  let ok = true;
+  for (const s of mustFlag) {
+    if (!REVENUE_PATTERNS.some((r) => r.test(s))) {
+      ok = false;
+      console.log('  MISSED        :', JSON.stringify(s));
+    }
+  }
+  for (const s of mustPass) {
+    const r = REVENUE_PATTERNS.find((r) => r.test(s));
+    if (r) {
+      ok = false;
+      console.log('  FALSE POSITIVE:', JSON.stringify(s), '->', r);
+    }
+  }
+  console.log(
+    ok
+      ? `✅ revenue patterns: ${mustFlag.length + mustPass.length}/${mustFlag.length + mustPass.length} cases correct`
+      : '❌ revenue pattern selftest FAILED'
+  );
+  process.exit(ok ? 0 : 1);
+}
+
 if (!existsSync(DIST)) {
   console.error('dist/ not found — run `npm run build` first.');
   process.exit(1);
@@ -128,7 +202,18 @@ for (const file of pages) {
   if (!canonical) fail('missing-canonical', page);
   else if (!canonical[1].startsWith(CANONICAL_HOST)) fail('canonical-wrong-host', `${page} → ${canonical[1]}`);
 
-  // 8. Every JSON-LD block must be parseable
+  // 8. No revenue figures in public content (see REVENUE_PATTERNS above).
+  for (const re of REVENUE_PATTERNS) {
+    const hit = visibleText.match(re);
+    if (hit) fail('revenue-figure-in-public-content', `${page} — "${hit[0].trim()}"`);
+  }
+
+  // 9. Placeholder/fabricated content must never ship.
+  for (const marker of PLACEHOLDER_MARKERS) {
+    if (visibleText.includes(marker)) fail('placeholder-content', `${page} — "${marker}"`);
+  }
+
+  // 10. Every JSON-LD block must be parseable
   for (const m of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
     try {
       JSON.parse(m[1]);
@@ -138,7 +223,7 @@ for (const file of pages) {
   }
 }
 
-// 9. Sitemap must carry lastmod (the freshness signal Google was missing)
+// 11. Sitemap must carry lastmod (the freshness signal Google was missing)
 const sitemaps = readdirSync(DIST).filter((f) => /^sitemap-\d+\.xml$/.test(f));
 if (!sitemaps.length) fail('no-sitemap', 'no sitemap-N.xml emitted into dist/');
 for (const sm of sitemaps) {
