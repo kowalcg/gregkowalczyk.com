@@ -2,7 +2,7 @@
 name: "Helm"
 tag: "Internal Tool · In Testing"
 tagColor: "purple"
-initials: "HM"
+image: "/images/projects/helm.webp"
 description: "Seller intelligence for the two e-commerce brands I run. Helm pulls Amazon SP-API, Amazon Ads, Shopify, Meta, Klaviyo and Search Console into one place, then exposes it to Claude as a set of tools — so the question 'why did ACOS jump last week' gets answered in a sentence instead of an afternoon of spreadsheets."
 stats:
   - "33 tools spanning sales, ads, inventory, margin, search queries and email"
