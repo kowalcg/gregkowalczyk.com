@@ -1,0 +1,180 @@
+---
+/**
+ * OfferLadder.astro — the three ways to start.
+ *
+ * Replaces the eight-service menu as the primary structure of /services.
+ * The eight services still exist below this block, demoted to examples of
+ * what gets built — a menu answers "what do you do", a ladder answers
+ * "what happens next", and only the second one converts.
+ *
+ * Tier 1 is deliberately identical to the offer made at the AI for Business —
+ * Oakville meetup. One funnel, two doors: the room and the website.
+ */
+
+const tiers = [
+  {
+    step: "01",
+    name: "Free 15-Minute AI Assessment",
+    price: "No cost",
+    priceNote: "",
+    summary:
+      "Tell me the part of your week that shouldn't need a human. I'll tell you whether AI can take it, name the specific tool, and give you the first step.",
+    points: [
+      "One bottleneck, examined properly",
+      "One tool named — with what it costs",
+      "One first step you can take without me",
+    ],
+    close: "No deck, no pitch, no follow-up sequence.",
+    cta: "Book the free 15 minutes",
+    href: "/contact/",
+    featured: false,
+  },
+  {
+    step: "02",
+    name: "The AI Assessment",
+    price: "Fixed fee",
+    priceNote: "credited against a build",
+    summary:
+      "A full audit of how your business actually runs. Every repeated process mapped, ranked by what it costs you now and what it would save automated.",
+    points: [
+      "Working session — I watch how the work really happens",
+      "Every process mapped and ranked by return",
+      "A written build plan with real tools and real costs",
+      "Yours to keep, whether or not I build any of it",
+    ],
+    close: "Most people leave knowing which three things to fix first.",
+    cta: "Start with the assessment",
+    href: "/contact/",
+    featured: true,
+  },
+  {
+    step: "03",
+    name: "Build It / Run It",
+    price: "Project or monthly",
+    priceNote: "scoped from the assessment",
+    summary:
+      "I build what the assessment found. I write the code, connect the APIs, deploy it, and train your team to run it without me.",
+    points: [
+      "Fixed-price build — you own everything, no licence, no lock-in",
+      "Or monthly, where we keep finding and killing manual work",
+      "Documentation and training included, always",
+    ],
+    close: "The goal is that you stop needing me. Most clients do, then come back with the next thing.",
+    cta: "Talk about a build",
+    href: "/contact/",
+    featured: false,
+  },
+];
+---
+
+<section id="how-to-start" class="py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2
+      class="mb-4 text-2xl font-bold md:text-3xl"
+      style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff; letter-spacing: -0.025em;"
+    >
+      <span class="comment-prefix" style="font-size: 0.8em;">// </span>Three ways to start
+    </h2>
+
+    <p
+      class="mb-12 max-w-2xl text-base leading-relaxed md:text-lg"
+      style="font-family: 'Outfit', sans-serif; color: #798897;"
+    >
+      Most people start at the top and never need to go further than step two. That's fine — the assessment is useful on its own, and you keep it either way.
+    </p>
+
+    <div class="grid gap-6 lg:grid-cols-3 lg:items-stretch">
+      {
+        tiers.map((tier) => (
+          <div
+            class="fade-in-up glass-card glass-card-hover flex flex-col p-7 md:p-8"
+            style={
+              tier.featured
+                ? "border-color: rgba(240, 96, 0, 0.35); background: rgba(240, 96, 0, 0.05);"
+                : ""
+            }
+          >
+            <div class="mb-5 flex items-baseline justify-between gap-3">
+              <span
+                class="text-xs font-semibold uppercase tracking-[0.22em]"
+                style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
+              >
+                {tier.step}
+              </span>
+              {tier.featured && (
+                <span
+                  class="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider"
+                  style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                >
+                  Most start here
+                </span>
+              )}
+            </div>
+
+            <h3
+              class="mb-2 text-xl font-bold leading-tight"
+              style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.025em;"
+            >
+              {tier.name}
+            </h3>
+
+            <div class="mb-5">
+              <span
+                class="text-2xl font-bold"
+                style="font-family: 'Outfit', sans-serif; color: #f06000; letter-spacing: -0.03em;"
+              >
+                {tier.price}
+              </span>
+              {tier.priceNote && (
+                <span
+                  class="ml-2 text-sm"
+                  style="font-family: 'Outfit', sans-serif; color: #798897;"
+                >
+                  {tier.priceNote}
+                </span>
+              )}
+            </div>
+
+            <p
+              class="mb-5 text-sm leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+            >
+              {tier.summary}
+            </p>
+
+            <ul class="mb-5 space-y-2.5">
+              {tier.points.map((point) => (
+                <li
+                  class="flex gap-2.5 text-sm leading-relaxed"
+                  style="font-family: 'Outfit', sans-serif; color: #798897;"
+                >
+                  <span style="color: #f06000; flex-shrink: 0;">→</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p
+              class="mb-6 mt-auto pt-2 text-sm italic leading-relaxed"
+              style="font-family: 'Outfit', sans-serif; color: #798897;"
+            >
+              {tier.close}
+            </p>
+
+            <a
+              href={tier.href}
+              class="inline-block w-full rounded-full px-6 py-3 text-center text-sm font-semibold transition-all duration-200 hover:scale-[1.02]"
+              style={
+                tier.featured
+                  ? "background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                  : "background: rgba(255, 255, 255, 0.06); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.14); font-family: 'Outfit', sans-serif;"
+              }
+            >
+              {tier.cta}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

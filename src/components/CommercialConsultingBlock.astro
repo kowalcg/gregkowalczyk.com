@@ -1,25 +1,43 @@
 ---
 /**
- * CommercialConsultingBlock.astro — answer-first SEO/AEO block for commercial consulting intent.
- * Targets AI consultant Oakville/GTA and e-commerce consultant searches without changing the service offer.
+ * CommercialConsultingBlock.astro — answer-first block for commercial intent.
+ *
+ * Rewritten 2026-08-01. The previous version repeated "AI consulting in
+ * Oakville" four times and named e-commerce, Shopify, Amazon and product
+ * launch in nearly every sentence — targeting a keyword with no reportable
+ * search volume in Canada (docs/keyword-strategy.md) while advertising a
+ * narrower business than Greg actually runs.
+ *
+ * It now leads with the problem, which every business has, and uses the
+ * spread of the client roster as the proof of range. Oakville appears once,
+ * as a fact about where Greg is, not as a keyword.
  */
+
+const roster = [
+  { kind: "Pottery studio", work: "Class booking, waitlists, and the follow-up nobody had time to send" },
+  { kind: "Auto repair shop", work: "A 15-page site with structured data, built and live in one night" },
+  { kind: "Fitness studio", work: "Member onboarding and retention sequences that run unattended" },
+  { kind: "Specialty food retailer", work: "Retail shop to full e-commerce operation in six weeks" },
+  { kind: "E-commerce brands", work: "Two of my own, since 2014 — where everything gets tested first" },
+  { kind: "Pharma consultancy", work: "Research and reporting workflows that used to be manual" },
+];
 ---
 
-<section id="ai-consultant-oakville" class="py-16 md:py-20">
+<section id="who-this-is-for" class="py-16 md:py-20">
   <div class="mx-auto max-w-6xl px-6">
     <div class="glass-card p-8 md:p-10">
       <p
         class="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-[#f06000]"
         style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
       >
-        Quick answer for Oakville / GTA businesses
+        Who this is for
       </p>
 
       <h2
         class="mb-5 text-2xl font-bold leading-tight text-[#ffffff] md:text-3xl"
         style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
       >
-        Looking for AI consulting in Oakville for e-commerce or a product launch?
+        If the same task lands on someone's desk every week, it probably shouldn't.
       </h2>
 
       <div class="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
@@ -28,72 +46,89 @@
             class="mb-5 text-lg leading-relaxed text-[#ffffff]"
             style="font-family: 'Outfit', sans-serif;"
           >
-            I'm based in Oakville and work with businesses across the GTA and Ontario. The work is practical: custom AI tools, Shopify and Amazon workflows, product launch content orchestration, SEO and answer-engine systems, and operating dashboards that take over the repetitive work you're currently paying an agency or a staff member to do by hand.
+            Every business has a handful of jobs that repeat — quoting, scheduling, chasing, reporting, answering the same question for the hundredth time. They're too small to hire for and too constant to ignore, so they get absorbed by whoever has capacity. Usually the owner.
           </p>
 
           <p
             class="mb-5 leading-relaxed text-[#ffffff]"
             style="font-family: 'Outfit', sans-serif;"
           >
-            If you are searching for <strong class="text-[#ffffff]">AI consulting in Oakville</strong>, a <strong class="text-[#ffffff]">Shopify consultant for a small business</strong>, or the best AI consulting shop for product launch content orchestration near you, start with the job that needs to get done: launch better product pages, automate the repetitive work, and make the system useful enough for your team to keep using.
+            That work is now automatable, and it doesn't much matter what industry you're in — a pottery studio chasing class bookings and a distributor chasing purchase orders are the same problem wearing different clothes. What matters is whether someone will actually build the thing, deploy it, and stay until your team can run it.
           </p>
 
           <p
-            class="mb-6 leading-relaxed text-[#798897]"
+            class="mb-7 leading-relaxed text-[#798897]"
             style="font-family: 'Outfit', sans-serif;"
           >
-            The proof is not a slide deck. It is the same ecosystem Greg is building in public: TapeGeeks for commerce, RunMate Pro for audience growth, Bronte Harbour Classic for community proof, and SportsClinicFinder for local search scale. Those projects feed the playbook used for client work.
+            I'm based in Oakville and work across the GTA and Ontario, plus remotely. The proof isn't a slide deck — it's the ecosystem I build in public: two e-commerce brands, two iOS apps in the App Store, a race with a thousand runners, and a directory at local-search scale. Client work runs on the same playbook.
           </p>
 
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-              <h3 class="mb-2 text-base font-semibold text-[#ffffff]" style="font-family: 'Outfit', sans-serif;">
-                Best fit
-              </h3>
-              <p class="text-sm leading-relaxed text-[#798897]" style="font-family: 'Outfit', sans-serif;">
-                Product businesses, Shopify/Amazon operators, local service businesses, and SMBs that need custom AI tools for small business workflows, launch content, or manual operations that are eating time or margin.
-              </p>
-            </div>
-            <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-              <h3 class="mb-2 text-base font-semibold text-[#ffffff]" style="font-family: 'Outfit', sans-serif;">
-                What you get
-              </h3>
-              <p class="text-sm leading-relaxed text-[#798897]" style="font-family: 'Outfit', sans-serif;">
-                A working AI or growth system, clear documentation, and training so your team can run it without becoming dependent on another vendor.
-              </p>
-            </div>
+          <h3
+            class="mb-4 text-base font-semibold text-[#ffffff]"
+            style="font-family: 'Outfit', sans-serif;"
+          >
+            What that's looked like
+          </h3>
+
+          <div class="grid gap-3 md:grid-cols-2">
+            {
+              roster.map((item) => (
+                <div class="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+                  <p
+                    class="mb-1 text-sm font-semibold text-[#ffffff]"
+                    style="font-family: 'Outfit', sans-serif;"
+                  >
+                    {item.kind}
+                  </p>
+                  <p
+                    class="text-sm leading-relaxed text-[#798897]"
+                    style="font-family: 'Outfit', sans-serif;"
+                  >
+                    {item.work}
+                  </p>
+                </div>
+              ))
+            }
           </div>
 
-          <div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-            <h3 class="mb-2 text-base font-semibold text-[#ffffff]" style="font-family: 'Outfit', sans-serif;">
-              Common Oakville AI consulting projects
-            </h3>
-            <ul class="grid gap-2 text-sm leading-relaxed text-[#798897] md:grid-cols-2" style="font-family: 'Outfit', sans-serif;">
-              <li>• Shopify and Amazon product launch content orchestration</li>
-              <li>• Custom AI tools for small business operations</li>
-              <li>• E-commerce SEO/AEO workflows tied to real sales pages</li>
-              <li>• Automation dashboards for repeat work your team should not do by hand</li>
-            </ul>
-          </div>
+          <p
+            class="mt-5 text-sm leading-relaxed text-[#798897]"
+            style="font-family: 'Outfit', sans-serif;"
+          >
+            Six businesses that look nothing like each other. The underlying work was nearly identical.
+          </p>
         </div>
 
         <aside class="rounded-2xl border border-[#f06000]/25 bg-[#f06000]/[0.06] p-6">
           <h3
-            class="mb-4 text-lg font-semibold text-[#ffffff]"
+            class="mb-3 text-lg font-semibold text-[#ffffff]"
             style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
           >
-            Start here
+            Not sure if it applies to you?
           </h3>
-          <ul class="mb-6 space-y-3 text-sm leading-relaxed text-[#ffffff]" style="font-family: 'Outfit', sans-serif;">
-            <li><a class="text-[#f06000] hover:text-white" href="/news/ai-search-optimization-2026/">See the SEO/AEO ecosystem Greg is building</a></li>
-            <li><a class="text-[#f06000] hover:text-white" href="/projects/">Review live projects and tools</a></li>
-            <li><a class="text-[#f06000] hover:text-white" href="/contact/">Book a call</a></li>
-          </ul>
+          <p
+            class="mb-5 text-sm leading-relaxed text-[#ffffff]"
+            style="font-family: 'Outfit', sans-serif;"
+          >
+            That's what the free fifteen minutes is for. Describe the task you're tired of. I'll tell you straight whether it's worth automating — including when the answer is no.
+          </p>
           <a
             href="/contact/"
-            class="inline-block w-full rounded-full px-6 py-3 text-center text-sm font-semibold  shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
+            class="mb-6 inline-block w-full rounded-full px-6 py-3 text-center text-sm font-semibold shadow-lg transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
             style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
-          >Book a call</a>
+          >Book the free 15 minutes</a>
+
+          <p
+            class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#798897]"
+            style="font-family: 'Outfit', sans-serif;"
+          >
+            Or look around first
+          </p>
+          <ul class="space-y-2.5 text-sm leading-relaxed text-[#ffffff]" style="font-family: 'Outfit', sans-serif;">
+            <li><a class="text-[#f06000] hover:text-white" href="/projects/">Live projects and tools</a></li>
+            <li><a class="text-[#f06000] hover:text-white" href="/news/what-businesses-get-wrong-about-ai/">What businesses get wrong about AI</a></li>
+            <li><a class="text-[#f06000] hover:text-white" href="/news/ai-search-optimization-2026/">The SEO/AEO ecosystem I'm building</a></li>
+          </ul>
         </aside>
       </div>
     </div>

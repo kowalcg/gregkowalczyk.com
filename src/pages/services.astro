@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
+import OfferLadder from '../components/OfferLadder.astro';
 import Services from '../components/Services.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import DigitalLaunch from '../components/DigitalLaunch.astro';
@@ -12,28 +13,56 @@ import Footer from '../components/Footer.astro';
 ---
 
 {/*
-  Retitled 2026-07-29. This page was optimized for "AI Consultant Oakville",
-  which has no reportable search volume in Canada — it earned 16 impressions and
-  0 clicks in 90 days and did not appear in the top 29 for its own target term.
-  See docs/keyword-strategy.md. Oakville stays in the NAP and LocalBusiness
-  schema for local trust; it no longer drives the title.
+  Retitled 2026-07-29 (4ed2711). This page had been optimized for "AI Consultant
+  Oakville", which has no reportable search volume in Canada — it earned 16
+  impressions and 0 clicks in 90 days and did not appear in the top 29 for its
+  own target term. See docs/keyword-strategy.md.
+
+  On 2026-07-31 (4bb4d18) that fix was reverted and the H1 was narrowed further,
+  to "AI Consulting in Oakville for E-Commerce and Product Launch Systems".
+  That named two verticals in the most load-bearing line on the money page and
+  disqualified most of the actual client roster — a pottery studio, an F45 gym,
+  an auto repair shop, a specialty food retailer, a pharma consultancy. Exactly
+  one of
+  those is e-commerce.
+
+  Reverted again 2026-08-01, deliberately and for the last time:
+
+    - The promise is now problem-based, not industry-based. No vertical appears
+      in the H1. The vertical LIST appears lower down, as proof of range.
+    - Oakville stays in the NAP and LocalBusiness schema for local trust. It
+      does not drive the title. It has no search volume. This is settled.
+    - The page leads with the offer ladder (OfferLadder.astro), not the service
+      menu. Search Console: /services earned 16 impressions and 0 clicks in 90
+      days, and 68% of all site clicks are people searching Greg's name. This
+      page's real job is converting warm traffic — meetup attendees, referrals,
+      podcast listeners — not capturing cold search. Structure it for the person
+      who already knows who Greg is and is deciding whether to book.
+
+  If you are about to put a vertical back in the H1, read docs/positioning.md
+  first. The documented primary angle is "The Anti-Consultant", which is
+  industry-agnostic by design.
 */}
 <Layout
-  title="AI Consulting Oakville + Custom AI Tools | Greg Kowalczyk"
-  description="AI consulting in Oakville for custom AI tools, Shopify/Amazon workflows, product launch content orchestration, and practical automation for GTA businesses."
+  title="Custom AI Tools & Automation for Small Business | Greg Kowalczyk"
+  description="I find the manual work eating your week and build the system that kills it. Custom AI tools you own outright — for any business, not just e-commerce. Free 15-minute assessment. Based in Oakville, working across the GTA."
 >
   <Nav />
   <main>
     <PageHero
-      title="AI Consulting in Oakville for E-Commerce and Product Launch Systems"
-      subtitle="Short answer: I build working AI, Shopify, Amazon, SEO/AEO, and product launch content orchestration systems for GTA businesses that need execution, not another strategy deck."
+      title="I find the manual work eating your week — and I build the system that kills it."
+      subtitle="22 years an engineer. 12 running my own brands. Now I build custom AI tools for businesses that need execution, not another strategy deck — pottery studios, auto shops, gyms, specialty food retailers, e-commerce operators. I code it, deploy it, and train your team to run it without me."
     />
+    <OfferLadder />
     <CommercialConsultingBlock />
     <Services />
     <CaseStudies />
     <DigitalLaunch />
     <HowIWork />
-    <ContactCTA />
+    <ContactCTA
+      heading="Start with 15 free minutes"
+      body="Tell me the part of your week that shouldn't need a human. I'll tell you whether AI can take it, name the tool, and give you the first step — at no cost, whether or not we ever work together."
+    />
   </main>
   <Footer />
   <script>
