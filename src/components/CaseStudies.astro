@@ -131,8 +131,21 @@
         </div>
       </div>
 
-      {/* Auto shop client — anonymised in the rendered card AND here: Astro
-          renders <!-- --> comments into the HTML, {/* */} comments it does not. */}
+      {/* Own-build portfolio. Replaced an auto-shop client case study on
+          2026-08-02: that project was a first trial done for family, it is
+          being handed over, and there was nothing shippable to point at.
+
+          This card carries the range argument the auto shop used to carry, but
+          it does it differently — the client card above answers "has he done
+          this for someone like me", this one answers "can he actually build at
+          this level". Keep both. Cutting either leaves an obvious hole.
+
+          Note on framing: this is deliberately NOT written as "I fired my
+          developers". Same fact, but a small business owner reads that as
+          "this man replaces people", and it contradicts the line used at the
+          Oakville meetup — that AI replaced the agency, not the staff.
+          Anonymisation still applies: Astro renders <!-- --> into the HTML,
+          {/* */} it does not. The build gate fails on a client name either way. */}
       <div
         class="fade-in-up glass-card overflow-hidden p-8 md:p-10"
       >
@@ -144,7 +157,7 @@
               class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
               style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background-color: rgba(240, 96, 0, 0.1); color: #f06000;"
             >
-              Client Project
+              Built Without a Developer
             </span>
 
             <!-- Title -->
@@ -152,7 +165,7 @@
               class="mb-4 text-xl font-bold md:text-2xl"
               style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
             >
-              Auto Repair Shop — Full SEO & AI-Visible Website, Overnight
+              Two Apps, Six Sites, and the Tools That Run Two Businesses
             </h3>
 
             <!-- Challenge -->
@@ -160,7 +173,7 @@
               class="mb-6 leading-relaxed"
               style="font-family: 'Outfit', sans-serif; color: #798897;"
             >
-              A traditional automotive workshop with no web presence. Needed a professional site that would rank in local search, appear in Google AI Overviews, and answer the exact questions customers type into ChatGPT and Perplexity.
+              I used to hire developers for anything technical. I don't anymore — not because I learned to code, but because I learned to describe the work precisely enough that it gets built. Everything below is live, in production, and was shipped by one mechanical engineer who has never written software professionally.
             </p>
 
             <!-- What I built -->
@@ -168,37 +181,43 @@
               class="mb-3 text-base font-semibold"
               style="font-family: 'Outfit', sans-serif; color: #ffffff;"
             >
-              What I built
+              What that looks like
             </h4>
             <ul class="space-y-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>15-page Astro website — homepage, 8 service pages, pricing, FAQ, reviews, about, blog hub</span>
+                <span><strong style="color: #ffffff;">Two iOS apps, live in the App Store</strong> — SunUp, which calculates real burn time from skin type and live UV, and RunMate Pro, GPS tracking with shoe-mileage management. RunMate was rejected 39 times before it was approved.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Full technical SEO — LocalBusiness + AutoRepair schema, FAQPage JSON-LD on every service page, XML sitemap, canonical URLs, hreflang</span>
+                <span><strong style="color: #ffffff;">Helm</strong> — seller intelligence that pulls Amazon SP-API, Amazon Ads, Shopify, Meta, Klaviyo and Search Console into one place, then exposes it to Claude as tools. "Why did ACOS jump last week" gets answered in a sentence instead of an afternoon.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>LLM optimization — answer-first copy structure, structured pricing tables, 21 FAQ entries with JSON-LD so ChatGPT, Perplexity, and Google AI cite the site directly</span>
+                <span><strong style="color: #ffffff;">A full event platform</strong> for a chip-timed road race — registration, course and festival info, sponsor pages, and a permanent searchable photo archive.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Full launch plan — go-live checklist, Google Business Profile setup, local citation strategy</span>
+                <span><strong style="color: #ffffff;">Two Shopify stores</strong> running on API connections, with product content and blog production automated end to end.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Built overnight by autonomous AI agent from a PRD with 18 user stories — zero manual coding</span>
+                <span><strong style="color: #ffffff;">SportsClinicFinder</strong> — a Canada-wide clinic directory covering every province and territory, searchable by city, injury, and specialty.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span style="color: #f06000;">Next: client photo shoot, blog section, and Google Business Profile activation</span>
+                <span><strong style="color: #ffffff;">Magpie</strong> — a shared research brain for the team. Drop in a link and it enriches, categorises, and makes it searchable across every brand, so nobody researches the same thing twice.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
+                <span><strong style="color: #ffffff;">Marketing sites for both apps</strong>, plus this one — statically built, deployed on Vercel, with a post-build audit that fails the deploy on a dead link or a broken image.</span>
               </li>
             </ul>
-            {/* The live-site link was removed: the URL contains the client's
-                name, and the card is otherwise anonymous. Restore it only if
-                the client agrees to be credited — it is strong proof. */}
+            <a
+              href="/projects/"
+              class="mt-6 inline-block text-sm font-semibold transition-opacity hover:opacity-70"
+              style="font-family: 'Outfit', sans-serif; color: #f06000;"
+            >See all of it, with the stack behind each one →</a>
           </div>
 
           <!-- Right: Results -->
@@ -208,10 +227,10 @@
                 class="text-3xl font-bold"
                 style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
               >
-                1 Night
+                Zero
               </div>
               <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Build Time
+                Developers Needed
               </div>
             </div>
             <div>
@@ -219,10 +238,10 @@
                 class="text-3xl font-bold"
                 style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
               >
-                15 Pages
+                2 Apps
               </div>
               <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Delivered
+                Live in the App Store
               </div>
             </div>
             <div>
@@ -230,10 +249,10 @@
                 class="text-3xl font-bold"
                 style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
               >
-                21 FAQs
+                12
               </div>
               <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                JSON-LD Structured
+                Projects Shipped
               </div>
             </div>
             <div>
@@ -241,10 +260,10 @@
                 class="text-3xl font-bold"
                 style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
               >
-                AI-Ready
+                $75K+
               </div>
               <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                ChatGPT · Perplexity · Google AI
+                Annual Agency Cost Removed
               </div>
             </div>
           </div>
