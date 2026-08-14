@@ -9,6 +9,36 @@ tag: "Digital-First Race"
 featured: true
 image: "/images/blog/race-archive-bronte-harbour-classic.jpg"
 imageAlt: "Hundreds of runners in red race shirts packed into the start corral of the Mercedes-Benz Oakville Bronte Harbour Classic 5K in Oakville"
+faq:
+  - a: 'Most races rent their web presence: a registration platform page, a timing
+      company''s results portal, a social media album. Each of those belongs to
+      a vendor with no reason to preserve it. When the contract ends or the platform
+      changes, the content vanishes. Unless the race owns its own site and treats
+      it as a permanent asset, deletion is the default outcome.'
+    q: Why do most race websites disappear after the event?
+  - a: 'A race archive is a permanent public record of an event edition — results,
+      prize winners, sponsors, photos, and the story of the day — kept online at
+      a stable URL indefinitely. Ours lives at bronteharbourclassic.com/2026/, and
+      each future edition will get its own: /2027/, /2028/, and so on, with the
+      homepage always serving the current year.'
+    q: What is a race archive?
+  - a: Almost nothing, if the site is static. Our race site runs on Astro and Vercel
+      with photos on Cloudflare R2 — the recurring cost is essentially the domain
+      registration, on the order of $20 a year. The expensive version of "forever"
+      only exists when a site depends on databases, servers, or paid media platforms
+      that bill monthly.
+    q: How much does it cost to keep a race website online forever?
+  - a: 'Each finisher medal from the Bronte Harbour Classic carries a QR code that
+      resolves to the permanent 2026 archive. Scanning it brings up the race results,
+      the photo gallery searchable by bib number, and every sponsor and vendor page
+      from that edition — turning the medal into a durable link between the physical
+      keepsake and the digital record of the day. --- Next in the series: How AI
+      Organized 1,800+ Race Photos — Google Vision, a 92% bib detection rate, and
+      why we gave every photo away free. The runner-facing version of this story
+      is on the race site: The 2026 Archive: Your Race, Saved Forever. And if you''re
+      thinking about building an event from scratch, start with what building one
+      taught me.'
+    q: What do QR codes on race medals do?
 ---
 
 # Why We Archived Every Race Forever

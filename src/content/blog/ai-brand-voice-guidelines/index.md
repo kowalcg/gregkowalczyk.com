@@ -8,6 +8,40 @@ tag: "AI Tools"
 image: "/images/blog/ai-brand-voice-guidelines.jpg"
 imageAlt: "Brand voice guidelines document with multiple brand identity cards and AI writing interface"
 version: "1.0"
+faq:
+  - a: 'AI brand voice guidelines are reference documents that tell an AI how a
+      specific brand speaks — including tone, vocabulary, proof points, and phrases
+      to avoid. Unlike a human copywriter who can interpret vague descriptors, an
+      AI needs specific examples and patterns to calibrate. A well-structured voice
+      file typically includes: audience summary, tone definition, voice markers,
+      avoid list, recurring proof points, CTA destinations, and a sample sentence.'
+    q: What are AI brand voice guidelines?
+  - a: Short. The best brand voice files I've used fit on half a page — 300 to 400
+      words. Longer files dilute the signal. If you write three pages of brand history
+      and values, the AI will average across all of it and produce something generic.
+      Every line in the file should be either a constraint the AI must follow or
+      a calibration signal it can directly apply.
+    q: How long should an AI brand voice file be?
+  - a: You can, but the output converges toward a generic average. The real advantage
+      of separate voice files is that brands with genuinely different audiences
+      and tones produce content that sounds distinct. TapeGeeks (evidence-based,
+      clinical, direct) should sound nothing like Bronte Harbour Classic (warm,
+      community, welcoming). One file makes them sound the same.
+    q: Can you use one brand voice file for multiple brands?
+  - a: 'Two things: encode the voice file in the system rather than the prompt,
+      and include a kill list of phrases the brand would never use. Prompt-level
+      instructions get diluted as context grows. A voice file loaded at the system
+      level — as I do in my Claude Code blog-writer skill — stays consistent across
+      the full post. The kill list gives the AI a negative constraint it can actively
+      test against, which is more reliable than positive description alone.'
+    q: How do you prevent AI from drifting from the brand voice over time?
+  - a: 'Voice is consistent — it''s who the brand is. Tone shifts by context — it''s
+      how the brand feels in a specific situation. A brand might have a direct,
+      no-nonsense voice but use a warmer tone in a community post and a more precise
+      tone in a technical guide. In practice, most AI brand voice files need to
+      encode both: the consistent personality markers (voice) and the contextual
+      calibration signals (tone) for the type of content being produced.'
+    q: What's the difference between brand voice and brand tone?
 ---
 
 This is Part 2 of a series on my AI blog writing system. [Part 1 covered the full 5-phase workflow](/news/ai-blog-writing-workflow) — intake, SEO research, writing, formatting, deployment. This post covers the piece most people skip entirely: brand voice files.

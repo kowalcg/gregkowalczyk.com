@@ -8,6 +8,42 @@ version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/how-ai-organized-race-photos-drone-videos.jpg"
 imageAlt: "800+ runners launching under the red Mercedes-Benz Oakville arch at the start of the Bronte Harbour Classic 5K, Bronte Heritage Waterfront Park, Oakville"
+faq:
+  - a: Go to the event's photo gallery and search your bib number directly — for
+      the Bronte Harbour Classic, that's bronteharbourclassic.com/photos/. If AI
+      bib detection tagged your photos correctly (it worked for 92% of ours), every
+      photo you appear in comes up instantly. If a search comes up empty, try your
+      name or browse by category and moment instead.
+    q: How do I find my race photos by bib number?
+  - a: In our first race, Google Cloud Vision's text detection correctly tagged
+      bib numbers in 92% of photos where a bib was visible. Accuracy depends on
+      how clearly the bib is captured — arms, folds, angle, and distance all affect
+      whether OCR can read the printed number. The remaining photos need a quick
+      manual review to catch what the automation missed.
+    q: How accurate is AI photo tagging by bib number?
+  - a: We used Google Cloud Vision's text detection API, which reads printed text
+      — including bib numbers — directly from photos and matches it against a registration
+      list. It isn't a race-specific product; it's a general-purpose vision API
+      applied to a specific problem, which is why any event organizer can set up
+      something similar without custom software.
+    q: What tool do event organizers use to tag race photos automatically?
+  - a: Most paid platforms charge runners per photo, which turns a free memory into
+      a transaction. We wanted every one of our 875 runners to leave with their
+      photos at no cost, so we built the tagging and hosting ourselves on a static
+      site with object storage — cheaper for us long-term than a monthly platform
+      fee, and free for every runner.
+    q: Why not just use a paid race photo platform?
+  - a: 'Not the same way. Bib-number OCR works on still photos with a clear frame;
+      a drone shot from height doesn''t resolve individual bib numbers, and video
+      isn''t a single image to scan. We organize our nine drone chapters by moment
+      and location instead — the wide view of the whole race, sitting alongside
+      the bib-searchable stills in the same gallery. --- Next in the series: Why
+      Every Sponsor and Vendor Gets a Permanent Web Presence — why 80 local businesses
+      got their own page instead of a logo in a footer. The runner-facing version
+      of this story is on the race site: How to Find Your Race Photos (Search by
+      Bib Number). And if you missed it, Part 1 covers why we archived the whole
+      race forever.'
+    q: Does AI photo tagging work on drone video too?
 ---
 
 # How AI Organized 1,800+ Race Photos (and Drone Videos)

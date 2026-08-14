@@ -9,6 +9,45 @@ tag: "AI Tools"
 featured: false
 image: "/images/blog/ai-competitor-content-analysis.jpg"
 imageAlt: "Competitor content analysis pipeline showing Frase topic frequency map and Claude Code gap analysis output"
+faq:
+  - a: Seven is the number I settled on after testing. The top 5–7 results represent
+      genuine topical competitors — posts ranking on content quality. Above 7, you
+      start including results that rank on domain authority alone, which distorts
+      your topic frequency map. Below 5, you might miss a pattern that appears in
+      3 of 7 posts but is actually a must-cover subtopic. For most keywords, 7 gives
+      you enough signal without noise.
+    q: How many competitor posts should you analyze before writing?
+  - a: A content brief is a structured document that specifies what a post needs
+      to include before writing begins. A good brief covers the target keyword and
+      related variants, proposed H2 structure based on competitor frequency, word
+      count target, must-include subtopics, People Also Ask questions to answer,
+      and any differentiation opportunities — gaps, outdated stats to update, or
+      first-person data to include. Writing from a brief consistently produces better-optimized
+      content than writing from a keyword alone.
+    q: What is a content brief in SEO?
+  - a: Frase scrapes the top-ranking pages for a target keyword and builds a topic
+      frequency map — showing which subtopics appear across multiple competitor
+      posts. As you write, it scores your draft against that map in real time. It's
+      most useful for quickly identifying must-cover subtopics and checking coverage
+      before publishing. It accelerates the research phase significantly but doesn't
+      replace gap analysis or differentiation strategy — those require judgment,
+      not just frequency data.
+    q: What does Frase do for SEO content research?
+  - a: Build a topic frequency map from the top 7 competitors and look for subtopics
+      that appear in 0 out of 7 posts. Not every gap is worth filling — some exist
+      because the topic is genuinely off-scope. But many gaps exist because all
+      7 competitors wrote from the same template. Check whether the gap corresponds
+      to a real PAA question or a common follow-up search. If it does, and you can
+      cover it with first-hand data or better depth, that section often becomes
+      the most-shared part of the post.
+    q: How do you find gaps in competitor content?
+  - a: Yes. Firecrawl has a free tier that handles scraping. For topic frequency
+      mapping, you can build a manual spreadsheet from scraped posts — it takes
+      60–90 minutes instead of 5. Google Keyword Planner covers search volume and
+      CPC for free. The paid tools (Frase, DataForSEO) accelerate the research phase,
+      but the underlying analysis is tool-independent. The framework — scrape, frequency
+      map, gap analysis, brief — works regardless of which software runs it.
+    q: Can you do competitor content analysis without paid tools?
 ---
 
 This is Part 3 of a series on my AI blog writing system. [Part 1 covered the full 5-phase workflow](/news/ai-blog-writing-workflow). [Part 2 covered brand voice files](/news/ai-brand-voice-guidelines) — how I make each of 6 sites sound like itself. This post covers the research phase that actually determines whether a post ranks: reading your competitors before you write a single word.

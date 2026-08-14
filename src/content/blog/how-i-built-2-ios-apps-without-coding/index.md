@@ -9,6 +9,41 @@ tag: "App Development"
 featured: true
 image: "/images/blog/how-i-built-2-ios-apps-without-coding.jpg"
 imageAlt: "Hands holding iPhone with polished app interface, circuit board technology in background"
+faq:
+  - a: No. Greg's last coding experience was Visual Basic in the 1990s. VibeCode
+      generates React Native components from plain English descriptions. You describe
+      what you want built; the tool generates the code. You'll debug using AI tools
+      (which explain problems in plain language), but you don't write the code yourself.
+    q: Do I need to know how to code to build an iOS app with VibeCode?
+  - a: SunUp took ~6 weeks. RunMate Pro took 8–10 weeks, extended by a 3-week GPS
+      debugging stretch, a complete map system rebuild, and 39 App Store review
+      cycles. Expect your first app to take longer than you plan — the learning
+      curve is real.
+    q: How long does it take to build an app this way?
+  - a: The core tools — VibeCode, Cursor AI, and Claude Code — run approximately
+      $70–300/month depending on usage tier. The Apple Developer Program is $99/year.
+      Compare that to $50,000–$200,000+ for a professional developer to build a
+      comparable custom app.
+    q: What does it cost?
+  - a: VibeCode is a no-code app building platform built on React Native and Expo.
+      You describe screens and features in plain English; VibeCode generates the
+      underlying code. It's the entry point that makes mobile app development accessible
+      without a coding background.
+    q: What is VibeCode?
+  - a: Claude Code is an AI coding assistant that runs in your terminal, reads your
+      project files, and operates directly within your codebase — executing commands,
+      debugging, and building features. Unlike a chatbot, it takes action inside
+      your project rather than just advising from the outside.
+    q: What is Claude Code?
+  - a: Copy the rejection message → paste it into Cursor or ChatGPT → get a specific
+      explanation of what Apple requires → implement the fix → rebuild → resubmit.
+      Each rejection is a specific, solvable problem described in Apple's own words.
+      39 rejections made RunMate Pro a better app than the original submission.
+      --- Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville,
+      Ontario. He built SunUp by GearTOP and RunMate Pro as a non-coder using AI-assisted
+      development tools. He runs GearTOP and TapeGeeks, two e-commerce brands operating
+      since 2014. View his project portfolio →
+    q: How do you handle App Store rejections without a technical background?
 ---
 
 # I Built 2 iOS Apps at 55 Without Writing a Line of Code

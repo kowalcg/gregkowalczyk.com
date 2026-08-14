@@ -8,6 +8,36 @@ version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/why-every-sponsor-vendor-gets-permanent-web-presence.jpg"
 imageAlt: "Aerial drone photo of runners filling Ontario Street at the start of the Mercedes-Benz Oakville Bronte Harbour Classic 5K, Oakville"
+faq:
+  - a: 'A local 5K sponsorship reaches a genuinely engaged, hyper-local audience
+      — 875 registrants and their families, all within driving distance of your
+      business — and, done right, produces a permanent, searchable web page proving
+      your involvement long after race day. That''s a different return than a one-day
+      banner: it''s evidence a prospective 2027 partner or customer can find on
+      Google months later.'
+    q: Why should a small business sponsor a local 5K?
+  - a: Every 2026 sponsor and vendor received a permanent page at bronteharbourclassic.com/2026/
+      with their story, their specific role in the race, and real race-day photos
+      our AI tagged them in — plus recognition across race materials and, for higher
+      tiers, signage and announcer mentions on the day itself. The page keeps working
+      in search well after the physical sponsorship benefits end.
+    q: What do sponsors and vendors get from sponsoring the Bronte Harbour Classic?
+  - a: We store each partner as a structured content file — a few fields like name,
+      role, and a short story — rendered through one shared page template using
+      Astro's content collections. That means the cost of the 80th page is a few
+      minutes of writing, not a few hours of custom coding, which is what makes
+      giving every partner a real page affordable for a two-person volunteer team.
+    q: How do you build 80 sponsor pages without a big budget?
+  - a: 'Yes, more than a logo grid does. A page with real, specific content about
+      a local business, linked from a site that stays online year-round, accumulates
+      search relevance the way a one-time social media post can''t. We also mark
+      up every partner page with Organization structured data, which is the same
+      signal Google recommends for local business visibility. --- Next in the series:
+      Why Our Medals Have QR Codes (When No One Else''s Do) — the physical object
+      that turns a keepsake into a working link. The runner-facing version of this
+      story is on the race site: Why Every Sponsor and Vendor Has Their Own Page.
+      Catch up on Part 1 and Part 2 if you missed them.'
+    q: Does a permanent sponsor page actually help with SEO?
 ---
 
 # Why Every Sponsor and Vendor Gets a Permanent Web Presence

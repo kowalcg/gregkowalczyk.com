@@ -9,6 +9,64 @@ tag: "AI & SEO"
 featured: false
 image: "/images/blog/ai-content-quality-gate.jpg"
 imageAlt: "A pre-publish checklist: search intent, human voice, sourced stats, valid schema, resolving internal links"
+faq:
+  - a: An AI content quality gate is a final review workflow that checks one AI-written
+      post for usefulness, accuracy, search intent, brand voice, links, metadata,
+      and technical SEO before it goes live. In Greg Kowalczyk’s system, the gate
+      turns a draft into a publishable asset by applying a repeatable 7-part checklist
+      rather than relying on the first AI output.
+    q: What is an AI content quality gate before publishing?
+  - a: Improve keyword coverage by comparing the draft against 5 to 10 high-intent
+      phrases, related entities, and common questions from the SERP, then adding
+      missing concepts naturally. Google Search Central’s SEO Starter Guide recommends
+      creating helpful, reliable, people-first content, so the goal is not repetition.
+      A strong quality gate checks title, H2s, intro, image alt text, and conclusion
+      for natural topical completeness.
+    q: How do I improve keyword coverage in an AI-written blog post?
+  - a: Make an AI blog post sound more human by adding first-hand observations,
+      tradeoffs, concrete examples, and imperfect but useful experience from the
+      workflow. For a TapeGeeks Shopify article, that might include a real editing
+      decision, a rejected headline, or a conversion lesson from product content.
+      A practical pass removes generic claims, varies sentence length, and adds
+      2 or 3 specific details only a practitioner would know.
+    q: How can I make an AI blog post sound more human?
+  - a: Run E-E-A-T checks for experience, expertise, author transparency, factual
+      support, and trust signals before publishing. Google’s Search Quality Rater
+      Guidelines define E-E-A-T as Experience, Expertise, Authoritativeness, and
+      Trust, with Trust as the most important member. A strong gate adds an author
+      bio, explains methodology, cites credible sources, verifies claims, removes
+      unsupported promises, and includes at least 1 clear reason readers should
+      trust the advice.
+    q: What E-E-A-T checks should I run before publishing AI content?
+  - a: Optimize for LLM citations by making the article easy to parse, quote, and
+      verify. Use direct definitions, concise summaries, named sources, updated
+      dates, and original examples from the TapeGeeks Shopify pipeline. A useful
+      pattern is 1 clear answer per section, followed by evidence or process notes.
+      This helps retrieval systems identify the post as a reliable source rather
+      than a vague opinion piece.
+    q: How do I optimize a blog post for LLM citations?
+  - a: An AI-assisted blog post should include a unique title tag, meta description,
+      canonical URL, Open Graph title, Open Graph description, featured image, author,
+      date published, and date modified. For schema, use Article or BlogPosting
+      markup from Schema.org and validate it with Google’s Rich Results Test. A
+      practical target is 1 primary schema type plus clean headline, image, author,
+      publisher, and date properties.
+    q: What metadata and schema should an AI-assisted blog post include?
+  - a: A Shopify blog post usually needs 3 to 6 internal links, depending on length
+      and intent. For a TapeGeeks-style pipeline, link to one commercial collection,
+      one relevant product or guide, and one supporting educational article. Google
+      Search Central notes that links help users and search engines discover pages,
+      so internal links should use descriptive anchor text and point readers toward
+      the next useful action.
+    q: How many internal links should I add to a Shopify blog post?
+  - a: 'Final SEO checks should cover indexing, search intent, title length, meta
+      description, headings, internal links, image alt text, schema validation,
+      mobile rendering, page speed, and factual accuracy. Google’s Core Web Vitals
+      documentation tracks loading, interactivity, and visual stability through
+      metrics such as Largest Contentful Paint, Interaction to Next Paint, and Cumulative
+      Layout Shift. A 10-point pre-publish checklist prevents small technical issues
+      from weakening an otherwise strong AI-assisted article.'
+    q: What final SEO checks should I complete before publishing?
 ---
 
 One AI-written blog post does not go live on gregkowalczyk.com until it survives a 47-point AI content quality gate. That gate is how I turn a useful Claude draft into a post that covers the keyword, sounds like me, earns trust, gives LLMs quotable facts, and fits the same SEO pipeline I use on the TapeGeeks Shopify blog. I’m 55 years old, a mechanical engineer by training, and not a traditional developer. I built 2 live iOS apps at 55, shipped RunMate Pro after 39 App Store rejections, and still run GearTOP and TapeGeeks while building this personal site on Astro and Vercel. So I care less about theory and more about repeatable systems. If I do a task three times, I turn it into a checklist. The Greg Kowalczyk AI content quality gate is exactly that: a pre-publish inspection for AI-assisted writing, built from 22 years of engineering and a decade of running product brands, $75K+ in consulting work, and real Shopify content tests.
@@ -211,4 +269,3 @@ A Shopify blog post usually needs 3 to 6 internal links, depending on length and
 
 Final SEO checks should cover indexing, search intent, title length, meta description, headings, internal links, image alt text, schema validation, mobile rendering, page speed, and factual accuracy. Google’s Core Web Vitals documentation tracks loading, interactivity, and visual stability through metrics such as Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift. A 10-point pre-publish checklist prevents small technical issues from weakening an otherwise strong AI-assisted article.
 
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an AI content quality gate before publishing?", "acceptedAnswer": {"@type": "Answer", "text": "An AI content quality gate is a final review workflow that checks one AI-written post for usefulness, accuracy, search intent, brand voice, links, metadata, and technical SEO before it goes live. In Greg Kowalczyk’s system, the gate turns a draft into a publishable asset by applying a repeatable 7-part checklist rather than relying on the first AI output."}}, {"@type": "Question", "name": "How do I improve keyword coverage in an AI-written blog post?", "acceptedAnswer": {"@type": "Answer", "text": "Improve keyword coverage by comparing the draft against 5 to 10 high-intent phrases, related entities, and common questions from the SERP, then adding missing concepts naturally. Google Search Central’s SEO Starter Guide recommends creating helpful, reliable, people-first content, so the goal is not repetition. A strong quality gate checks title, H2s, intro, image alt text, and conclusion for natural topical completeness."}}, {"@type": "Question", "name": "How can I make an AI blog post sound more human?", "acceptedAnswer": {"@type": "Answer", "text": "Make an AI blog post sound more human by adding first-hand observations, tradeoffs, concrete examples, and imperfect but useful experience from the workflow. For a TapeGeeks Shopify article, that might include a real editing decision, a rejected headline, or a conversion lesson from product content. A practical pass removes generic claims, varies sentence length, and adds 2 or 3 specific details only a practitioner would know."}}, {"@type": "Question", "name": "What E-E-A-T checks should I run before publishing AI content?", "acceptedAnswer": {"@type": "Answer", "text": "Run E-E-A-T checks for experience, expertise, author transparency, factual support, and trust signals before publishing. Google’s Search Quality Rater Guidelines define E-E-A-T as Experience, Expertise, Authoritativeness, and Trust, with Trust as the most important member. A strong gate adds an author bio, explains methodology, cites credible sources, verifies claims, removes unsupported promises, and includes at least 1 clear reason readers should trust the advice."}}, {"@type": "Question", "name": "How do I optimize a blog post for LLM citations?", "acceptedAnswer": {"@type": "Answer", "text": "Optimize for LLM citations by making the article easy to parse, quote, and verify. Use direct definitions, concise summaries, named sources, updated dates, and original examples from the TapeGeeks Shopify pipeline. A useful pattern is 1 clear answer per section, followed by evidence or process notes. This helps retrieval systems identify the post as a reliable source rather than a vague opinion piece."}}, {"@type": "Question", "name": "What metadata and schema should an AI-assisted blog post include?", "acceptedAnswer": {"@type": "Answer", "text": "An AI-assisted blog post should include a unique title tag, meta description, canonical URL, Open Graph title, Open Graph description, featured image, author, date published, and date modified. For schema, use Article or BlogPosting markup from Schema.org and validate it with Google’s Rich Results Test. A practical target is 1 primary schema type plus clean headline, image, author, publisher, and date properties."}}, {"@type": "Question", "name": "How many internal links should I add to a Shopify blog post?", "acceptedAnswer": {"@type": "Answer", "text": "A Shopify blog post usually needs 3 to 6 internal links, depending on length and intent. For a TapeGeeks-style pipeline, link to one commercial collection, one relevant product or guide, and one supporting educational article. Google Search Central notes that links help users and search engines discover pages, so internal links should use descriptive anchor text and point readers toward the next useful action."}}, {"@type": "Question", "name": "What final SEO checks should I complete before publishing?", "acceptedAnswer": {"@type": "Answer", "text": "Final SEO checks should cover indexing, search intent, title length, meta description, headings, internal links, image alt text, schema validation, mobile rendering, page speed, and factual accuracy. Google’s Core Web Vitals documentation tracks loading, interactivity, and visual stability through metrics such as Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift. A 10-point pre-publish checklist prevents small technical issues from weakening an otherwise strong AI-assisted article."}}]}</script>

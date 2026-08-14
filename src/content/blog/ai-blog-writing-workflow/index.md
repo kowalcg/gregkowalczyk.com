@@ -9,6 +9,49 @@ featured: true
 image: "/images/blog/ai-blog-writing-workflow.jpg"
 imageAlt: "AI blog writing workflow diagram showing research, writing, and deployment phases"
 version: "1.0"
+faq:
+  - a: 'An AI blog writing workflow is a defined sequence of steps — research, writing,
+      formatting, and publishing — executed by an AI system with consistent rules
+      at each step. The distinction from "using AI to write" is systematization:
+      inputs are defined, outputs are specified, and the AI has explicit rules for
+      every decision. That''s what produces consistent results across dozens of
+      posts and multiple sites.'
+    q: What is an AI blog writing workflow?
+  - a: With my current system, a Quick Mode post (1,200–1,500 words) takes 35–45
+      minutes from intake to saved file. A Full Frase post targeting a competitive
+      keyword takes 60–75 minutes. Compare that to 3–5 hours for a manually researched
+      and written post of equivalent depth. The time savings compound when you're
+      producing multiple posts per week across multiple sites.
+    q: How long does it take to write a blog post with AI?
+  - a: 'Yes — but only when they follow the same principles as any well-written
+      piece of content: answer the query clearly and early, cover the topic thoroughly
+      based on what search results tell you people expect, match the search intent,
+      and include proper on-page SEO. AI content that skips the research phase and
+      just generates text rarely ranks. AI content built around a proper keyword
+      brief and competitor analysis performs as well as manually written content
+      in my experience.'
+    q: Do AI-written blog posts rank on Google?
+  - a: Claude Code is a terminal-based AI assistant from Anthropic that can read
+      and write files, call external APIs, and execute multi-step workflows within
+      a single session. I use it for content workflows because it handles the full
+      pipeline end-to-end — from API calls for keyword data to writing the content
+      to saving the finished file in the right location. A browser-based AI tool
+      requires manually moving data between each step. Claude Code eliminates those
+      handoffs.
+    q: What is Claude Code and why do you use it for content workflows?
+  - a: 'No. I''m a mechanical engineer with no formal programming background — I
+      built this system entirely through AI-assisted development using Claude Code
+      and Cursor. The underlying skill is written in Markdown, not code. What you
+      need is the ability to think in systems: define your inputs, define your steps,
+      define your outputs, then teach the AI to execute each step with explicit
+      rules. The technical barrier is lower than most people assume.'
+    q: Do you need coding experience to build something like this?
+  - a: My current setup handles Shopify (HTML output), Astro (Markdown and MDX),
+      and Next.js (MDX). The skill can be extended to WordPress, Webflow, or any
+      other CMS by adding the output format and save path for that platform. The
+      research and writing phases are platform-agnostic — only Phase 4 (formatting)
+      and Phase 5 (deployment) are platform-specific.
+    q: What platforms does this work with?
 ---
 
 Most people using AI to write blog posts are doing it wrong.

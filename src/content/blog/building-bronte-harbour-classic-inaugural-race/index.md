@@ -9,6 +9,66 @@ tag: "Community"
 featured: true
 image: "/images/blog/bronte-harbour-classic-inaugural.jpg"
 imageAlt: "Runners at the start line of the inaugural Bronte Harbour Classic 5K at Bronte Heritage Waterfront Park in Oakville"
+faq:
+  - a: It depends mostly on size and venue. For a basic 100–200 person 5K, the per-participant
+      items run roughly $7 for shirts, $6 for medals, and $3 for registration and
+      payment processing, plus fixed costs like event insurance (from about $150)
+      and chip timing (around $700). Road closures, traffic management, and permits
+      push it higher. In our case, sponsorship covered the gap so registration fees
+      didn't have to carry everything.
+    q: How much does it cost to put on a 5K?
+  - a: Plan on 4 to 6 months as an absolute minimum to handle permits, registration,
+      sponsors, volunteers, and marketing. That's the mechanical floor. The bigger
+      question is timing the launch itself — when your team, course, sponsors, and
+      municipal approval all align. For us that judgment took roughly three years,
+      and waiting was the right call. The execution is months; knowing when to start
+      can take longer.
+    q: How long does it take to plan a 5K race?
+  - a: Almost always, yes. If your course uses any public road or public park, you'll
+      need municipal approval, and usually police and EMS coordination plus proof
+      of event insurance. Treat permits as a dependency, not a form — your registration
+      date, marketing, and sponsor commitments all sit on top of that approval.
+      Start the permit process embarrassingly early, because everything downstream
+      waits on it.
+    q: Do you need permits for a road race?
+  - a: No on both counts, for a community race. You don't need a certified course
+      or a race director certification to run a legitimate, safe, fun 5K. Course
+      certification (through a body like USATF) matters only if you're promoting
+      official competitive times. A certification course can help you network and
+      prepare for bigger events, but it's optional. Getting the distance right still
+      matters — certification of it doesn't.
+    q: Do I need to certify my 5K course or get a race director certification?
+  - a: It scales with size, but the structure matters more than the headcount. Assign
+      clear leads — a volunteer manager, a timing and registration lead, a sponsorship
+      coordinator, a course and signage lead — and let each own their block of race
+      day so you're not running everything solo. Recruit from running clubs, schools,
+      sports teams, and local businesses, and recruit earlier than feels necessary.
+      A clear org chart beats a big crowd of unassigned helpers.
+    q: How many volunteers do I need to run a 5K?
+  - a: Treating the race as a checklist they complete alone. The checklist is real,
+      but a race is a coalition — sponsors, volunteers, a municipality, a charity,
+      hundreds of runners — each with their own reasons to show up. The skill is
+      aligning all of them on one date and delivering well enough that they return.
+      The second mistake is rushing the launch to hit a calendar slot before the
+      pieces are actually ready.
+    q: What's the most common mistake first-time race organizers make?
+  - a: Long before the start gun. In our case, the setup crew and volunteers arrived
+      in the dark to raise tents, stage the finish arch, put out signage, test the
+      sound system, and lock in road closures and course marshals. Volunteer check-in
+      and same-day registration opened next, with medical in position. Build a minute-by-minute
+      morning timeline and assign a lead to each block — the two hours before the
+      start are where the race is actually won.
+    q: What time should setup start on race day?
+  - a: Yes — we did it as a volunteer team. The trick is leverage. We built the
+      registration site, email sequences, and day-of communications with AI-assisted
+      systems instead of a big agency budget, and we leaned on sponsors and partners
+      to fill the gaps. A small team can produce an event that looks much larger
+      when the systems are good and the partnerships are real. The constraint is
+      rarely headcount; it's usually systems. If you're building something that
+      feels too big for the team you have — a race, a product, a brand — that's
+      usually a systems problem, not a headcount problem. It's most of what I help
+      people with. If that's where you are, get in touch.
+    q: Can a small team really run a 900-person race?
 ---
 
 # How to Organize a 5K Race: What Building One From Scratch Taught Me

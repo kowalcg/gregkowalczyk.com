@@ -9,6 +9,39 @@ tag: "AI Development"
 featured: false
 image: "/images/blog/sports-clinic-finder-canada.jpg"
 imageAlt: "SportClinicFinder.com homepage — Canada's sports clinic directory built with AI-assisted development using Next.js and Claude Code"
+faq:
+  - a: The site build — routing, pages, UI, database schema, API — took two to three
+      weeks of focused work. The data pipeline (sourcing, cleaning, and enriching
+      12,000+ records) took longer. Budget four to six weeks total for a directory
+      at this scale if you're doing it properly. If you're using a starter template
+      and curated data, you can move faster.
+    q: How long does it take to build a directory website with AI?
+  - a: 'For a Next.js project on Vercel: Neon Postgres for the database, Drizzle
+      ORM for type-safe queries, shadcn/ui for components, Tailwind for styling.
+      This stack has no weak links and deploys to Vercel in minutes. If you''re
+      not on Vercel, PlanetScale or Supabase are solid Postgres alternatives with
+      similar serverless characteristics.'
+    q: What's the best tech stack for a directory website in 2025?
+  - a: Outscraper is the fastest path for Google Maps data — search by category
+      and city, export CSV, import to your database. For US directories, data.gov
+      has public business data for some categories. Whatever source you use, plan
+      for 20–30% data cleanup work after the initial import. It's never clean.
+    q: How do you get data for a directory website?
+  - a: 'Yes — directories are one of the strongest programmatic SEO use cases. Every
+      city + specialty + injury combination is a real search query. The requirement
+      is that each page has to be genuinely useful, not just a swapped variable
+      in a template. Add local context: insurance notes by province or state, city-specific
+      clinic counts, FAQs that reflect the local healthcare system. Thin pages don''t
+      rank; useful pages do.'
+    q: Does programmatic SEO work for directory sites?
+  - a: 'Data quality. Getting the initial data is straightforward. Getting it to
+      a state where every listing is accurate, every service flag is reliable, and
+      every clinic that shows up actually belongs there — that''s where the real
+      work is. You can build the frontend in days. The data work takes weeks. ---
+      SportClinicFinder.com is live. Full stack: Next.js 16, Neon Postgres, Drizzle
+      ORM, Tailwind CSS 4, Vercel. Built with Claude Code. If you''re thinking about
+      building a directory and want to talk through the architecture, get in touch.'
+    q: What's the hardest part of building a directory website?
 ---
 
 # How I Built a 12,000-Clinic Sports Directory in Canada With AI and No Backend Team

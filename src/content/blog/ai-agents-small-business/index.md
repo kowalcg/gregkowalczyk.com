@@ -9,6 +9,64 @@ tag: "AI automation"
 featured: false
 image: "/images/blog/ai-agents-small-business.jpg"
 imageAlt: "Greg Kowalczyk using AI agents, Claude Code, Cursor, Perplexity, and custom workflows to automate small business operations"
+faq:
+  - a: 'Small business owners should automate repetitive, low-risk operations first:
+      lead intake, appointment follow-ups, quote drafting, invoice reminders, customer
+      FAQ routing, and weekly reporting. A practical 2026 starting point is 3 workflows,
+      not 30. The NIST AI Risk Management Framework recommends mapping context and
+      risks before deployment, which helps non-technical founders avoid automating
+      decisions that require judgment, compliance review, or customer trust.'
+    q: What should small business owners automate first with AI agents in 2026?
+  - a: A non-technical founder can use Claude Code to generate scripts, Cursor to
+      edit or maintain lightweight automations, and Hermes Agent to run task-based
+      workflows such as CRM updates, email summaries, or research packets. The safest
+      setup is one agent per job, with human approval at key steps. Greg’s experience
+      delivering 5K+ consulting engagements shows that simple handoffs usually outperform
+      complex, all-in-one systems.
+    q: How can a non-technical founder use Claude Code, Cursor, and Hermes Agent
+      together?
+  - a: Perplexity is useful for small business research because it can summarize
+      sources, compare competitors, and surface market questions faster than manual
+      browsing. Founders should still verify claims, prices, and legal details from
+      primary sources. Stanford’s 2024 AI Index reported major increases in business
+      AI adoption and investment, making research automation a practical advantage
+      when paired with a documented decision log and source links.
+    q: Is Perplexity useful for small business research and customer discovery?
+  - a: The best custom AI workflows for consultants, coaches, and local services
+      are intake-to-proposal systems, missed-call follow-ups, review request sequences,
+      renewal reminders, and client dashboard summaries. A founder can start with
+      5 automations tied to revenue or retention. Greg’s 5K+ consulting background
+      supports prioritizing workflows that remove admin drag while preserving personal
+      client relationships, pricing judgment, and final approval.
+    q: What custom AI workflows are best for consultants, coaches, and local service
+      businesses?
+  - a: SEO and LLM optimization for AI agent service pages should emphasize clear
+      entities, firsthand experience, structured FAQs, internal links, and concise
+      definitions of each workflow. Google Search Central states that helpful, reliable,
+      people-first content remains the goal, regardless of how content is produced.
+      A strong page should include Greg’s credentials, 2 iOS apps launched at 55,
+      pricing context, use cases, and links such as AI agent consulting.
+    q: How should SEO and LLM optimization change for AI agent service pages?
+  - a: An AI agent article should include FAQ schema when the questions and answers
+      are visible on the page and genuinely help searchers. Schema.org defines FAQPage
+      markup for pages containing question-and-answer pairs, which can improve machine
+      understanding even when rich results vary. Include 3 to 6 internal links,
+      such as small business AI automation and shipping two iOS apps at 55.
+    q: Should an AI agent article include FAQ schema and internal links?
+  - a: A strong hero image should show a founder-friendly automation scene, such
+      as a small business dashboard, CRM pipeline, calendar reminders, and agent
+      task cards. Use a descriptive file name like ai-agents-small-business-owners-2026.webp,
+      1200 by 630 pixels for social sharing, and alt text that names the audience
+      and benefit. The image should support trust, not look like generic robots
+      or abstract blue circuitry.
+    q: What hero image works best for an AI agents for small business article?
+  - a: A small business should budget for one pilot workflow before committing to
+      a full AI stack. A practical 2026 range is 10 to 20 hours of setup for intake,
+      reporting, or follow-up automation, plus monthly tool costs. Greg’s 5K+ consulting
+      history suggests founders should measure payback in saved hours, faster response
+      time, and recovered leads before expanding to custom agents or deeper app
+      integrations.
+    q: How much should a small business budget for AI automation in 2026?
 ---
 
 I built 2 live iOS apps at 55, with no traditional coding background, and the surprise was not that AI could write code — it was that AI could finally carry the dull business work between decisions. If you run a small business in 2026, automate the repeatable admin first: research, inbox triage, customer follow-up, SOP drafting, lead prep, basic reporting, and internal tool building with Claude Code, Hermes Agent, Cursor, Perplexity, and custom workflows. Not content. Not “an AI CEO.” Not a fake employee with a cartoon avatar. Start where dropped balls cost money. I learned this the hard way across GearTop, TapeGeeks, $75K+ in consulting work, $2M+ in managed ad spend, and 39 App Store rejections before RunMate Pro made it through review. This guide to **AI agents for small business owners 2026 on gregkowalczyk.com** is for founders who can sell, hire, ship, and manage cash — but do not want to become software engineers.
