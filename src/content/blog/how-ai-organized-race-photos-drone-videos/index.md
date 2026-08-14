@@ -78,7 +78,7 @@ The result is a gallery where "search by bib 588" and "browse the Kids 1K" both 
 
 ## The number that matters: 92%, and what happens to the other 8%
 
-Here's the honest part. Automatic bib detection worked on 92% of photos where a bib was visible and legible. That's a strong number — high enough that most runners find themselves without any help from us. It is not 100%, and I want to be straight about why.
+Automatic bib detection worked on 92% of photos where a bib was visible and legible. That's a strong number — high enough that most runners find themselves without any help from us. It is not 100%, and I want to be straight about why.
 
 Bib numbers get obscured by arms mid-stride, folded into a runner's shirt, angled away from the camera, or just too far from the lens to resolve at 2,400 pixels wide. OCR reads what's actually in the frame; it can't reconstruct a number the camera never captured cleanly. For the remaining photos, a human — usually me, on a Tuesday night — reviews and tags manually, which is slow but not hard.
 
@@ -102,7 +102,7 @@ Combine that with a static front end — no server rendering a gallery on every 
 
 ## What this means beyond the runner
 
-The bib-tagging pipeline pays off twice. Runners get instant, free access to their own photos. But every sponsor and vendor from our [80-page 2026 directory](https://www.bronteharbourclassic.com/2026/) also gets AI-tagged into any photo their booth, banner, or team appears in — so their permanent page isn't just a logo, it's photographic proof they were part of the day. That's a meaningfully different pitch to a business weighing whether to [sponsor](https://www.bronteharbourclassic.com/sponsors) or run a booth at the [vendor expo](https://www.bronteharbourclassic.com/vendors) next June: instead of a promise, they see exactly how last year's partners showed up in the gallery.
+The bib-tagging pipeline pays off twice — once for the runners and once for the sponsors. Runners get instant, free access to their own photos. But every sponsor and vendor from our [80-page 2026 directory](https://www.bronteharbourclassic.com/2026/) also gets AI-tagged into any photo their booth, banner, or team appears in — so their permanent page isn't just a logo, it's photographic proof they were part of the day. That's a meaningfully different pitch to a business weighing whether to [sponsor](https://www.bronteharbourclassic.com/sponsors) or run a booth at the [vendor expo](https://www.bronteharbourclassic.com/vendors) next June: instead of a promise, they see exactly how last year's partners showed up in the gallery.
 
 ## How to build this for your own event
 

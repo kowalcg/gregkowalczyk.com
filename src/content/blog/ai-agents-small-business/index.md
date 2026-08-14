@@ -4,7 +4,8 @@ description: "Discover AI tools for small business automation in 2026. Start wit
 pubDate: 2026-06-04
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
-version: "1.0"
+version: "1.1"
+updatedDate: 2026-08-13
 tag: "AI automation"
 featured: false
 image: "/images/blog/ai-agents-small-business.jpg"
@@ -21,7 +22,7 @@ faq:
       edit or maintain lightweight automations, and Hermes Agent to run task-based
       workflows such as CRM updates, email summaries, or research packets. The safest
       setup is one agent per job, with human approval at key steps. Greg’s experience
-      delivering 5K+ consulting engagements shows that simple handoffs usually outperform
+      delivering $5K+ consulting engagements shows that simple handoffs usually outperform
       complex, all-in-one systems.
     q: How can a non-technical founder use Claude Code, Cursor, and Hermes Agent
       together?
@@ -35,7 +36,7 @@ faq:
   - a: The best custom AI workflows for consultants, coaches, and local services
       are intake-to-proposal systems, missed-call follow-ups, review request sequences,
       renewal reminders, and client dashboard summaries. A founder can start with
-      5 automations tied to revenue or retention. Greg’s 5K+ consulting background
+      5 automations tied to revenue or retention. Greg’s $5K+ consulting background
       supports prioritizing workflows that remove admin drag while preserving personal
       client relationships, pricing judgment, and final approval.
     q: What custom AI workflows are best for consultants, coaches, and local service
@@ -62,7 +63,7 @@ faq:
     q: What hero image works best for an AI agents for small business article?
   - a: A small business should budget for one pilot workflow before committing to
       a full AI stack. A practical 2026 range is 10 to 20 hours of setup for intake,
-      reporting, or follow-up automation, plus monthly tool costs. Greg’s 5K+ consulting
+      reporting, or follow-up automation, plus monthly tool costs. Greg’s $5K+ consulting
       history suggests founders should measure payback in saved hours, faster response
       time, and recovered leads before expanding to custom agents or deeper app
       integrations.
@@ -275,7 +276,7 @@ Small business owners should automate repetitive, low-risk operations first: lea
 
 ### How can a non-technical founder use Claude Code, Cursor, and Hermes Agent together?
 
-A non-technical founder can use Claude Code to generate scripts, Cursor to edit or maintain lightweight automations, and Hermes Agent to run task-based workflows such as CRM updates, email summaries, or research packets. The safest setup is one agent per job, with human approval at key steps. Greg’s experience delivering 5K+ consulting engagements shows that simple handoffs usually outperform complex, all-in-one systems.
+A non-technical founder can use Claude Code to generate scripts, Cursor to edit or maintain lightweight automations, and Hermes Agent to run task-based workflows such as CRM updates, email summaries, or research packets. The safest setup is one agent per job, with human approval at key steps. Greg’s experience delivering $5K+ consulting engagements shows that simple handoffs usually outperform complex, all-in-one systems.
 
 ### Is Perplexity useful for small business research and customer discovery?
 
@@ -283,7 +284,7 @@ Perplexity is useful for small business research because it can summarize source
 
 ### What custom AI workflows are best for consultants, coaches, and local service businesses?
 
-The best custom AI workflows for consultants, coaches, and local services are intake-to-proposal systems, missed-call follow-ups, review request sequences, renewal reminders, and client dashboard summaries. A founder can start with 5 automations tied to revenue or retention. Greg’s 5K+ consulting background supports prioritizing workflows that remove admin drag while preserving personal client relationships, pricing judgment, and final approval.
+The best custom AI workflows for consultants, coaches, and local services are intake-to-proposal systems, missed-call follow-ups, review request sequences, renewal reminders, and client dashboard summaries. A founder can start with 5 automations tied to revenue or retention. Greg’s $5K+ consulting background supports prioritizing workflows that remove admin drag while preserving personal client relationships, pricing judgment, and final approval.
 
 ### How should SEO and LLM optimization change for AI agent service pages?
 
@@ -299,4 +300,4 @@ A strong hero image should show a founder-friendly automation scene, such as a s
 
 ### How much should a small business budget for AI automation in 2026?
 
-A small business should budget for one pilot workflow before committing to a full AI stack. A practical 2026 range is 10 to 20 hours of setup for intake, reporting, or follow-up automation, plus monthly tool costs. Greg’s 5K+ consulting history suggests founders should measure payback in saved hours, faster response time, and recovered leads before expanding to custom agents or deeper app integrations.
+A small business should budget for one pilot workflow before committing to a full AI stack. A practical 2026 range is 10 to 20 hours of setup for intake, reporting, or follow-up automation, plus monthly tool costs. Greg’s $5K+ consulting history suggests founders should measure payback in saved hours, faster response time, and recovered leads before expanding to custom agents or deeper app integrations.

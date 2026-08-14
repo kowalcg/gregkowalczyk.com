@@ -151,7 +151,7 @@ Most race-planning content skips this entirely because it's selling you software
 
 ## What I'd tell anyone building something from nothing
 
-A few things held up under pressure:
+A few principles held up under real race-day pressure, and I'd reuse every one of them:
 
 - **Start before you're ready, but launch only when the system is.** We sat on the idea for years, then moved fast once the pieces existed. Both halves mattered. Patience isn't the opposite of speed — it's what makes speed safe.
 - **Operations are a feature.** The medal, the photos, the clean on-time start — runners feel those as quality, even if they never think about the work behind them.

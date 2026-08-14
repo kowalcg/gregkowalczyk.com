@@ -5,7 +5,49 @@ pubDate: 2026-02-24
 tag: "AI Strategy"
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
-version: "1.0"
+version: "1.1"
+updatedDate: 2026-08-13
+faq:
+  - q: "What is the biggest mistake businesses make with AI?"
+    a: >-
+      Starting with the tool instead of the problem. The most common failure
+      pattern is signing up for an AI tool trial, then hunting for something
+      to do with it. The right order is reversed: identify a specific,
+      painful, repetitive task that consumes time or money, then find the
+      tool that eliminates it. Three repeat tasks that need no real judgement
+      are the best place to start.
+  - q: "Can AI replace strategic thinking in a business?"
+    a: >-
+      No. AI is excellent at execution and poor at strategy. It can write 200
+      product listings in a day, but a person who understands the products,
+      customers, and competition still has to define what those listings
+      should say and why. The owners getting real results bring the business
+      logic — customer knowledge, margins, brand voice — and let AI handle
+      execution at scale.
+  - q: "How should a small business calculate the ROI of AI tools?"
+    a: >-
+      Compare the full cost of the current approach — invoices plus your own
+      hours, briefing time, revision rounds, and waiting — against the tool
+      cost. Framed that way, a $35K-per-year content agency was replaced in
+      my business by roughly $50 per month of Claude API usage. Treat AI as
+      leverage against a task you already pay for, not as another software
+      subscription with unclear ROI.
+  - q: "Should you implement several AI systems at once?"
+    a: >-
+      No — build one system at a time, in order of impact multiplied by speed
+      to implement. I built three simultaneously (content, reporting, email)
+      and got a chaotic three months where nothing was finished and the brand
+      voice drifted. Sequential delivery would have had all three operational
+      by month four instead of month seven. Finish one, stabilize its output
+      quality, then start the next.
+  - q: "Why do AI projects fail without measurement?"
+    a: >-
+      Because AI systems improve through iteration, and iteration needs data.
+      Without baseline numbers recorded before the switch — conversion rates
+      on top listings, email open rates, report delivery times — you cannot
+      tell whether the AI-assisted version performs better, worse, or the
+      same. Document the current state first, track consistently after, and
+      use the gaps the data reveals to decide each next improvement.
 image: "/images/blog/what-businesses-get-wrong-about-ai.jpg"
 imageAlt: "Business executive in boardroom reviewing AI strategy dashboard with warning indicators"
 ---
@@ -93,6 +135,28 @@ The businesses I've seen get real results from AI share three things:
 The rest — the hype, the full-stack AI transformation, the "AI will run your business while you sleep" pitches — is noise. The actual wins come from solving one specific, painful problem well, then building from there.
 
 That's how I went from paying $75K–$125K to agencies doing mediocre work, to running the same output (and better results) for under $3,000/year in tool costs. Not in one leap. In three deliberate steps, over about six months.
+
+## FAQ
+
+### What is the biggest mistake businesses make with AI?
+
+Starting with the tool instead of the problem. The most common failure pattern is signing up for an AI tool trial, then hunting for something to do with it. The right order is reversed: identify a specific, painful, repetitive task that consumes time or money, then find the tool that eliminates it. Three repeat tasks that need no real judgement are the best place to start.
+
+### Can AI replace strategic thinking in a business?
+
+No. AI is excellent at execution and poor at strategy. It can write 200 product listings in a day, but a person who understands the products, customers, and competition still has to define what those listings should say and why. The owners getting real results bring the business logic — customer knowledge, margins, brand voice — and let AI handle execution at scale.
+
+### How should a small business calculate the ROI of AI tools?
+
+Compare the full cost of the current approach — invoices plus your own hours, briefing time, revision rounds, and waiting — against the tool cost. Framed that way, a $35K-per-year content agency was replaced in my business by roughly $50 per month of Claude API usage. Treat AI as leverage against a task you already pay for, not as another software subscription with unclear ROI.
+
+### Should you implement several AI systems at once?
+
+No — build one system at a time, in order of impact multiplied by speed to implement. I built three simultaneously (content, reporting, email) and got a chaotic three months where nothing was finished and the brand voice drifted. Sequential delivery would have had all three operational by month four instead of month seven. Finish one, stabilize its output quality, then start the next.
+
+### Why do AI projects fail without measurement?
+
+Because AI systems improve through iteration, and iteration needs data. Without baseline numbers recorded before the switch — conversion rates on top listings, email open rates, report delivery times — you cannot tell whether the AI-assisted version performs better, worse, or the same. Document the current state first, track consistently after, and use the gaps the data reveals to decide each next improvement.
 
 ---
 

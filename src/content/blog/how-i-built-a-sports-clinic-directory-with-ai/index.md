@@ -54,7 +54,7 @@ The longer answer involves data quality problems I didn't see coming, a programm
 
 ## Why I Built a Sports Clinic Directory
 
-I run TapeGeeks, an athletic tape brand. Our customers — athletes, runners, physio patients — kept asking where to find sports clinics in their city. When I looked for an existing Canada-wide directory that was filterable by injury type and actually current, I couldn't find one.
+I run TapeGeeks, an athletic tape brand whose customers — athletes, runners, physio patients — kept asking where to find sports clinics in their city. When I looked for an existing Canada-wide directory that was filterable by injury type and actually current, I couldn't find one.
 
 Provincial college databases with no search. Generic wellness directories packed with yoga studios and naturopaths. Google Maps with zero filtering for injury type or specialty.
 
@@ -64,7 +64,7 @@ So I built it. [SportClinicFinder.com](https://www.sportsclinicfinder.com) — p
 
 ## The Tech Stack
 
-I didn't agonize over this. My stack for web projects is Next.js + Tailwind + Vercel. It was the obvious choice:
+I didn't agonize over the stack: Next.js + Tailwind + Vercel is my default for web projects, and it was the obvious choice here too.
 
 **Next.js 16 (App Router)** — Server Components for all the directory pages, Route Handlers for the API endpoints, dynamic routing for 521 cities, 13 provinces, 15 service specialties, and 12 injury types. The App Router handles this kind of nested dynamic routing cleanly.
 
@@ -136,6 +136,8 @@ It's not magic. It's a fast development partner that doesn't lose track of your 
 For context on what's possible with this approach: I've shipped [two iOS apps to the App Store](/news/how-i-built-2-ios-apps-without-coding), this directory, multiple Shopify integrations, and custom analytics dashboards — with no traditional coding background, just AI-assisted development and stubbornness.
 
 ## What I'd Do Differently
+
+Three things I would change if I were building this directory again from scratch.
 
 **Start the data pipeline first.** I built half the UI on data that still had dental offices in it. The filters revealed the bad data underneath. Do the data work first, build the interface second.
 

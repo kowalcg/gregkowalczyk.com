@@ -75,7 +75,7 @@ And the piece that ties the physical to the digital: **every finisher medal has 
 
 ## The economics: why "forever" costs almost nothing
 
-The obvious objection is cost. Keeping a full race site online year-round, with 1,843 photos and videos, forever? That sounds like a hosting bill.
+The obvious objection to archiving every race forever is cost. Keeping a full race site online year-round, with 1,843 photos and videos, forever? That sounds like a hosting bill.
 
 It isn't, if you make the right technical choices. The site is fully static — built with [Astro](https://astro.build), deployed on Vercel's free tier, no database, no server to maintain. The photo gallery originally ran on a media platform that would have cost about $99 a month in perpetuity. In June we migrated everything to [Cloudflare R2](https://developers.cloudflare.com/r2/) with pre-generated image variants, and the ongoing cost dropped to effectively zero.
 

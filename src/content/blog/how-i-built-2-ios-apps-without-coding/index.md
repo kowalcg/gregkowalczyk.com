@@ -74,7 +74,7 @@ I went from zero apps to two live App Store products in roughly 12 weeks. Everyt
 
 ## The Stack: Three Tools, No Coding Background Required
 
-I used three tools. Nothing else.
+I built both apps with exactly three tools and nothing else.
 
 **VibeCode** — The foundation. You describe a screen in plain English and it generates the React Native component. You don't write code; you write instructions. VibeCode scaffolds the entire project, manages the Expo framework, and handles the architecture that would take a developer weeks to set up from scratch. (Referral code **GREG** gets you $10 credit when you sign up.)
 
@@ -124,6 +124,8 @@ RunMate Pro launched early September 2025.
 
 ## What I Learned Building Both
 
+Every lesson below came from something that went wrong, or very nearly did.
+
 **Start with your own problem.** RunMate Pro came from 16 years of running and hating spreadsheet shoe tracking. SunUp came from selling sun protection products and losing customer contact after every Amazon transaction. Both were real problems I understood from the inside. That understanding is something AI can't replicate — it's the unfair advantage you bring to the build.
 
 **Build in tiny pieces. Test in the real world.** The GPS problem was invisible in a simulator. I had to run actual routes, outdoors, with the phone in my pocket, and watch what failed. For anything your app does in a physical environment, the simulator will lie to you.
@@ -136,6 +138,8 @@ RunMate Pro launched early September 2025.
 
 ## Before vs. After: June to October 2025
 
+Four months separated zero apps from two live App Store listings, and the numbers tell the story better than adjectives.
+
 | | Before (June 2025) | After (October 2025) |
 |---|---|---|
 | Apps | 0 | 2 live, 3 in development |
@@ -146,7 +150,7 @@ RunMate Pro launched early September 2025.
 
 ## What This Means for You
 
-I was 55 years old. My last coding experience was Visual Basic in university in the 1990s. I run two e-commerce brands, co-lead a running club, and have zero computer science background.
+I was 55 years old when I shipped these apps, and my last coding experience was Visual Basic in university in the 1990s. I run two e-commerce brands, co-lead a running club, and have zero computer science background.
 
 I shipped two apps to the App Store in 6 months.
 
@@ -158,22 +162,22 @@ If you have a problem worth solving and a business that would benefit from deepe
 
 ## Frequently Asked Questions
 
-**Do I need to know how to code to build an iOS app with VibeCode?**
+### Do I need to know how to code to build an iOS app with VibeCode?
 No. Greg's last coding experience was Visual Basic in the 1990s. VibeCode generates React Native components from plain English descriptions. You describe what you want built; the tool generates the code. You'll debug using AI tools (which explain problems in plain language), but you don't write the code yourself.
 
-**How long does it take to build an app this way?**
+### How long does it take to build an app this way?
 SunUp took ~6 weeks. RunMate Pro took 8–10 weeks, extended by a 3-week GPS debugging stretch, a complete map system rebuild, and 39 App Store review cycles. Expect your first app to take longer than you plan — the learning curve is real.
 
-**What does it cost?**
+### What does it cost?
 The core tools — VibeCode, Cursor AI, and Claude Code — run approximately $70–300/month depending on usage tier. The Apple Developer Program is $99/year. Compare that to $50,000–$200,000+ for a professional developer to build a comparable custom app.
 
-**What is VibeCode?**
+### What is VibeCode?
 VibeCode is a no-code app building platform built on React Native and Expo. You describe screens and features in plain English; VibeCode generates the underlying code. It's the entry point that makes mobile app development accessible without a coding background.
 
-**What is Claude Code?**
+### What is Claude Code?
 Claude Code is an AI coding assistant that runs in your terminal, reads your project files, and operates directly within your codebase — executing commands, debugging, and building features. Unlike a chatbot, it takes action inside your project rather than just advising from the outside.
 
-**How do you handle App Store rejections without a technical background?**
+### How do you handle App Store rejections without a technical background?
 Copy the rejection message → paste it into Cursor or ChatGPT → get a specific explanation of what Apple requires → implement the fix → rebuild → resubmit. Each rejection is a specific, solvable problem described in Apple's own words. 39 rejections made RunMate Pro a better app than the original submission.
 
 ---
