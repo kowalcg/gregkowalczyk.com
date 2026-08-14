@@ -3,7 +3,7 @@ title: "I Built 2 iOS Apps at 55 Without Writing a Line of Code"
 description: "Mechanical engineer Greg Kowalczyk shipped SunUp by GearTOP and RunMate Pro to the App Store without a coding background — using VibeCode, Claude Code, and Cursor AI. The tools, the process, 39 App Store rejections, and what it means for any business owner who thinks they can't build software."
 pubDate: 2026-02-23
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "App Development"
 featured: true
@@ -39,10 +39,6 @@ faq:
       explanation of what Apple requires → implement the fix → rebuild → resubmit.
       Each rejection is a specific, solvable problem described in Apple's own words.
       39 rejections made RunMate Pro a better app than the original submission.
-      --- Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville,
-      Ontario. He built SunUp by GearTOP and RunMate Pro as a non-coder using AI-assisted
-      development tools. He runs GearTOP and TapeGeeks, two e-commerce brands operating
-      since 2014. View his project portfolio →
     q: How do you handle App Store rejections without a technical background?
 ---
 
@@ -182,4 +178,4 @@ Copy the rejection message → paste it into Cursor or ChatGPT → get a specifi
 
 ---
 
-*Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville, Ontario. He built SunUp by GearTOP and RunMate Pro as a non-coder using AI-assisted development tools. He runs GearTOP and TapeGeeks, two e-commerce brands operating since 2014. [View his project portfolio →](/projects)*
+*Greg Kowalczyk is a business growth consultant and engineer based in Oakville, Ontario. He built SunUp by GearTOP and RunMate Pro as a non-coder using AI-assisted development tools. He runs GearTOP and TapeGeeks, two e-commerce brands operating since 2014. [View his project portfolio →](/projects)*

@@ -4,7 +4,7 @@ description: "The exact tools, systems, and approach I used to eliminate agency 
 pubDate: 2026-02-23
 tag: "AI Strategy"
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.2"
 updatedDate: 2026-08-13
 faq:
@@ -174,4 +174,4 @@ No. I am a mechanical engineer with no programming background, and I built the c
 
 ---
 
-*Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two e-commerce brands operating since 2014, powered by AI systems he built and runs himself. [See his services →](/services)*
+*Greg Kowalczyk is a business growth consultant and engineer based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two e-commerce brands operating since 2014, powered by AI systems he built and runs himself. [See his services →](/services)*

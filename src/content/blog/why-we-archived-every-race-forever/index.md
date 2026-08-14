@@ -3,7 +3,7 @@ title: "Why We Archived Every Race Forever"
 description: "Most race websites reset every year — results vanish, photo links die. Here's why our 5K archives everything forever, and what it does for runners, sponsors, and vendors."
 pubDate: 2026-07-08
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "Digital-First Race"
 featured: true

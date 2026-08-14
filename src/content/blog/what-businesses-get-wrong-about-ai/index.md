@@ -4,7 +4,7 @@ description: "The mistakes that cause AI projects to fail aren't technical. They
 pubDate: 2026-02-24
 tag: "AI Strategy"
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.1"
 updatedDate: 2026-08-13
 faq:
@@ -160,4 +160,4 @@ Because AI systems improve through iteration, and iteration needs data. Without 
 
 ---
 
-*Greg Kowalczyk is an AI & Digital Growth Consultant based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two e-commerce brands he's operated since 2014, and builds custom AI systems for SMBs across the Greater Toronto Area. [Work with Greg →](/contact)*
+*Greg Kowalczyk is a business growth consultant and engineer based in Oakville, Ontario. He runs GearTOP and TapeGeeks, two e-commerce brands he's operated since 2014, and builds custom AI systems for SMBs across the Greater Toronto Area. [Work with Greg →](/contact)*

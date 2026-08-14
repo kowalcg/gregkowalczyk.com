@@ -3,7 +3,7 @@ title: "My AI Blog Writing Workflow: From Keyword to Published in Under an Hour"
 description: "How I built a Claude Code skill that handles SEO research, writing, multi-platform formatting, and deployment for 6 different websites — without switching tools."
 pubDate: 2026-03-19
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 tag: "AI Tools"
 featured: true
 image: "/images/blog/ai-blog-writing-workflow.jpg"

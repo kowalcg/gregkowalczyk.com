@@ -9,7 +9,7 @@ const blog = defineCollection({
     tag: z.string().optional(),
     draft: z.boolean().optional().default(false),
     author: z.string().default("Greg Kowalczyk"),
-    authorTitle: z.string().default("AI & Digital Growth Consultant"),
+    authorTitle: z.string().default("Business Growth Engineer"),
     version: z.string().default("1.0"),
     updatedDate: z.coerce.date().optional(),
     image: z.string().optional(),

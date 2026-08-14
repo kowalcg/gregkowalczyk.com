@@ -3,7 +3,7 @@ title: "AI Automation for Small Business Owners 2026 | GregKowalczyk"
 description: "Discover AI tools for small business automation in 2026. Start with admin tasks using Claude Code, Hermes Agent, and more. Learn what to automate first."
 pubDate: 2026-06-04
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.1"
 updatedDate: 2026-08-13
 tag: "AI automation"

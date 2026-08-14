@@ -110,3 +110,25 @@ Based on Angle 1 (primary) + Angle 2 (proof):
 - "28 Years Engineering. Mid-Seven Figures in E-Commerce. Now I Build AI Tools for Businesses Like Yours."
 - "Stop Paying Agencies. Start Owning Your AI."
 - "Custom AI Tools — Built, Deployed, and Running in Weeks. Not Months."
+
+---
+
+## DECISION — Aug 14, 2026 (supersedes the July stack above)
+
+Greg repositioned the site from "AI consultant" identity to **business growth,
+engineered**. His words: "AI is only a tool, but my mind is working analytically and
+logically… we cannot focus on AI only."
+
+**Chosen stack:**
+- **Identity: The Engineer's Mind** — "I grow businesses like an engineer: find the
+  constraint, fix it, automate it." AI is the method, not the identity.
+- **Proof layer: The Operator** — everything runs in his own businesses first
+  (12 years, two brands, live apps).
+- **Evidence block: The Reallocation** — $75K/year of agencies replaced by ~$2K of
+  systems (never state brand revenue in public copy).
+- The Anti-Hype angle survives as the content/LinkedIn voice; the Specific Someone
+  ("owners who can sell and ship but don't want to become technical") as the fit filter.
+
+**Title:** "AI & Digital Growth Consultant" → **"Business Growth Engineer"** everywhere
+(Person schema jobTitle, og:site_name, page titles, footer, all 14 blog bylines).
+Services page keeps its AI-explicit copy — AI is correctly the method at service level.

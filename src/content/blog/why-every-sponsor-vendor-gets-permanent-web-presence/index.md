@@ -3,7 +3,7 @@ title: "Why Every Sponsor and Vendor Gets a Permanent Web Presence"
 description: "Why we gave all 80 sponsors and vendors of our first 5K their own permanent web page instead of a logo in a footer — and how we built it to scale to 2027."
 pubDate: 2026-07-22
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/why-every-sponsor-vendor-gets-permanent-web-presence.jpg"

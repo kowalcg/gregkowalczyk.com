@@ -3,7 +3,7 @@ title: "AI Content Quality Gate: My Pre-Publish SEO Checklist"
 description: "My 47-point AI content quality gate for fixing blog posts before publishing: keyword coverage, human voice, E-E-A-T, schema, links, and LLM-ready SEO."
 pubDate: 2026-05-28
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "AI & SEO"
 featured: false

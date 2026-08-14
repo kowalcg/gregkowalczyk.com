@@ -3,7 +3,7 @@ title: "How to Organize a 5K Race: What Building One From Scratch Taught Me"
 description: "How we sold out Oakville's first Bronte Harbour Classic — 900+ runners on Father's Day. A first-person playbook on how to organize a 5K race with a small team and AI leverage."
 pubDate: 2026-06-27
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "Community"
 featured: true

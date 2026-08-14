@@ -3,7 +3,7 @@ title: "AI Brand Voice Guidelines: How I Make Each Site Sound Like Itself (Not L
 description: "The exact 7-part structure I use to write brand voice files for 6 different websites — so the AI writes in the right voice every time without re-explaining it."
 pubDate: 2026-03-20
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 tag: "AI Tools"
 image: "/images/blog/ai-brand-voice-guidelines.jpg"
 imageAlt: "Brand voice guidelines document with multiple brand identity cards and AI writing interface"

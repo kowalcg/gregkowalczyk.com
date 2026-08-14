@@ -3,7 +3,7 @@ title: "How AI Organized 1,800+ Race Photos (and Drone Videos)"
 description: "How Google Cloud Vision auto-tagged 1,843 race photos and drone videos by bib number — a 92% detection rate, and what we did about the other 8%."
 pubDate: 2026-07-15
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/how-ai-organized-race-photos-drone-videos.jpg"

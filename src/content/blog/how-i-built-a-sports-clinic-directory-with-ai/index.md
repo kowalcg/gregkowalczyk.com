@@ -3,7 +3,7 @@ title: "How I Built a 12,000-Clinic Sports Directory in Canada With AI and No Ba
 description: "I built SportClinicFinder.com — 12,770 sports clinics across Canada — in weeks using Claude Code, Next.js 16, and Neon Postgres. Here's the exact stack, the data pipeline, and the part that surprised me most."
 pubDate: 2026-03-24
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "AI Development"
 featured: false

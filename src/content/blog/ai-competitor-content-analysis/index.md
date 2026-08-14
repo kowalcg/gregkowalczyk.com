@@ -3,7 +3,7 @@ title: "AI Competitor Content Analysis: What I Read in 7 Posts Before Writing An
 description: "Before writing any SEO blog post, I scrape and read 7 competitor articles using Frase and Claude Code. Here's exactly what I look for — and what most competitor analysis guides miss."
 pubDate: 2026-03-25
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.0"
 tag: "AI Tools"
 featured: false

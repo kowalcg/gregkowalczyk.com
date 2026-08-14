@@ -4,7 +4,7 @@ description: "A practical AI search optimization playbook for small business: an
 pubDate: 2026-07-02
 updatedDate: 2026-08-13
 author: "Greg Kowalczyk"
-authorTitle: "AI & Digital Growth Consultant"
+authorTitle: "Business Growth Engineer"
 version: "1.3"
 tag: "AI & SEO"
 featured: false
