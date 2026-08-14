@@ -57,30 +57,101 @@ const recentPosts = allPosts
     <!-- Brand blogs -->
     <div class="mt-12 border-t pt-10" style="border-color: rgba(255,255,255,0.06);">
       <p
-        class="mb-4 text-center text-sm"
+        class="mb-2 text-center text-sm"
+        style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+      >
+        <span class="comment-prefix">// </span>Also writing across the brands
+      </p>
+      <p
+        class="mb-8 text-center text-sm"
         style="font-family: 'Outfit', sans-serif; color: #798897;"
       >
-        Also writing for the brands
+        Every brand publishes its own blog — all written by Greg.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href="https://geartopdesign.com/blogs/news"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-          style="background: rgba(255,255,255,0.04); color: #798897; border: 1px solid rgba(255,255,255,0.08); font-family: 'Outfit', sans-serif;"
-        >
-          GearTOP Blog ↗
-        </a>
-        <a
-          href="https://tapegeeks.com/blogs/news"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-          style="background: rgba(255,255,255,0.04); color: #798897; border: 1px solid rgba(255,255,255,0.08); font-family: 'Outfit', sans-serif;"
-        >
-          TapeGeeks Blog ↗
-        </a>
+        {[
+          {
+            name: 'GearTOP Blog',
+            desc: 'Sun protection, hiking & outdoor gear',
+            url: 'https://geartopdesign.com/blogs/news',
+            domain: 'geartopdesign.com',
+            accent: '#f59e0b',
+          },
+          {
+            name: 'TapeGeeks Blog',
+            desc: 'Kinesiology taping, recovery & better breathing',
+            url: 'https://tapegeeks.com/blogs/news',
+            domain: 'tapegeeks.com',
+            accent: '#C5D52E',
+          },
+          {
+            name: 'Bronte Harbour Classic',
+            desc: 'Race news & digital-first event building',
+            url: 'https://bronteharbourclassic.com/news',
+            domain: 'bronteharbourclassic.com',
+            accent: '#f97316',
+          },
+          {
+            name: 'SportClinicFinder Blog',
+            desc: 'Sports injury clinics & practitioner insights',
+            url: 'https://sportsclinicfinder.com/blog',
+            domain: 'sportsclinicfinder.com',
+            accent: '#14b8a6',
+          },
+          {
+            name: 'SleepClinicFinder Guides',
+            desc: 'Sleep health & clinic guides',
+            url: 'https://sleepclinicfinder.com/guides',
+            domain: 'sleepclinicfinder.com',
+            accent: '#818cf8',
+          },
+          {
+            name: 'RunMate Pro Blog',
+            desc: 'Running, training & injury prevention',
+            url: 'https://runmatepro.com/blog',
+            domain: 'runmatepro.com',
+            accent: '#38bdf8',
+          },
+          {
+            name: 'SunUp Blog',
+            desc: 'UV safety & sun science',
+            url: 'https://getsunup.app/blog',
+            domain: 'getsunup.app',
+            accent: '#facc15',
+          },
+        ].map((brand) => (
+          <a
+            href={brand.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card group block w-full p-5 transition-all duration-200 hover:-translate-y-1 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)]"
+          >
+            <div class="mb-2 flex items-center gap-2.5">
+              <span
+                class="h-2 w-2 shrink-0 rounded-full"
+                style={`background: ${brand.accent}; box-shadow: 0 0 8px ${brand.accent};`}
+              ></span>
+              <span
+                class="text-base font-semibold"
+                style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+              >
+                {brand.name}
+              </span>
+            </div>
+            <p
+              class="mb-3 text-sm"
+              style="font-family: 'Outfit', sans-serif; color: #798897;"
+            >
+              {brand.desc}
+            </p>
+            <span
+              class="text-xs transition-colors duration-200 group-hover:text-white"
+              style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+            >
+              {brand.domain} ↗
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   </div>
