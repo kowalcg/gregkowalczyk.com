@@ -53,6 +53,23 @@ const articleJsonLd = {
   "wordCount": wordCount,
   ...(post.data.tag ? { "keywords": post.data.tag } : {}),
 };
+
+// FAQPage node — only for posts that declare `faq` in frontmatter, which must
+// mirror a visible FAQ section in the body (CLAUDE.md: FAQPage only where the
+// FAQ is visible).
+const faqJsonLd = post.data.faq?.length
+  ? {
+      "@type": "FAQPage",
+      "@id": `${postUrl}#faq`,
+      "mainEntity": post.data.faq.map(({ q, a }) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a },
+      })),
+    }
+  : null;
+
+const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
 ---
 
 <Layout
@@ -63,7 +80,7 @@ const articleJsonLd = {
   articlePublishedTime={post.data.pubDate.toISOString()}
   articleModifiedTime={(post.data.updatedDate ?? post.data.pubDate).toISOString()}
   articleAuthor={post.data.author}
-  extraSchema={[articleJsonLd]}
+  extraSchema={extraSchema}
 >
   <Nav />
   <main>

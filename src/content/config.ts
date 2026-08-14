@@ -15,6 +15,10 @@ const blog = defineCollection({
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     featured: z.boolean().default(false),
+    // Per-post FAQ. When present, news/[...slug].astro emits a FAQPage node.
+    // The same Q/As must appear visibly in the post body ("FAQPage only where
+    // the FAQ is visible" — see CLAUDE.md).
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
   }),
 });
 
