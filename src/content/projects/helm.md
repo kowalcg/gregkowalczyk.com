@@ -11,6 +11,7 @@ stats:
   - "Built for GearTOP and TapeGeeks; currently in internal testing"
 tech: ["Next.js 15", "TypeScript", "Model Context Protocol", "Neon Postgres", "Prisma", "Vercel"]
 links:
+  - { label: "Visit helm.ad", href: "https://helm.ad", external: true }
   - { label: "Ask me about this", href: "/contact" }
 order: 30
 featured: true
