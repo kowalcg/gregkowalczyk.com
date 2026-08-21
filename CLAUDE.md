@@ -37,6 +37,7 @@ src/
 ├── data/
 │   ├── faqs.ts       # single source for the FAQ accordion AND the FAQPage schema
 │   ├── media.ts      # podcasts/talks + their PodcastEpisode schema
+│   ├── meetups.ts    # AI for Business meetups + EventSeries/Event schema
 │   └── site.ts       # values that drift with time (years, current year)
 ├── layouts/
 │   └── Layout.astro  # head, canonical, OG, and the JSON-LD @graph
@@ -124,11 +125,12 @@ every podcast/talk URL from `src/data/media.ts`.
 
 | Route | Purpose |
 |---|---|
-| `/` | Hero, results, services preview, case studies, projects preview, commercial block, about teaser, testimonials, **as-heard-on**, FAQ, blog preview, contact CTA |
+| `/` | Hero, results, **next meetup banner**, services preview, case studies, projects preview, commercial block, about teaser, testimonials, **as-heard-on**, FAQ, blog preview, contact CTA |
 | `/services/` | Six services, case studies, digital launch, how I work |
 | `/projects/` | All 12 projects, rendered from the content collection |
 | `/projects/<slug>/` | Build stories — sunup, runmate-pro, sportsclinicfinder, bronte-harbour-classic, helm, magpie |
 | `/media/` | Podcasts, talks, teaching — plus the entity schema |
+| `/meetups/` | AI for Business — the free monthly meetup series (Hamilton + Oakville) |
 | `/about/` | Bio, timeline, tech stack, community |
 | `/news/` + `/news/<slug>/` | 14 posts |
 | `/contact/` | What happens next, fit/not-fit, form |
@@ -154,6 +156,7 @@ npm run preview   # preview dist/ locally
 | v1.3.0 | Feb 23, 2026 | Location corrected: Burlington → Oakville across all components |
 | v1.4.0 | Feb 23, 2026 | Social media expanded: X and Facebook added alongside LinkedIn |
 | v1.5.0 | Feb–Jul 2026 | Multipage redesign: services, projects, about, contact, news + 14 blog posts (undocumented at the time) |
+| v2.1.0 | Aug 21, 2026 | Added `/meetups/` — the free monthly *AI for Business* series for Hamilton and Oakville business owners, with `EventSeries`/`Event` JSON-LD, a homepage banner (`MeetupPreview.astro`), and nav + footer links. First event: Hamilton, Sep 10, CoWork at the Cotton Factory. |
 | **v2.0.0** | **Jul 29, 2026** | **Refresh + SEO overhaul.** Removed three fabricated testimonials that were live on the homepage. Fixed sitemap indexing (Google had not re-read it since Apr 9; two posts were never discovered). Unified schema on the www host, scoped FAQPage to pages with a visible FAQ, moved BlogPosting inside the document. Retitled `/services/` off a zero-volume keyword. Added `/media/` with PodcastEpisode schema and two 2026 podcast appearances. Moved projects into a content collection with six build-story pages, adding Helm and Magpie. Converted the two raw-HTML posts to markdown. Added RSS, GA4/Clarity, and `scripts/audit-build.mjs`. Images: ~18MB → 2.8MB. |
 
 ## WHAT NOT TO BREAK
@@ -176,6 +179,13 @@ Each of these corresponds to a defect that was live in production before July 20
 - **Race title:** Greg is **Executive Race Director** (short form "Race Director").
   "Race Co-Director" refers only to the completed June 2026 inaugural event.
 - **Location:** always Oakville, Ontario — never Burlington.
+- **Never publish a meetup date that isn't confirmed.** `src/data/meetups.ts`
+  only emits Event schema for entries with `status: 'announced'` — which
+  requires a real date, a real venue, and a live registration URL. Anything
+  still being scheduled is `status: 'planned'` and renders as "Date TBA" with
+  no schema and no register button.
+- **A new page needs an entry in `pageFiles` in `astro.config.mjs`**, or it
+  ships without `<lastmod>` and the build audit fails.
 - **Run `node scripts/audit-build.mjs` after every build.**
 - **Static build:** keep `output: 'static'`.
 - **Font loading:** keep the non-blocking preconnect pattern.

@@ -1,0 +1,355 @@
+---
+/**
+ * /meetups/ — AI for Business, the free monthly meetup series.
+ *
+ * Two cities on rotation, Hamilton and Oakville. Event data and the
+ * EventSeries/Event JSON-LD both come from src/data/meetups.ts so a date can
+ * never drift between the visible card and the structured data.
+ *
+ * Schema is passed through Layout's `extraSchema` prop — never rendered after
+ * </Layout>.
+ */
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_URL } from '../data/site';
+import {
+  SERIES_NAME,
+  HOSTS,
+  agenda,
+  meetupsSchema,
+  nextMeetup,
+  upcomingMeetups,
+  formatMeetupDate,
+  fullAddress,
+  mapsUrl,
+} from '../data/meetups';
+
+const schema = meetupsSchema(SITE_URL);
+const next = nextMeetup();
+const later = upcomingMeetups();
+
+const forYou = [
+  'You run a small or mid-size business and keep hearing you "should be using AI".',
+  'You have tried ChatGPT, got something useful once, and never built it into how you work.',
+  'You want to see what other local owners are actually doing with it — not a vendor demo.',
+  'You are curious where AI saves real hours in marketing, admin, or customer service.',
+];
+
+const notThis = [
+  'Not a technical workshop. Nothing to install, no code, no prerequisites.',
+  'Not a sales pitch. Nobody is closing you in the room.',
+  'Not a webinar. It is people, in a room, in your city.',
+];
+---
+
+<Layout
+  title="AI for Business Meetups — Hamilton & Oakville | Greg Kowalczyk"
+  description="A free monthly meetup for Hamilton and Oakville business owners on using AI to save time, improve margins, and get more done. Next: Hamilton, Thursday September 10, 5:30–7:30 PM at CoWork at the Cotton Factory."
+  ogImage="/images/meetups/og-ai-for-business-hamilton.jpg"
+  extraSchema={schema}
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="AI for Business Meetups"
+      subtitle="A free evening for local business owners who want to use AI to save time, improve margins, and get more done. Hamilton and Oakville, once a month. Hosted by Patricia & Greg Kowalczyk — a father-and-daughter team running consumer brands for over a decade."
+    />
+
+    {/* ── Next event ─────────────────────────────────────────────── */}
+    {next && (
+      <section class="pb-12 pt-0">
+        <div class="mx-auto max-w-5xl px-6">
+          <div class="fade-in-up glass-card overflow-hidden p-0">
+            <div class="flex flex-col md:flex-row">
+              {next.flyer && (
+                <div class="md:w-2/5 md:flex-shrink-0">
+                  <img
+                    src={next.flyer}
+                    alt={next.flyerAlt}
+                    width="1200"
+                    height="1200"
+                    loading="eager"
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+              )}
+
+              <div class="flex-1 p-8 md:p-10">
+                <div class="mb-4 flex flex-wrap items-center gap-3">
+                  <span
+                    class="rounded-full px-3 py-1 text-xs font-semibold"
+                    style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: #ff8a3d;"
+                  >
+                    NEXT UP
+                  </span>
+                  <span
+                    class="rounded-full px-3 py-1 text-xs"
+                    style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.10);"
+                  >
+                    Free
+                  </span>
+                </div>
+
+                <h2
+                  class="mb-2 text-2xl font-bold md:text-3xl"
+                  style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+                >
+                  {SERIES_NAME} — {next.city}
+                </h2>
+
+                <p
+                  class="mb-6 text-lg"
+                  style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
+                >
+                  <time datetime={next.start}>{formatMeetupDate(next.date!)}</time>
+                  {next.timeLabel && <span class="whitespace-nowrap"> · {next.timeLabel}</span>}
+                </p>
+
+                <div class="mb-7">
+                  <p class="mb-1 font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+                    {next.venue.name}
+                  </p>
+                  <p class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                    {fullAddress(next)}
+                  </p>
+                  <a
+                    href={mapsUrl(next)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-2 inline-block text-sm"
+                    style="font-family: 'Outfit', sans-serif; color: #798897; text-decoration: underline; text-underline-offset: 3px;"
+                  >Get directions ↗</a>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                  {next.registerUrl && (
+                    <a
+                      href={next.registerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                      style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                    >Save your seat →</a>
+                  )}
+                  {next.venue.url && (
+                    <a
+                      href={next.venue.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                      style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                    >About the venue ↗</a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ── What the evening looks like ─────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2
+          class="mb-8 text-2xl font-bold md:text-3xl"
+          style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+        >
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>How the evening runs
+        </h2>
+
+        <div class="fade-in-up glass-card p-8">
+          <ul class="flex flex-col gap-5 p-0" style="list-style: none;">
+            {agenda.map((row) => (
+              <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
+                <span
+                  class="w-20 flex-shrink-0 text-sm"
+                  style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
+                >
+                  {row.time}
+                </span>
+                <span
+                  class="leading-relaxed"
+                  style="font-family: 'Outfit', sans-serif; color: #798897;"
+                >
+                  {row.item}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p
+            class="mt-7 border-t pt-6 text-sm leading-relaxed"
+            style="font-family: 'Outfit', sans-serif; color: #798897; border-color: rgba(255,255,255,0.08);"
+          >
+            Bring one thing you would hand off to AI tomorrow if you knew how. That is the whole
+            price of admission.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* ── Who it's for / what it isn't ────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-5 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
+            >
+              Come if
+            </h3>
+            <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
+              {forYou.map((line) => (
+                <li class="flex gap-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                  <span style="color: #f06000;">→</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="fade-in-up glass-card p-8">
+            <h3
+              class="mb-5 text-lg font-bold"
+              style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
+            >
+              What it isn't
+            </h3>
+            <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
+              {notThis.map((line) => (
+                <li class="flex gap-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                  <span style="color: #798897;">×</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ── The schedule ahead ──────────────────────────────────────── */}
+    {later.length > 0 && (
+      <section class="py-12">
+        <div class="mx-auto max-w-5xl px-6">
+          <h2
+            class="mb-3 text-2xl font-bold md:text-3xl"
+            style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+          >
+            <span class="comment-prefix" style="font-size: 0.8em;">// </span>Coming up
+          </h2>
+          <p class="mb-8 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            The meetup runs monthly and rotates between Hamilton and Oakville, so there is one within
+            a short drive whichever side of the GTA's west end you are on.
+          </p>
+
+          <div class="flex flex-col gap-4">
+            {later.map((m) => (
+              <div class="fade-in-up glass-card p-6 md:p-8">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <div class="mb-2 flex flex-wrap items-center gap-3">
+                      <span
+                        class="text-lg font-bold"
+                        style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+                      >
+                        {SERIES_NAME} — {m.city}
+                      </span>
+                      {m.status === 'planned' && (
+                        <span
+                          class="rounded-full px-3 py-1 text-xs"
+                          style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.10);"
+                        >
+                          Date TBA
+                        </span>
+                      )}
+                    </div>
+                    <p class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+                      {m.date ? formatMeetupDate(m.date) : m.dateLabel}
+                    </p>
+                    <p class="mt-2 text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                      {m.venue.name} · {fullAddress(m)}
+                    </p>
+                  </div>
+
+                  {m.registerUrl ? (
+                    <a
+                      href={m.registerUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-block flex-shrink-0 self-start rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:scale-105 md:self-center"
+                      style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                    >Register →</a>
+                  ) : (
+                    <a
+                      href="/contact"
+                      class="inline-block flex-shrink-0 self-start rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:scale-105 md:self-center"
+                      style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                    >Tell me when it's set →</a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ── Hosts ──────────────────────────────────────────────────── */}
+    <section class="pb-16 pt-12 md:pb-24">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="fade-in-up glass-card p-8 md:p-10">
+          <h2
+            class="mb-4 text-xl font-bold md:text-2xl"
+            style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+          >
+            Who's hosting
+          </h2>
+          <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            {HOSTS} — a father-and-daughter team who have been running consumer product brands
+            together since 2014, selling on Amazon and Shopify across Canada, the US, and Europe.
+            Everything shown at these evenings is something we run in our own businesses first.
+          </p>
+          <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            Greg is a mechanical engineer by training, spent 22 years in engineering before
+            e-commerce, and now builds custom AI tools for small businesses across the GTA.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="/about"
+              class="inline-block rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+            >More about Greg</a>
+            <a
+              href="/projects"
+              class="inline-block rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+            >Things we've built</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA />
+  </main>
+  <Footer />
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</Layout>

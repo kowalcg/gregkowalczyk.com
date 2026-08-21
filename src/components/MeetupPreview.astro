@@ -1,0 +1,88 @@
+---
+/**
+ * MeetupPreview.astro — Homepage banner for the next AI for Business meetup.
+ *
+ * Renders nothing when no event has a confirmed date, so the homepage never
+ * advertises a meetup that isn't scheduled. Data comes from
+ * src/data/meetups.ts; the Event schema lives on /meetups/, not here.
+ */
+import {
+  SERIES_NAME,
+  nextMeetup,
+  formatMeetupDate,
+  fullAddress,
+} from '../data/meetups';
+
+const next = nextMeetup();
+---
+
+{next && (
+  <section class="py-12 md:py-16">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="fade-in-up glass-card overflow-hidden p-0">
+        <div class="flex flex-col lg:flex-row lg:items-stretch">
+          {next.flyer && (
+            <a
+              href="/meetups"
+              class="block lg:w-1/3 lg:flex-shrink-0"
+              aria-label={`${SERIES_NAME} ${next.city} meetup details`}
+            >
+              <img
+                src={next.flyer}
+                alt={next.flyerAlt}
+                width="1200"
+                height="1200"
+                loading="lazy"
+                class="h-56 w-full object-cover object-center lg:h-full"
+              />
+            </a>
+          )}
+
+          <div class="flex-1 p-8 md:p-10">
+            <span
+              class="mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: #ff8a3d;"
+            >
+              FREE MEETUP
+            </span>
+
+            <h2
+              class="mb-3 text-2xl font-bold md:text-3xl"
+              style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+            >
+              {SERIES_NAME} — {next.city}
+            </h2>
+
+            <p class="mb-4 text-lg" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+              <time datetime={next.start}>{formatMeetupDate(next.date!)}</time>
+              {next.timeLabel && <span> · {next.timeLabel}</span>}
+            </p>
+
+            <p class="mb-6 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+              A monthly evening for local business owners on using AI to save time, improve margins,
+              and get more done. Real examples, open Q&amp;A, and a room full of other owners working
+              on the same problem. {next.venue.name}, {fullAddress(next)}. Free to attend.
+            </p>
+
+            <div class="flex flex-wrap gap-3">
+              {next.registerUrl && (
+                <a
+                  href={next.registerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                  style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                >Save your seat →</a>
+              )}
+              <a
+                href="/meetups"
+                class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
+                style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+              >All meetups</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
