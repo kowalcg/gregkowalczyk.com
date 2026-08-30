@@ -7,12 +7,12 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/race-website-that-grows-instead-of-starting-over.jpg"
-imageAlt: "Finisher medal and finish arch at the Mercedes-Benz Oakville Bronte Harbour Classic 5K, Bronte Heritage Waterfront Park, Oakville"
+imageAlt: "Two runners crossing the finish line under the red Bronte Harbour Classic arch at the Mercedes-Benz Oakville Bronte Harbour Classic 5K, Bronte Heritage Waterfront Park, Oakville"
 ---
 
 # A Race Website That Grows Instead of Starting Over
 
-*This is Part 5 of **Building a Digital-First Race** — a series on the digital and AI decisions behind the Mercedes-Benz Oakville Bronte Harbour Classic 5K, and why we made them. Last time: [why our medals have QR codes](/news/qr-code-race-medals). Coming up: how we're building a health and safety ecosystem beyond race day.*
+*This is Part 5 of **Building a Digital-First Race** — a series on the digital and AI decisions behind the Mercedes-Benz Oakville Bronte Harbour Classic 5K, and why we made them. Last time: [why our medals have QR codes](/news/qr-code-race-medals). Coming up: why we partnered with a recovery brand before anyone got hurt.*
 
 Most event websites get rebuilt every year. Not redesigned — rebuilt. A new registration platform, a new template, a new developer who didn't build the last one, and the old site's content either migrates badly or doesn't migrate at all. I know this because I checked: bronteharbourclassic.com has never gone through that. It's the same Astro codebase from before race day one, and it's grown from a handful of pages into 235 without a single rebuild — no lost URLs, no re-platforming, no starting the search rankings over from zero.
 
@@ -52,7 +52,7 @@ I don't want to oversell this. Some things about the race genuinely changed enou
 
 **Content maintenance stays cheap even as the site gets bigger.** Retiring a stale FAQ entry or correcting a detail on one partner page touches one file, not a template shared by everything else. A site of 235 pages that requires the same one-file-at-a-time edits as a site of 20 pages is what actually makes long-term maintenance sustainable for a volunteer team, rather than something that gets harder every year the site grows.
 
-## How to build this for your own event
+## How to build a website that grows with your own event
 
 You don't need a development team on staff — I'm a mechanical engineer who directs AI to build the implementation, not a career programmer. If you're running any recurring event, here's the sequence that gets you a site that grows instead of resetting.
 
@@ -90,6 +90,6 @@ Yes — architecture that grows instead of rebuilding doesn't mean nothing ever 
 
 ---
 
-*Next in the series: **A Race Is Just the Start: Building a Health & Safety Ecosystem** — how the digital-first approach extends to sun safety and injury prevention beyond race day.*
+*Next in the series: **Why We Partnered With a Recovery Brand Before Anyone Got Hurt** — the first of four posts on the health and safety partners built into this race, starting with injury prevention.*
 
 *The runner-facing version of this story is on the race site: [Everything on BronteHarbourClassic.com (and Why It Stays Up All Year)](https://www.bronteharbourclassic.com/news/everything-on-bronteharbourclassic-com/). Catch up on [Part 1](/news/why-we-archived-every-race-forever), [Part 2](/news/how-ai-organized-race-photos-drone-videos), [Part 3](/news/why-every-sponsor-vendor-gets-permanent-web-presence), and [Part 4](/news/qr-code-race-medals) if you missed them.*

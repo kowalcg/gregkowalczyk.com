@@ -62,7 +62,7 @@ Here's what I won't oversell. We know the QR code scans correctly on the medals 
 
 A QR code on a medal is a small thing by itself. What makes it worth building correctly is what it connects to. Every scan lands on the same permanent archive that holds all 80 sponsor and vendor pages I wrote about last week, the bib-searchable photo gallery, and the full results. The medal isn't just a keepsake anymore — it's a physical bookmark for a digital asset that keeps accumulating value the longer it stays online. Show someone at a dinner table how to scan it, and you've just demonstrated the entire premise of this series in about four seconds.
 
-## How to build this for your own event
+## How to add a QR code to your own race medals
 
 You don't need a race-tech vendor relationship to do this — I'm a mechanical engineer who directs AI to build the implementation, not a career programmer. If you're organizing any recurring event with a physical takeaway, here's the sequence.
 

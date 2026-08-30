@@ -90,7 +90,7 @@ A banner is gone the moment the tent comes down. A permanent page keeps doing wo
 
 We didn't wait for the 2027 race to be fully planned before opening the door. A handful of 2027 partner pages are already live at [bronteharbourclassic.com/2027/](https://www.bronteharbourclassic.com/2027/) — returning sponsors who committed early, showing up the same way their 2026 pages did. That's a small thing, but it means the second year of this race starts from a partner directory that's already partly built, not from zero.
 
-## How to build this for your own event
+## How to give your own sponsors a page like this
 
 You don't need a development team to do this — I'm a mechanical engineer who directs AI to build the implementation, not a career programmer. If you organize any recurring event with sponsors or vendors, here's the sequence.
 

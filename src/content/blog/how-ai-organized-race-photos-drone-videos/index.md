@@ -104,7 +104,7 @@ Combine that with a static front end — no server rendering a gallery on every 
 
 The bib-tagging pipeline pays off twice — once for the runners and once for the sponsors. Runners get instant, free access to their own photos. But every sponsor and vendor from our [80-page 2026 directory](https://www.bronteharbourclassic.com/2026/) also gets AI-tagged into any photo their booth, banner, or team appears in — so their permanent page isn't just a logo, it's photographic proof they were part of the day. That's a meaningfully different pitch to a business weighing whether to [sponsor](https://www.bronteharbourclassic.com/sponsors) or run a booth at the [vendor expo](https://www.bronteharbourclassic.com/vendors) next June: instead of a promise, they see exactly how last year's partners showed up in the gallery.
 
-## How to build this for your own event
+## How to build AI photo search for your own event
 
 You don't need a computer vision background to run this pipeline — I'm a mechanical engineer, not a programmer, and I built it with AI doing the implementation work while I made the decisions. If you're running a race, a festival, or any event with a photographer on site, here's the sequence.
 
