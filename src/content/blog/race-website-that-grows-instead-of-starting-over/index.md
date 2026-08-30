@@ -90,6 +90,6 @@ Yes — architecture that grows instead of rebuilding doesn't mean nothing ever 
 
 ---
 
-*Next in the series: **Why We Partnered With a Recovery Brand Before Anyone Got Hurt** — the first of four posts on the health and safety partners built into this race, starting with injury prevention.*
+*Next in the series: [**Runner Safety Ecosystem: Building Beyond Race Day**](/news/runner-safety-ecosystem-sun-safety-injury-prevention) — the four tools that cover the other 364 days, and why they're four products instead of one app.*
 
 *The runner-facing version of this story is on the race site: [Everything on BronteHarbourClassic.com (and Why It Stays Up All Year)](https://www.bronteharbourclassic.com/news/everything-on-bronteharbourclassic-com/). Catch up on [Part 1](/news/why-we-archived-every-race-forever), [Part 2](/news/how-ai-organized-race-photos-drone-videos), [Part 3](/news/why-every-sponsor-vendor-gets-permanent-web-presence), and [Part 4](/news/qr-code-race-medals) if you missed them.*

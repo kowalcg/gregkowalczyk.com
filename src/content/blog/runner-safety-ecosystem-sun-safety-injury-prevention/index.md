@@ -1,13 +1,13 @@
 ---
 title: "Runner Safety Ecosystem: Building Beyond Race Day"
 description: "A race is one morning a year. Sun safety, shoe wear, kinesiology tape, and clinic access are the runner safety ecosystem that covers the other 364 days."
-pubDate: 2026-08-12
+pubDate: 2026-08-30
 author: "Greg Kowalczyk"
 authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/runner-safety-ecosystem-sun-safety-injury-prevention.jpg"
-imageAlt: "A runner crossing the finish arch at the Mercedes-Benz Oakville Bronte Harbour Classic 5K, bib 588, one moment in the race the runner safety ecosystem is built to protect the other 364 days"
+imageAlt: "The Bronte Runners tent at the Mercedes-Benz Oakville Bronte Harbour Classic 5K festival, stocked with TapeGeeks kinesiology tape beside the harbour at Bronte Heritage Waterfront Park, Oakville"
 faq:
   - q: What is a runner safety ecosystem?
     a: 'A runner safety ecosystem is a set of independent tools that each cover
@@ -40,7 +40,7 @@ faq:
 
 # Runner Safety Ecosystem: Building Beyond Race Day
 
-*This is Part 6 of **Building a Digital-First Race** — a series on the digital and AI decisions behind the Mercedes-Benz Oakville Bronte Harbour Classic 5K, and why we made them. Previously: [why we archived every race forever](/news/why-we-archived-every-race-forever), how AI organized 1,800+ race photos, why every sponsor and vendor gets a permanent page, why our medals carry QR codes, and how we built a race website that grows instead of starting over.*
+*This is Part 6 of **Building a Digital-First Race** — a series on the digital and AI decisions behind the Mercedes-Benz Oakville Bronte Harbour Classic 5K, and why we made them. Previously: [why we archived every race forever](/news/why-we-archived-every-race-forever), [how AI organized 1,800+ race photos](/news/how-ai-organized-race-photos-drone-videos), [why every sponsor and vendor gets a permanent page](/news/why-every-sponsor-vendor-gets-permanent-web-presence), [why our medals carry QR codes](/news/qr-code-race-medals), and [how we built a race website that grows instead of starting over](/news/race-website-that-grows-instead-of-starting-over).*
 
 The race itself is one morning a year. This June 21 — Father's Day — [875 runners sold out the start corral](https://www.bronteharbourclassic.com/2026/) at Bronte Heritage Waterfront Park, and by early afternoon the festival had wound down and the waterfront was quiet again. Everything I've written in this series so far has been about that one morning: the archive, the photos, the medals, the site.
 
@@ -112,6 +112,6 @@ Pick whichever solves the problem you actually have. If you are training through
 
 ---
 
-*Next in the series: **What Digital-First Delivered** — Year One by the numbers.*
+*Next in the series: **Why Every Outdoor Race Needs a Sun-Safety Plan (Most Don't Have One)** — the first of four deeper looks at each piece of this ecosystem, starting with sun exposure.*
 
 *The runner-facing version of this story is on the race site: [Staying Safe Running Outside in Oakville: Beyond Race Day](https://www.bronteharbourclassic.com/news/staying-safe-running-outside-oakville/). And if you want the build details behind any of these four: [SunUp](/projects/sunup/), [RunMate Pro](/projects/runmate-pro/), [SportClinicFinder](/projects/sportsclinicfinder/), and [the Bronte Harbour Classic site itself](/projects/bronte-harbour-classic/).*
