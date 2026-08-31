@@ -7,7 +7,7 @@ authorTitle: "AI & Digital Growth Consultant"
 version: "1.0"
 tag: "Digital-First Race"
 image: "/images/blog/runner-safety-ecosystem-sun-safety-injury-prevention.jpg"
-imageAlt: "A runner crossing the finish arch at the Mercedes-Benz Oakville Bronte Harbour Classic 5K, bib 588, one moment in the race the runner safety ecosystem is built to protect the other 364 days"
+imageAlt: "The SunUp by GearTOP website showing the app's live UV Index and Air Quality Index reading on a phone, the tool at the front of the runner safety ecosystem"
 faq:
   - q: What is a runner safety ecosystem?
     a: 'A runner safety ecosystem is a set of independent tools that each cover
@@ -56,11 +56,16 @@ Race-day safety is a solved problem, more or less. A medical tent, water station
 
 So instead of treating safety as something the race provides for four hours, I've spent the last two years building tools that treat it as a year-round problem. None of them were built *for* Bronte Harbour Classic specifically — they came out of GearTOP and TapeGeeks, the two e-commerce brands I run — but the race is where they meet the people who need them.
 
-## Before you run: the sun problem nobody checks
+## Before you run: the sun and air quality problem nobody checks
 
 Oakville's UV Index regularly hits 7–9 in late June, and at UV Index 8 a fair-skinned adult can start burning in 10–15 minutes unprotected — even through cloud cover, which blocks less UV than people assume. Almost nobody checks this before they walk out the door, because the number that matters (personal burn time, not just "the UV index") isn't something a weather app gives you.
 
-**[SunUp](https://www.getsunup.app/)**, built by GearTOP, takes skin type, live UV, cloud cover, and time of day and returns one number: minutes until you burn. It also does family mode, because my kid's safe exposure time is not mine, and it surfaces air quality — which matters more than runners think on a warm, stagnant day when ground-level ozone spikes. It's free on iOS, and it's the tool I'd put first in this ecosystem, because sun exposure is the one variable that affects every runner and every spectator at an outdoor event, not just the ones already managing an injury.
+**[SunUp](https://www.getsunup.app/)**, built by GearTOP, takes skin type, live UV, cloud cover, and time of day and returns one number: minutes until you burn. It also does family mode, because my kid's safe exposure time is not mine. It's free on iOS, and it's the tool I'd put first in this ecosystem, because sun exposure affects every runner and spectator at an outdoor event, not just the ones already managing an injury.
+
+![SunUp showing a live UV Index and Air Quality Index reading for Oakville, Ontario](/images/blog/sunup-uv-aqi-oakville.jpg)
+*A SunUp reading from our own use of the app that summer — UV 6.7 and AQI 3, the same two numbers we watched on race morning.*
+
+The number on that same screen that matters just as much, and gets checked far less, is **Air Quality Index**. 2026 was a heavy wildfire year across Ontario — smoke drifting south pushed AQI into unhealthy ranges on multiple days across the GTA, bad enough that some Toronto running groups suspended outdoor sessions, with the smoke reported as far as the northeastern United States. We watched AQI through SunUp on race morning itself, the same glance as the UV number, not a separate check. In a wildfire year, that habit matters just as often between May and August as sunscreen does.
 
 ## While you train: the two numbers that predict overuse injury
 
