@@ -19,6 +19,17 @@ liveUrl: "https://helm.ad"
 schemaType: "SoftwareApplication"
 platform: "Web"
 year: "2026"
+faq:
+  - q: "What is Helm?"
+    a: "Helm is a hosted Model Context Protocol (MCP) server with a dashboard that pulls Amazon SP-API, Amazon Ads, Shopify, Meta, Klaviyo and Google Search Console data into one place and exposes it to Claude as tools. It lets a seller ask questions like why ACOS jumped last week in plain language."
+  - q: "What is an MCP server for Amazon sellers?"
+    a: "MCP, the Model Context Protocol, is an open standard that lets an AI model call tools directly. An MCP server for Amazon sellers wraps seller data such as sales, fees, ads and inventory as tools, so an AI assistant can query the live data instead of reading exported reports."
+  - q: "Can Helm change bids, prices or listings?"
+    a: "No. Helm reads, it never writes. No tool changes a bid, a price or a listing. That constraint is what makes it safe to point a language model at live seller accounts."
+  - q: "What does Helm cost compared to commercial seller tools?"
+    a: "Helm runs on Vercel and Neon Postgres for roughly the price of a couple of coffees a month. Comparable commercial seller-intelligence tools start around $249 per month per account."
+  - q: "Is Helm available to other sellers?"
+    a: "Not yet. Helm is an internal tool in testing across Greg Kowalczyk's own brands, GearTOP and TapeGeeks, with a small number of outside testers. It is not open for signup."
 ---
 
 > **Status:** Helm is an internal tool, in testing across my own brands. It isn't open to

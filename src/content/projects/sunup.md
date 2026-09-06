@@ -18,6 +18,17 @@ featured: true
 schemaType: "SoftwareApplication"
 platform: "iOS"
 year: "2025"
+faq:
+  - q: "What is SunUp by GearTOP?"
+    a: "SunUp is a free iOS app from GearTOP that tells you how many minutes you can stay in the sun before you burn. It combines your Fitzpatrick skin type with the live UV index, cloud cover, time of day, location and whether you have applied sunscreen, and returns one number: minutes to burn."
+  - q: "How does SunUp calculate burn time?"
+    a: "It uses a dose-response model: the UV index and cloud cover give the intensity of UV reaching you, your skin type sets how much UV dose produces a burn, and sunscreen SPF extends that dose. The result is a personalised burn time rather than a raw UV index."
+  - q: "Does SunUp work for children and families?"
+    a: "Yes. Family mode keeps a separate profile for each person, because a child's skin burns much faster than an adult's at the same UV index. Each profile gets its own burn time."
+  - q: "Who built SunUp and how?"
+    a: "Greg Kowalczyk, a mechanical engineer with no software development background, built it with AI-assisted development: React Native and Expo scaffolded in VibeCode, with Claude Code writing the logic and API integrations. It launched in the App Store in September 2025."
+  - q: "Is SunUp free? Does it have a subscription?"
+    a: "SunUp is free. It exists to make GearTOP's sun-protection customers safer, not to sell subscriptions, and the gear recommendations inside it point at GearTOP's real product line."
 ---
 
 ## The problem

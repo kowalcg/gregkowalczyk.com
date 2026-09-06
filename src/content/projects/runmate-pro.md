@@ -19,6 +19,17 @@ featured: true
 schemaType: "SoftwareApplication"
 platform: "iOS"
 year: "2025"
+faq:
+  - q: "What is RunMate Pro?"
+    a: "RunMate Pro is a GPS run-tracking iOS app from TapeGeeks that also tracks shoe mileage across multiple pairs of shoes and connects to injury-prevention and taping content. It is deliberately not a social network: no feed, no kudos, no leaderboards."
+  - q: "Why track running shoe mileage?"
+    a: "Running shoe foam and support break down somewhere between 500 and 800 km, often while the shoe still looks fine. Worn-out shoes are a common cause of overuse injuries such as shin splints. RunMate Pro assigns each run to a pair and warns you when a pair is nearing the end of its life."
+  - q: "Why was RunMate Pro rejected 39 times by the App Store?"
+    a: "Each rejection was for something specific: background location justification, privacy manifest entries, metadata that overpromised, screenshots showing states the app could not reach, and HealthKit usage strings that were not specific enough. Treating each rejection as a requirement and logging every one got it approved in September 2025."
+  - q: "How was RunMate Pro built without a developer?"
+    a: "With React Native and Expo scaffolded in VibeCode, and Claude Code handling logic, HealthKit integration and the GPS pipeline. Greg Kowalczyk, a mechanical engineer, built it as a non-coder using AI-assisted development."
+  - q: "How long does it take to build an iOS app with AI as a non-coder?"
+    a: "The build itself took weeks. App Store review took much longer: 39 rejection cycles for RunMate Pro. Anyone shipping a first iOS app without a development background should budget as much time for review as for the build."
 ---
 
 ## The problem

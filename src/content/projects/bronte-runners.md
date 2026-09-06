@@ -17,6 +17,17 @@ order: 52
 liveUrl: "https://bronterunners.vercel.app"
 schemaType: "WebSite"
 year: "2026"
+faq:
+  - q: "What is Bronte Runners?"
+    a: "Bronte Runners is a free, all-paces community running club with 800+ members across Oakville and Burlington, Ontario. It meets Wednesday evenings in downtown Oakville and weekend mornings on the Bronte waterfront. There is no fee and no form."
+  - q: "How do I join Bronte Runners?"
+    a: "Show up. Check the next run on bronterunners.vercel.app, go to the meeting point and run with the group. Former elite athletes and first-time 5K runners share the same start line."
+  - q: "What was the Bronte Runners website built with?"
+    a: "Astro 5 and Tailwind CSS v4 on Vercel, with Leaflet maps drawn from GPX route files, content collections for runs, routes, events, news, people and partners, JSON-LD for the club and its events, and an RSS feed. It was built and shipped in one day, September 5, 2026."
+  - q: "How is Bronte Runners connected to the Bronte Harbour Classic?"
+    a: "The race is held on the club's home waterfront and Bronte Runners is a community partner: members marshal, pace, staff water stations and race. Greg Kowalczyk, who has run with the club for 16 years and is one of its leads, is the race's director."
+  - q: "Can club volunteers update the site themselves?"
+    a: "Yes. Every run, route, event and news post is a markdown file in a content collection, so a volunteer can add or edit content by editing a file rather than touching a template."
 ---
 
 ## The club

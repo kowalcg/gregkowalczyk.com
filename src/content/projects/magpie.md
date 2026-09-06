@@ -16,6 +16,17 @@ order: 35
 schemaType: "SoftwareApplication"
 platform: "Web"
 year: "2026"
+faq:
+  - q: "What is Magpie?"
+    a: "Magpie is a shared visual research library for a small team. Drop in a link, a screenshot or a highlighted quote and it enriches the item with a title, summary, category and thumbnail, then makes it searchable across every brand."
+  - q: "Why build a bookmarking tool instead of using an existing one?"
+    a: "Because saving had to be faster than not saving. Every tool the team tried added enough friction that people stopped using it, and the same research got done twice. Magpie's capture takes two seconds and no form."
+  - q: "How does Magpie enrich saved links?"
+    a: "A server-side function fetches the page, chooses a real hero image rather than the generic Open Graph default, uses Claude Haiku to write a title and summary and suggest a category, and rehosts the thumbnail so it survives changes on the source site."
+  - q: "Can AI tools query Magpie?"
+    a: "Yes. Magpie has a REST API with scoped tokens, so Claude Code can search the library at the start of a task and write findings back at the end."
+  - q: "Is Magpie a public product?"
+    a: "No. It is an internal tool for Greg Kowalczyk's team across GearTOP, TapeGeeks and the Bronte Harbour Classic. Sign-in is domain-gated with an allowlist."
 ---
 
 > **Status:** Internal tool for my team across GearTOP, TapeGeeks, and the race. Not a

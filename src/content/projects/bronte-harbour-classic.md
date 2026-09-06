@@ -17,6 +17,17 @@ order: 50
 liveUrl: "https://www.bronteharbourclassic.com"
 schemaType: "WebSite"
 year: "2026"
+faq:
+  - q: "What is the Bronte Harbour Classic?"
+    a: "The Bronte Harbour Classic is a chip-timed 5K road race with a Kids 1K Fun Run and an all-day post-race festival at Bronte Harbour Park in Oakville, Ontario. The inaugural edition ran on Father's Day, June 21, 2026, and the 2027 event adds a 10K."
+  - q: "Who directs the Bronte Harbour Classic?"
+    a: "Greg Kowalczyk is the Race Director. The inaugural 2026 race was co-directed with Charles J. Sathmary, with Greg Pace as race advisor."
+  - q: "What was the website built with?"
+    a: "Astro 5 and Tailwind CSS on Vercel, with race photography served from Cloudflare R2. Registration runs through Race Roster."
+  - q: "Why does every sponsor and vendor get a permanent page?"
+    a: "Because it is a better deal for a local business backing a first-year race, and because it compounds: year two starts with a year of indexed, linked content instead of nothing. Every race also keeps a permanent archive of results, photos and the story of the day."
+  - q: "When is the next Bronte Harbour Classic?"
+    a: "Planning is underway for 2027, which expands the event to 1K, 5K and 10K distances on the Bronte waterfront. Details are published at bronteharbourclassic.com as they are confirmed."
 ---
 
 ## The event

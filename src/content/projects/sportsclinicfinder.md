@@ -18,6 +18,17 @@ featured: true
 liveUrl: "https://www.sportsclinicfinder.com"
 schemaType: "WebSite"
 year: "2026"
+faq:
+  - q: "What is SportClinicFinder.com?"
+    a: "SportClinicFinder.com is a Canada-wide directory of 12,770 sports medicine clinics across 521 cities, covering physiotherapy, chiropractic, massage therapy, athletic therapy and sports medicine, with insurance details, Google ratings and booking links."
+  - q: "How was SportClinicFinder built with AI?"
+    a: "Greg Kowalczyk built it with AI-assisted development on Next.js, Neon Postgres and Vercel. The hard parts were data acquisition, deduplication and enrichment across provincial registries, Google Business Profiles and thousands of clinic websites of varying quality."
+  - q: "Can a clinic claim its listing on SportClinicFinder?"
+    a: "Yes. Listings are free and clinics can claim them to keep details current. A verified claim automatically upgrades the listing and triggers the owner notification flow."
+  - q: "What happened to SportClinicFinder's Google indexing?"
+    a: "After a Google core update the site dropped from roughly 15,000 indexed pages to about 1,000. Recovering was a months-long exercise in sitemaps, canonical hygiene and content depth, and it shaped how the second directory, SleepClinicFinder, was built."
+  - q: "What is the lesson about programmatic SEO?"
+    a: "Programmatic SEO is a usefulness-at-volume game, not a content-volume game. A template that produces a genuinely useful page for every city is worth building; a template that only inserts the city's name is worth nothing, and Google eventually says so."
 ---
 
 ## The problem
