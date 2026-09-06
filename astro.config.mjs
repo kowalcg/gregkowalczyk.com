@@ -73,6 +73,7 @@ function buildLastmodMap() {
     [`${SITE}/contact/`]: 'src/pages/contact.astro',
     [`${SITE}/media/`]: 'src/pages/media.astro',
     [`${SITE}/meetups/`]: 'src/pages/meetups.astro',
+    [`${SITE}/skills/video-to-skill/`]: 'src/pages/skills/[slug].astro',
     [`${SITE}/news/`]: 'src/pages/news/index.astro',
   };
   for (const [url, file] of Object.entries(pageFiles)) {

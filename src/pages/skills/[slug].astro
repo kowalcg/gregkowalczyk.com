@@ -1,0 +1,276 @@
+---
+/**
+ * /skills/<slug>/ — one page per giveaway skill, with a gated download.
+ *
+ * The gate is deliberately light: name + email, posted to the same Google
+ * Sheet as the contact form (Contact.astro), then the download link is shown
+ * on the page. No email round-trip. A localStorage flag skips the form on
+ * return visits.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import Footer from '../../components/Footer.astro';
+import { skills } from '../../data/skills';
+import { SITE_URL } from '../../data/site';
+
+export function getStaticPaths() {
+  return skills.map((skill) => ({ params: { slug: skill.slug }, props: { skill } }));
+}
+
+const { skill } = Astro.props;
+const pageUrl = `${SITE_URL}/skills/${skill.slug}/`;
+const downloadUrl = `${SITE_URL}${skill.download}`;
+const SHEETS_WEBHOOK_URL =
+  'https://script.google.com/macros/s/AKfycbwIA71enMA3_ML3CvocH7NY2C6TnMP8CUDSkFtt0On3-M_DTpkFxBw_fixC2hvvZr6D/exec';
+
+const schema = [
+  {
+    '@type': 'SoftwareSourceCode',
+    '@id': `${pageUrl}#skill`,
+    name: skill.name,
+    description: skill.tagline,
+    url: pageUrl,
+    codeRepository: downloadUrl,
+    programmingLanguage: 'Markdown, Python',
+    runtimePlatform: 'Claude Code',
+    license: 'https://opensource.org/licenses/MIT',
+    isAccessibleForFree: true,
+    version: skill.version,
+    datePublished: skill.released,
+    author: { '@id': `${SITE_URL}/#person` },
+    creator: { '@id': `${SITE_URL}/#person` },
+    keywords: 'Claude Code skill, video to guide, transcript, AI for business',
+  },
+  {
+    '@type': 'BreadcrumbList',
+    '@id': `${pageUrl}#breadcrumb`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Projects', item: `${SITE_URL}/projects/` },
+      { '@type': 'ListItem', position: 3, name: skill.name, item: pageUrl },
+    ],
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntity: skill.faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+];
+---
+
+<Layout
+  title={`${skill.name} — a free Claude Code skill | Greg Kowalczyk`}
+  description={`${skill.tagline} Free download, MIT licence, from Greg Kowalczyk.`}
+  extraSchema={schema}
+>
+  <Nav />
+  <main>
+    <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <header class="mb-10">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
+          <a href="/" class="hover:text-[#ffffff]">Home</a>
+          <span class="mx-2">/</span>
+          <a href="/projects" class="hover:text-[#ffffff]">Projects</a>
+          <span class="mx-2">/</span>
+          <span style="color: #ffffff;">{skill.name}</span>
+        </nav>
+        <div class="mb-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: #f06000;">
+            Claude Code skill · Free
+          </span>
+          <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
+            v{skill.version} · {skill.size}
+          </span>
+        </div>
+        <h1 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;">
+          <span class="gradient-text">{skill.name}</span>
+        </h1>
+        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          {skill.description}
+        </p>
+      </header>
+
+      <div class="glass-card mb-12 p-8">
+        <h2 class="mb-4 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">What it does</h2>
+        <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          {skill.whatItDoes.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <section id="download" class="glass-card mb-12 p-8" data-webhook={SHEETS_WEBHOOK_URL} data-download={skill.download} data-slug={skill.slug}>
+        <h2 class="mb-2 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Get the skill</h2>
+        <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          Leave your name and email and the download appears right here. I'll send one follow-up with what people build with it, and an invitation to the next
+          <a href="/meetups" style="color: #f06000;">AI for Business meetup</a>. No newsletter, no drip.
+        </p>
+
+        <form id="skill-form" class="space-y-4">
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label for="skill-name" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">Name</label>
+              <input id="skill-name" name="name" type="text" required autocomplete="name"
+                class="w-full rounded-lg px-4 py-3"
+                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; font-family: 'Outfit', sans-serif;" />
+            </div>
+            <div>
+              <label for="skill-email" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">Email</label>
+              <input id="skill-email" name="email" type="email" required autocomplete="email"
+                class="w-full rounded-lg px-4 py-3"
+                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; font-family: 'Outfit', sans-serif;" />
+            </div>
+          </div>
+          <div class="hidden" aria-hidden="true">
+            <input type="text" id="skill-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <input type="hidden" name="budget" value="Skill download" />
+          <input type="hidden" name="message" value={`${skill.name} v${skill.version}`} />
+          <button id="skill-submit" type="submit"
+            class="rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
+            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;">
+            Show me the download
+          </button>
+          <p id="skill-status" class="hidden text-sm" style="font-family: 'Outfit', sans-serif;"></p>
+        </form>
+
+        <div id="skill-ready" class="hidden">
+          <a id="skill-download-link" href={skill.download} download
+            class="inline-block rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
+            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;">
+            Download {skill.name}.zip ({skill.size}) ↓
+          </a>
+          <p class="mt-4 text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            Unzip it, then follow the install steps below. The README inside repeats them.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Install in about 90 seconds</h2>
+        <ol class="space-y-4" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">1</span>
+            <span>Install <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer" style="color: #f06000;">Claude Code</a> if you don't have it, open a terminal, run <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">claude</code> once and sign in.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">2</span>
+            <span>Unzip the download and copy the <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">video-to-skill</code> folder into <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">~/.claude/skills/</code>. The README has the one-line command for Mac, Linux and Windows.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">3</span>
+            <span>Run <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">claude</code>, type <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">/video-to-skill</code> and paste a YouTube link. Claude asks one question and gets to work.</span>
+          </li>
+        </ol>
+        <div class="glass-card mt-6 p-6">
+          <p class="mb-2 text-sm font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Requirements</p>
+          <ul class="space-y-2 text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            {skill.requirements.map((r) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #798897;"></span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Why I'm giving it away</h2>
+        <div class="prose-blog">
+          <p>
+            This is the skill I use to learn. A useful talk goes in, and a reference document I can search, share with my team and act on comes out, with the method captured as a skill Claude applies the next time I need it. It has replaced hours of note-taking for me, and it is the clearest demonstration I have of what a Claude Code skill is: a plain text file that turns a repeatable job into one command.
+          </p>
+          <p>
+            {skill.origin}. If you make it better, tell me. If you want the same idea built for a job specific to your business, that is <a href="/services">what I do</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-14" aria-labelledby="skill-faq">
+        <h2 id="skill-faq" class="mb-6 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {skill.faq.map(({ q, a }) => (
+            <details class="glass-card p-6">
+              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">{q}</summary>
+              <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <p class="mt-12">
+        <a href="/projects" class="text-sm transition-colors duration-200 hover:text-[#ffffff]" style="font-family: 'Outfit', sans-serif; color: #798897;">← All projects and skills</a>
+      </p>
+    </article>
+
+    <ContactCTA
+      heading="Want a skill built for your business?"
+      body="Every repeatable job in a business can become one command. Tell me which one eats your week."
+    />
+  </main>
+  <Footer />
+
+  <script>
+    const section = document.getElementById('download');
+    const form = document.getElementById('skill-form') as HTMLFormElement | null;
+    const ready = document.getElementById('skill-ready');
+    const submitBtn = document.getElementById('skill-submit') as HTMLButtonElement | null;
+    const status = document.getElementById('skill-status');
+    const slug = section?.dataset.slug ?? 'skill';
+    const storageKey = `skill-unlocked:${slug}`;
+
+    function reveal() {
+      form?.classList.add('hidden');
+      ready?.classList.remove('hidden');
+    }
+
+    try {
+      if (localStorage.getItem(storageKey)) reveal();
+    } catch {
+      /* storage unavailable; show the form */
+    }
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn || !section) return;
+      const honeypot = (form.querySelector('#skill-website') as HTMLInputElement | null)?.value;
+      if (honeypot) {
+        reveal();
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'One second…';
+      try {
+        const params = new URLSearchParams();
+        for (const [key, value] of new FormData(form).entries()) params.append(key, String(value));
+        params.append('company', 'skill download');
+        params.append('pageUrl', window.location.href);
+        await fetch(section.dataset.webhook ?? '', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString(),
+        });
+      } catch {
+        /* the sheet write failed; still hand over the file */
+      } finally {
+        try {
+          localStorage.setItem(storageKey, '1');
+        } catch {
+          /* ignore */
+        }
+        reveal();
+        if (status) status.classList.add('hidden');
+      }
+    });
+  </script>
+</Layout>
