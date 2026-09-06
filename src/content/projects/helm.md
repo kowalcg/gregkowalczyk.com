@@ -15,6 +15,7 @@ links:
   - { label: "Ask me about this", href: "/contact" }
 order: 30
 featured: true
+liveUrl: "https://helm.ad"
 schemaType: "SoftwareApplication"
 platform: "Web"
 year: "2026"

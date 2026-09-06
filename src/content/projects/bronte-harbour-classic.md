@@ -14,6 +14,7 @@ links:
   - { label: "Visit Site", href: "https://www.bronteharbourclassic.com/", external: true }
   - { label: "Why we archived every race forever", href: "/news/why-we-archived-every-race-forever" }
 order: 50
+liveUrl: "https://www.bronteharbourclassic.com"
 schemaType: "WebSite"
 year: "2026"
 ---

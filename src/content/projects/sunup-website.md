@@ -14,6 +14,7 @@ links:
   - { label: "View Site", href: "https://www.getsunup.app/", external: true }
   - { label: "About the app", href: "/projects/sunup/" }
 order: 15
+liveUrl: "https://www.getsunup.app/"
 schemaType: "WebSite"
 year: "2025"
 ---

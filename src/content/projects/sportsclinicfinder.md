@@ -15,6 +15,7 @@ links:
   - { label: "Read the story", href: "/news/how-i-built-a-sports-clinic-directory-with-ai" }
 order: 40
 featured: true
+liveUrl: "https://www.sportsclinicfinder.com"
 schemaType: "WebSite"
 year: "2026"
 ---

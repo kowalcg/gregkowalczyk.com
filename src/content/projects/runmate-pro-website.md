@@ -14,6 +14,7 @@ links:
   - { label: "View Site", href: "https://www.runmatepro.com/", external: true }
   - { label: "About the app", href: "/projects/runmate-pro/" }
 order: 25
+liveUrl: "https://www.runmatepro.com/"
 schemaType: "WebSite"
 year: "2025"
 ---

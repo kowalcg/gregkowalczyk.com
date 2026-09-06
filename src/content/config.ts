@@ -68,6 +68,12 @@ const projects = defineCollection({
     platform: z.string().optional(),
     /** Year the thing shipped, for the detail page byline. */
     year: z.string().optional(),
+    /** Canonical URL of the live thing (site or store page). Becomes the schema `url`
+     *  and a `sameAs` bridge so search engines tie the project entity to its real domain. */
+    liveUrl: z.string().url().optional(),
+    /** Visible FAQ on the detail page. When present the page also emits a FAQPage node —
+     *  the Q/As are rendered on-page, so "FAQPage only where the FAQ is visible" holds. */
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
     draft: z.boolean().default(false),
   }),
 });

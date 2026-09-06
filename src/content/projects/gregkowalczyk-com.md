@@ -13,6 +13,7 @@ tech: ["Astro 5", "Tailwind CSS v4", "Vercel", "WCAG AA"]
 links:
   - { label: "You're already here", href: "/" }
 order: 80
+liveUrl: "https://www.gregkowalczyk.com"
 schemaType: "WebSite"
 year: "2026"
 ---

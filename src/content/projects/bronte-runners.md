@@ -14,6 +14,7 @@ links:
   - { label: "Visit Site", href: "https://bronterunners.vercel.app/", external: true }
   - { label: "Bronte Harbour Classic", href: "/projects/bronte-harbour-classic/" }
 order: 52
+liveUrl: "https://bronterunners.vercel.app"
 schemaType: "WebSite"
 year: "2026"
 ---
