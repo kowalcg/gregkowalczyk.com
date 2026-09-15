@@ -157,6 +157,7 @@ npm run preview   # preview dist/ locally
 | v1.4.0 | Feb 23, 2026 | Social media expanded: X and Facebook added alongside LinkedIn |
 | v1.5.0 | Feb–Jul 2026 | Multipage redesign: services, projects, about, contact, news + 14 blog posts (undocumented at the time) |
 | v2.1.0 | Aug 21, 2026 | Added `/meetups/` — the free monthly *AI for Business* series for Hamilton and Oakville business owners, with `EventSeries`/`Event` JSON-LD, a homepage banner (`MeetupPreview.astro`), and nav + footer links. First event: Hamilton, Sep 10, CoWork at the Cotton Factory. |
+| v2.2.0 | Sep 15, 2026 | Meetups: two locations, each monthly. Oakville announced (Wed Oct 14, 12–1 PM lunch session, ACE Coworking 132 Trafalgar Rd, luma.com/ronyj460; Q&A informally to 1:30). Hamilton #2 set for Tue Oct 20 (planned — registration link pending). Per-format agendas (evening/lunch), past events split off at build time into a "Past meetups" section, meta description + OG image follow the next event. |
 | **v2.0.0** | **Jul 29, 2026** | **Refresh + SEO overhaul.** Removed three fabricated testimonials that were live on the homepage. Fixed sitemap indexing (Google had not re-read it since Apr 9; two posts were never discovered). Unified schema on the www host, scoped FAQPage to pages with a visible FAQ, moved BlogPosting inside the document. Retitled `/services/` off a zero-volume keyword. Added `/media/` with PodcastEpisode schema and two 2026 podcast appearances. Moved projects into a content collection with six build-story pages, adding Helm and Magpie. Converted the two raw-HTML posts to markdown. Added RSS, GA4/Clarity, and `scripts/audit-build.mjs`. Images: ~18MB → 2.8MB. |
 
 ## WHAT NOT TO BREAK
@@ -183,7 +184,12 @@ Each of these corresponds to a defect that was live in production before July 20
   only emits Event schema for entries with `status: 'announced'` — which
   requires a real date, a real venue, and a live registration URL. Anything
   still being scheduled is `status: 'planned'` and renders as "Date TBA" with
-  no schema and no register button.
+  no schema and no register button. A planned entry may carry a `date` once
+  Greg confirms it — it then shows "Registration opens soon". When the Luma
+  link arrives: add `registerUrl`, `start`/`end`, `timeLabel`, flip to
+  `announced`.
+- **Past meetups drop off at build time.** The site is static, so after an
+  event day push any commit (or redeploy) for the homepage banner to move on.
 - **A new page needs an entry in `pageFiles` in `astro.config.mjs`**, or it
   ships without `<lastmod>` and the build audit fails.
 - **Run `node scripts/audit-build.mjs` after every build.**

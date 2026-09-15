@@ -18,11 +18,14 @@ import { SITE_URL } from '../data/site';
 import {
   SERIES_NAME,
   HOSTS,
-  agenda,
+  agendas,
+  formatLabel,
   meetupsSchema,
   nextMeetup,
   upcomingMeetups,
+  pastMeetups,
   formatMeetupDate,
+  formatMeetupDateShort,
   fullAddress,
   mapsUrl,
 } from '../data/meetups';
@@ -30,6 +33,23 @@ import {
 const schema = meetupsSchema(SITE_URL);
 const next = nextMeetup();
 const later = upcomingMeetups();
+const past = pastMeetups();
+
+// One agenda card per format still on the calendar (lunch in Oakville,
+// evening in Hamilton), labelled with the cities that run it.
+const scheduled = [next, ...later].filter((m): m is NonNullable<typeof m> => !!m);
+const formats = [...new Set(scheduled.map((m) => m.format))].map((format) => ({
+  format,
+  cities: [...new Set(scheduled.filter((m) => m.format === format).map((m) => m.city))],
+}));
+
+const baseDescription =
+  'A free monthly meetup for Hamilton and Oakville business owners on using AI to save time, improve margins, and get more done.';
+const pageDescription = next
+  ? `${baseDescription} Next: ${next.city}, ${formatMeetupDateShort(next.date!)}${
+      next.timeLabel ? `, ${next.timeLabel}` : ''
+    } at ${next.venue.name}.`
+  : baseDescription;
 
 const forYou = [
   'You run a small or mid-size business and keep hearing you "should be using AI".',
@@ -47,15 +67,15 @@ const notThis = [
 
 <Layout
   title="AI for Business Meetups — Hamilton & Oakville | Greg Kowalczyk"
-  description="A free monthly meetup for Hamilton and Oakville business owners on using AI to save time, improve margins, and get more done. Next: Hamilton, Thursday September 10, 5:30–7:30 PM at CoWork at the Cotton Factory."
-  ogImage="/images/meetups/og-ai-for-business-hamilton.jpg"
+  description={pageDescription}
+  ogImage={next?.ogImage ?? '/images/meetups/og-ai-for-business-hamilton.jpg'}
   extraSchema={schema}
 >
   <Nav />
   <main>
     <PageHero
       title="AI for Business Meetups"
-      subtitle="A free evening for local business owners who want to use AI to save time, improve margins, and get more done. Hamilton and Oakville, once a month. Hosted by Patricia & Greg Kowalczyk — a father-and-daughter team running consumer brands for over a decade."
+      subtitle="A free session for local business owners who want to use AI to save time, improve margins, and get more done. Two locations, each once a month: an evening in Hamilton and a lunch hour in Oakville. Hosted by Patricia & Greg Kowalczyk — a father-and-daughter team running consumer brands for over a decade."
     />
 
     {/* ── Next event ─────────────────────────────────────────────── */}
@@ -100,6 +120,12 @@ const notThis = [
                   {SERIES_NAME} — {next.city}
                 </h2>
 
+                {next.topic && (
+                  <p class="mb-3 leading-snug" style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;">
+                    {next.topic}
+                  </p>
+                )}
+
                 <p
                   class="mb-6 text-lg"
                   style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
@@ -107,6 +133,12 @@ const notThis = [
                   <time datetime={next.start}>{formatMeetupDate(next.date!)}</time>
                   {next.timeLabel && <span class="whitespace-nowrap"> · {next.timeLabel}</span>}
                 </p>
+
+                {next.blurb && (
+                  <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                    {next.blurb}
+                  </p>
+                )}
 
                 <div class="mb-7">
                   <p class="mb-1 font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
@@ -151,45 +183,58 @@ const notThis = [
       </section>
     )}
 
-    {/* ── What the evening looks like ─────────────────────────────── */}
-    <section class="py-12">
-      <div class="mx-auto max-w-5xl px-6">
-        <h2
-          class="mb-8 text-2xl font-bold md:text-3xl"
-          style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
-        >
-          <span class="comment-prefix" style="font-size: 0.8em;">// </span>How the evening runs
-        </h2>
+    {/* ── How each format runs ────────────────────────────────────── */}
+    {formats.length > 0 && (
+      <section class="py-12">
+        <div class="mx-auto max-w-5xl px-6">
+          <h2
+            class="mb-8 text-2xl font-bold md:text-3xl"
+            style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+          >
+            <span class="comment-prefix" style="font-size: 0.8em;">// </span>How it runs
+          </h2>
 
-        <div class="fade-in-up glass-card p-8">
-          <ul class="flex flex-col gap-5 p-0" style="list-style: none;">
-            {agenda.map((row) => (
-              <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
-                <span
-                  class="w-20 flex-shrink-0 text-sm"
-                  style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
+          <div class={`grid gap-6 ${formats.length > 1 ? 'md:grid-cols-2' : ''}`}>
+            {formats.map(({ format, cities }) => (
+              <div class="fade-in-up glass-card p-8">
+                <h3
+                  class="mb-6 text-lg font-bold"
+                  style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
                 >
-                  {row.time}
-                </span>
-                <span
-                  class="leading-relaxed"
-                  style="font-family: 'Outfit', sans-serif; color: #798897;"
-                >
-                  {row.item}
-                </span>
-              </li>
+                  {cities.join(' & ')} · {formatLabel(format)}
+                </h3>
+                <ul class="flex flex-col gap-5 p-0" style="list-style: none;">
+                  {agendas[format].map((row) => (
+                    <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
+                      <span
+                        class="w-16 flex-shrink-0 text-sm"
+                        style="font-family: 'JetBrains Mono', monospace; color: #f06000;"
+                      >
+                        {row.time}
+                      </span>
+                      <span
+                        class="leading-relaxed"
+                        style="font-family: 'Outfit', sans-serif; color: #798897;"
+                      >
+                        {row.item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
+
           <p
-            class="mt-7 border-t pt-6 text-sm leading-relaxed"
-            style="font-family: 'Outfit', sans-serif; color: #798897; border-color: rgba(255,255,255,0.08);"
+            class="mt-6 text-sm leading-relaxed"
+            style="font-family: 'Outfit', sans-serif; color: #798897;"
           >
             Bring one thing you would hand off to AI tomorrow if you knew how. That is the whole
             price of admission.
           </p>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
 
     {/* ── Who it's for / what it isn't ────────────────────────────── */}
     <section class="py-12">
@@ -243,8 +288,9 @@ const notThis = [
             <span class="comment-prefix" style="font-size: 0.8em;">// </span>Coming up
           </h2>
           <p class="mb-8 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
-            The meetup runs monthly and rotates between Hamilton and Oakville, so there is one within
-            a short drive whichever side of the GTA's west end you are on.
+            The meetup runs monthly in both Hamilton and Oakville — a two-hour evening at the Cotton
+            Factory and a one-hour lunch session at ACE Coworking — so there is one within a short
+            drive whichever side of the GTA's west end you are on.
           </p>
 
           <div class="flex flex-col gap-4">
@@ -264,13 +310,19 @@ const notThis = [
                           class="rounded-full px-3 py-1 text-xs"
                           style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.10);"
                         >
-                          Date TBA
+                          {m.date ? 'Registration opens soon' : 'Date TBA'}
                         </span>
                       )}
                     </div>
                     <p class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
                       {m.date ? formatMeetupDate(m.date) : m.dateLabel}
+                      {m.timeLabel && <span class="whitespace-nowrap"> · {m.timeLabel}</span>}
                     </p>
+                    {(m.topic || m.note) && (
+                      <p class="mt-2 text-sm" style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;">
+                        {m.topic ?? m.note}
+                      </p>
+                    )}
                     <p class="mt-2 text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
                       {m.venue.name} · {fullAddress(m)}
                     </p>
@@ -292,6 +344,45 @@ const notThis = [
                     >Tell me when it's set →</a>
                   )}
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ── Past meetups ────────────────────────────────────────────── */}
+    {past.length > 0 && (
+      <section class="py-12">
+        <div class="mx-auto max-w-5xl px-6">
+          <h2
+            class="mb-8 text-2xl font-bold md:text-3xl"
+            style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+          >
+            <span class="comment-prefix" style="font-size: 0.8em;">// </span>Past meetups
+          </h2>
+
+          <div class="flex flex-col gap-4">
+            {past.map((m) => (
+              <div class="fade-in-up glass-card p-6 md:p-8">
+                <p class="mb-2 text-lg font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+                  {SERIES_NAME} — {m.city}
+                </p>
+                <p class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
+                  {formatMeetupDate(m.date!)} · {m.venue.name}
+                </p>
+                {m.recap && (
+                  <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                    {m.recap}
+                  </p>
+                )}
+                {m.recapLink && (
+                  <a
+                    href={m.recapLink.href}
+                    class="mt-3 inline-block text-sm font-semibold"
+                    style="font-family: 'Outfit', sans-serif; color: #f06000;"
+                  >{m.recapLink.label}</a>
+                )}
               </div>
             ))}
           </div>

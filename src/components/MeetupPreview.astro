@@ -59,9 +59,9 @@ const next = nextMeetup();
             </p>
 
             <p class="mb-6 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
-              A monthly evening for local business owners on using AI to save time, improve margins,
-              and get more done. Real examples, open Q&amp;A, and a room full of other owners working
-              on the same problem. {next.venue.name}, {fullAddress(next)}. Free to attend.
+              {next.blurb ??
+                'A monthly evening for local business owners on using AI to save time, improve margins, and get more done. Real examples, open Q&A, and a room full of other owners working on the same problem.'}
+              {' '}{next.venue.name}, {fullAddress(next)}. Free to attend.
             </p>
 
             <div class="flex flex-wrap gap-3">
