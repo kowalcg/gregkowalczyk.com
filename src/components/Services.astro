@@ -1,7 +1,8 @@
 ---
 /**
  * Services.astro — "What I Build" service cards section
- * 4 cards in a 2x2 grid with glass-card hover effects.
+ * Cards in a responsive grid with glass-card hover effects. A card with `href`
+ * links to its own page; `wide` spans the full row.
  * Uses global utility classes: gradient-text, glass-card, glass-card-hover, fade-in-up, comment-prefix.
  */
 
@@ -48,6 +49,15 @@ const services = [
     icon: "microscope",
     slug: "product-research",
   },
+  {
+    title: "AI for Race Directors & Events",
+    body: "I direct the Mercedes-Benz Oakville Bronte Harbour Classic and run it with a small team and AI. I build the same system for other races and community events: a website that grows every year, permanent sponsor and vendor pages, race photos sorted by bib number, and participant emails that don't eat your evenings.",
+    proof: "Our first year: 875 runners, 80 partner pages, 1,843 race photos sorted by AI.",
+    icon: "flag",
+    slug: "race-directors",
+    href: "/race-directors/",
+    wide: true,
+  },
 ];
 ---
 
@@ -76,7 +86,7 @@ const services = [
       {services.map((service) => (
         <div
           id={service.slug}
-          class="fade-in-up glass-card glass-card-hover overflow-hidden group p-8"
+          class={`fade-in-up glass-card glass-card-hover overflow-hidden group p-8 ${service.wide ? 'md:col-span-2 xl:col-span-3' : ''}`}
         >
           {/* Icon */}
           <div
@@ -189,6 +199,22 @@ const services = [
                 <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>
               </svg>
             )}
+            {service.icon === "flag" && (
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#f06000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                <line x1="4" y1="22" x2="4" y2="15" />
+              </svg>
+            )}
           </div>
 
           {/* Title */}
@@ -206,6 +232,14 @@ const services = [
           >
             {service.body}
           </p>
+
+          {service.href && (
+            <a
+              href={service.href}
+              class="mb-4 inline-block text-sm font-semibold"
+              style="font-family: 'Outfit', sans-serif; color: #f06000;"
+            >See how it works for race directors →</a>
+          )}
 
           {/* Proof Line */}
           <p

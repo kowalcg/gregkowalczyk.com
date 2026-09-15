@@ -337,6 +337,14 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
   const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
   const status = document.getElementById('contact-status');
 
+  // /race-directors/ links here with ?topic=race. Ask for the details that
+  // matter; pageUrl (appended on submit) carries the topic into the sheet.
+  const messageEl = document.getElementById('contact-message') as HTMLTextAreaElement | null;
+  if (new URLSearchParams(window.location.search).get('topic') === 'race' && messageEl && !messageEl.value) {
+    messageEl.placeholder = 'Your race or event: name, date, size — and the one job that eats the most time.';
+    messageEl.value = 'Race/event: ';
+  }
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!submitBtn || !status) return;

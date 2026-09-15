@@ -13,6 +13,7 @@ tech: ["Astro 5", "Tailwind CSS", "Vercel", "Cloudflare R2", "Chip Timing"]
 links:
   - { label: "Visit Site", href: "https://www.bronteharbourclassic.com/", external: true }
   - { label: "Why we archived every race forever", href: "/news/why-we-archived-every-race-forever" }
+  - { label: "AI for race directors", href: "/race-directors/" }
 order: 50
 liveUrl: "https://www.bronteharbourclassic.com"
 schemaType: "WebSite"
@@ -36,9 +37,9 @@ The Bronte Harbour Classic is a chip-timed 5K road race with a Kids 1K Fun Run a
 all-day post-race festival, held at Bronte Harbour Park in Oakville. The inaugural
 edition ran on Father's Day, June 21, 2026.
 
-I serve as **Executive Race Director**, and co-directed that first event alongside
-Charles J. Sathmary, with Greg Pace as race advisor. Planning is underway for 2027, which
-expands the event to 1K, 5K and 10K distances.
+I serve as **Race Director**, and co-directed that first event alongside Charles J.
+Sathmary, with Greg Pace as race advisor. Planning is underway for 2027, which expands the
+event to 1K, 5K and 10K distances with room for 1,500 runners.
 
 ## What the site had to do
 
@@ -74,3 +75,20 @@ I wrote both decisions up:
 Astro 5 and Tailwind on Vercel, with race photography served from Cloudflare R2 — a
 first-year race generates thousands of images, and the archive commitment means the
 storage decision has to be one you can live with for years.
+
+## How AI runs it
+
+A small team runs this race, so the repetitive work goes to AI:
+
+- **Race photos.** Google Vision reads the bib numbers on 1,843 photos (92% of bibs
+  detected), so every runner finds their photos free, by bib or by name.
+  [How it works](/news/how-ai-organized-race-photos-drone-videos).
+- **Partner pages.** Each of the 80 sponsors, vendors and organizers is researched and
+  written up with AI, then published as a permanent page.
+- **Participant emails.** Race Roster broadcasts are drafted from a house template,
+  test-sent, and only sent on approval.
+- **Next year.** The full 2027 registration event was set up with AI in one working
+  session.
+
+If you direct a race and want the same system, that's
+[what I build for race directors](/race-directors/).

@@ -1,0 +1,305 @@
+---
+/**
+ * /race-directors/ — AI for race directors and event organizers.
+ *
+ * A referral and credibility page, not a keyword play: race terms have almost
+ * no search volume in Canada (docs/keyword-strategy.md, measured Sep 15, 2026).
+ * Search traffic reaches it through the "Building a Digital-First Race" series.
+ *
+ * Copy and FAQ come from src/data/raceDirectors.ts. No prices — every call to
+ * action goes to /contact/?topic=race. Schema passes through `extraSchema`.
+ */
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_URL } from '../data/site';
+import { RACE_CTA, problems, proof, tiers, playbook, faq } from '../data/raceDirectors';
+
+const pageUrl = `${SITE_URL}/race-directors/`;
+
+const serviceSchema = {
+  '@type': 'Service',
+  '@id': `${pageUrl}#service`,
+  name: 'AI for Race Directors',
+  serviceType: 'Race and event technology consulting',
+  description:
+    'Race websites that grow every year, permanent sponsor and vendor pages, AI-sorted race photos and participant email systems for race directors and event organizers.',
+  provider: { '@id': `${SITE_URL}/#person` },
+  areaServed: [
+    { '@type': 'Country', name: 'Canada' },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  audience: { '@type': 'Audience', audienceType: 'Race directors and event organizers' },
+  url: pageUrl,
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': `${pageUrl}#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: `${SITE_URL}/services/` },
+    { '@type': 'ListItem', position: 3, name: 'AI for Race Directors', item: pageUrl },
+  ],
+};
+
+// FAQPage only because the same array renders visibly below.
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  mainEntity: faq.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+const primaryBtn =
+  'inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105';
+const primaryStyle = "background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;";
+const secondaryStyle =
+  "background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;";
+const h2Class = 'mb-8 text-2xl font-bold md:text-3xl';
+const h2Style = "font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;";
+const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
+---
+
+<Layout
+  title="AI for Race Directors — Build a Race That Grows Every Year | Greg Kowalczyk"
+  description="AI for race directors and event organizers: a race website that grows every year, permanent sponsor pages, AI-sorted race photos and participant emails. Proven on the Bronte Harbour Classic."
+  ogImage="/images/race-directors/og-race-directors.jpg"
+  extraSchema={[serviceSchema, breadcrumbSchema, faqSchema]}
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="AI for Race Directors"
+      subtitle="I'm the Race Director of the Mercedes-Benz Oakville Bronte Harbour Classic. Our first year sold out at 875 runners, run by a small team with AI doing the work of an agency. I help other race directors and event organizers build the same system."
+    />
+
+    <div class="mx-auto -mt-4 mb-4 max-w-6xl px-6">
+      <div class="flex flex-wrap gap-3">
+        <a href={RACE_CTA} class={primaryBtn} style={primaryStyle}>Book a free race-tech call →</a>
+        <a
+          href="https://www.bronteharbourclassic.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class={primaryBtn}
+          style={secondaryStyle}
+        >See the race site ↗</a>
+      </div>
+    </div>
+
+    {/* ── The problem ─────────────────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2 class={h2Class} style={h2Style}>
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>What every race director is juggling
+        </h2>
+        <div class="fade-in-up glass-card p-8">
+          <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
+            {problems.map((line) => (
+              <li class="flex gap-3 leading-relaxed" style={mutedStyle}>
+                <span style="color: #f06000;">→</span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+          <p
+            class="mt-7 border-t pt-6 leading-relaxed"
+            style="font-family: 'Outfit', sans-serif; color: #ffffff; border-color: rgba(255,255,255,0.08);"
+          >
+            Most of that is repeat work. Repeat work is exactly what AI is good at — if someone
+            actually builds the system and hands it over.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* ── Proof ───────────────────────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2 class={h2Class} style={h2Style}>
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>What we built for our own race
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          {proof.map((card) => (
+            <div class="fade-in-up glass-card flex flex-col p-7">
+              <h3 class="mb-3 text-lg font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+                {card.title}
+              </h3>
+              <p class="leading-relaxed" style={mutedStyle}>{card.body}</p>
+              {card.href && (
+                <a
+                  href={card.href}
+                  class="mt-4 inline-block text-sm font-semibold"
+                  style="font-family: 'Outfit', sans-serif; color: #f06000;"
+                >How it works →</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ── Year two ────────────────────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="fade-in-up glass-card p-8 md:p-10">
+          <span
+            class="mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: #ff8a3d;"
+          >
+            YEAR TWO
+          </span>
+          <h2 class="mb-4 text-2xl font-bold md:text-3xl" style={h2Style}>
+            The same system, scaled
+          </h2>
+          <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+            The 2027 Mercedes-Benz Oakville Bronte Harbour Classic is doubling: three races — a
+            Kids 1K, the 5K and a new 10K — with room for 1,500 runners, up from 875. More vendors,
+            more sponsors, more charity involvement, and a more attractive course. Registration is
+            already open.
+          </p>
+          <p class="mb-6 leading-relaxed" style={mutedStyle}>
+            None of it started from a blank page. The archive, the partner pages and the email
+            system from year one carried straight into year two. That is what I build for other
+            race directors: a race that gets easier to run every year, not harder.
+          </p>
+          <a
+            href="https://www.bronteharbourclassic.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class={primaryBtn}
+            style={secondaryStyle}
+          >bronteharbourclassic.com ↗</a>
+        </div>
+      </div>
+    </section>
+
+    {/* ── Ways to work together ───────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2 class="mb-3 text-2xl font-bold md:text-3xl" style={h2Style}>
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>Four ways to work together
+        </h2>
+        <p class="mb-8 max-w-2xl leading-relaxed" style={mutedStyle}>
+          Every race is a different size with a different budget, so there are no packages to
+          pick from a list. Start with the free call; you get a quote after it, not before.
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          {tiers.map((tier) => (
+            <div class="fade-in-up glass-card flex flex-col p-7">
+              <p class="mb-2 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+                {tier.step}
+              </p>
+              <h3 class="mb-3 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+                {tier.name}
+              </h3>
+              <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;">
+                {tier.summary}
+              </p>
+              <ul class="mb-6 flex flex-col gap-3 p-0" style="list-style: none;">
+                {tier.points.map((point) => (
+                  <li class="flex gap-3 text-sm leading-relaxed" style={mutedStyle}>
+                    <span style="color: #f06000;">→</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href={RACE_CTA} class={`${primaryBtn} mt-auto self-start`} style={tier.step === '01' ? primaryStyle : secondaryStyle}>
+                Book the free call →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ── Not just races ──────────────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="fade-in-up glass-card p-8">
+          <h2 class="mb-3 text-xl font-bold md:text-2xl" style={h2Style}>Not just races</h2>
+          <p class="leading-relaxed" style={mutedStyle}>
+            Festivals, charity walks, tournaments and community events have the same shape: a
+            fixed date, partners to look after, volunteers, and a crowd that wants information
+            before and photos after. The same system fits.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* ── Free playbook ───────────────────────────────────────────── */}
+    <section class="py-12">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2 class="mb-3 text-2xl font-bold md:text-3xl" style={h2Style}>
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>The playbook, free
+        </h2>
+        <p class="mb-8 max-w-2xl leading-relaxed" style={mutedStyle}>
+          Everything above is written up in public — what we built, why, and how to do it for your
+          own event.
+        </p>
+        <div class="fade-in-up glass-card p-6 md:p-8">
+          <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
+            {playbook.map((item) => (
+              <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-5">
+                <span class="w-16 flex-shrink-0 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+                  {item.part}
+                </span>
+                <a
+                  href={item.href}
+                  class="leading-relaxed hover:text-[#ffffff]"
+                  style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;"
+                >{item.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {/* ── FAQ ─────────────────────────────────────────────────────── */}
+    <section class="pb-8 pt-12" aria-labelledby="race-faq">
+      <div class="mx-auto max-w-5xl px-6">
+        <h2 id="race-faq" class={h2Class} style={h2Style}>
+          <span class="comment-prefix" style="font-size: 0.8em;">// </span>Questions race directors ask
+        </h2>
+        <div class="space-y-4">
+          {faq.map(({ q, a }) => (
+            <details class="glass-card p-6">
+              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+                {q}
+              </summary>
+              <p class="mt-3 leading-relaxed" style={mutedStyle}>{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactCTA
+      href={RACE_CTA}
+      heading="Directing a race?"
+      body="Tell me the race, the date, and the one job that eats the most time. On a free 30-minute call I'll tell you what I'd fix first — including when the answer is that you don't need me."
+    />
+  </main>
+  <Footer />
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</Layout>

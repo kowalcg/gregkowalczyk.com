@@ -142,3 +142,5 @@ Each finisher medal from the Bronte Harbour Classic carries a QR code that resol
 *Next in the series: **How AI Organized 1,800+ Race Photos** — Google Vision, a 92% bib detection rate, and why we gave every photo away free.*
 
 *The runner-facing version of this story is on the race site: [The 2026 Archive: Your Race, Saved Forever](https://www.bronteharbourclassic.com/news/2026-archive-your-race-saved-forever/). And if you're thinking about building an event from scratch, start with [what building one taught me](/news/building-bronte-harbour-classic-inaugural-race).*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

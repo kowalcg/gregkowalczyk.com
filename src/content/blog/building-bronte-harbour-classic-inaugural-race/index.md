@@ -1,6 +1,6 @@
 ---
 title: "How to Organize a 5K Race: What Building One From Scratch Taught Me"
-description: "How we sold out Oakville's first Bronte Harbour Classic — 900+ runners on Father's Day. A first-person playbook on how to organize a 5K race with a small team and AI leverage."
+description: "How we sold out Oakville's first Bronte Harbour Classic — 875 runners on Father's Day. A first-person playbook on how to organize a 5K race with a small team and AI leverage."
 pubDate: 2026-06-27
 author: "Greg Kowalczyk"
 authorTitle: "Business Growth Engineer"
@@ -77,7 +77,7 @@ If you want to know how to organize a 5K race, I can tell you what it actually t
 
 That was the whole goal. And getting there taught me more about building hard things with a small team than any project I've shipped in years.
 
-> **Quick Answer:** To organize a 5K race, secure a date and course, pull permits and event insurance early, line up sponsors and volunteers, set up online registration and timing, and build a medical and weather plan. Most guides say 4–6 months minimum. Our inaugural Bronte Harbour Classic took roughly three years to do right — and sold out at 900+ participants because we ran the operations like a product, not a party.
+> **Quick Answer:** To organize a 5K race, secure a date and course, pull permits and event insurance early, line up sponsors and volunteers, set up online registration and timing, and build a medical and weather plan. Most guides say 4–6 months minimum. Our inaugural Bronte Harbour Classic took roughly three years to do right — and sold out at 875 runners because we ran the operations like a product, not a party.
 
 ## The honest answer to "how long does it take" is two answers
 
@@ -195,3 +195,5 @@ Long before the start gun. In our case, the setup crew and volunteers arrived in
 Yes — we did it as a volunteer team. The trick is leverage. We built the registration site, email sequences, and day-of communications with AI-assisted systems instead of a big agency budget, and we leaned on sponsors and partners to fill the gaps. A small team can produce an event that looks much larger when the systems are good and the partnerships are real. The constraint is rarely headcount; it's usually systems.
 
 If you're building something that feels too big for the team you have — a race, a product, a brand — that's usually a systems problem, not a headcount problem. It's most of what I help people with. If that's where you are, [get in touch](/contact).
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

@@ -129,3 +129,5 @@ Yes, more than a logo grid does. A page with real, specific content about a loca
 *Next in the series: **Why Our Medals Have QR Codes (When No One Else's Do)** — the physical object that turns a keepsake into a working link.*
 
 *The runner-facing version of this story is on the race site: [Why Every Sponsor and Vendor Has Their Own Page](https://www.bronteharbourclassic.com/news/why-every-sponsor-vendor-has-their-own-page/). Catch up on [Part 1](/news/why-we-archived-every-race-forever) and [Part 2](/news/how-ai-organized-race-photos-drone-videos) if you missed them.*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

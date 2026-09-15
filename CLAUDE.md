@@ -131,6 +131,7 @@ every podcast/talk URL from `src/data/media.ts`.
 | `/projects/<slug>/` | Build stories — sunup, runmate-pro, sportsclinicfinder, bronte-harbour-classic, helm, magpie |
 | `/media/` | Podcasts, talks, teaching — plus the entity schema |
 | `/meetups/` | AI for Business — the free monthly meetup series (Hamilton + Oakville) |
+| `/race-directors/` | AI for race directors & event organizers — the consulting offer proven on the Bronte Harbour Classic. Data in `src/data/raceDirectors.ts`; no prices; CTAs go to `/contact/?topic=race` |
 | `/about/` | Bio, timeline, tech stack, community |
 | `/news/` + `/news/<slug>/` | 14 posts |
 | `/contact/` | What happens next, fit/not-fit, form |
@@ -158,6 +159,7 @@ npm run preview   # preview dist/ locally
 | v1.5.0 | Feb–Jul 2026 | Multipage redesign: services, projects, about, contact, news + 14 blog posts (undocumented at the time) |
 | v2.1.0 | Aug 21, 2026 | Added `/meetups/` — the free monthly *AI for Business* series for Hamilton and Oakville business owners, with `EventSeries`/`Event` JSON-LD, a homepage banner (`MeetupPreview.astro`), and nav + footer links. First event: Hamilton, Sep 10, CoWork at the Cotton Factory. |
 | v2.2.0 | Sep 15, 2026 | Meetups: two locations, each monthly. Oakville announced (Wed Oct 14, 12–1 PM lunch session, ACE Coworking 132 Trafalgar Rd, luma.com/ronyj460; Q&A informally to 1:30). Hamilton #2 set for Tue Oct 20 (planned — registration link pending). Per-format agendas (evening/lunch), past events split off at build time into a "Past meetups" section, meta description + OG image follow the next event. |
+| v2.3.0 | Sep 15, 2026 | Added `/race-directors/` — AI for race directors and event organizers (four tiers, no prices, Service + FAQPage schema). 7th service card, homepage preview card, links from the race project page, case study, "Who this is for" roster and every Digital-First Race post. Contact form prefills for `?topic=race`. Race size unified to 875 runners; title unified to Race Director. |
 | **v2.0.0** | **Jul 29, 2026** | **Refresh + SEO overhaul.** Removed three fabricated testimonials that were live on the homepage. Fixed sitemap indexing (Google had not re-read it since Apr 9; two posts were never discovered). Unified schema on the www host, scoped FAQPage to pages with a visible FAQ, moved BlogPosting inside the document. Retitled `/services/` off a zero-volume keyword. Added `/media/` with PodcastEpisode schema and two 2026 podcast appearances. Moved projects into a content collection with six build-story pages, adding Helm and Magpie. Converted the two raw-HTML posts to markdown. Added RSS, GA4/Clarity, and `scripts/audit-build.mjs`. Images: ~18MB → 2.8MB. |
 
 ## WHAT NOT TO BREAK
@@ -177,8 +179,11 @@ Each of these corresponds to a defect that was live in production before July 20
 - **Time-varying numbers come from `src/data/site.ts`.**
 - **Verify podcast/media dates against the source RSS feed**, never from memory.
 - **Blog posts are markdown**, never pasted inline-styled HTML.
-- **Race title:** Greg is **Executive Race Director** (short form "Race Director").
-  "Race Co-Director" refers only to the completed June 2026 inaugural event.
+- **Race title:** Greg is **Race Director** (sole — confirmed Aug 5, 2026; "Executive
+  Race Director" is retired). "Race Co-Director" refers only to the completed June 2026
+  inaugural event.
+- **Race size:** 2026 = **875 runners** (sold out). 2027 = Kids 1K, 5K and 10K with room
+  for 1,500. Never "a thousand runners" or "900+".
 - **Location:** always Oakville, Ontario — never Burlington.
 - **Never publish a meetup date that isn't confirmed.** `src/data/meetups.ts`
   only emits Event schema for entries with `status: 'announced'` — which

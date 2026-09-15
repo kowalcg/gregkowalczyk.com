@@ -149,3 +149,5 @@ Not the same way. Bib-number OCR works on still photos with a clear frame; a dro
 *Next in the series: **Why Every Sponsor and Vendor Gets a Permanent Web Presence** — why 80 local businesses got their own page instead of a logo in a footer.*
 
 *The runner-facing version of this story is on the race site: [How to Find Your Race Photos (Search by Bib Number)](https://www.bronteharbourclassic.com/news/find-your-race-photos-bib-number/). And if you missed it, Part 1 covers [why we archived the whole race forever](/news/why-we-archived-every-race-forever).*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

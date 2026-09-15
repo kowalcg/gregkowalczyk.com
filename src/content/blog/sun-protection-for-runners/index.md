@@ -118,3 +118,5 @@ Partly. The 5K has a staffed water station at the 2.5 km turnaround plus water a
 *Next in the series: **How We Help Runners Find the Right Clinic Before They Need One** — what happens when a plan like this isn't enough.*
 
 *The runner-facing version of this story is on the race site: [Sun Safety Tips for Race Day: What We Learned Protecting 875 Runners](https://www.bronteharbourclassic.com/news/sun-safety-tips-race-day-oakville/). Part 6 covers the full runner safety ecosystem this plan is one piece of: [Runner Safety Ecosystem: Building Beyond Race Day](/news/runner-safety-ecosystem-sun-safety-injury-prevention). And Part 1 is where this series started: [Why We Archived Every Race Forever](/news/why-we-archived-every-race-forever).*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

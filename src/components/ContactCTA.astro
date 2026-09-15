@@ -2,10 +2,13 @@
 interface Props {
   heading?: string;
   body?: string;
+  /** Where the button goes — e.g. /contact/?topic=race to tag the lead. */
+  href?: string;
 }
 const {
   heading = "Ready to Build Something?",
   body = "Tell me what's eating your time or budget. I'll tell you if AI or automation can fix it — and exactly how I'd build the solution.",
+  href = "/contact",
 } = Astro.props;
 ---
 
@@ -28,7 +31,7 @@ const {
         {body}
       </p>
       <a
-        href="/contact"
+        href={href}
         class="inline-block rounded-full px-8 py-4 text-base font-semibold  shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
         style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
       >Book a call</a>

@@ -115,3 +115,5 @@ Pick whichever solves the problem you actually have. If you are training through
 *Next in the series: **Why Every Outdoor Race Needs a Sun-Safety Plan (Most Don't Have One)** — the first of four deeper looks at each piece of this ecosystem, starting with sun exposure.*
 
 *The runner-facing version of this story is on the race site: [Staying Safe Running Outside in Oakville: Beyond Race Day](https://www.bronteharbourclassic.com/news/staying-safe-running-outside-oakville/). And if you want the build details behind any of these four: [SunUp](/projects/sunup/), [RunMate Pro](/projects/runmate-pro/), [SportClinicFinder](/projects/sportsclinicfinder/), and [the Bronte Harbour Classic site itself](/projects/bronte-harbour-classic/).*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*

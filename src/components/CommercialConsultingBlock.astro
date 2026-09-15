@@ -15,7 +15,7 @@
 
 const roster = [
   { kind: "Pottery studio", work: "Class booking, waitlists, and the follow-up nobody had time to send" },
-  { kind: "Race organization", work: "Registration, sponsor pages, and a permanent searchable photo archive" },
+  { kind: "Race organization", work: "Registration, sponsor pages, and a permanent searchable photo archive", href: "/race-directors/", linkLabel: "For race directors →" },
   { kind: "Fitness studio", work: "Member onboarding and retention sequences that run unattended" },
   { kind: "Specialty food retailer", work: "Retail shop to full e-commerce operation in six weeks" },
   { kind: "E-commerce brands", work: "Two of my own, since 2014 — where everything gets tested first" },
@@ -60,7 +60,7 @@ const roster = [
             class="mb-5 leading-relaxed text-[#798897]"
             style="font-family: 'Outfit', sans-serif;"
           >
-            I'm based in Oakville and work across the GTA and Ontario, plus remotely. The proof isn't a slide deck — it's the ecosystem I build in public: two e-commerce brands, two iOS apps in the App Store, a race with a thousand runners, and a directory at local-search scale. Client work runs on the same playbook.
+            I'm based in Oakville and work across the GTA and Ontario, plus remotely. The proof isn't a slide deck — it's the ecosystem I build in public: two e-commerce brands, two iOS apps in the App Store, a race that sold out at 875 runners, and a directory at local-search scale. Client work runs on the same playbook.
           </p>
 
           <div
@@ -110,6 +110,13 @@ const roster = [
                   >
                     {item.work}
                   </p>
+                  {item.href && (
+                    <a
+                      href={item.href}
+                      class="mt-2 inline-block text-xs font-semibold text-[#f06000] hover:text-white"
+                      style="font-family: 'Outfit', sans-serif;"
+                    >{item.linkLabel}</a>
+                  )}
                 </div>
               ))
             }

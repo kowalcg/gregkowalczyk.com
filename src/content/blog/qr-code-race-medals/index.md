@@ -101,3 +101,5 @@ The QR artwork itself costs nothing to generate, and adding it to an existing me
 *Next in the series: **A Race Website That Grows Instead of Starting Over** — why we built bronteharbourclassic.com to add capability every year instead of getting rebuilt from scratch.*
 
 *The runner-facing version of this story is on the race site: [Scan Your Medal: What the QR Code Unlocks](https://www.bronteharbourclassic.com/news/race-medal-qr-code/). Catch up on [Part 1](/news/why-we-archived-every-race-forever), [Part 2](/news/how-ai-organized-race-photos-drone-videos), and [Part 3](/news/why-every-sponsor-vendor-gets-permanent-web-presence) if you missed them.*
+
+*Directing a race or running a community event? [I help race directors build this same system](/race-directors/).*
