@@ -134,6 +134,7 @@ export const meetups: Meetup[] = [
     status: 'planned',
     format: 'evening',
     date: '2026-10-20',
+    timeLabel: '5:30 – 7:30 PM',
     note: 'The follow-on to September — same format, a new topic.',
     venue: COTTON_FACTORY,
   },
