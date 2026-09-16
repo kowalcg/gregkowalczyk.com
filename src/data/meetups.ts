@@ -131,12 +131,18 @@ export const meetups: Meetup[] = [
   {
     id: 'hamilton-2026-10-20',
     city: 'Hamilton',
-    status: 'planned',
+    status: 'announced',
     format: 'evening',
     date: '2026-10-20',
+    start: '2026-10-20T17:30:00-04:00',
+    end: '2026-10-20T19:30:00-04:00',
     timeLabel: '5:30 – 7:30 PM',
-    note: 'The follow-on to September — same format, a new topic.',
+    topic: 'Going Deeper: New AI Features, Live Workflows, and Tips You Can Apply the Next Morning',
     venue: COTTON_FACTORY,
+    registerUrl: 'https://luma.com/yo3ybe64',
+    flyer: '/images/meetups/ai-for-business-hamilton-2026-10-20.jpg',
+    flyerAlt:
+      'AI for Business Hamilton business meetup — Tuesday October 20, 5:30 to 7:30 PM at CoWork at the Cotton Factory, free to attend',
   },
 ];
 
