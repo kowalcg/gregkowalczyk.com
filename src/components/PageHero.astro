@@ -8,11 +8,12 @@ const { title, subtitle } = Astro.props;
 
 <section class="pb-12 pt-8 md:pb-16 md:pt-12">
   <div class="mx-auto max-w-6xl px-6">
+    {/* The "// " is drawn by CSS, so search engines read the heading itself, not "// About". */}
     <h1
-      class="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl"
+      class="ph-h1 mb-4 text-3xl font-bold md:text-4xl lg:text-5xl"
       style="font-family: 'Outfit', sans-serif; color: var(--fg); letter-spacing: -0.03em; line-height: 1.06; text-wrap: balance;"
     >
-      <span class="comment-prefix" style="font-size: 0.8em;">// </span>{title}
+      {title}
     </h1>
     {subtitle && (
       <p
@@ -24,3 +25,7 @@ const { title, subtitle } = Astro.props;
     )}
   </div>
 </section>
+
+<style>
+  .ph-h1::before { content: "// "; color: var(--accent-text); font-size: .8em; font-family: var(--font-mono); font-weight: 400; letter-spacing: -.05em; }
+</style>

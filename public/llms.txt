@@ -1,0 +1,41 @@
+# Greg Kowalczyk
+
+> Greg Kowalczyk is an AI consultant and builder based in Oakville, Ontario, Canada. He is a mechanical engineer (mechanical designer, then Manager of Engineering for a 70-person department at PRO-ECO / SMS-Siemag, 1997–2011), co-runs two e-commerce brands with his daughter (GearTOP and TapeGeeks, since 2014), builds custom AI tools and apps, and helps other small businesses do the same. He is Race Director of the Bronte Harbour Classic in Oakville and co-hosts free monthly "AI for Business" meetups in Hamilton and Oakville with Patricia Kowalczyk.
+
+## What he does for businesses
+- Custom AI tools for small business, owned by the client (no licence, no lock-in).
+- E-commerce AI systems for Amazon and Shopify, tested on his own brands first.
+- Marketing automation (email, social, ads) and AI agents.
+- AI readiness assessment: finds the one place work piles up, maps it and prices a fix.
+- Digital launch, local SEO and AI-search visibility.
+- AI for race directors and event organizers.
+- How engagements start: a free 15-minute call, then a $1,000 assessment credited against a build, then a fixed-price build with training included.
+
+## Proof
+- A traditional retail shop taken to a full e-commerce operation in 6 weeks (client, anonymised).
+- Replaced $75K+ a year in agency costs across his own two brands with AI systems he built.
+- Two iOS apps live in the App Store: SunUp by GearTOP and RunMate Pro, built without a coding background.
+- Helm: seller intelligence that pulls Amazon, Amazon Ads, Shopify, Meta, Klaviyo and Search Console into one place and exposes it to Claude.
+- SportClinicFinder (Canada-wide sports clinic directory) and SleepClinicFinder.
+- Bronte Harbour Classic: a chip-timed 5K, Kids 1K and post-race festival on Father's Day 2026, sold out at 875 runners, with permanent web pages for 80 local partners; proceeds support the Oakville Dads Community Fund. 2027 adds a 10K, with room for 1,500.
+
+## Community
+- Race Director, Bronte Harbour Classic (Oakville).
+- Co-lead, Bronte Runners: a free, all-paces running club of 800+ members in Oakville and Burlington.
+- Free monthly AI for Business meetups: evenings at CoWork at the Cotton Factory (Hamilton) and lunch hours at ACE Coworking (Oakville).
+- Five years teaching e-commerce; led four sourcing trips to China.
+
+## Key pages
+- [Home](https://www.gregkowalczyk.com/): what he builds and how it works
+- [Services](https://www.gregkowalczyk.com/services/): the process, prices and service list
+- [AI for race directors](https://www.gregkowalczyk.com/race-directors/)
+- [AI for Business meetups](https://www.gregkowalczyk.com/meetups/)
+- [Projects](https://www.gregkowalczyk.com/projects/): everything he has built, with build stories
+- [About](https://www.gregkowalczyk.com/about/)
+- [Media](https://www.gregkowalczyk.com/media/): podcasts, talks and teaching
+- [Writing](https://www.gregkowalczyk.com/news/)
+- [Free Claude Code skill: video-to-skill](https://www.gregkowalczyk.com/skills/video-to-skill/)
+- [Contact](https://www.gregkowalczyk.com/contact/): prekoconsult@gmail.com, 905-334-9282
+
+## Not to be confused with
+Other people named Greg or Gregory Kowalczyk. This Greg Kowalczyk is based in Oakville, Ontario, Canada; LinkedIn: https://www.linkedin.com/in/gregkowalczyk/
