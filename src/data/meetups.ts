@@ -138,6 +138,8 @@ export const meetups: Meetup[] = [
     end: '2026-10-20T19:30:00-04:00',
     timeLabel: '5:30 – 7:30 PM',
     topic: 'Going Deeper: New AI Features, Live Workflows, and Tips You Can Apply the Next Morning',
+    blurb:
+      'A practical evening for Hamilton-area owners who want AI to solve real business problems, not just talk about the technology. Trades and contractors, real estate agents, shop owners selling in person or on Shopify or Amazon, consultants and solopreneurs. A short presentation with live examples, open Q&A, then structured networking: bring your #1 AI challenge and trade ideas around the room. New to AI or using it daily, you will leave with something you can apply the next morning. Bring a laptop and a real problem.',
     venue: COTTON_FACTORY,
     registerUrl: 'https://luma.com/yo3ybe64',
     flyer: '/images/meetups/ai-for-business-hamilton-2026-10-20.jpg',
@@ -180,10 +182,21 @@ export const nextMeetup = (): Meetup | undefined =>
     .filter((m) => m.status === 'announced' && m.date && !isPast(m))
     .sort(byDate)[0];
 
-/** Everything after the next one — announced or still being scheduled. */
+/**
+ * The events with registration open right now — the next one in each city —
+ * shown as full cards with their flyers on / and /meetups/.
+ */
+export const featuredMeetups = (): Meetup[] => {
+  const open = meetups
+    .filter((m) => m.status === 'announced' && m.date && m.registerUrl && !isPast(m))
+    .sort(byDate);
+  return open.filter((m, i) => open.findIndex((o) => o.city === m.city) === i);
+};
+
+/** Everything not featured — later dates, or still being scheduled. */
 export const upcomingMeetups = (): Meetup[] => {
-  const next = nextMeetup();
-  return meetups.filter((m) => m.id !== next?.id && !isPast(m)).sort(byDate);
+  const shown = new Set(featuredMeetups().map((m) => m.id));
+  return meetups.filter((m) => !shown.has(m.id) && !isPast(m)).sort(byDate);
 };
 
 /** Events that have happened, most recent first. */

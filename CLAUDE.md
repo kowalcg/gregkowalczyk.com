@@ -240,6 +240,9 @@ Each of these corresponds to a defect that was live in production before July 20
   (the four BuildProcess steps + prices), what we help with (reads `services.ts`), then
   "Met us at a meetup?" → `/contact/?topic=meetup` (prefilled in `Contact.astro`). Event
   dates/venues still come only from `meetups.ts`.
+  Every open event (the next announced one per city, `featuredMeetups()`) gets a full
+  flyer card on /meetups/ and on the homepage banner. Flyers are shown whole
+  (`object-contain` on black), never cropped.
 - **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
 
 

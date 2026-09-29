@@ -23,6 +23,7 @@ import {
   formatLabel,
   meetupsSchema,
   nextMeetup,
+  featuredMeetups,
   upcomingMeetups,
   pastMeetups,
   formatMeetupDate,
@@ -34,11 +35,12 @@ import {
 const schema = meetupsSchema(SITE_URL);
 const next = nextMeetup();
 const later = upcomingMeetups();
+const featured = featuredMeetups();
 const past = pastMeetups();
 
 // One agenda card per format still on the calendar (lunch in Oakville,
 // evening in Hamilton), labelled with the cities that run it.
-const scheduled = [next, ...later].filter((m): m is NonNullable<typeof m> => !!m);
+const scheduled = [...featured, ...later];
 const formats = [...new Set(scheduled.map((m) => m.format))].map((format) => ({
   format,
   cities: [...new Set(scheduled.filter((m) => m.format === format).map((m) => m.city))],
@@ -82,20 +84,21 @@ const notThis = [
     <MeetupGuide part="nav" />
 
     {/* ── Next event ─────────────────────────────────────────────── */}
-    {next && (
+    {featured.length > 0 && (
       <section id="next-meetup" class="pb-4 pt-6" style="scroll-margin-top: 72px;">
-        <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto flex max-w-5xl flex-col gap-6 px-6">
+          {featured.map((next, fi) => (
           <div class="fade-in-up glass-card overflow-hidden p-0">
             <div class="flex flex-col md:flex-row">
               {next.flyer && (
-                <div class="md:w-2/5 md:flex-shrink-0">
+                <div class="flex items-center md:w-2/5 md:flex-shrink-0" style="background: #000;">{/* the flyers are black; show the whole flyer, never crop it */}
                   <img
                     src={next.flyer}
                     alt={next.flyerAlt}
                     width="1200"
                     height="1200"
-                    loading="eager"
-                    class="h-full w-full object-cover"
+                    loading={fi === 0 ? 'eager' : 'lazy'}
+                    class="aspect-square w-full object-contain"
                   />
                 </div>
               )}
@@ -106,7 +109,7 @@ const notThis = [
                     class="rounded-full px-3 py-1 text-xs font-semibold"
                     style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: var(--accent-text);"
                   >
-                    NEXT UP
+                    {fi === 0 ? 'NEXT UP' : 'ALSO OPEN'}
                   </span>
                   <span
                     class="rounded-full px-3 py-1 text-xs"
@@ -182,6 +185,7 @@ const notThis = [
               </div>
             </div>
           </div>
+          ))}
         </div>
       </section>
     )}
