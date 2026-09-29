@@ -189,12 +189,14 @@ const builds = [
         </g>
 
         <g class="legend">
-          <circle cx="46" cy="611" r="4.5" fill="var(--fg)" />
-          <text x="58" y="615" class="t-small t-muted">= one piece of work: an order, an email, a booking</text>
+          <use href="#i-bag" x="36" y="600" width="18" height="18" class="leg-ico" />
+          <use href="#i-mail" x="56" y="600" width="18" height="18" class="leg-ico" />
+          <use href="#i-cal" x="76" y="600" width="18" height="18" class="leg-ico" />
+          <text x="102" y="614" class="t-small t-muted">= real work coming in: orders, emails, bookings</text>
         </g>
         <g data-particles></g>
         <g class="static-q" data-static-q>
-          {Array.from({ length: 12 }, (_, k) => <circle cx={462 - k * 9.5} cy="305" r="4.2" fill="#f06000" />)}
+          {Array.from({ length: 8 }, (_, k) => <use href={`#${['i-bag', 'i-mail', 'i-cal', 'i-sheet'][k % 4]}`} x={446 - k * 22} y="295" width="21" height="21" style="color:#f06000" />)}
         </g>
       </svg>
       <figcaption class="bpx-cap" data-cap>{steps[0].body}</figcaption>
@@ -230,9 +232,31 @@ const builds = [
     const stageLabel = q('[data-stage-label]');
     let stage = 1;
 
+    // Phones: the full 1000-wide drawing is too small to read at 390px, so the
+    // view zooms to the part of the drawing each step is about, and pans between them.
+    // all views keep the drawing's 1000:640 shape, so the panel never changes height
+    const VIEWS: Record<number, number[]> = { 1: [24, 96, 768, 491.5], 2: [0, 0, 1000, 640], 3: [300, 110, 690, 441.6], 4: [60, 38, 940, 601.6] };
+    const narrow = matchMedia('(max-width: 900px)');
+    let vb = [0, 0, 1000, 640], vbAnim = 0;
+    function zoomTo(n: number) {
+      const to = narrow.matches ? VIEWS[n] : [0, 0, 1000, 640];
+      const from = vb.slice(); const t0 = performance.now();
+      cancelAnimationFrame(vbAnim);
+      const stepV = (now: number) => {
+        const k = Math.min(1, (now - t0) / 700), e = k * k * (3 - 2 * k);
+        vb = from.map((v, i) => v + (to[i] - v) * e);
+        svg.setAttribute('viewBox', vb.map((v) => v.toFixed(1)).join(' '));
+        if (k < 1) vbAnim = requestAnimationFrame(stepV);
+      };
+      vbAnim = requestAnimationFrame(stepV);
+    }
+    narrow.addEventListener('change', () => zoomTo(stage));
+    if (narrow.matches) { vb = VIEWS[1].slice(); svg.setAttribute('viewBox', vb.join(' ')); }
+
     function setStage(n: number) {
       if (n === stage) return;
       stage = n;
+      zoomTo(n);
       svg.dataset.stage = String(n);
       steps.forEach((s, i) => s.classList.toggle('on', i === n - 1));
       rail.style.height = ((n - 1) / (steps.length - 1)) * 100 + '%';
@@ -275,25 +299,28 @@ const builds = [
       const qCount = q('[data-queue]'), rateEl = q('[data-rate]');
       const clockM = q('[data-clock-m]'), clockH = q('[data-clock-h]');
 
-      type Dot = { el: SVGCircleElement; path?: SVGPathElement; t: number; speed: number; kind: string; x: number };
+      type Dot = { el: SVGUseElement; path?: SVGPathElement; t: number; speed: number; kind: string; x: number };
       const moving: Dot[] = [];
       const queue: Dot[] = [];
       const doneAt: number[] = [];
-      const ENTRY = 462, SLOT = 9.5, CAP = 20, LANE_Y = 305;
+      const ENTRY = 456, SLOT = 22, CAP = 9, LANE_Y = 305;
+      const ICONS = ['i-bag', 'i-mail', 'i-cal', 'i-sheet']; // one per source: orders, emails, bookings, spreadsheets
       let arriving = 0, spawnAcc = 0, procAcc = 0, clock = 0;
 
-      const mk = (fill: string) => {
-        const c = document.createElementNS(NS, 'circle') as SVGCircleElement;
-        c.setAttribute('r', '4.2'); c.setAttribute('fill', fill);
-        layer.appendChild(c); return c;
+      // every moving thing is a recognisable icon (an order, an email…), not a dot
+      const mk = (color: string, icon: string) => {
+        const u = document.createElementNS(NS, 'use') as SVGUseElement;
+        u.setAttribute('href', '#' + icon); u.setAttribute('width', '21'); u.setAttribute('height', '21');
+        u.style.color = color;
+        layer.appendChild(u); return u;
       };
       const pulse = (n: Element) => { n.classList.add('hit'); setTimeout(() => n.classList.remove('hit'), 240); };
-      const at = (d: Dot, x: number, y: number) => { d.el.setAttribute('cx', x.toFixed(1)); d.el.setAttribute('cy', y.toFixed(1)); };
+      const at = (d: Dot, x: number, y: number) => { d.el.setAttribute('x', (x - 10.5).toFixed(1)); d.el.setAttribute('y', (y - 10.5).toFixed(1)); };
 
       function spawn() {
         if (queue.length + arriving >= CAP) return;
         const i = Math.floor(Math.random() * 4);
-        moving.push({ el: mk('var(--fg)'), path: src[i], t: 0, speed: 0.17, kind: 'src', x: 0 });
+        moving.push({ el: mk('var(--fg)', ICONS[i]), path: src[i], t: 0, speed: 0.17, kind: 'src', x: 0 });
         arriving++;
         pulse(srcNodes[i]);
       }
@@ -317,15 +344,15 @@ const builds = [
           if (d.t < L) continue;
           moving.splice(k, 1);
           if (d.kind === 'src') {
-            arriving--; d.kind = 'lane'; d.x = 262; d.el.setAttribute('fill', '#f06000'); queue.push(d);
+            arriving--; d.kind = 'lane'; d.x = 262; d.el.style.color = '#f06000'; queue.push(d);
           } else if (d.kind === 'mid') {
             const toBrief = stage === 4 && Math.random() < 0.22;
             d.kind = toBrief ? 'brief' : 'out';
             d.path = toBrief ? brief : outs[Math.floor(Math.random() * 3)];
-            d.t = 0; d.speed = 0.24; d.el.setAttribute('fill', 'var(--fg)');
+            d.t = 0; d.speed = 0.24; d.el.style.color = 'var(--fg)';
             moving.push(d);
           } else if (d.kind === 'brief') {
-            d.kind = 'loop'; d.path = loop; d.t = 0; d.speed = 0.5; d.el.setAttribute('fill', '#f06000'); moving.push(d);
+            d.kind = 'loop'; d.path = loop; d.t = 0; d.speed = 0.5; d.el.style.color = '#f06000'; moving.push(d);
           } else {
             if (d.kind === 'out') { pulse(outNodes[outs.indexOf(d.path!)]); doneAt.push(now); }
             d.el.remove();
@@ -344,7 +371,7 @@ const builds = [
           procAcc = 0;
           const d = queue.shift()!;
           d.kind = 'mid'; d.path = mid; d.t = 0; d.speed = manual ? 0.28 : 0.55;
-          d.el.setAttribute('fill', manual ? 'var(--fg)' : '#f06000');
+          d.el.style.color = manual ? 'var(--fg)' : '#f06000';
           d.el.setAttribute('filter', manual ? '' : 'url(#bpx-glow)');
           moving.push(d);
         }
@@ -457,6 +484,7 @@ const builds = [
   svg .s12 .ln, svg[data-stage="2"] .s2 .ln, svg[data-stage="3"] .s34 .ln, svg[data-stage="4"] .s34 .ln, svg[data-stage="4"] .s4 .ln { stroke-dashoffset: 0; }
   svg[data-stage="3"] .s12 .ln, svg[data-stage="4"] .s12 .ln { stroke-dashoffset: 1; }
   svg .static-q { display: none; }
+  svg .leg-ico { color: var(--fg); }
 
   /* ---- what I build ---- */
   .bpx-builds { margin-top: 72px; border-top: 1px solid var(--color-border); padding-top: 32px; }

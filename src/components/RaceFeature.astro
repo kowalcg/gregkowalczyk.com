@@ -1,49 +1,75 @@
 ---
-// "For race directors" — a feature band on / and /services/ (Sep 2026).
-// Race directors are a niche of their own; this used to be one tile in the
-// "What that's looked like" roster. A compact version of the /race-directors/
-// course map: the runner laps on its own (SMIL, no scroll), each km marker
-// lights as it passes. Numbers come from src/data/raceDirectors.ts.
+// "For race directors" — the feature band on / and /services/ (Sep 2026,
+// rebuilt the same month around what race directors actually fight with:
+// runners, sponsors, getting the word out, emails, safety, and keeping
+// people engaged). A runner laps the course on its own (SMIL, never holds
+// scroll); each icon on the course lights its row in the checklist as the
+// runner passes. Every number traces to src/data/raceDirectors.ts or the
+// race site; no 2027 date, prices or sponsor list here.
 import { RACE_CTA } from '../data/raceDirectors';
 const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282 C 760 265, 860 250, 900 300 C 940 350, 880 420, 780 430 C 680 440, 600 470, 500 500 C 400 530, 260 540, 200 510 C 170 495, 165 480, 170 470';
-const LAP = 12; // seconds per lap
-// fraction of the lap, label, and which side the label sits on
-const marks: [number, string, 'l' | 'r' | 't' | 'b'][] = [
-  [0.2, 'SPONSOR PAGES', 't'], [0.4, 'PARTICIPANT EMAILS', 't'], [0.6, 'WATER · SUN SAFETY', 'l'], [0.8, 'PHOTOS BY BIB', 'b'],
+const LAP = 14; // seconds per lap
+
+// f = where on the lap the icon sits (0..1); side = where its label goes
+const jobs = [
+  { f: 0.03, icon: 'i-bib', label: 'Runners', side: 'b', title: 'Fill the start line', text: 'Registration and a race website that people find, trust and sign up from.', proof: '875 runners — sold out in year one' },
+  { f: 0.19, icon: 'i-flag', label: 'Sponsors', side: 't', title: 'Win sponsors, and keep them', text: 'Every sponsor and vendor gets a permanent page they are proud to share — not a logo on a banner that comes down Sunday.', proof: '80 permanent partner pages' },
+  { f: 0.37, icon: 'i-mega', label: 'Get the word out', side: 't', title: 'Get the word out', text: 'Race updates turn into articles and social posts, so the race stays in front of people all year.', proof: '50+ articles and counting' },
+  { f: 0.55, icon: 'i-mail', label: 'Emails', side: 'r', title: 'Emails runners actually read', text: 'Drafted from your template and sent only when you approve — plus a personal “your photos are ready” note to every runner.', proof: 'Nothing sends without your OK' },
+  { f: 0.72, icon: 'i-cup', label: 'Water & safety', side: 'b', title: 'Keep every runner safe', text: 'Water stations, start times and sun safety planned and shared before race day, not buried in fine print.', proof: 'One safety plan for 875 runners' },
+  { f: 0.88, icon: 'i-camera', label: 'Photos & memories', side: 'b', title: 'Give them a reason to stay — and come back', text: 'Free race photos found by bib number, a festival after the finish, and a medal whose QR code opens the race archive.', proof: '1,843 photos · 92% of bibs found by AI' },
 ];
 ---
 
 <section class="rf" id="race-directors" aria-labelledby="rf-heading">
   <div class="rf-inner">
+    <div class="rf-head">
+      <div class="rf-eyebrow">For race directors and event organizers</div>
+      <h2 id="rf-heading">Everything your race needs, <em>off your plate.</em></h2>
+      <p>I'm the Race Director of the Mercedes-Benz Oakville Bronte Harbour Classic — sold out in year one, run by a small team with AI doing the work of an agency. I build the same system for your race. Follow the runner:</p>
+    </div>
+
     <figure class="rf-fig" aria-hidden="true">
-      <svg viewBox="60 200 920 380" data-rf>
+      <svg viewBox="60 196 950 410" data-rf>
         <defs><pattern id="rf-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="var(--grid)" /></pattern></defs>
-        <rect x="60" y="200" width="920" height="380" fill="var(--panel)" /><rect x="60" y="200" width="920" height="380" fill="url(#rf-g)" />
-        <path d="M60 200 H980 V232 C 850 244, 700 226, 560 238 C 430 250, 300 226, 60 240 Z" class="lake" />
-        <text x="960" y="222" text-anchor="end" class="t water">LAKE ONTARIO</text>
+        <rect x="60" y="196" width="950" height="410" fill="var(--panel)" /><rect x="60" y="196" width="950" height="410" fill="url(#rf-g)" />
+        <path d="M60 196 H1010 V228 C 850 240, 700 222, 560 234 C 430 246, 300 222, 60 236 Z" class="lake" />
+        <text x="990" y="218" text-anchor="end" class="t water">LAKE ONTARIO</text>
         <path id="rf-course" d={COURSE} class="base" />
         <path d={COURSE} class="trail" pathLength="1" />
-        {Array.from({ length: 14 }, (_, k) => (
-          <circle r="2.4" class="crowd"><animateMotion dur={`${LAP * 1.6}s`} begin={`-${(k * LAP * 1.6) / 14}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion></circle>
+        {Array.from({ length: 9 }, (_, k) => (
+          <use href="#i-runner" width="20" height="20" class="crowd" x="-10" y="-17">
+            <animateMotion dur={`${LAP * 1.5}s`} begin={`-${(k * LAP * 1.5) / 9}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion>
+          </use>
         ))}
         <g data-marks></g>
         <path d="M138 505 V430 H202 V505 M138 442 H202" class="arch" />
         <text x="170" y="422" text-anchor="middle" class="t acc">START · FINISH</text>
-        <circle r="7" class="runner"><animateMotion dur={`${LAP}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion></circle>
+        <g>
+          <circle r="21" class="me-bg" />
+          <use href="#i-runner" width="30" height="30" x="-15" y="-16" class="me" />
+          <animateMotion dur={`${LAP}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion>
+        </g>
       </svg>
     </figure>
 
-    <div class="rf-copy">
-      <div class="rf-eyebrow">For race directors and event organizers</div>
-      <h2 id="rf-heading">A race that gets easier to run every year.</h2>
-      <p>I'm the Race Director of the Mercedes-Benz Oakville Bronte Harbour Classic. Our first year sold out, run by a small team with AI doing the work of an agency. I build the same system for other races and events.</p>
-      <dl class="rf-stats">
-        <div><dt>runners, sold out in year one</dt><dd>875</dd></div>
-        <div><dt>permanent sponsor and vendor pages</dt><dd>80</dd></div>
-        <div><dt>race photos sorted by bib with AI</dt><dd>1,843</dd></div>
-      </dl>
+    <ol class="rf-jobs">
+      {jobs.map((j) => (
+        <li class="rf-job" style={`animation-delay:${(j.f * LAP - 0.4).toFixed(2)}s`}>
+          <svg class="rf-ico" viewBox="0 0 24 24" aria-hidden="true"><use href={`#${j.icon}`} /></svg>
+          <div>
+            <b>{j.title}</b>
+            <span>{j.text}</span>
+            <em>{j.proof}</em>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="rf-close">
+      <p class="rf-quote">Runners don't sign up for a banana and a medal. They come for the day — the festival, the photos, the people. The system gives them reasons to stay, and to come back next year.</p>
       <div class="rf-row">
-        <a class="rf-cta" href="/race-directors/">See how it works →</a>
+        <a class="rf-cta" href="/race-directors/">See how it works for your race →</a>
         <a class="rf-go" href={RACE_CTA}>Book a free race-tech call</a>
       </div>
       <p class="rf-note">Festivals, charity walks and tournaments have the same shape. The same system fits.</p>
@@ -51,68 +77,95 @@ const marks: [number, string, 'l' | 'r' | 't' | 'b'][] = [
   </div>
 </section>
 
-<script define:vars={{ marks, LAP }}>
-  // Place km markers on the real path, and time each one to light as the runner passes.
+<script define:vars={{ jobs, LAP }}>
+  // Put each job's icon on the real course line, and light it as the runner passes.
   document.querySelectorAll('[data-rf]').forEach((svg) => {
     const NS = 'http://www.w3.org/2000/svg';
     const path = svg.querySelector('#rf-course');
     const L = path.getTotalLength();
     const g = svg.querySelector('[data-marks]');
-    marks.forEach(([f, label, side], i) => {
-      const p = path.getPointAtLength(f * L);
-      const dx = side === 'r' ? 18 : side === 'l' ? -18 : 0, dy = side === 't' ? -18 : side === 'b' ? 28 : 5;
-      const anchor = side === 'r' ? 'start' : side === 'l' ? 'end' : 'middle';
+    jobs.forEach((j) => {
+      const p = path.getPointAtLength(j.f * L);
+      const off = { t: [0, -50], b: [0, 50], r: [56, 0], l: [-56, 0] }[j.side];
+      const ix = p.x + off[0], iy = p.y + off[1];
       const m = document.createElementNS(NS, 'g');
       m.setAttribute('class', 'rf-mk');
-      m.style.animationDelay = `${f * LAP - 0.3}s`;
-      m.innerHTML = `<rect x="${p.x - 10}" y="${p.y - 3.5}" width="20" height="7" rx="2"/>` +
-        `<text x="${p.x + dx}" y="${p.y + dy}" text-anchor="${anchor}">${i + 1} KM · ${label}</text>`;
+      m.style.animationDelay = `${(j.f * LAP - 0.4).toFixed(2)}s`;
+      m.innerHTML = `<line x1="${p.x}" y1="${p.y}" x2="${ix}" y2="${iy}" class="stem"/>` +
+        `<circle cx="${p.x}" cy="${p.y}" r="6" class="pin"/>` +
+        `<circle cx="${ix}" cy="${iy}" r="26" class="disc"/>` +
+        `<use href="#${j.icon}" x="${ix - 17}" y="${iy - 17}" width="34" height="34" class="ico"/>` +
+        `<title>${j.label}</title>`;
       g.appendChild(m);
     });
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { svg.pauseAnimations(); svg.classList.add('paused'); return; }
+    const root = svg.closest('.rf');
+    if (reduce) { svg.pauseAnimations(); root.classList.add('paused'); return; }
     new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { svg.unpauseAnimations(); svg.classList.remove('paused'); }
-      else { svg.pauseAnimations(); svg.classList.add('paused'); }
+      if (e.isIntersecting) { svg.unpauseAnimations(); root.classList.remove('paused'); }
+      else { svg.pauseAnimations(); root.classList.add('paused'); }
     }).observe(svg);
   });
 </script>
 
 <style>
-  .rf { padding: 5rem 1.5rem; scroll-margin-top: 64px; background: linear-gradient(180deg, rgba(240,96,0,.06), rgba(240,96,0,0) 60%); border-block: 1px solid var(--color-border); }
-  .rf-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-  .rf-fig { margin: 0; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: var(--panel); min-width: 0; }
+  .rf { padding: 5rem 1.5rem; scroll-margin-top: 64px; background: linear-gradient(180deg, rgba(240,96,0,.07), rgba(240,96,0,0) 55%); border-block: 1px solid var(--color-border); }
+  .rf-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: "head head" "fig jobs" "close jobs"; gap: 28px 48px; align-items: start; }
+  .rf-head { grid-area: head; max-width: 62rem; }
+  .rf-fig { grid-area: fig; margin: 0; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: var(--panel); min-width: 0; position: sticky; top: 88px; }
+  .rf-jobs { grid-area: jobs; list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .rf-close { grid-area: close; }
   .rf-fig svg { width: 100%; height: auto; display: block; }
   .rf-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
-  .rf-copy h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 4.2vw, 58px); line-height: 1; letter-spacing: -.03em; margin: 12px 0 16px; text-wrap: balance; }
-  .rf-copy > p { color: var(--soft); font-size: 16.5px; line-height: 1.6; margin: 0; }
-  .rf-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 22px 0; }
-  .rf-stats div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
-  .rf-stats dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3vw, 40px); letter-spacing: -.02em; line-height: 1; }
-  .rf-stats div:first-child dd { color: var(--color-accent); }
-  .rf-stats dt { color: var(--color-text-secondary); font-size: 13px; line-height: 1.35; margin-top: 6px; }
+  .rf-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 4.6vw, 62px); line-height: 1; letter-spacing: -.03em; margin: 12px 0 16px; text-wrap: balance; }
+  .rf-head h2 em { font-style: normal; color: var(--color-accent); }
+  .rf-head p { color: var(--soft); font-size: 17.5px; line-height: 1.6; margin: 0; max-width: 62ch; }
+
+  .rf-job { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--surface); animation: rf-hi 14s infinite; }
+  .rf-ico { width: 44px; height: 44px; padding: 8px; border-radius: 12px; background: var(--panel-accent); color: var(--accent); border: 1px solid rgba(240, 96, 0, .35); }
+  .rf-job b { display: block; font-size: 18px; line-height: 1.25; color: var(--fg); }
+  .rf-job span { display: block; font-size: 15.5px; line-height: 1.45; color: var(--soft); margin-top: 3px; }
+  .rf-job em { display: inline-block; font-style: normal; font-weight: 700; font-size: 14px; color: var(--color-accent); margin-top: 6px; }
+  @keyframes rf-hi { 0%, 20%, 100% { border-color: var(--color-border); box-shadow: none; } 2%, 16% { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240, 96, 0, .14); } }
+
+  .rf-quote { font-family: var(--font-body); font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--fg); margin: 0 0 18px; border-left: 3px solid var(--accent); padding-left: 14px; }
   .rf-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
   .rf-cta { background: var(--color-accent-fill); color: var(--on-accent); font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; }
-  .rf-go { color: var(--fg); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 4px; }
+  .rf-go { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
   .rf-cta:focus-visible, .rf-go:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
-  .rf-note { margin-top: 18px !important; font-size: 14px !important; color: var(--color-text-secondary) !important; }
+  .rf-note { margin: 16px 0 0; font-size: 14.5px; color: var(--color-text-secondary); }
 
   svg .lake { fill: var(--lake); }
-  svg .t { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: var(--fg); }
-  svg .t.water { fill: var(--water-ink); font-size: 11px; }
+  svg .t { font-family: var(--font-mono); font-size: 13px; letter-spacing: 2px; fill: var(--fg); }
+  svg .t.water { fill: var(--water-ink); font-size: 12px; }
   svg .t.acc { fill: var(--accent-text); }
-  svg .base { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; }
-  svg .trail { fill: none; stroke: #f06000; stroke-width: 3; stroke-dasharray: .12 .88; animation: rf-trail 12s linear infinite; }
+  svg .base { fill: none; stroke: var(--line); stroke-width: 12; stroke-linecap: round; }
+  svg .trail { fill: none; stroke: #f06000; stroke-width: 4; stroke-dasharray: .12 .88; animation: rf-trail 14s linear infinite; }
   @keyframes rf-trail { from { stroke-dashoffset: .12; } to { stroke-dashoffset: -.88; } }
-  svg .crowd { fill: var(--soft); opacity: .5; }
-  svg .runner { fill: #f06000; stroke: var(--bg); stroke-width: 2; }
+  svg .crowd { color: var(--faint); opacity: .7; }
+  svg .me-bg { fill: #f06000; }
+  svg .me { color: #000; }
   svg .arch { fill: none; stroke: #f06000; stroke-width: 3; }
-  svg :global(.rf-mk) { color: var(--faint); animation: rf-mk 12s infinite; }
-  svg :global(.rf-mk rect) { fill: currentColor; }
-  svg :global(.rf-mk text) { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; fill: currentColor; }
-  @keyframes rf-mk { 0%, 24%, 100% { color: var(--faint); } 2%, 20% { color: var(--accent-text); } }
-  svg.paused, svg.paused * { animation-play-state: paused !important; }
+  svg :global(.rf-mk) { color: var(--muted); animation: rf-mk 14s infinite; }
+  svg :global(.rf-mk .stem) { stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 3 3; }
+  svg :global(.rf-mk .pin) { fill: var(--panel); stroke: currentColor; stroke-width: 2.5; }
+  svg :global(.rf-mk .disc) { fill: var(--panel-2); stroke: currentColor; stroke-width: 2; }
+  @keyframes rf-mk { 0%, 20%, 100% { color: var(--muted); } 2%, 16% { color: #f06000; } }
+  .rf.paused *, .rf.paused svg * { animation-play-state: paused !important; }
 
-  @media (max-width: 900px) { .rf-inner { grid-template-columns: 1fr; gap: 28px; } }
-  @media (max-width: 520px) { .rf-stats { grid-template-columns: 1fr 1fr; } .rf-stats div:last-child { grid-column: 1 / -1; } }
+  @media (max-width: 960px) {
+    .rf-inner { grid-template-columns: 1fr; grid-template-areas: "head" "fig" "jobs" "close"; }
+    .rf-fig { position: static; }
+  }
+  @media (max-width: 600px) {
+    .rf { padding: 3.5rem 1rem; }
+    .rf-job { grid-template-columns: 38px minmax(0, 1fr); padding: 12px; }
+    .rf-ico { width: 38px; height: 38px; padding: 6px; }
+    .rf-job b { font-size: 17.5px; }
+    .rf-job span { font-size: 16px; }
+    .rf-quote { font-size: 18.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rf-job, svg .trail { animation: none; }
+  }
 </style>

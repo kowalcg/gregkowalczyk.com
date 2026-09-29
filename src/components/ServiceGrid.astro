@@ -30,26 +30,26 @@ import { services } from '../data/services';
                   <rect x="18" y={y} width="48" height="30" rx="3" class="st" />
                   <path d={`M18 ${y + 10}H66M18 ${y + 20}H66M34 ${y}V${y + 30}M50 ${y}V${y + 30}`} class="st-dim" />
                   <path id={`sg-t${i}`} d={`M66 ${y + 15} C 130 ${y + 15}, 140 75, 198 75`} class="wire" />
-                  <circle r="3.2" class="dot"><animateMotion dur="2.4s" begin={`-${i * 0.8}s`} repeatCount="indefinite"><mpath href={`#sg-t${i}`} /></animateMotion></circle>
+                  <use href="#i-doc" width="16" height="16" x="-8" y="-8" class="mov"><animateMotion dur="2.4s" begin={`-${i * 0.8}s`} repeatCount="indefinite"><mpath href={`#sg-t${i}`} /></animateMotion></use>
                 </g>
               ))}
               <rect x="198" y="22" width="104" height="106" rx="6" class="st-accent fill-dark" />
               <path d="M198 40H302" class="st-dim" />
               <circle cx="208" cy="31" r="2.5" class="f-accent" />
               {[0, 1, 2, 3].map((i) => <rect x={214 + i * 20} y="62" width="12" height="54" class={`bar b${i}`} />)}
-              <text x="250" y="144" text-anchor="middle" class="lbl">ONE DASHBOARD</text>
-              <text x="18" y="144" class="lbl">SCATTERED DATA</text>
+              <text x="250" y="146" text-anchor="middle" class="say">All on one screen</text>
+              <text x="18" y="146" class="say">Numbers everywhere</text>
             </svg>
           )}
           {s.anim === 'ecom' && (
             <svg viewBox="0 0 320 150" data-anim>
               <path d="M30 62 L58 48 L86 62 L58 76 Z" class="st-accent fill-dark" />
               <path d="M30 62 V100 L58 114 V76 M86 62 V100 L58 114" class="st-accent" />
-              <text x="58" y="136" text-anchor="middle" class="lbl">1 PRODUCT</text>
+              <text x="58" y="140" text-anchor="middle" class="say">Write it once</text><text x="256" y="146" text-anchor="middle" class="say">Sold everywhere</text>
               {[['Amazon', 30], ['Shopify', 75], ['Wholesale', 120]].map(([n, y], i) => (
                 <g>
                   <path id={`sg-e${i}`} d={`M88 80 C 150 80, 150 ${y}, 208 ${y}`} class="wire" />
-                  <circle r="3.2" class="dot"><animateMotion dur="2.1s" begin={`-${i * 0.7}s`} repeatCount="indefinite"><mpath href={`#sg-e${i}`} /></animateMotion></circle>
+                  <use href="#i-box" width="16" height="16" x="-8" y="-8" class="mov"><animateMotion dur="2.1s" begin={`-${i * 0.7}s`} repeatCount="indefinite"><mpath href={`#sg-e${i}`} /></animateMotion></use>
                   <rect x="208" y={Number(y) - 14} width="96" height="28" rx="14" class={`st pill p${i}`} />
                   <text x="256" y={Number(y) + 5} text-anchor="middle" class="txt">{n}</text>
                 </g>
@@ -71,7 +71,7 @@ import { services } from '../data/services';
                 <path d="M-11 -7 L0 2 L11 -7" class="st-accent" />
                 <animateMotion dur="4s" repeatCount="indefinite" path="M36 78 H284" />
               </g>
-              <text x="160" y="140" text-anchor="middle" class="lbl">SENT ON SCHEDULE · NOBODY CLICKS SEND</text>
+              <text x="160" y="142" text-anchor="middle" class="say">Emails send themselves, on time</text>
             </svg>
           )}
           {s.anim === 'rank' && (
@@ -83,8 +83,7 @@ import { services } from '../data/services';
                 </g>
               ))}
               {[0, 1, 2, 3].map((i) => <text x="40" y={32 + i * 30} text-anchor="middle" class={`rk rk${i}`}>#{i + 1}</text>)}
-              <text x="40" y="146" text-anchor="middle" class="lbl">RANK</text>
-              <text x="185" y="146" text-anchor="middle" class="lbl">WHAT EACH ONE COSTS YOU</text>
+              <text x="160" y="146" text-anchor="middle" class="say">Find the costliest job. Fix it first.</text>
             </svg>
           )}
           {s.anim === 'search' && (
@@ -98,36 +97,36 @@ import { services } from '../data/services';
               <path d="M56 76 H152 M66 88 H130 M66 98 H142 M66 108 H118" class="st-dim" />
               <rect x="66" y="116" width="36" height="10" rx="2" class="f-accent" />
               <path id="sg-s" d="M152 99 C 200 99, 210 80, 250 80" class="wire" />
-              <circle r="3.2" class="dot"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#sg-s" /></animateMotion></circle>
+              <use href="#i-person" width="18" height="18" x="-9" y="-10" class="mov"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#sg-s" /></animateMotion></use>
               <circle cx="266" cy="80" r="14" class="ping" />
               <path d="M266 96 C 256 84, 254 78, 254 74 A12 12 0 0 1 278 74 C 278 78, 276 84, 266 96 Z" class="st-accent fill-dark" />
               <circle cx="266" cy="74" r="4" class="f-accent" />
-              <text x="266" y="122" text-anchor="middle" class="lbl">NEW CUSTOMER</text>
+              <text x="266" y="124" text-anchor="middle" class="say">New customer</text>
               <rect x="200" y="18" width="104" height="24" rx="12" class="st-dim chip" />
-              <text x="252" y="34" text-anchor="middle" class="lbl">+ AI ANSWERS</text>
+              <text x="252" y="34" text-anchor="middle" class="say sm">+ ChatGPT</text>
             </svg>
           )}
           {s.anim === 'funnel' && (
             <svg viewBox="0 0 320 150" data-anim>
               <path d="M110 20 L230 62 M110 130 L230 88" class="st-dim" />
-              <path d="M150 26 V124" class="dash" /><text x="150" y="146" text-anchor="middle" class="lbl">DEMAND</text>
-              <path d="M198 44 V106" class="dash" /><text x="198" y="146" text-anchor="middle" class="lbl">MARGIN</text>
+              <path d="M150 26 V124" class="dash" /><text x="150" y="16" text-anchor="middle" class="say sm">Wanted?</text>
+              <path d="M198 44 V106" class="dash" /><text x="200" y="146" text-anchor="middle" class="say sm">Profitable?</text>
               {[26, 40, 54, 68, 82, 96, 110, 124].map((y, i) => {
                 const pass = i === 2 || i === 5;
                 const end = pass ? 262 : i % 2 ? 150 : 198;
                 const endY = pass ? 75 : y + (75 - y) * (i % 2 ? 0.35 : 0.7);
                 return (
-                  <circle r="3.4" class={pass ? 'dot win' : 'dot'}>
+                  <use href="#i-bulb" width="15" height="15" x="-7.5" y="-7.5" class={pass ? 'mov win' : 'mov'}>
                     <animateMotion dur="4s" begin={`-${i * 0.12}s`} repeatCount="indefinite" path={`M28 ${y} L${end} ${endY}`} />
                     {!pass && <animate attributeName="opacity" dur="4s" begin={`-${i * 0.12}s`} repeatCount="indefinite" values="1;1;0;0" keyTimes="0;0.8;0.9;1" />}
-                  </circle>
+                  </use>
                 );
               })}
               <circle cx="274" cy="75" r="16" class="st-accent fill-dark" />
               <path d="M266 75 l6 6 l10 -12" class="st-accent" />
-              <text x="274" y="110" text-anchor="middle" class="lbl">2 WORTH</text>
-              <text x="274" y="122" text-anchor="middle" class="lbl">BUYING</text>
-              <text x="30" y="146" class="lbl">IDEAS</text>
+              <text x="274" y="112" text-anchor="middle" class="say">2 worth</text>
+              <text x="274" y="127" text-anchor="middle" class="say">buying</text>
+              <text x="18" y="146" class="say">8 ideas</text>
             </svg>
           )}
           {s.anim === 'race' && (
@@ -227,6 +226,10 @@ import { services } from '../data/services';
   svg .f-dim { fill: var(--grid-major); }
   svg .wire { fill: none; stroke: var(--line); stroke-width: 1.4; }
   svg .dash { fill: none; stroke: var(--faint); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  svg .say { font-family: var(--font-body); font-weight: 600; font-size: 13.5px; fill: var(--fg); }
+  svg .say.sm { font-size: 12px; fill: var(--muted); }
+  svg .mov { color: var(--fg); }
+  svg .mov.win { color: #f06000; }
   svg .dot { fill: var(--fg); }
   svg .dot.win { fill: #f06000; }
   svg .lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px; fill: var(--muted); }

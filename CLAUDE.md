@@ -229,6 +229,12 @@ Each of these corresponds to a defect that was live in production before July 20
   `Layout.astro` (localStorage `gk-theme`, else device setting); `ThemeToggle.astro` in the
   Nav switches it and fires a `gk-theme` event — WebGL/canvas code must listen for it
   (see `PALETTES` in `src/scripts/proof-scene.js`). The race bibs are paper in both themes.
+- **Diagrams explain themselves (Sep 2026).** Anything that moves or piles up in a
+  diagram is an icon from `IconSprite.astro` (rendered once in Layout; draw with
+  `<use href="#i-mail">`) — never an unexplained dot. Labels are plain words a non-technical
+  owner understands. Captions that carry the meaning live in HTML (readable on phones), not
+  as tiny SVG text. The How-it-works schematic zooms per step on phones (`VIEWS` in
+  BuildProcess.astro); the blueprint builder auto-fits every label inside its box (`data-fit`).
 - **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
 
 

@@ -209,6 +209,7 @@ if (showFaq) {
 graph.push(...extraSchema);
 
 const structuredData = { "@context": "https://schema.org", "@graph": graph };
+import IconSprite from '../components/IconSprite.astro';
 ---
 
 <!doctype html>
@@ -283,6 +284,7 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
   </head>
 
   <body class="noise-overlay min-h-screen bg-bg-primary text-text-primary font-body antialiased">
+    <IconSprite />
     <!-- Floating gradient orbs for glass refraction depth -->
     <div class="orb orb-purple" aria-hidden="true"></div>
     <div class="orb orb-blue" aria-hidden="true"></div>

@@ -35,6 +35,7 @@
 const cases = [
   {
     tag: 'Client project',
+    icons: ['i-bag', 'i-box', 'i-mail'], beforeHead: 'One owner, every job by hand', afterHead: 'The shop now runs online',
     title: 'Traditional retail shop to full e-commerce operation',
     before: 'New owner, 84+ hours a week, zero e-commerce experience',
     after: 'A complete digital operation, delivered in 6 weeks',
@@ -52,6 +53,7 @@ const cases = [
   },
   {
     tag: 'Built without waiting',
+    icons: ['i-doc', 'i-page', 'i-phone'], beforeHead: 'Every change waits for a developer', afterHead: 'Changes go live in minutes',
     title: 'It used to take days. Now I do it from my phone.',
     before: 'Every change: brief a developer, wait days, review, wait again',
     after: 'Minutes: live before the conversation is over',
@@ -76,6 +78,7 @@ const cases = [
   },
   {
     tag: 'My businesses',
+    icons: ['i-mail', 'i-mega', 'i-doc'], beforeHead: 'Paying agencies for routine work', afterHead: 'The routine work runs itself',
     title: 'Two e-commerce brands running on AI tools I built myself',
     before: '$75K–$125K a year to agencies, freelancers and services',
     after: 'Systems I built, running every day',
@@ -98,6 +101,7 @@ const cases = [
   <div class="cs-head">
     <div class="cs-eyebrow">Proof, not promises</div>
     <h2 id="cs-heading">Before and after.</h2>
+    <p>Each little icon is a real piece of work: an order, an email, a page to change. Watch where it goes.</p>
   </div>
 
   <div class="cs-list">
@@ -107,37 +111,63 @@ const cases = [
           <span class="cs-tag">{c.tag}</span>
           <h3>{c.title}</h3>
         </div>
-        <div class="cs-main">
-          <figure class="cs-fig">
-            <svg viewBox="0 0 640 170" aria-hidden="true" data-anim>
-              <path d="M20 96 H200" class="rail" />
-              <path d="M200 60 V132" class="gate" />
-              {Array.from({ length: 16 }, (_, k) => (
-                <circle cx={194 - (k % 8) * 12} cy={k < 8 ? 90 : 102} r="4.2" class={`jam j${k % 4}`} />
-              ))}
-              <circle cx="232" cy="96" r="4.2" class="trickle" />
-              <text x="20" y="160" class="lbl dim">ONE THING AT A TIME</text>
 
-              <path d="M290 96 H340 M332 88 L342 96 L332 104" class="arrow" />
-
-              <path id={`cs-flow${i}`} d="M370 96 H620" class="rail" />
-              <rect x="450" y="68" width="92" height="56" rx="8" class="sys" />
-              <text x="496" y="58" text-anchor="middle" class="lbl acc">SYSTEM</text>
-              {[0, 1, 2, 3, 4, 5, 6].map((k) => (
-                <circle r="4.2" class="flow"><animateMotion dur="2.8s" begin={`-${k * 0.4}s`} repeatCount="indefinite"><mpath href={`#cs-flow${i}`} /></animateMotion></circle>
+        <div class="cs-ba">
+          {/* BEFORE: work piles up in front of one busy person */}
+          <figure class="cs-panel cs-before">
+            <figcaption class="cs-cap"><span class="cs-pill">Before</span><b>{c.beforeHead}</b></figcaption>
+            <svg viewBox="0 0 320 170" aria-hidden="true" data-anim>
+              <path d="M8 138 H312" class="floor" />
+              {/* the pile keeps growing */}
+              {[[166, 112], [190, 112], [214, 112], [178, 90], [202, 90], [190, 68]].map(([x, y], k) => (
+                <use href={`#${c.icons[k % 3]}`} x={x} y={y} width="26" height="26" class="pile" />
               ))}
-              <circle cx="612" cy="96" r="13" class="done" /><path d="M606 96 l5 5 l8 -9" class="tick" />
-              <text x="370" y="160" class="lbl dim">IT FLOWS</text>
+              {/* new work keeps arriving */}
+              {[0, 1, 2].map((k) => (
+                <use href={`#${c.icons[k]}`} width="26" height="26" class="incoming">
+                  <animateMotion dur="3s" begin={`-${k}s`} repeatCount="indefinite" path="M-10 108 L150 108" />
+                  <animate attributeName="opacity" dur="3s" begin={`-${k}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.85;1" />
+                </use>
+              ))}
+              <use href="#i-person" x="248" y="84" width="54" height="54" class="who" />
+              <use href="#i-clock" x="262" y="28" width="30" height="30" class="clock" />
+              <path d="M246 70 l-8 -8 M300 70 l8 -8 M274 22 v-8" class="stress" />
             </svg>
-            <figcaption>
-              <span><b>Before</b>{c.before}</span>
-              <span><b>After</b>{c.after}</span>
-            </figcaption>
+            <p class="cs-say">{c.before}</p>
           </figure>
-          <dl class="cs-metrics">
-            {c.metrics.map(([v, l]) => <div><dt>{l}</dt><dd>{v}</dd></div>)}
-          </dl>
+
+          <div class="cs-arrow" aria-hidden="true"><span>→</span></div>
+
+          {/* AFTER: the same work flows through a system and comes out done */}
+          <figure class="cs-panel cs-after">
+            <figcaption class="cs-cap"><span class="cs-pill cs-pill-on">After</span><b>{c.afterHead}</b></figcaption>
+            <svg viewBox="0 0 320 170" aria-hidden="true" data-anim>
+              <path d="M8 138 H312" class="floor" />
+              <path id={`cs-in${i}`} d="M-10 96 H120" class="lane" />
+              <path id={`cs-out${i}`} d="M200 96 H300" class="lane" />
+              <rect x="118" y="60" width="84" height="72" rx="12" class="machine" />
+              <g class="gear"><use href="#i-gear" x="136" y="72" width="48" height="48" /><animateTransform attributeName="transform" type="rotate" from="0 160 96" to="360 160 96" dur="3s" repeatCount="indefinite" /></g>
+              {[0, 1, 2, 3].map((k) => (
+                <use href={`#${c.icons[k % 3]}`} width="24" height="24" class="flowing">
+                  <animateMotion dur="2.4s" begin={`-${k * 0.6}s`} repeatCount="indefinite"><mpath href={`#cs-in${i}`} /></animateMotion>
+                </use>
+              ))}
+              {[0, 1, 2, 3].map((k) => (
+                <use href="#i-check" width="24" height="24" class="done">
+                  <animateMotion dur="2.4s" begin={`-${k * 0.6}s`} repeatCount="indefinite"><mpath href={`#cs-out${i}`} /></animateMotion>
+                </use>
+              ))}
+              <use href="#i-person" x="266" y="20" width="44" height="44" class="who-ok" />
+              <use href="#i-heart" x="244" y="18" width="22" height="22" class="happy" />
+            </svg>
+            <p class="cs-say">{c.after}</p>
+          </figure>
         </div>
+
+        <dl class="cs-metrics">
+          {c.metrics.map(([v, l]) => <div><dt>{l}</dt><dd>{v}</dd></div>)}
+        </dl>
+
         <details>
           <summary>Read the full story</summary>
           <div class="cs-story">
@@ -166,58 +196,76 @@ const cases = [
 <style>
   .cs { max-width: 80rem; margin: 0 auto; padding: 6rem 1.5rem 3rem; scroll-margin-top: 64px; }
   .cs-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
-  .cs-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -.03em; margin: 14px 0 0; }
-  .cs-list { display: grid; gap: 22px; margin-top: 36px; }
-  .cs-card { background: var(--panel-2); border: 1px solid var(--color-border); border-radius: 14px; padding: 26px 26px 18px; }
+  .cs-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -.03em; margin: 14px 0 12px; }
+  .cs-head p { color: var(--soft); font-size: 17px; margin: 0; max-width: 60ch; }
+  .cs-list { display: grid; gap: 24px; margin-top: 32px; }
+  .cs-card { background: var(--surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 26px 26px 18px; }
   .cs-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
-  .cs-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(240, 96, 0, .4); border-radius: 999px; padding: 5px 10px; }
+  .cs-tag { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(240, 96, 0, .4); border-radius: 999px; padding: 5px 10px; }
   .cs-top h3 { font-family: var(--font-body); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.15; margin: 0; }
-  .cs-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin-top: 20px; align-items: center; }
-  .cs-fig { margin: 0; background: var(--panel); border: 1px solid var(--color-border); border-radius: 10px; padding: 8px 8px 12px; min-width: 0; }
-  .cs-fig svg { width: 100%; height: auto; display: block; }
-  .cs-fig figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 10px 0; font-size: 14px; line-height: 1.4; color: var(--soft); }
-  .cs-fig figcaption b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 2px; }
-  .cs-fig figcaption span + span b { color: var(--color-accent); }
-  .cs-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; margin: 0; }
+
+  .cs-ba { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 16px; margin-top: 20px; align-items: stretch; }
+  .cs-panel { margin: 0; background: var(--panel); border: 1px solid var(--color-border); border-radius: 12px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .cs-after { border-color: rgba(240, 96, 0, .45); }
+  .cs-cap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .cs-cap b { font-family: var(--font-body); font-weight: 700; font-size: 17px; line-height: 1.25; color: var(--fg); }
+  .cs-pill { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--muted); }
+  .cs-pill-on { background: var(--color-accent-fill); border-color: var(--accent); color: var(--on-accent); font-weight: 700; }
+  .cs-panel svg { width: 100%; height: auto; display: block; }
+  .cs-say { margin: 0; font-size: 16px; line-height: 1.45; color: var(--soft); }
+  .cs-arrow { display: grid; place-items: center; }
+  .cs-arrow span { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--color-accent-fill); color: var(--on-accent); font-size: 22px; font-weight: 700; }
+
+  .cs-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 20px; margin: 22px 0 0; }
   .cs-metrics div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
-  .cs-metrics dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.02em; color: var(--fg); }
+  .cs-metrics dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.02em; color: var(--fg); }
   .cs-metrics div:first-child dd { color: var(--color-accent); }
-  .cs-metrics dt { color: var(--color-text-secondary); font-size: 13.5px; margin-top: 4px; }
+  .cs-metrics dt { color: var(--color-text-secondary); font-size: 14.5px; line-height: 1.35; margin-top: 4px; }
   .cs-card details { margin-top: 18px; border-top: 1px dashed var(--color-border); padding-top: 10px; }
-  .cs-card summary { cursor: pointer; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-secondary); list-style: none; }
+  .cs-card summary { cursor: pointer; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-secondary); list-style: none; padding: 6px 0; }
   .cs-card summary::-webkit-details-marker { display: none; }
   .cs-card summary::before { content: "+ "; color: var(--color-accent); }
   .cs-card details[open] summary::before { content: "− "; }
   .cs-card summary:focus-visible, .cs-links a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
   .cs-story { max-width: 70ch; padding-top: 8px; }
-  .cs-story p { color: var(--soft); font-size: 15px; line-height: 1.65; margin: 10px 0 0; }
-  .cs-story h4 { font-size: 15px; font-weight: 700; margin: 16px 0 6px; }
-  .cs-story ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; line-height: 1.6; display: grid; gap: 4px; }
+  .cs-story p { color: var(--soft); font-size: 16px; line-height: 1.65; margin: 10px 0 0; }
+  .cs-story h4 { font-size: 16px; font-weight: 700; margin: 16px 0 6px; }
+  .cs-story ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 15.5px; line-height: 1.6; display: grid; gap: 4px; }
   .cs-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .cs-links a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; }
+  .cs-links a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
-  svg .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; fill: var(--fg); }
-  svg .lbl.dim { fill: var(--muted); font-size: 10px; }
-  svg .lbl.acc { fill: var(--accent-text); }
-  svg .rail { fill: none; stroke: var(--grid-major); stroke-width: 26; stroke-linecap: round; }
-  svg .gate { fill: none; stroke: var(--faint); stroke-width: 2; stroke-dasharray: 4 4; }
-  svg .jam { fill: #f06000; transform-box: fill-box; transform-origin: center; animation: cs-jam 1.6s ease-in-out infinite; }
-  svg .j1 { animation-delay: .2s; } svg .j2 { animation-delay: .5s; } svg .j3 { animation-delay: .9s; }
-  @keyframes cs-jam { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.5px); } }
-  svg .trickle { fill: var(--fg); animation: cs-trickle 3.2s linear infinite; }
-  @keyframes cs-trickle { 0% { transform: translateX(0); opacity: 1; } 80% { transform: translateX(50px); opacity: 1; } 100% { transform: translateX(56px); opacity: 0; } }
-  svg .arrow { fill: none; stroke: var(--faint); stroke-width: 1.6; }
-  svg .sys { fill: var(--panel-accent); stroke: #f06000; stroke-width: 1.6; }
-  svg .flow { fill: var(--fg); }
-  svg .done { fill: var(--panel-accent); stroke: #f06000; stroke-width: 1.6; }
-  svg .tick { fill: none; stroke: #f06000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  /* the drawings */
+  svg .floor { stroke: var(--line); stroke-width: 2; }
+  svg .lane { fill: none; stroke: var(--grid-major); stroke-width: 30; stroke-linecap: round; }
+  svg .pile { color: var(--accent); animation: cs-wobble 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+  svg .pile:nth-of-type(2n) { animation-delay: .4s; }
+  svg .incoming { color: var(--muted); }
+  svg .who { color: var(--muted); }
+  svg .clock { color: var(--accent); }
+  svg .clock { animation: cs-tick 1s steps(2) infinite; transform-box: fill-box; transform-origin: center; }
+  svg .stress { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; animation: cs-blink 1.2s ease-in-out infinite; }
+  svg .machine { fill: var(--panel-accent); stroke: var(--accent); stroke-width: 2; }
+  svg .gear { color: var(--accent); }
+  svg .flowing { color: var(--fg); }
+  svg .done { color: var(--accent); }
+  svg .who-ok { color: var(--fg); }
+  svg .happy { color: var(--accent); }
+  @keyframes cs-wobble { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(3deg); } }
+  @keyframes cs-tick { 50% { transform: rotate(8deg); } }
+  @keyframes cs-blink { 50% { opacity: .2; } }
+  @keyframes cs-spin { to { transform: rotate(360deg); } }
   svg.paused, svg.paused * { animation-play-state: paused !important; }
 
   @media (max-width: 860px) {
-    .cs-main { grid-template-columns: 1fr; }
-    .cs-card { padding: 20px 16px 14px; }
+    .cs-card { padding: 20px 14px 14px; }
+    .cs-ba { grid-template-columns: 1fr; }
+    .cs-arrow span { transform: rotate(90deg); }
+    .cs-cap b { font-size: 18px; }
+    .cs-say { font-size: 17px; }
+    .cs-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cs-metrics dt { font-size: 15px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    svg .jam, svg .trickle { animation: none; }
+    svg .pile, svg .clock, svg .stress { animation: none; }
   }
 </style>
