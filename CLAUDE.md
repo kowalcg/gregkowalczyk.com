@@ -243,6 +243,11 @@ Each of these corresponds to a defect that was live in production before July 20
   Every open event (the next announced one per city, `featuredMeetups()`) gets a full
   flyer card on /meetups/ and on the homepage banner. Flyers are shown whole
   (`object-contain` on black), never cropped.
+- **/about/ positions Greg as builder + consultant + community (Sep 2026).** Hero, stats
+  (from `site.ts`), three hats, "What you can count on", scroll-filling timeline, giving back.
+  "Behind the work" = `ToolFlow.astro`: the real stack as a clickable diagram (jobs play icons
+  along the wires; wide + phone layouts from one data list). Agents (Meta Muse, Hermes) are
+  "rolling out now" — update that wording when they are live. Only real tools and real links.
 - **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
 
 

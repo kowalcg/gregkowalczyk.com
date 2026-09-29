@@ -1,199 +1,306 @@
 ---
+/**
+ * /about/ — rebuilt Sep 2026 to position Greg the way he asked: a builder who
+ * runs his own companies, a consultant who is good to work with, and someone
+ * who gives back (the race and its festival, the running club, free meetups).
+ *
+ * Every fact here was already public on this site — the race page, media.ts,
+ * the case studies, site.ts. Do not add new figures without Greg confirming
+ * them. Career wording: mechanical designer → Manager of Engineering, never
+ * "draftsman". Race title: Race Director. No testimonials unless real.
+ */
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
-import PageHero from '../components/PageHero.astro';
-import About from '../components/About.astro';
-import TechStack from '../components/TechStack.astro';
+import ToolFlow from '../components/ToolFlow.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
-import { yearsInEngineering } from '../data/site';
+import { yearsInEngineering, yearsInEcommerce } from '../data/site';
+
+const stats = [
+  [`${yearsInEngineering} yrs`, 'in engineering'],
+  [`${yearsInEcommerce} yrs`, 'running my own brands'],
+  ['2', 'iOS apps in the App Store'],
+  ['875', 'runners at the race I direct'],
+  ['800+', 'members in the club I co-lead'],
+  ['Free', 'monthly meetups, 2 cities'],
+];
+
+const hats = [
+  {
+    icon: 'i-gear', label: 'Builder', head: 'I run my own companies.',
+    text: `GearTOP and TapeGeeks, built with my daughter since 2014 and selling on Amazon and Shopify in Canada, the US and Europe. I build the tools we run them on: Helm, two clinic directories, a research app and two iOS apps.`,
+    note: 'Every tool I recommend runs in my own businesses first, on my own money.',
+    links: [['/projects/', 'What I have built']],
+  },
+  {
+    icon: 'i-bulb', label: 'Consultant', head: 'I help other businesses do the same.',
+    text: 'A traditional retail shop taken to a full e-commerce operation in 6 weeks. A content system handed to a client, running, so they stopped paying an agency. Race directors given the system behind a sold-out race. Five years teaching e-commerce, and four sourcing trips to China leading groups of up to 25 entrepreneurs.',
+    note: 'You get a working system and a team that knows how to run it.',
+    links: [['/services/', 'How I work with businesses'], ['/race-directors/', 'For race directors']],
+  },
+  {
+    icon: 'i-heart', label: 'Community', head: 'I give back where I live.',
+    text: 'Race Director of the Bronte Harbour Classic: a 5K, a Kids 1K and an all-day post-race festival on Father’s Day, with proceeds supporting the Oakville Dads Community Fund. Co-lead of Bronte Runners, a free club I have run with for 16 years. Host, with Patricia, of free monthly AI for Business meetups.',
+    note: 'Eighty local sponsors, vendors and organizers each got a permanent web page, not a logo in a footer.',
+    links: [['/meetups/', 'The free meetups'], ['/projects/bronte-harbour-classic/', 'The race']],
+  },
+];
+
+const traits = [
+  { icon: 'i-gear', head: 'I build it, not a deck', text: 'The plan comes with a working system. You see it running, not a slide about it.' },
+  { icon: 'i-dollar', head: 'Tested with my own money first', text: 'If it has not worked in my own businesses, I will not sell it to yours.' },
+  { icon: 'i-check', head: 'Straight answers', text: 'If AI is the wrong tool for your problem, I will say so. That costs me a project and saves you more.' },
+  { icon: 'i-folder', head: 'You own everything', text: 'The code, the accounts, the data. No licence to rent, no lock-in.' },
+  { icon: 'i-person', head: 'Your team can run it', text: 'Documentation and training are part of every build, so it keeps working without me.' },
+  { icon: 'i-search', head: 'An engineer’s method', text: 'Find the one place work piles up, fix it, automate it, then move to the next one.' },
+];
+
+const path = [
+  { year: '1997', icon: 'i-gear', head: 'Mechanical designer', text: 'Straight out of university, at PRO-ECO / SMS-Siemag.' },
+  { year: '→ 2011', icon: 'i-person', head: 'Manager of Engineering', text: 'Led a 70-person department on global-scale steel equipment. Fourteen years.' },
+  { year: '2011', icon: 'i-doc', head: 'Consulting engineer', text: 'Independent, across many companies, for eight years.' },
+  { year: '2014', icon: 'i-bag', head: 'Two brands, with my daughter', text: 'GearTOP and TapeGeeks. Learned SEO, ads and marketing by doing it, with $2M+ spent across Google, Amazon and Meta.' },
+  { year: '2019', icon: 'i-chart', head: 'E-commerce consulting', text: 'Helping other product brands, alongside five years teaching e-commerce.' },
+  { year: '2022', icon: 'i-spark', head: 'AI, in production', text: 'Jarvis first, then Jasper, then ChatGPT and Claude, well before most people had heard of them.' },
+  { year: '2025', icon: 'i-phone', head: 'Two iOS apps live', text: 'SunUp and RunMate Pro, built without a coding background. RunMate was rejected 39 times before it was approved.' },
+  { year: '2026', icon: 'i-flag', head: 'A race, sold out', text: 'The first Bronte Harbour Classic: 875 runners on Father’s Day. 2027 grows to a 1K, 5K and 10K.' },
+  { year: 'Now', icon: 'i-mic', head: 'Building, and sharing it', text: 'AI systems for businesses, free monthly meetups in Hamilton and Oakville, and everything written up here.' },
+];
 ---
 
 <Layout
-  title="About Greg Kowalczyk | Engineer, Operator, Builder | Oakville"
-  description={`Mechanical engineer turned AI tool builder. ${yearsInEngineering} years in engineering, two e-commerce brands running since 2014, building with AI since 2022, and 2 iOS apps shipped as a non-coder. Based in Oakville, Ontario.`}
+  title="About Greg Kowalczyk | Builder, AI Consultant, Race Director | Oakville"
+  description="Mechanical engineer who runs two e-commerce brands, builds AI tools and apps, helps other businesses do the same, and directs a sold-out Oakville 5K."
 >
   <Nav />
-  <main>
-    <PageHero
-      title="About Greg"
-      subtitle="Engineer by training. Operator by trade. Builder by nature. Based in Oakville, Ontario."
-    />
-    <About />
-    <TechStack />
-
-    <!-- Speaking & Community Section -->
-    <section class="py-16 md:py-24">
-      <div class="mx-auto max-w-6xl px-6">
-        <h2
-          class="mb-12 text-2xl font-bold md:text-3xl"
-          style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
-        >
-          <span class="comment-prefix">// </span><span class="gradient-text">Beyond the Work</span>
-        </h2>
-
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <a href="/media" class="fade-in-up glass-card p-8 transition-all duration-200 hover:scale-[1.02] md:col-span-2">
-            <h3
-              class="mb-2 text-lg font-bold"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
-            >
-              Podcasts, Talks &amp; Teaching
-            </h3>
-            <p
-              class="mb-3 text-sm"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);"
-            >
-              Two podcast appearances in 2026 · Speaking · 5 years teaching e-commerce
-            </p>
-            <p
-              class="leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
-            >
-              Long-form conversations on building apps without a coding background, running
-              product brands on Amazon and Shopify, and organizing a first-year road race —
-              plus talks, teaching, and four sourcing trips to China.
-            </p>
-            <span
-              class="mt-4 inline-block text-sm font-semibold"
-              style="font-family: 'Outfit', sans-serif; color: var(--fg);"
-            >
-              See all media →
-            </span>
-          </a>
-          <div class="fade-in-up glass-card p-8">
-            <h3
-              class="mb-2 text-lg font-bold"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
-            >
-              Bronte Harbour Classic — Race Director
-            </h3>
-            <p
-              class="mb-2 text-sm"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);"
-            >
-              Inaugural race: June 21, 2026 · 2027 edition in planning
-            </p>
-            <p
-              class="mb-4 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
-            >
-              The inaugural Bronte Harbour Classic ran on Father's Day at Bronte Harbour Park in Oakville — a chip-timed 5K, a Kids 1K Fun Run, and an all-day post-race festival. Planning is underway for 2027, which expands the event to 1K, 5K, and 10K distances.
-            </p>
-            <a
-              href="https://www.bronteharbourclassic.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
-            >
-              bronteharbourclassic.com ↗
-            </a>
-          </div>
-
-          <div class="fade-in-up glass-card p-8">
-            <h3
-              class="mb-2 text-lg font-bold"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
-            >
-              Bronte Runners — Co-Lead
-            </h3>
-            <p
-              class="mb-4 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
-            >
-              Co-leading the Bronte Runners club in the Oakville/Burlington area — a free, all-paces community of 800+ members I've been running with for 16 years. Three group runs a week, year-round. I built the club's website in September 2026.
-            </p>
-            <a
-              href="https://bronterunners.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
-            >
-              bronterunners.vercel.app ↗
-            </a>
-          </div>
-
-          <div class="fade-in-up glass-card p-8">
-            <h3
-              class="mb-2 text-lg font-bold"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
-            >
-              Brand Content — AI-Assisted Writing
-            </h3>
-            <p
-              class="mb-2 text-sm"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);"
-            >
-              GearTOP · TapeGeeks
-            </p>
-            <p
-              class="mb-4 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
-            >
-              Ongoing content produced for both brands using the AI content systems I built — sun protection, outdoor gear, athletic recovery, and injury prevention topics.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <a
-                href="https://geartopdesign.com/blogs/news"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
-              >
-                GearTOP Blog ↗
-              </a>
-              <a
-                href="https://tapegeeks.com/blogs/news"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
-              >
-                TapeGeeks Blog ↗
-              </a>
-            </div>
-          </div>
-
-          <div class="fade-in-up glass-card p-8">
-            <h3
-              class="mb-2 text-lg font-bold"
-              style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
-            >
-              Building in Public
-            </h3>
-            <p
-              class="leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
-            >
-              Sharing what I build and learn — apps, tools, strategies — on LinkedIn and X. If you're figuring out AI as a non-technical founder, follow along.
-            </p>
-          </div>
+  <main class="ab">
+    <!-- Hero -->
+    <section class="ab-hero">
+      <div class="ab-hero-text">
+        <div class="ab-eyebrow">About Greg Kowalczyk</div>
+        <h1>I build things that work. For my companies, for clients, and for my community.</h1>
+        <p class="ab-lead">Mechanical engineer. Runs two e-commerce brands with his daughter. Builds AI tools and apps, and helps other businesses do the same. Race Director. Based in Oakville, Ontario.</p>
+        <div class="ab-btns">
+          <a class="ab-btn" href="/contact/">Book a call →</a>
+          <a class="ab-btn2" href="/projects/">See what I’ve built</a>
         </div>
+      </div>
+      <figure class="ab-photo">
+        <img src="/images/greg-headshot.jpg" alt="Greg Kowalczyk" width="600" height="800" loading="eager" />
+        <figcaption><svg aria-hidden="true"><use href="#i-flag" /></svg> Oakville, Ontario</figcaption>
+      </figure>
+    </section>
+
+    <!-- At a glance -->
+    <section class="ab-wrap" aria-label="At a glance">
+      <dl class="ab-stats">
+        {stats.map(([v, l]) => <div><dd>{v}</dd><dt>{l}</dt></div>)}
+      </dl>
+    </section>
+
+    <!-- Three hats -->
+    <section class="ab-wrap" aria-labelledby="ab-hats">
+      <div class="ab-eyebrow">What I do</div>
+      <h2 id="ab-hats">One person, three jobs. Each one makes the others better.</h2>
+      <div class="ab-hats">
+        {hats.map((h) => (
+          <article class="ab-hat fade-in-up">
+            <div class="ab-hat-top"><span class="ab-ico"><svg aria-hidden="true"><use href={`#${h.icon}`} /></svg></span><span class="ab-tag">{h.label}</span></div>
+            <h3>{h.head}</h3>
+            <p>{h.text}</p>
+            <p class="ab-note">{h.note}</p>
+            <div class="ab-links">{h.links.map(([href, label]) => <a href={href}>{label} →</a>)}</div>
+          </article>
+        ))}
       </div>
     </section>
 
+    <!-- Working with me -->
+    <section class="ab-wrap" aria-labelledby="ab-work">
+      <div class="ab-eyebrow">Working with me</div>
+      <h2 id="ab-work">What you can count on.</h2>
+      <div class="ab-traits">
+        {traits.map((t) => (
+          <div class="ab-trait fade-in-up">
+            <span class="ab-ico"><svg aria-hidden="true"><use href={`#${t.icon}`} /></svg></span>
+            <div><b>{t.head}</b><p>{t.text}</p></div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- The path -->
+    <section class="ab-wrap" aria-labelledby="ab-path">
+      <div class="ab-eyebrow">My story</div>
+      <h2 id="ab-path">From steel mills to AI, one build at a time.</h2>
+      <ol class="ab-path" data-path>
+        {path.map((p) => (
+          <li>
+            <span class="ab-dot"><svg aria-hidden="true"><use href={`#${p.icon}`} /></svg></span>
+            <div class="ab-step">
+              <span class="ab-year">{p.year}</span>
+              <b>{p.head}</b>
+              <p>{p.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- Giving back -->
+    <section class="ab-wrap" aria-labelledby="ab-give">
+      <div class="ab-eyebrow">Beyond the work</div>
+      <h2 id="ab-give">Giving back to the community.</h2>
+      <div class="ab-give">
+        <a class="ab-card ab-card-wide fade-in-up" href="/projects/bronte-harbour-classic/">
+          <span class="ab-ico"><svg aria-hidden="true"><use href="#i-medal" /></svg></span>
+          <div>
+            <span class="ab-kicker">Race Director · Bronte Harbour Classic</span>
+            <b>A race and a festival for the whole town.</b>
+            <p>A chip-timed 5K, a Kids 1K Fun Run and an all-day post-race festival at Bronte Harbour Park on Father’s Day. It sold out at 875 runners in its first year, proceeds support the Oakville Dads Community Fund, and 2027 grows to a 1K, 5K and 10K with room for 1,500.</p>
+            <span class="ab-go">The story of the race →</span>
+          </div>
+        </a>
+        <a class="ab-card fade-in-up" href="/projects/bronte-runners/">
+          <span class="ab-ico"><svg aria-hidden="true"><use href="#i-runner" /></svg></span>
+          <div>
+            <span class="ab-kicker">Co-lead · Bronte Runners</span>
+            <b>A free club, all paces, all year.</b>
+            <p>800+ members across Oakville and Burlington, three group runs a week. I have run with them for 16 years and built the club’s website.</p>
+          </div>
+        </a>
+        <a class="ab-card fade-in-up" href="/meetups/">
+          <span class="ab-ico"><svg aria-hidden="true"><use href="#i-cup" /></svg></span>
+          <div>
+            <span class="ab-kicker">Host · AI for Business</span>
+            <b>Free monthly meetups in Hamilton and Oakville.</b>
+            <p>With Patricia. Practical AI on real work, open Q&amp;A, and local owners comparing notes. No sales pitch.</p>
+          </div>
+        </a>
+        <a class="ab-card fade-in-up" href="/media/">
+          <span class="ab-ico"><svg aria-hidden="true"><use href="#i-mic" /></svg></span>
+          <div>
+            <span class="ab-kicker">Podcasts, talks &amp; teaching</span>
+            <b>Sharing what works.</b>
+            <p>Podcast conversations on building apps without a coding background and running product brands, five years teaching e-commerce, and four sourcing trips to China.</p>
+          </div>
+        </a>
+        <a class="ab-card fade-in-up" href="/skills/video-to-skill/">
+          <span class="ab-ico"><svg aria-hidden="true"><use href="#i-download" /></svg></span>
+          <div>
+            <span class="ab-kicker">Free tools</span>
+            <b>Built it, then gave it away.</b>
+            <p>The video-to-skill Claude Code skill is free to download, and every build on this site is written up so you can copy the approach.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <ToolFlow />
+
     <ContactCTA
       heading="Work With Me"
-      body="I take on a limited number of consulting engagements. If you're ready to replace agency costs with AI systems you own, let's talk."
+      body="I take on a limited number of builds at a time. Tell me the one job you want off your plate and I’ll tell you straight whether it’s worth building."
     />
   </main>
   <Footer />
+
   <script>
-    document.querySelectorAll('.fade-in-up').forEach((el) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(el);
-    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.ab .fade-in-up, .ab [data-path] li').forEach((el) => io.observe(el));
   </script>
 </Layout>
+
+<style>
+  .ab-wrap { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem 0; }
+  .ab-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); }
+  .ab h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.02; letter-spacing: -.03em; margin: 12px 0 26px; color: var(--fg); max-width: 22ch; }
+  .ab b { display: block; font-family: var(--font-body); font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--fg); }
+  .ab p { color: var(--soft); font-size: 16px; line-height: 1.55; margin: 6px 0 0; }
+  .ab-ico { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--panel-accent); color: var(--accent-text); border: 1px solid color-mix(in srgb, #f06000 35%, transparent); flex-shrink: 0; }
+  .ab-ico svg { width: 24px; height: 24px; }
+
+  /* hero */
+  .ab-hero { max-width: 72rem; margin: 0 auto; padding: 7rem 1.5rem 0; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .ab-hero h1 { font-family: var(--font-body); font-weight: 800; font-size: clamp(36px, 5.6vw, 68px); line-height: 1; letter-spacing: -.035em; margin: 14px 0 20px; color: var(--fg); }
+  .ab .ab-lead { font-size: 19px; line-height: 1.5; max-width: 52ch; }
+  .ab-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .ab-btn, .ab-btn2 { display: inline-block; border-radius: 999px; padding: 13px 22px; font-weight: 700; font-size: 15px; }
+  .ab-btn { background: #f06000; color: var(--on-accent); }
+  .ab-btn2 { border: 1px solid var(--rule-strong); color: var(--fg); background: var(--panel); }
+  .ab-photo { margin: 0; position: relative; justify-self: center; width: min(100%, 380px); }
+  .ab-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; border: 1px solid var(--color-border); box-shadow: 0 20px 50px var(--shadow); display: block; }
+  .ab-photo::before { content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid #f06000; border-radius: 20px; z-index: -1; }
+  .ab-photo figcaption { position: absolute; left: 14px; bottom: 14px; display: flex; gap: 6px; align-items: center; background: var(--panel); color: var(--fg); border: 1px solid var(--color-border); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; }
+  .ab-photo figcaption svg { width: 16px; height: 16px; color: var(--accent-text); }
+
+  /* stats */
+  .ab-stats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; margin: 0; border: 1px solid var(--color-border); border-radius: 16px; background: var(--surface); overflow: hidden; }
+  .ab-stats div { padding: 18px 16px; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid var(--color-border); }
+  .ab-stats div:last-child { border-right: 0; }
+  .ab-stats dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -.02em; color: var(--fg); line-height: 1; }
+  .ab-stats div:first-child dd { color: var(--accent-text); }
+  .ab-stats dt { font-size: 13.5px; line-height: 1.3; color: var(--muted); }
+
+  /* three hats */
+  .ab-hats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .ab-hat { background: var(--surface); border: 1px solid var(--color-border); border-top: 3px solid #f06000; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; min-width: 0; }
+  .ab-hat-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .ab-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .ab-hat h3 { font-family: var(--font-body); font-weight: 800; font-size: 22px; letter-spacing: -.02em; line-height: 1.15; margin: 0 0 4px; color: var(--fg); }
+  .ab .ab-note { color: var(--fg); font-weight: 600; font-size: 15px; border-left: 3px solid #f06000; padding-left: 10px; margin-top: 14px; }
+  .ab-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: auto; padding-top: 16px; }
+  .ab-links a, .ab-go { color: var(--fg); font-weight: 600; font-size: 15px; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+  /* traits */
+  .ab-traits { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .ab-trait { display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 1px solid var(--color-border); border-radius: 14px; padding: 18px; min-width: 0; }
+
+  /* the path — a line that fills as you scroll, a stop per chapter */
+  .ab-path { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 0; }
+  .ab-path::before { content: ""; position: absolute; left: 22px; top: 8px; bottom: 8px; width: 2px; background: var(--grid-major); }
+  .ab-path li { position: relative; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; padding: 0 0 22px; opacity: .35; transform: translateY(8px); transition: opacity .5s, transform .5s; }
+  .ab-path li.visible { opacity: 1; transform: none; }
+  .ab-path li::after { content: ""; position: absolute; left: 22px; top: 8px; width: 2px; height: 0; background: #f06000; transition: height .6s .15s; }
+  .ab-path li.visible::after { height: 100%; }
+  .ab-path li:last-child::after { display: none; }
+  .ab-dot { position: relative; z-index: 1; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--panel); border: 2px solid #f06000; color: var(--accent-text); }
+  .ab-dot svg { width: 22px; height: 22px; }
+  .ab-step { background: var(--surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 14px 18px; }
+  .ab-year { font-family: var(--font-mono); font-size: 13px; color: var(--accent-text); letter-spacing: .06em; }
+
+  /* giving back */
+  .ab-give { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .ab-card { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 22px; min-width: 0; transition: border-color .2s, transform .2s; }
+  .ab-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .ab-card-wide { grid-column: 1 / -1; background: var(--panel-accent); border-color: color-mix(in srgb, #f06000 40%, transparent); }
+  .ab-kicker { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+  .ab-go { display: inline-block; margin-top: 12px; }
+  .ab a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  @media (max-width: 1000px) {
+    .ab-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ab-stats div:nth-child(3n) { border-right: 0; }
+    .ab-stats div:nth-child(-n+3) { border-bottom: 1px solid var(--color-border); }
+    .ab-hats, .ab-traits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 760px) {
+    .ab-hero { grid-template-columns: 1fr; padding-top: 6rem; gap: 36px; }
+    .ab-photo { width: min(78%, 320px); }
+    .ab-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ab-stats div { border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .ab-stats div:nth-child(2n) { border-right: 0; }
+    .ab-stats div:nth-child(3n) { border-right: 1px solid var(--color-border); }
+    .ab-stats div:nth-child(6), .ab-stats div:nth-child(4) { border-right: 0; }
+    .ab-stats div:nth-last-child(-n+2) { border-bottom: 0; }
+    .ab-hats, .ab-traits, .ab-give { grid-template-columns: 1fr; }
+    .ab-wrap { padding-top: 3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ab-path li { opacity: 1; transform: none; transition: none; }
+    .ab-path li::after { transition: none; height: 100%; }
+    .ab-card { transition: none; }
+  }
+</style>

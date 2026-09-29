@@ -1,0 +1,349 @@
+---
+/**
+ * ToolFlow.astro — "Behind the work" on /about/. Replaced the plain "Tools I
+ * Build With" pill list (Sep 2026, Greg: "how they are interacting with each
+ * other… be visual, be interesting").
+ *
+ * One diagram of the real stack: where the numbers come from → the engine
+ * (Helm, automations, Claude) → what comes out, plus the build lane (Claude
+ * Code → GitHub → Vercel, VibeCode → App Store). Pick a real job (chips) and
+ * icons travel the path while the HTML caption says what is happening. It
+ * autoplays while on screen; reduced motion shows the path without movement.
+ *
+ * Two layouts from the same data: wide (D) and a vertical phone version (M).
+ * Every connection here is a real one described elsewhere on the site (Helm
+ * pulls Amazon, Ads, Shopify, Meta, Klaviyo, Search Console; Clarity feeds
+ * it; proposals wait for approval). Do not add tools Greg does not use.
+ */
+
+type N = { id: string; label: string; sub: string; icon: string; d: number[]; m: number[]; kind?: string };
+// d / m = [x, y, w, h] in each layout's viewBox
+const nodes: N[] = [
+  { id: 'amazon', label: 'Amazon', sub: 'sales + ads', icon: 'i-bag', d: [20, 30, 200, 56], m: [15, 40, 175, 54] },
+  { id: 'shopify', label: 'Shopify', sub: 'online store', icon: 'i-page', d: [20, 102, 200, 56], m: [210, 40, 175, 54] },
+  { id: 'meta', label: 'Meta Ads', sub: 'Facebook, Instagram', icon: 'i-mega', d: [20, 174, 200, 56], m: [15, 106, 175, 54] },
+  { id: 'google', label: 'Google', sub: 'Search Console + GA4', icon: 'i-search', d: [20, 246, 200, 56], m: [210, 106, 175, 54] },
+  { id: 'klaviyo', label: 'Klaviyo', sub: 'email list', icon: 'i-mail', d: [20, 318, 200, 56], m: [15, 172, 175, 54] },
+  { id: 'clarity', label: 'Clarity', sub: 'how visitors click', icon: 'i-camera', d: [20, 390, 200, 56], m: [210, 172, 175, 54] },
+
+  { id: 'auto', label: 'Automations', sub: 'custom + N8N, Zapier', icon: 'i-gear', d: [450, 30, 210, 56], m: [15, 366, 175, 54], kind: 'engine' },
+  { id: 'helm', label: 'Helm', sub: 'every number, one place', icon: 'i-sheet', d: [450, 140, 210, 80], m: [100, 262, 200, 64], kind: 'core' },
+  { id: 'claude', label: 'Claude', sub: 'reads, sorts, drafts', icon: 'i-spark', d: [450, 270, 210, 56], m: [210, 366, 175, 54], kind: 'engine' },
+  { id: 'agents', label: 'AI agents', sub: 'Meta Muse, Hermes', icon: 'i-person', d: [450, 380, 210, 60], m: [100, 436, 200, 54], kind: 'engine' },
+
+  { id: 'brief', label: 'Morning brief', sub: 'what to do first', icon: 'i-doc', d: [880, 30, 200, 56], m: [15, 540, 175, 54] },
+  { id: 'ads', label: 'Ad fixes', sub: 'proposed, not pushed', icon: 'i-dollar', d: [880, 102, 200, 56], m: [210, 540, 175, 54] },
+  { id: 'listings', label: 'Listings', sub: 'Amazon + Shopify', icon: 'i-box', d: [880, 174, 200, 56], m: [15, 606, 175, 54] },
+  { id: 'blog', label: 'Blog posts', sub: 'in the brand’s voice', icon: 'i-bulb', d: [880, 246, 200, 56], m: [210, 606, 175, 54] },
+  { id: 'emails', label: 'Emails', sub: 'sent by Klaviyo', icon: 'i-mail', d: [880, 318, 200, 56], m: [15, 672, 175, 54] },
+  { id: 'you', label: 'You', sub: 'approve what matters', icon: 'i-check', d: [880, 390, 200, 56], m: [210, 672, 175, 54], kind: 'you' },
+
+  { id: 'idea', label: 'The idea', sub: 'in plain English', icon: 'i-bulb', d: [20, 540, 200, 56], m: [100, 800, 200, 54] },
+  { id: 'code', label: 'Claude Code', sub: 'writes the code', icon: 'i-terminal', d: [270, 540, 190, 56], m: [15, 890, 175, 54] },
+  { id: 'vibe', label: 'VibeCode + Expo', sub: 'builds phone apps', icon: 'i-phone', d: [270, 630, 190, 56], m: [210, 890, 175, 54] },
+  { id: 'github', label: 'GitHub', sub: 'keeps every version', icon: 'i-folder', d: [500, 540, 180, 56], m: [15, 980, 175, 54] },
+  { id: 'appstore', label: 'App Store', sub: 'Apple review', icon: 'i-star', d: [500, 630, 180, 56], m: [210, 980, 175, 54] },
+  { id: 'vercel', label: 'Vercel', sub: 'puts it online', icon: 'i-spark', d: [720, 540, 150, 56], m: [15, 1070, 175, 54] },
+  { id: 'live', label: 'Live', sub: 'apps, sites, Helm', icon: 'i-flag', d: [910, 540, 170, 146], m: [100, 1160, 200, 60], kind: 'you' },
+];
+
+type Step = { e: string[][]; nodes?: string[]; say: string };
+const jobs: { id: string; chip: string; icon: string; packet: string; steps: Step[] }[] = [
+  { id: 'morning', chip: 'Monday morning numbers', icon: 'i-cal', packet: 'i-chart', steps: [
+    { e: [['amazon', 'helm'], ['shopify', 'helm'], ['meta', 'helm'], ['google', 'helm'], ['klaviyo', 'helm'], ['clarity', 'helm']], say: 'Overnight, Helm collects yesterday’s sales, ads, email and website numbers from every channel into one place.' },
+    { e: [['helm', 'claude']], say: 'Claude reads all of it and works out what actually changed, and why.' },
+    { e: [['claude', 'brief']], say: 'A one-page brief is waiting in the morning: what moved, what is at risk, what to do first.' },
+    { e: [['brief', 'you']], say: 'You make the calls. No logging into six dashboards.' },
+  ] },
+  { id: 'ads', chip: 'An ad is wasting money', icon: 'i-dollar', packet: 'i-dollar', steps: [
+    { e: [['amazon', 'helm'], ['meta', 'helm']], say: 'Helm pulls every ad and search term, with what each one spent and what it sold.' },
+    { e: [['helm', 'claude']], say: 'Claude finds the ones spending money with nothing to show for it.' },
+    { e: [['claude', 'ads']], say: 'It proposes the fix: lower the bid, pause the ad, or block the search term.' },
+    { e: [['ads', 'you']], say: 'Nothing changes until you approve it.' },
+  ] },
+  { id: 'product', chip: 'A new product', icon: 'i-box', packet: 'i-search', steps: [
+    { e: [['google', 'helm'], ['amazon', 'helm']], say: 'Search data shows the exact words shoppers type when they look for a product like yours.' },
+    { e: [['helm', 'claude']], say: 'Claude gets those words, plus the brand’s voice guide.' },
+    { e: [['claude', 'listings'], ['claude', 'blog']], say: 'It drafts the listing, the product page and a blog post, in the brand’s voice.' },
+    { e: [['listings', 'you'], ['blog', 'you']], say: 'You check it, then it goes live on Amazon, Shopify and the blog.' },
+  ] },
+  { id: 'customer', chip: 'A new customer', icon: 'i-person', packet: 'i-person', steps: [
+    { e: [['shopify', 'auto']], say: 'Someone places their first order on the online store.' },
+    { e: [['auto', 'emails']], say: 'An automation hands them to Klaviyo, tagged with what they bought.' },
+    { e: [['claude', 'emails']], say: 'Thank-you, how-to and review emails go out on schedule, written in advance with Claude.' },
+    { e: [], nodes: ['emails'], say: 'Every new customer gets looked after, and nobody had to remember to do it.' },
+  ] },
+  { id: 'agents', chip: 'AI agents (rolling out now)', icon: 'i-spark', packet: 'i-spark', steps: [
+    { e: [['shopify', 'agents']], say: 'We are connecting both stores to AI agents like Meta’s Muse, so AI assistants can find and recommend our products.' },
+    { e: [['helm', 'agents']], say: 'Hermes and the agents I build myself get the same numbers Helm has, so they work from facts, not guesses.' },
+    { e: [['agents', 'you']], say: 'They take the routine rounds (checks, follow-ups, admin) and bring you only what needs a decision.' },
+  ] },
+  { id: 'site', chip: 'A new website or tool', icon: 'i-terminal', packet: 'i-terminal', steps: [
+    { e: [['idea', 'code']], say: 'I describe what it should do, in plain English.' },
+    { e: [['code', 'github']], say: 'Claude Code writes the code, and GitHub keeps every version so nothing is ever lost.' },
+    { e: [['github', 'vercel']], say: 'Vercel puts it online by itself every time it changes.' },
+    { e: [['vercel', 'live']], say: 'Live: Helm, SportClinicFinder, SleepClinicFinder, the race website and this one.' },
+  ] },
+  { id: 'app', chip: 'A phone app', icon: 'i-phone', packet: 'i-phone', steps: [
+    { e: [['idea', 'vibe']], say: 'Same start: describe the app and what it should do for people.' },
+    { e: [['vibe', 'appstore']], say: 'VibeCode and Expo turn it into an iPhone app, then it goes to Apple for review.' },
+    { e: [['appstore', 'live']], say: 'Live in the App Store: SunUp and RunMate Pro. RunMate was rejected 39 times first.' },
+  ] },
+];
+
+// every connection any job uses, drawn once
+const edgeKeys = [...new Set(jobs.flatMap((j) => j.steps.flatMap((s) => s.e.map(([a, b]) => `${a}>${b}`))))];
+const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
+
+// Helm → agents would run straight behind the Claude box; route it round the left side.
+const bends: Record<string, string> = { 'd:helm>agents': 'M450 180 C 400 180, 400 410, 450 410' };
+
+function path(a: N, b: N, L: 'd' | 'm') {
+  const bend = bends[`${L}:${a.id}>${b.id}`];
+  if (bend) return bend;
+  const [ax, ay, aw, ah] = a[L], [bx, by, bw, bh] = b[L];
+  const horiz = L === 'd' ? Math.abs(ax - bx) > 40 : Math.abs(ay - by) < 20;
+  if (horiz) {
+    const fwd = bx > ax;
+    const x1 = fwd ? ax + aw : ax, y1 = ay + ah / 2, x2 = fwd ? bx : bx + bw, y2 = by + bh / 2;
+    const c = (x2 - x1) * 0.5;
+    return `M${x1} ${y1} C ${x1 + c} ${y1}, ${x2 - c} ${y2}, ${x2} ${y2}`;
+  }
+  const down = by > ay;
+  const x1 = ax + aw / 2, y1 = down ? ay + ah : ay, x2 = bx + bw / 2, y2 = down ? by : by + bh;
+  const c = (y2 - y1) * 0.5;
+  return `M${x1} ${y1} C ${x1} ${y1 + c}, ${x2} ${y2 - c}, ${x2} ${y2}`;
+}
+
+const layouts = [
+  { L: 'd' as const, vb: '0 0 1100 700', heads: [[120, 16, 'Where the numbers come from'], [555, 16, 'The engine I built'], [980, 16, 'What comes out'], [120, 520, 'How I build things']] },
+  { L: 'm' as const, vb: '0 0 400 1240', heads: [[200, 24, 'Where the numbers come from'], [200, 248, 'The engine I built'], [200, 526, 'What comes out'], [200, 782, 'How I build things']] },
+];
+const toolbox = [
+  ['AI & building', ['Claude', 'Claude Code', 'Cursor', 'ChatGPT', 'Perplexity', 'GitHub', 'Vercel']],
+  ['Agents & automation', ['Meta Muse', 'Hermes Agent', 'Custom-built automations', 'N8N', 'Zapier', 'Make', 'Custom APIs']],
+  ['Marketing', ['Klaviyo', 'Google Ads', 'Meta Ads', 'Amazon PPC', 'GA4', 'Search Console', 'Clarity']],
+  ['Selling', ['Shopify', 'Amazon Seller Central', 'Faire']],
+  ['Apps', ['React Native', 'Expo', 'VibeCode', 'App Store Connect']],
+];
+---
+
+<section class="tf" id="behind-the-work" aria-labelledby="tf-h" data-tf>
+  <div class="tf-eyebrow">Behind the work</div>
+  <h2 id="tf-h">How my tools talk to each other.</h2>
+  <p class="tf-lead">I have used AI in production since 2022: Jarvis first, then Jasper, then ChatGPT and Claude, before most businesses had heard of them. Now I am rolling out AI agents, Meta’s Muse and Hermes, alongside automations I built myself. None of these tools does much alone. The value is in how they are wired together. Pick a job and watch it move through the system.</p>
+
+  <div class="tf-chips" role="tablist" aria-label="Pick a job">
+    {jobs.map((j, i) => (
+      <button type="button" role="tab" class="tf-chip" data-job={j.id} aria-selected={i === 0 ? 'true' : 'false'}>
+        <svg aria-hidden="true"><use href={`#${j.icon}`} /></svg>{j.chip}
+      </button>
+    ))}
+  </div>
+
+  <div class="tf-stage">
+    <div class="tf-now" aria-live="polite">
+      <span class="tf-count" data-count>1 / 4</span>
+      <p data-say>{jobs[0].steps[0].say}</p>
+      <div class="tf-bar"><span data-bar></span></div>
+    </div>
+
+    {layouts.map(({ L, vb, heads }) => (
+      <svg class={`tf-svg tf-${L}`} viewBox={vb} role="img" aria-label="Diagram of how Greg's tools connect: data from Amazon, Shopify, Meta, Google, Klaviyo and Clarity flows into Helm, Claude and AI agents (Meta Muse, Hermes) read it, and briefs, ad fixes, listings, blog posts and emails come out for approval. Below, ideas become websites through Claude Code, GitHub and Vercel, and phone apps through VibeCode and the App Store.">
+        {heads.map(([x, y, t]) => <text x={x} y={y} text-anchor="middle" class="tf-head">{t}</text>)}
+        {L === 'd' && <path d="M20 500 H1080" class="tf-rule" />}
+        {L === 'm' && <path d="M15 770 H385" class="tf-rule" />}
+        <g class="tf-edges">
+          {edgeKeys.map((k) => { const [a, b] = k.split('>'); return <path d={path(byId[a], byId[b], L)} class="tf-e" data-e={k} />; })}
+        </g>
+        <g class="tf-nodes">
+          {nodes.map((n) => {
+            const [x, y, w, h] = n[L];
+            return (
+              <g class={`tf-n${n.kind ? ` tf-${n.kind}` : ''}`} data-n={n.id}>
+                <rect x={x} y={y} width={w} height={h} rx="12" />
+                <use href={`#${n.icon}`} x={x + 12} y={y + h / 2 - 12} width="24" height="24" class="tf-ico" />
+                <text x={x + 46} y={y + h / 2 - 3} class="tf-label">{n.label}</text>
+                <text x={x + 46} y={y + h / 2 + 14} class="tf-sub">{n.sub}</text>
+              </g>
+            );
+          })}
+        </g>
+        <g class="tf-packets" data-packets></g>
+      </svg>
+    ))}
+  </div>
+
+  <details class="tf-box">
+    <summary>The full toolbox</summary>
+    <div class="tf-groups">
+      {toolbox.map(([g, tools]) => (
+        <div><b>{g}</b><ul>{(tools as string[]).map((t) => <li>{t}</li>)}</ul></div>
+      ))}
+    </div>
+  </details>
+
+  <script type="application/json" data-jobs set:html={JSON.stringify(jobs.map((j) => ({ id: j.id, packet: j.packet, steps: j.steps })))} />
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-tf]');
+  if (root) {
+    const jobs = JSON.parse(root.querySelector('[data-jobs]')!.textContent || '[]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const say = root.querySelector('[data-say]')!;
+    const count = root.querySelector('[data-count]')!;
+    const bar = root.querySelector<HTMLElement>('[data-bar]')!;
+    const chips = [...root.querySelectorAll<HTMLButtonElement>('.tf-chip')];
+    const svgs = [...root.querySelectorAll<SVGSVGElement>('.tf-svg')];
+    const NS = 'http://www.w3.org/2000/svg';
+    const STEP = 2600;
+    let job = 0, step = 0, timer = 0, raf = 0, visible = false, userPicked = false;
+
+    const visibleSvg = () => svgs.find((s) => s.getBoundingClientRect().width > 0) || svgs[0];
+
+    function clear() {
+      root!.querySelectorAll('.on, .lit').forEach((el) => el.classList.remove('on', 'lit'));
+      root!.querySelectorAll('[data-packets]').forEach((g) => (g.innerHTML = ''));
+      cancelAnimationFrame(raf);
+    }
+
+    function show(j: number, s: number) {
+      const jb = jobs[j];
+      const st = jb.steps[s];
+      root!.querySelectorAll('.tf-e.on').forEach((e) => e.classList.replace('on', 'lit'));
+      root!.querySelectorAll('[data-packets]').forEach((g) => (g.innerHTML = ''));
+      const ids = new Set<string>(st.nodes || []);
+      st.e.forEach(([a, b]: string[]) => { ids.add(a); ids.add(b); root!.querySelectorAll(`[data-e="${a}>${b}"]`).forEach((e) => e.classList.add('on')); });
+      ids.forEach((id) => root!.querySelectorAll(`[data-n="${id}"]`).forEach((n) => n.classList.add('on')));
+      say.textContent = st.say;
+      count.textContent = `${s + 1} / ${jb.steps.length}`;
+      bar.style.transition = 'none'; bar.style.width = `${(s / jb.steps.length) * 100}%`;
+      requestAnimationFrame(() => { bar.style.transition = `width ${reduce ? 0 : STEP}ms linear`; bar.style.width = `${((s + 1) / jb.steps.length) * 100}%`; });
+      if (!reduce) travel(jb.packet, st.e);
+    }
+
+    function travel(icon: string, edges: string[][]) {
+      const svg = visibleSvg();
+      const g = svg.querySelector('[data-packets]')!;
+      const runs = edges.map(([a, b]) => {
+        const p = svg.querySelector<SVGPathElement>(`[data-e="${a}>${b}"]`)!;
+        const u = document.createElementNS(NS, 'g');
+        // built at runtime, so scoped CSS can't reach it: colours go inline (the
+        // orange fill reads the same in both themes; the icon ink is black on it)
+        u.innerHTML = `<circle r="18" fill="#f06000" stroke="#fff" stroke-width="2"/><use href="#${icon}" x="-12" y="-12" width="24" height="24" style="color:#000"/>`;
+        g.appendChild(u);
+        return { p, u, len: p.getTotalLength() };
+      });
+      const t0 = performance.now(), dur = STEP * 0.7;
+      const tick = (t: number) => {
+        const k = Math.min(1, (t - t0) / dur);
+        const e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        runs.forEach(({ p, u, len }) => { const pt = p.getPointAtLength(len * e); u.setAttribute('transform', `translate(${pt.x} ${pt.y})`); u.style.opacity = k > 0.92 ? String((1 - k) / 0.08) : '1'; });
+        if (k < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }
+
+    function select(j: number) {
+      job = j; step = 0; clear();
+      chips.forEach((c, i) => c.setAttribute('aria-selected', i === j ? 'true' : 'false'));
+      show(job, step);
+    }
+
+    function loop() {
+      clearTimeout(timer);
+      if (!visible) return;
+      timer = window.setTimeout(() => {
+        step++;
+        if (step >= jobs[job].steps.length) {
+          // hold the finished path a moment, then the next job (unless the visitor picked one)
+          timer = window.setTimeout(() => { select(userPicked ? job : (job + 1) % jobs.length); loop(); }, 1800);
+          return;
+        }
+        show(job, step); loop();
+      }, STEP);
+    }
+
+    chips.forEach((c, i) => c.addEventListener('click', () => { userPicked = true; select(i); loop(); }));
+    root.querySelector('.tf-chips')!.addEventListener('keydown', (ev) => {
+      const k = (ev as KeyboardEvent).key;
+      if (k !== 'ArrowRight' && k !== 'ArrowLeft') return;
+      const n = (job + (k === 'ArrowRight' ? 1 : jobs.length - 1)) % jobs.length;
+      userPicked = true; select(n); chips[n].focus(); loop();
+    });
+
+    select(0);
+    if (!reduce) {
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) loop(); else clearTimeout(timer); }, { threshold: 0.25 }).observe(root);
+    } else {
+      // no movement: show each job's whole path at once
+      const showAll = (j: number) => { clear(); chips.forEach((c, i) => c.setAttribute('aria-selected', i === j ? 'true' : 'false')); jobs[j].steps.forEach((_: unknown, s: number) => show(j, s)); say.textContent = jobs[j].steps.map((s: { say: string }) => s.say).join(' '); count.textContent = ''; };
+      chips.forEach((c, i) => c.addEventListener('click', () => showAll(i)));
+      showAll(0);
+    }
+  }
+</script>
+
+<style>
+  .tf { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem 0; scroll-margin-top: 72px; }
+  .tf-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); }
+  .tf h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.02; letter-spacing: -.03em; margin: 12px 0 14px; color: var(--fg); }
+  .tf-lead { color: var(--soft); font-size: 17px; line-height: 1.55; max-width: 66ch; margin: 0 0 22px; }
+
+  .tf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tf-chip { display: inline-flex; align-items: center; gap: 8px; font: 600 14.5px var(--font-body); color: var(--fg); background: var(--panel); border: 1px solid var(--rule-strong); border-radius: 999px; padding: 9px 14px; cursor: pointer; transition: background .2s, border-color .2s; }
+  .tf-chip svg { width: 18px; height: 18px; color: var(--accent-text); }
+  .tf-chip:hover { border-color: var(--accent); }
+  .tf-chip[aria-selected="true"] { background: #f06000; border-color: #f06000; color: var(--on-accent); }
+  .tf-chip[aria-selected="true"] svg { color: var(--on-accent); }
+  .tf-chip:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  .tf-stage { background: var(--surface); border: 1px solid var(--color-border); border-radius: 18px; padding: 16px; }
+  .tf-now { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; align-items: center; background: var(--panel-accent); border: 1px solid color-mix(in srgb, #f06000 40%, transparent); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; min-height: 64px; }
+  .tf-count { font-family: var(--font-mono); font-size: 13px; color: var(--accent-text); white-space: nowrap; }
+  .tf-now p { margin: 0; color: var(--fg); font-size: 16.5px; line-height: 1.45; font-weight: 600; }
+  .tf-bar { grid-column: 1 / -1; height: 3px; background: color-mix(in srgb, var(--fg) 10%, transparent); border-radius: 2px; overflow: hidden; }
+  .tf-bar span { display: block; height: 100%; width: 0; background: #f06000; }
+
+  .tf-svg { width: 100%; height: auto; display: block; }
+  .tf-m { display: none; }
+  .tf-head { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; fill: var(--muted); paint-order: stroke; stroke: var(--surface); stroke-width: 8px; stroke-linejoin: round; }
+  .tf-rule { stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 6; }
+  .tf-e { fill: none; stroke: var(--line); stroke-width: 1.6; stroke-dasharray: 4 5; transition: stroke .4s, stroke-width .4s, opacity .4s; }
+  .tf-e.lit { stroke: color-mix(in srgb, #f06000 55%, var(--line)); stroke-width: 2; stroke-dasharray: none; }
+  .tf-e.on { stroke: #f06000; stroke-width: 2.6; stroke-dasharray: none; }
+  .tf-n rect { fill: var(--panel); stroke: var(--line-strong); stroke-width: 1.4; transition: fill .4s, stroke .4s; }
+  .tf-core rect { fill: var(--panel-2); stroke: var(--fg); stroke-width: 2; }
+  .tf-engine rect { stroke: var(--fg); }
+  .tf-n.on rect { fill: var(--panel-accent); stroke: #f06000; stroke-width: 2.4; }
+  .tf-ico { color: var(--muted); transition: color .4s; }
+  .tf-n.on .tf-ico, .tf-core .tf-ico { color: var(--accent-text); }
+  .tf-label { font-family: var(--font-body); font-weight: 700; font-size: 15px; fill: var(--fg); }
+  .tf-sub { font-family: var(--font-body); font-size: 12px; fill: var(--muted); }
+
+  .tf-box { margin-top: 16px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--panel); padding: 4px 18px; }
+  .tf-box summary { cursor: pointer; padding: 12px 0; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); list-style: none; }
+  .tf-box summary::-webkit-details-marker { display: none; }
+  .tf-box summary::before { content: "+ "; color: var(--accent-text); }
+  .tf-box[open] summary::before { content: "− "; }
+  .tf-groups { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; padding: 4px 0 16px; }
+  .tf-groups b { font-size: 14px; color: var(--accent-text); font-family: var(--font-body); }
+  .tf-groups ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tf-groups li { font-size: 13.5px; color: var(--fg); background: var(--surface); border: 1px solid var(--color-border); border-radius: 999px; padding: 4px 10px; }
+
+  @media (max-width: 760px) {
+    .tf-d { display: none; }
+    .tf-m { display: block; }
+    .tf { padding-left: 1rem; padding-right: 1rem; }
+    .tf-stage { padding: 6px; margin: 0 -0.5rem; border-radius: 14px; }
+    .tf-now { margin: 4px 4px 10px; }
+    .tf-now { position: sticky; top: 64px; z-index: 5; }
+    .tf-chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; margin-right: -1rem; padding-right: 1rem; }
+    .tf-chip { white-space: nowrap; }
+    .tf-groups { grid-template-columns: 1fr 1fr; }
+    .tf-label { font-size: 15.5px; }
+    .tf-sub { font-size: 12.5px; }
+    .tf-head { font-size: 13px; }
+  }
+</style>

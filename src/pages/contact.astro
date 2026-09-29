@@ -4,6 +4,29 @@ import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+
+const steps = [
+  { icon: 'i-mail', when: 'Today', title: 'You send the problem',
+    body: "Not a spec — a problem. “We pay an agency $4K a month to write listings.” “Nobody knows yesterday's numbers until Thursday.” That's enough for me to tell you whether it's worth building." },
+  { icon: 'i-clock', when: 'Within 2 business days', title: 'I reply, personally',
+    body: "Usually with a straight answer and a rough range. If AI is the wrong tool for your problem, I'll say so — that costs me a project and saves you a lot more." },
+  { icon: 'i-doc', when: 'Before anything is built', title: 'We agree a fixed scope',
+    body: 'A fixed scope and a fixed budget, agreed up front. Builds typically run $5,000–$25,000 and ship in 2–8 weeks. Coaching engagements run $3,000–$8,000.' },
+];
+const good = [
+  'You run a business that already works and want to take cost or manual effort out of it.',
+  "You're paying an agency for execution work — content, reporting, email, listings, ad copy.",
+  "You sell on Shopify, Amazon, or both, and your systems don't talk to each other.",
+  'You want to own the tool at the end, not rent it.',
+  "You're a local service business that's effectively invisible online.",
+  'You direct a race or run a community event and want it to grow every year.',
+];
+const notFit = [
+  'You want a strategy deck. I build working systems; the plan comes with the build.',
+  "You need a full-time developer on staff — that's a hire, not a project.",
+  "The budget is under a few thousand dollars. Say so anyway and I'll point you at tools you can run yourself.",
+  "You want AI added because it sounds good. If there's no number it moves, I'll tell you.",
+];
 ---
 
 <Layout
@@ -14,89 +37,50 @@ import Footer from '../components/Footer.astro';
   <main>
     <PageHero
       title="Let's Build Something"
-      subtitle="Tell me what's eating your time or budget. I'll tell you if AI can fix it — and exactly how I'd build the solution."
+      subtitle="Tell me the one job that's eating your time or budget. You'll hear back from me, not an assistant, with a straight answer on whether AI can fix it and how I'd build it."
     />
 
     {/*
-      This page was 142 words — the thinnest on the site — yet it ranks
-      (17 impressions, avg position 18.3 over 90 days). Setting expectations
-      before the form also filters out mismatched enquiries.
+      This page was 142 words — the thinnest on the site — yet it ranks.
+      Setting expectations before the form also filters out mismatched
+      enquiries. Rebuilt Sep 2026 as a visual flow (icons, not paragraphs);
+      the copy and price ranges are the ones already published here.
     */}
-    <section class="pb-4">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {[
-            {
-              step: '01',
-              title: 'You send the problem',
-              body:
-                "Not a spec — a problem. “We pay an agency $4K a month to write listings.” “Nobody knows yesterday's numbers until Thursday.” That's enough for me to tell you whether it's worth building.",
-            },
-            {
-              step: '02',
-              title: 'I reply within two business days',
-              body:
-                "Usually with a straight answer and a rough range. If AI is the wrong tool for your problem, I'll say so — that costs me a project and saves you a lot more.",
-            },
-            {
-              step: '03',
-              title: 'We scope it before anything is built',
-              body:
-                'A fixed scope and a fixed budget, agreed up front. Builds typically run $5,000–$25,000 and ship in 2–8 weeks. Coaching engagements run $3,000–$8,000.',
-            },
-          ].map((item) => (
-            <div class="fade-in-up glass-card p-8">
-              <p
-                class="mb-3 text-sm"
-                style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);"
-              >
-                {item.step}
-              </p>
-              <h2
-                class="mb-3 text-lg font-bold"
-                style="font-family: 'Outfit', sans-serif; color: var(--fg);"
-              >
-                {item.title}
-              </h2>
-              <p class="leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-                {item.body}
-              </p>
+    <section class="ct">
+      <ol class="ct-flow">
+        {steps.map((s, i) => (
+          <li class="fade-in-up">
+            <div class="ct-top">
+              <span class="ct-ico"><svg aria-hidden="true"><use href={`#${s.icon}`} /></svg></span>
+              <span class="ct-when">{s.when}</span>
             </div>
-          ))}
-        </div>
+            <h2>{s.title}</h2>
+            <p>{s.body}</p>
+            {i < steps.length - 1 && <span class="ct-link" aria-hidden="true"></span>}
+          </li>
+        ))}
+      </ol>
 
-        <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div class="fade-in-up glass-card p-8">
-            <h2
-              class="mb-4 text-lg font-bold"
-              style="font-family: 'Outfit', sans-serif; color: var(--fg);"
-            >
-              Good fit
-            </h2>
-            <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-              <li>You run a business that already works and want to take cost or manual effort out of it.</li>
-              <li>You're paying an agency for execution work — content, reporting, email, listings, ad copy.</li>
-              <li>You sell on Shopify, Amazon, or both, and your systems don't talk to each other.</li>
-              <li>You want to own the tool at the end, not rent it.</li>
-              <li>You're a local service business that's effectively invisible online.</li>
-            </ul>
-          </div>
-
-          <div class="fade-in-up glass-card p-8">
-            <h2
-              class="mb-4 text-lg font-bold"
-              style="font-family: 'Outfit', sans-serif; color: var(--fg);"
-            >
-              Probably not a fit
-            </h2>
-            <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-              <li>You want a strategy deck. I build working systems; the plan comes with the build.</li>
-              <li>You need a full-time developer on staff — that's a hire, not a project.</li>
-              <li>The budget is under a few thousand dollars. Say so anyway and I'll point you at tools you can run yourself.</li>
-              <li>You want AI added because it sounds good. If there's no number it moves, I'll tell you.</li>
-            </ul>
-          </div>
+      <div class="ct-fit">
+        <div class="ct-list fade-in-up">
+          <h2>A good fit</h2>
+          <ul>{good.map((g) => <li><svg class="ok" aria-hidden="true"><use href="#i-check" /></svg><span>{g}</span></li>)}</ul>
         </div>
+        <div class="ct-list fade-in-up">
+          <h2>Probably not a fit</h2>
+          <ul>{notFit.map((g) => <li><span class="no" aria-hidden="true">×</span><span>{g}</span></li>)}</ul>
+        </div>
+      </div>
+
+      <div class="ct-alt">
+        <a href="/meetups/" class="fade-in-up">
+          <span class="ct-ico"><svg aria-hidden="true"><use href="#i-cup" /></svg></span>
+          <span><b>Not ready to talk yet?</b> Come to a free AI for Business meetup in Hamilton or Oakville first.</span>
+        </a>
+        <a href="/#blueprint" class="fade-in-up">
+          <span class="ct-ico"><svg aria-hidden="true"><use href="#i-sheet" /></svg></span>
+          <span><b>Not sure what to ask?</b> Draw your blueprint in a minute and it comes here filled in.</span>
+        </a>
       </div>
     </section>
 
@@ -120,3 +104,31 @@ import Footer from '../components/Footer.astro';
     });
   </script>
 </Layout>
+
+<style>
+  .ct { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 1rem; }
+  .ct h2 { font-family: var(--font-body); font-weight: 800; font-size: 20px; letter-spacing: -.01em; margin: 0 0 6px; color: var(--fg); }
+  .ct p { color: var(--soft); font-size: 15.5px; line-height: 1.55; margin: 0; }
+  .ct-ico { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; background: var(--panel-accent); color: var(--accent-text); border: 1px solid color-mix(in srgb, #f06000 35%, transparent); flex-shrink: 0; }
+  .ct-ico svg { width: 24px; height: 24px; }
+  .ct-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .ct-flow li { position: relative; background: var(--surface); border: 1px solid var(--color-border); border-top: 3px solid #f06000; border-radius: 16px; padding: 20px; min-width: 0; }
+  .ct-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+  .ct-when { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .ct-link { position: absolute; top: 42px; right: -23px; width: 24px; border-top: 2px dashed #f06000; }
+  .ct-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 22px; }
+  .ct-list { background: var(--panel); border: 1px solid var(--color-border); border-radius: 16px; padding: 22px; min-width: 0; }
+  .ct-list ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 12px; }
+  .ct-list li { display: flex; gap: 10px; align-items: flex-start; color: var(--soft); font-size: 15.5px; line-height: 1.5; }
+  .ct-list .ok { width: 20px; height: 20px; flex-shrink: 0; color: var(--accent-text); margin-top: 2px; }
+  .ct-list .no { width: 20px; flex-shrink: 0; text-align: center; color: var(--muted); font-weight: 700; font-size: 18px; line-height: 1.3; }
+  .ct-alt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+  .ct-alt a { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px dashed var(--rule-strong); border-radius: 14px; padding: 16px 18px; color: var(--soft); font-size: 15.5px; line-height: 1.45; transition: border-color .2s; }
+  .ct-alt a:hover { border-color: var(--accent); }
+  .ct-alt b { color: var(--fg); }
+  .ct a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  @media (max-width: 860px) {
+    .ct-flow, .ct-fit, .ct-alt { grid-template-columns: 1fr; }
+    .ct-link { display: none; }
+  }
+</style>
