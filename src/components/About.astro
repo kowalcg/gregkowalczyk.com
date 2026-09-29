@@ -8,7 +8,7 @@
 const timelineEntries = [
   {
     years: "1997-2011",
-    title: "Draftsman to Manager of Engineering",
+    title: "Mechanical Designer to Manager of Engineering",
     subtitle: "(PRO-ECO / SMS-Siemag)",
     dotColor: "#f06000",
   },
@@ -46,7 +46,7 @@ const timelineEntries = [
       class="mb-16 text-center text-3xl font-bold md:text-4xl"
       style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
     >
-      <span class="comment-prefix">// </span><span class="gradient-text">About Greg</span>
+      <span class="comment-prefix">// </span><span class="gradient-text">My story</span>
     </h2>
 
     <!-- Bio + Headshot Grid -->
@@ -57,11 +57,11 @@ const timelineEntries = [
         <!-- Headshot with gradient border -->
         <div
           class="relative overflow-hidden rounded-2xl"
-          style="width: 300px; padding: 1px; background: rgba(255,255,255,0.14);"
+          style="width: 300px; padding: 1px; background: color-mix(in srgb, var(--fg) 14%, transparent);"
         >
           <div
             class="relative h-full w-full overflow-hidden rounded-2xl"
-            style="background: rgba(255,255,255,0.05);"
+            style="background: color-mix(in srgb, var(--fg) 5%, transparent);"
           >
             <!-- Fallback gradient background -->
             <div
@@ -70,7 +70,7 @@ const timelineEntries = [
             >
               <span
                 class="text-5xl opacity-30"
-                style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+                style="font-family: 'JetBrains Mono', monospace; color: var(--muted);"
               >
                 GK
               </span>
@@ -88,7 +88,7 @@ const timelineEntries = [
         <!-- Location -->
         <p
           class="mt-4 text-center text-sm"
-          style="font-family: 'Outfit', sans-serif; color: #798897;"
+          style="font-family: 'Outfit', sans-serif; color: var(--muted);"
         >
           Oakville, Ontario
         </p>
@@ -97,16 +97,16 @@ const timelineEntries = [
       <!-- Text Column -->
       <div class="order-last lg:order-first">
         <div class="space-y-4" style="font-family: 'Outfit', sans-serif;">
-          <p class="leading-relaxed" style="color: #798897;">
-            I'm an engineer who builds things. I graduated in 1997 and started as a draftsman, then designer, then design team leader, and finally Manager of Engineering for a 70-person department at PRO-ECO / SMS-Siemag — fourteen years on global-scale industrial projects.
+          <p class="leading-relaxed" style="color: var(--muted);">
+            I'm an engineer who builds things. I graduated in 1997 and started as a mechanical designer, and became Manager of Engineering for a 70-person department at PRO-ECO / SMS-Siemag — fourteen years on global-scale industrial projects.
           </p>
-          <p class="leading-relaxed" style="color: #798897;">
+          <p class="leading-relaxed" style="color: var(--muted);">
             In 2011 I left the corporate job and spent the next eight years as a consulting engineer, working across a lot of different companies. In 2014 I started building e-commerce brands with my daughter — two of them, running ever since. I learned SEO, ads, and marketing by doing it rather than reading about it, and spent $2M+ on advertising across Google, Amazon, and Meta. From 2019 the consulting shifted to e-commerce.
           </p>
-          <p class="leading-relaxed" style="color: #798897;">
+          <p class="leading-relaxed" style="color: var(--muted);">
             I started using AI in production in 2022 — Jarvis first, then Jasper, well before most people had heard of any of it. When ChatGPT and Claude arrived I went deep. Since then: custom tools that replaced $75K+ in agency costs, two iOS apps shipped without a coding background, and a lot of other businesses helped to do the same.
           </p>
-          <p class="leading-relaxed" style="color: #ffffff;">
+          <p class="leading-relaxed" style="color: var(--fg);">
             Now I build AI systems for businesses that want working solutions, not strategy decks. Everything I recommend, I've tested on my own businesses first. With my own money.
           </p>
         </div>
@@ -132,19 +132,19 @@ const timelineEntries = [
                 <!-- Dot -->
                 <div
                   class="absolute top-0 left-0 h-6 w-6 rounded-full border-4"
-                  style={`background-color: ${entry.dotColor}; border-color: #1a1a1a; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                  style={`background-color: ${entry.dotColor}; border-color: var(--surface-2); box-shadow: 0 0 0 2px ${entry.dotColor};`}
                 ></div>
                 <!-- Year -->
                 <p
                   class="mb-1 text-sm"
-                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #f06000;"
+                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--accent-text);"
                 >
                   {entry.years}
                 </p>
                 <!-- Title -->
                 <p
                   class="font-semibold"
-                  style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+                  style="font-family: 'Outfit', sans-serif; color: var(--fg);"
                 >
                   {entry.title}
                 </p>
@@ -152,7 +152,7 @@ const timelineEntries = [
                 {entry.subtitle && (
                   <p
                     class="text-sm"
-                    style="font-family: 'Outfit', sans-serif; color: #798897;"
+                    style="font-family: 'Outfit', sans-serif; color: var(--muted);"
                   >
                     {entry.subtitle}
                   </p>
@@ -179,19 +179,19 @@ const timelineEntries = [
                 <!-- Dot -->
                 <div
                   class="absolute top-0.5 -left-[9px] h-5 w-5 rounded-full border-4"
-                  style={`background-color: ${entry.dotColor}; border-color: #1a1a1a; box-shadow: 0 0 0 2px ${entry.dotColor};`}
+                  style={`background-color: ${entry.dotColor}; border-color: var(--surface-2); box-shadow: 0 0 0 2px ${entry.dotColor};`}
                 ></div>
                 <!-- Year -->
                 <p
                   class="mb-1 text-sm"
-                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #f06000;"
+                  style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--accent-text);"
                 >
                   {entry.years}
                 </p>
                 <!-- Title -->
                 <p
                   class="font-semibold"
-                  style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+                  style="font-family: 'Outfit', sans-serif; color: var(--fg);"
                 >
                   {entry.title}
                 </p>
@@ -199,7 +199,7 @@ const timelineEntries = [
                 {entry.subtitle && (
                   <p
                     class="text-sm"
-                    style="font-family: 'Outfit', sans-serif; color: #798897;"
+                    style="font-family: 'Outfit', sans-serif; color: var(--muted);"
                   >
                     {entry.subtitle}
                   </p>

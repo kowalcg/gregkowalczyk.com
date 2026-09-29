@@ -17,8 +17,8 @@ const marks: [number, string, 'l' | 'r' | 't' | 'b'][] = [
   <div class="rf-inner">
     <figure class="rf-fig" aria-hidden="true">
       <svg viewBox="60 200 920 380" data-rf>
-        <defs><pattern id="rf-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#0f1316" /></pattern></defs>
-        <rect x="60" y="200" width="920" height="380" fill="#050607" /><rect x="60" y="200" width="920" height="380" fill="url(#rf-g)" />
+        <defs><pattern id="rf-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="var(--grid)" /></pattern></defs>
+        <rect x="60" y="200" width="920" height="380" fill="var(--panel)" /><rect x="60" y="200" width="920" height="380" fill="url(#rf-g)" />
         <path d="M60 200 H980 V232 C 850 244, 700 226, 560 238 C 430 250, 300 226, 60 240 Z" class="lake" />
         <text x="960" y="222" text-anchor="end" class="t water">LAKE ONTARIO</text>
         <path id="rf-course" d={COURSE} class="base" />
@@ -81,36 +81,36 @@ const marks: [number, string, 'l' | 'r' | 't' | 'b'][] = [
 <style>
   .rf { padding: 5rem 1.5rem; scroll-margin-top: 64px; background: linear-gradient(180deg, rgba(240,96,0,.06), rgba(240,96,0,0) 60%); border-block: 1px solid var(--color-border); }
   .rf-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-  .rf-fig { margin: 0; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: #050607; min-width: 0; }
+  .rf-fig { margin: 0; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: var(--panel); min-width: 0; }
   .rf-fig svg { width: 100%; height: auto; display: block; }
   .rf-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
   .rf-copy h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 4.2vw, 58px); line-height: 1; letter-spacing: -.03em; margin: 12px 0 16px; text-wrap: balance; }
-  .rf-copy > p { color: #c4ccd4; font-size: 16.5px; line-height: 1.6; margin: 0; }
+  .rf-copy > p { color: var(--soft); font-size: 16.5px; line-height: 1.6; margin: 0; }
   .rf-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 22px 0; }
   .rf-stats div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
   .rf-stats dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3vw, 40px); letter-spacing: -.02em; line-height: 1; }
   .rf-stats div:first-child dd { color: var(--color-accent); }
   .rf-stats dt { color: var(--color-text-secondary); font-size: 13px; line-height: 1.35; margin-top: 6px; }
   .rf-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-  .rf-cta { background: var(--color-accent-fill); color: #000; font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; }
-  .rf-go { color: #fff; text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 4px; }
-  .rf-cta:focus-visible, .rf-go:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .rf-cta { background: var(--color-accent-fill); color: var(--on-accent); font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; }
+  .rf-go { color: var(--fg); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 4px; }
+  .rf-cta:focus-visible, .rf-go:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
   .rf-note { margin-top: 18px !important; font-size: 14px !important; color: var(--color-text-secondary) !important; }
 
-  svg .lake { fill: #06121b; }
-  svg .t { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: #fff; }
-  svg .t.water { fill: #2a5a7a; font-size: 11px; }
-  svg .t.acc { fill: #f06000; }
-  svg .base { fill: none; stroke: #2e363d; stroke-width: 10; stroke-linecap: round; }
+  svg .lake { fill: var(--lake); }
+  svg .t { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: var(--fg); }
+  svg .t.water { fill: var(--water-ink); font-size: 11px; }
+  svg .t.acc { fill: var(--accent-text); }
+  svg .base { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; }
   svg .trail { fill: none; stroke: #f06000; stroke-width: 3; stroke-dasharray: .12 .88; animation: rf-trail 12s linear infinite; }
   @keyframes rf-trail { from { stroke-dashoffset: .12; } to { stroke-dashoffset: -.88; } }
-  svg .crowd { fill: #c4ccd4; opacity: .5; }
-  svg .runner { fill: #f06000; stroke: #000; stroke-width: 2; }
+  svg .crowd { fill: var(--soft); opacity: .5; }
+  svg .runner { fill: #f06000; stroke: var(--bg); stroke-width: 2; }
   svg .arch { fill: none; stroke: #f06000; stroke-width: 3; }
-  svg :global(.rf-mk) { color: #6b7682; animation: rf-mk 12s infinite; }
+  svg :global(.rf-mk) { color: var(--faint); animation: rf-mk 12s infinite; }
   svg :global(.rf-mk rect) { fill: currentColor; }
   svg :global(.rf-mk text) { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; fill: currentColor; }
-  @keyframes rf-mk { 0%, 24%, 100% { color: #6b7682; } 2%, 20% { color: #f06000; } }
+  @keyframes rf-mk { 0%, 24%, 100% { color: var(--faint); } 2%, 20% { color: var(--accent-text); } }
   svg.paused, svg.paused * { animation-play-state: paused !important; }
 
   @media (max-width: 900px) { .rf-inner { grid-template-columns: 1fr; gap: 28px; } }

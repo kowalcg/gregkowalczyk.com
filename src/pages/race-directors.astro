@@ -60,12 +60,12 @@ const faqSchema = {
 
 const primaryBtn =
   'inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105';
-const primaryStyle = "background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;";
+const primaryStyle = "background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;";
 const secondaryStyle =
-  "background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;";
+  "background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;";
 const h2Class = 'mb-8 text-2xl font-bold md:text-3xl';
-const h2Style = "font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;";
-const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
+const h2Style = "font-family: 'Outfit', sans-serif; color: var(--fg); letter-spacing: -0.02em;";
+const mutedStyle = "font-family: 'Outfit', sans-serif; color: var(--muted);";
 ---
 
 <Layout
@@ -104,14 +104,14 @@ const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
           <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
             {problems.map((line) => (
               <li class="flex gap-3 leading-relaxed" style={mutedStyle}>
-                <span style="color: #f06000;">→</span>
+                <span style="color: var(--accent-text);">→</span>
                 <span>{line}</span>
               </li>
             ))}
           </ul>
           <p
             class="mt-7 border-t pt-6 leading-relaxed"
-            style="font-family: 'Outfit', sans-serif; color: #ffffff; border-color: rgba(255,255,255,0.08);"
+            style="font-family: 'Outfit', sans-serif; color: var(--fg); border-color: color-mix(in srgb, var(--fg) 8%, transparent);"
           >
             Most of that is repeat work. Repeat work is exactly what AI is good at — if someone
             actually builds the system and hands it over.
@@ -154,13 +154,13 @@ const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
           <ul class="flex flex-col gap-4 p-0" style="list-style: none;">
             {playbook.map((item) => (
               <li class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-5">
-                <span class="w-16 flex-shrink-0 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+                <span class="w-16 flex-shrink-0 text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);">
                   {item.part}
                 </span>
                 <a
                   href={item.href}
-                  class="leading-relaxed hover:text-[#ffffff]"
-                  style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;"
+                  class="leading-relaxed hover:text-[var(--fg)]"
+                  style="font-family: 'Outfit', sans-serif; color: var(--fg); opacity: 0.85;"
                 >{item.title}</a>
               </li>
             ))}
@@ -178,7 +178,7 @@ const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
         <div class="space-y-4">
           {faq.map(({ q, a }) => (
             <details class="glass-card p-6">
-              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
+              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">
                 {q}
               </summary>
               <p class="mt-3 leading-relaxed" style={mutedStyle}>{a}</p>

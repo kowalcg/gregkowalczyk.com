@@ -49,9 +49,9 @@ const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282
         <title id="rc-svg-t">The race season as a 5K course</title>
         <desc id="rc-svg-d">A loop course along the harbour. Start line: registration. 1 km: sponsor pages. 2 km: participant emails. 3 km: water station and sun safety. 4 km: race photos sorted by bib. Finish: QR code medals. The finish is the start of lap two, year two.</desc>
         <defs>
-          <pattern id="rc-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#0f1316" stroke-width="1" /></pattern>
+          <pattern id="rc-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="var(--grid)" stroke-width="1" /></pattern>
         </defs>
-        <rect width="1000" height="620" fill="#050607" />
+        <rect width="1000" height="620" fill="var(--panel)" />
         <rect width="1000" height="620" fill="url(#rc-g)" />
 
         {/* the lake and the harbour */}
@@ -204,7 +204,7 @@ const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282
   .rc { max-width: 80rem; margin: 0 auto; padding: 4rem 1.5rem 3rem; scroll-margin-top: 64px; }
   .rc-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
   .rc-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(40px, 6.4vw, 88px); line-height: .95; letter-spacing: -.035em; margin: 14px 0 16px; }
-  .rc-head p { color: #c4ccd4; font-size: 18px; max-width: 56ch; margin: 0; }
+  .rc-head p { color: var(--soft); font-size: 18px; max-width: 56ch; margin: 0; }
   .rc-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 48px; margin-top: 40px; align-items: start; }
   .rc-steps { list-style: none; margin: 0; padding: 0; }
   .rc-step { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; gap: 10px; opacity: .35; transition: opacity .4s; border-left: 2px solid var(--color-border); padding-left: 22px; }
@@ -214,41 +214,41 @@ const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282
   .rc-split { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
   .rc-split b { font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3vw, 40px); color: var(--color-accent); letter-spacing: -.02em; white-space: nowrap; }
   .rc-split span { color: var(--color-text-secondary); font-size: 14px; line-height: 1.35; }
-  .rc-step p { color: #c4ccd4; font-size: 15.5px; line-height: 1.6; margin: 0; }
-  .rc-step a { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+  .rc-step p { color: var(--soft); font-size: 15.5px; line-height: 1.6; margin: 0; }
+  .rc-step a { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); }
   .rc-step a:hover { color: var(--color-accent); }
-  .rc-step a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-  .rc-fig { margin: 0; position: sticky; top: 88px; border: 1px solid var(--color-border); border-radius: 14px; background: #050607; padding: 8px; min-width: 0; }
+  .rc-step a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  .rc-fig { margin: 0; position: sticky; top: 88px; border: 1px solid var(--color-border); border-radius: 14px; background: var(--panel); padding: 8px; min-width: 0; }
   .rc-fig svg { width: 100%; height: auto; display: block; }
-  .rc-fig figcaption { padding: 12px 10px 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; color: #fff; min-height: 2.6em; }
+  .rc-fig figcaption { padding: 12px 10px 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; color: var(--fg); min-height: 2.6em; }
 
-  svg .lake { fill: #06121b; }
-  svg .wave { fill: none; stroke: #12283a; stroke-width: 1.4; }
-  svg .pier { fill: none; stroke: #2e363d; stroke-width: 4; stroke-linecap: round; }
-  svg .tree { fill: #0b1510; stroke: #173022; }
-  svg .t-mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: #fff; }
-  svg .t-water { fill: #2a5a7a; }
+  svg .lake { fill: var(--lake); }
+  svg .wave { fill: none; stroke: color-mix(in srgb, var(--water-ink) 45%, var(--lake)); stroke-width: 1.4; }
+  svg .pier { fill: none; stroke: var(--line); stroke-width: 4; stroke-linecap: round; }
+  svg .tree { fill: color-mix(in srgb, #2f7a4a 16%, var(--panel)); stroke: color-mix(in srgb, #2f7a4a 40%, var(--panel)); }
+  svg .t-mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: var(--fg); }
+  svg .t-water { fill: var(--water-ink); }
   svg .t-water.sm { font-size: 10px; }
-  svg .t-muted { fill: #798897; }
-  svg .t-accent { fill: #f06000; }
-  svg .t-dark { fill: #000; font-weight: 700; font-size: 11px; }
-  svg .course-base { fill: none; stroke: #2e363d; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+  svg .t-muted { fill: var(--muted); }
+  svg .t-accent { fill: var(--accent-text); }
+  svg .t-dark { fill: var(--bg); font-weight: 700; font-size: 11px; }
+  svg .course-base { fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
   svg .course-done { fill: none; stroke: #f06000; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
-  svg .course-lap2 { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .9; }
-  svg .crowd { fill: #c4ccd4; transition: opacity .6s; }
+  svg .course-lap2 { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .9; }
+  svg .crowd { fill: var(--soft); transition: opacity .6s; }
   svg .runner { fill: #f06000; }
   svg .runner-halo { fill: none; stroke: #f06000; stroke-width: 2; opacity: .5; animation: rc-pulse 1.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
   @keyframes rc-pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.4); opacity: 0; } }
   svg .arch path { fill: none; stroke: #f06000; stroke-width: 3; }
-  svg :global(.mk .mat) { fill: #3a434b; transition: fill .3s; }
-  svg :global(.mk .km) { font-size: 11px; fill: #798897; transition: fill .3s; }
-  svg :global(.mk .ico-bg) { fill: #0b0e10; stroke: #3a434b; stroke-width: 1.4; transition: stroke .3s, fill .3s; }
-  svg :global(.mk .ico path), svg :global(.mk .ico > circle:not(.ico-bg)) { fill: none; stroke: #6b7682; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke .3s; }
+  svg :global(.mk .mat) { fill: var(--line-strong); transition: fill .3s; }
+  svg :global(.mk .km) { font-size: 11px; fill: var(--muted); transition: fill .3s; }
+  svg :global(.mk .ico-bg) { fill: var(--panel-2); stroke: var(--line-strong); stroke-width: 1.4; transition: stroke .3s, fill .3s; }
+  svg :global(.mk .ico path), svg :global(.mk .ico > circle:not(.ico-bg)) { fill: none; stroke: var(--faint); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke .3s; }
   svg :global(.mk.lit .mat) { fill: #f06000; }
-  svg :global(.mk.lit .km) { fill: #fff; }
+  svg :global(.mk.lit .km) { fill: var(--fg); }
   svg :global(.mk.lit .ico-bg) { stroke: #f06000; }
-  svg :global(.mk.lit .ico path), svg :global(.mk.lit .ico > circle:not(.ico-bg)) { stroke: #fff; }
-  svg :global(.mk.now .ico-bg) { fill: #2a1405; }
+  svg :global(.mk.lit .ico path), svg :global(.mk.lit .ico > circle:not(.ico-bg)) { stroke: var(--fg); }
+  svg :global(.mk.now .ico-bg) { fill: color-mix(in srgb, var(--accent) 22%, var(--panel)); }
   svg .lap-badge { opacity: 0; transition: opacity .5s; }
   svg .lap-badge rect { fill: #f06000; }
   svg[data-lap="2"] .lap-badge { opacity: 1; }

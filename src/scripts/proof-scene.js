@@ -15,6 +15,7 @@ const FRAG = `
   precision highp float;
   uniform sampler2D map; uniform vec2 texel; uniform float reveal, dim, hover, lens, refl, fade;
   uniform vec2 mouse;
+  uniform vec3 uBg, uGridC, uGridM, uInk, uAcc, uFrame;
   varying vec2 vUv;
   float lum(vec2 uv){ return dot(texture2D(map, uv).rgb, vec3(.299,.587,.114)); }
   void main(){
@@ -31,9 +32,11 @@ const FRAG = `
     float grid = (1. - smoothstep(.46,.5, max(g.x,g.y))) * .5;
     vec2 G2 = abs(fract(uv*vec2(14.,9.2)) - .5);
     float major = (1. - smoothstep(.482,.5, max(G2.x,G2.y)));
-    vec3 bp = vec3(.018,.024,.03) + vec3(.05,.07,.09)*grid + vec3(.06,.08,.1)*major*.6;
-    vec3 ink = mix(vec3(.62,.7,.78), vec3(1.,.45,.08), smoothstep(.45,.95,e));
-    bp += ink * smoothstep(.07,.45,e);
+    // drafting sheet: paper (or night) + grid + ink traced from the screenshot
+    vec3 bp = mix(uBg, uGridC, grid * .9);
+    bp = mix(bp, uGridM, major * .6);
+    vec3 ink = mix(uInk, uAcc, smoothstep(.45,.95,e));
+    bp = mix(bp, ink, smoothstep(.07,.45,e));
     float edge = 1.06 - reveal*1.12;
     float m = smoothstep(edge-.012, edge+.012, uv.y);
     float d = distance(uv*vec2(1.52,1.), mouse*vec2(1.52,1.));
@@ -41,16 +44,23 @@ const FRAG = `
     m = max(m, lm);
     vec3 col = mix(bp, real, m);
     float live = step(.002, reveal) * step(reveal, .998);
-    col += vec3(1.,.42,.08) * exp(-pow((uv.y-edge)*70., 2.)) * live * 1.4;
-    col += vec3(1.,.42,.08) * exp(-pow((uv.y-edge)*14., 2.)) * live * .18;
-    col += vec3(1.,.45,.1) * hover * exp(-pow((d-lens)*180., 2.)) * .9;
+    col = mix(col, uAcc, clamp(exp(-pow((uv.y-edge)*70., 2.)) * live * 1.2, 0., 1.));
+    col = mix(col, uAcc, clamp(exp(-pow((uv.y-edge)*14., 2.)) * live * .18, 0., 1.));
+    col = mix(col, uAcc, clamp(hover * exp(-pow((d-lens)*180., 2.)) * .9, 0., 1.));
     float bx = min(min(uv.x, 1.-uv.x)*1.52, min(uv.y, 1.-uv.y));
-    col = mix(vec3(.28,.31,.34), col, smoothstep(.0,.004,bx));
-    col *= dim;
+    col = mix(uFrame, col, smoothstep(.0,.004,bx));
+    col = mix(uBg, col, dim);
     float a = 1.;
-    if (refl > .5) { a = fade * (1. - smoothstep(0., .5, uv.y)); col *= .6; }
+    if (refl > .5) { a = fade * (1. - smoothstep(0., .5, uv.y)); col = mix(uBg, col, .6); }
     gl_FragColor = vec4(col, a);
   }`;
+
+// Sheet colours per theme (linear-ish RGB for the shader; hex for the scene).
+const PALETTES = {
+  dark: { bg: [.018, .024, .03], gridC: [.075, .1, .125], gridM: [.08, .105, .13], ink: [.62, .7, .78], acc: [1, .42, .08], frame: [.28, .31, .34], clear: 0x000000, gridA: 0x22272c, gridB: 0x101316 },
+  light: { bg: [.984, .984, .973], gridC: [.9, .92, .935], gridM: [.83, .86, .885], ink: [.1, .13, .17], acc: [.94, .38, 0], frame: [.62, .66, .7], clear: 0xffffff, gridA: 0xc9d0d6, gridB: 0xe8ebee },
+};
+const themeNow = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
 
 export function startProof(root, projects) {
   const N = projects.length, MAXP = N + 0.62;
@@ -195,6 +205,8 @@ export function startProof(root, projects) {
     const uni = () => ({
       map: { value: tex }, texel: { value: new THREE.Vector2(1 / TW, 1 / TH) }, reveal: { value: 0 }, dim: { value: 1 },
       hover: { value: 0 }, lens: { value: 0.16 }, mouse: { value: new THREE.Vector2(0.5, 0.5) }, refl: { value: 0 }, fade: { value: 0.22 },
+      uBg: { value: new THREE.Vector3() }, uGridC: { value: new THREE.Vector3() }, uGridM: { value: new THREE.Vector3() },
+      uInk: { value: new THREE.Vector3() }, uAcc: { value: new THREE.Vector3() }, uFrame: { value: new THREE.Vector3() },
     });
     const geo = new THREE.PlaneGeometry(SW, SH);
     const mat = new THREE.ShaderMaterial({ uniforms: uni(), vertexShader: VERT, fragmentShader: FRAG });
@@ -209,9 +221,21 @@ export function startProof(root, projects) {
     return { holder, mesh, refl, mats: [mat, rm], hover: 0 };
   });
 
-  const grid = new THREE.GridHelper(80, 160, 0x22272c, 0x101316);
-  grid.position.y = FLOOR;
-  scene.add(grid);
+  let grid = null;
+  function applyTheme() {
+    const P = PALETTES[themeNow()];
+    renderer.setClearColor(P.clear, 1);
+    if (grid) { scene.remove(grid); grid.geometry.dispose(); grid.material.dispose(); }
+    grid = new THREE.GridHelper(80, 160, P.gridA, P.gridB);
+    grid.position.y = FLOOR;
+    scene.add(grid);
+    screens.forEach((s) => s.mats.forEach((m) => {
+      m.uniforms.uBg.value.set(...P.bg); m.uniforms.uGridC.value.set(...P.gridC); m.uniforms.uGridM.value.set(...P.gridM);
+      m.uniforms.uInk.value.set(...P.ink); m.uniforms.uAcc.value.set(...P.acc); m.uniforms.uFrame.value.set(...P.frame);
+    }));
+  }
+  applyTheme();
+  window.addEventListener('gk-theme', applyTheme);
 
   let wide = true;
   function resize() {
@@ -278,8 +302,9 @@ export function startProof(root, projects) {
       const cx = sg * (ad < 1 ? ad * 3.7 : 3.7 + (ad - 1) * 1.5);
       const cz = -Math.min(ad, 1) * 2.4 - Math.max(ad - 1, 0) * 0.7;
       const cr = -sg * Math.min(ad, 1) * 0.78;
-      const row = k < 4 ? 0 : 1, col = row ? k - 4 : k;
-      const gx = (row ? col - 1 : col - 1.5) * (SW + 0.35), gy = row ? -(SH + 0.3) / 2 : (SH + 0.3) / 2;
+      // final wall: two rows, top row gets the extra one when N is odd
+      const top = Math.ceil(N / 2), row = k < top ? 0 : 1, col = row ? k - top : k, inRow = row ? N - top : top;
+      const gx = (col - (inRow - 1) / 2) * (SW + 0.35), gy = row ? -(SH + 0.3) / 2 : (SH + 0.3) / 2;
       const h = s.holder;
       h.position.set(lerp(baseX + cx * baseS, wallX + gx * wallS, we), lerp(baseY, wallY + gy * wallS, we), lerp(cz * baseS, 0, we));
       h.rotation.y = lerp(cr, 0, we);

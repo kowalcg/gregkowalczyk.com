@@ -85,12 +85,12 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
   <main>
     <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
       <header class="mb-10">
-        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
-          <a href="/" class="hover:text-[#ffffff]">Home</a>
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
+          <a href="/" class="hover:text-[var(--fg)]">Home</a>
           <span class="mx-2">/</span>
-          <a href="/projects" class="hover:text-[#ffffff]">Projects</a>
+          <a href="/projects" class="hover:text-[var(--fg)]">Projects</a>
           <span class="mx-2">/</span>
-          <span style="color: #ffffff;">{d.name}</span>
+          <span style="color: var(--fg);">{d.name}</span>
         </nav>
         <div class="mb-4 flex flex-wrap items-center gap-3">
           <span
@@ -102,7 +102,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
             {d.tag}
           </span>
           {d.year && (
-            <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
+            <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
               {d.year}
             </span>
           )}
@@ -115,7 +115,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
           <span class="gradient-text">{d.name}</span>
         </h1>
 
-        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           {d.description}
         </p>
       </header>
@@ -123,7 +123,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
       {d.image && (
         <div
           class="mb-12 overflow-hidden rounded-2xl"
-          style="border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 8px 32px rgba(0,0,0,0.4);"
+          style="border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent); box-shadow: 0 8px 32px color-mix(in srgb, var(--bg) 40%, transparent);"
         >
           <img src={d.image} alt={`${d.name} screenshot`} class="w-full" loading="lazy" />
         </div>
@@ -131,7 +131,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
 
       {d.stats.length > 0 && (
         <div class="glass-card mb-12 p-8">
-          <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
             {d.stats.map((stat) => (
               <li class="flex items-start gap-3">
                 <span
@@ -154,7 +154,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
           <h2
             id="project-faq"
             class="mb-6 text-2xl font-bold"
-            style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;"
+            style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);"
           >
             Frequently asked questions
           </h2>
@@ -163,11 +163,11 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
               <details class="glass-card p-6">
                 <summary
                   class="cursor-pointer text-base font-semibold"
-                  style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+                  style="font-family: 'Outfit', sans-serif; color: var(--fg);"
                 >
                   {q}
                 </summary>
-                <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
                   {a}
                 </p>
               </details>
@@ -181,7 +181,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
           {d.tech.map((t) => (
             <span
               class="rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.08);"
+              style="font-family: 'JetBrains Mono', monospace; background: color-mix(in srgb, var(--fg) 5%, transparent); color: var(--muted); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
             >
               {t}
             </span>
@@ -197,7 +197,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+              style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
             >
               {link.label} {link.external ? '↗' : '→'}
             </a>
@@ -208,8 +208,8 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
       <p class="mt-12">
         <a
           href="/projects"
-          class="text-sm transition-colors duration-200 hover:text-[#ffffff]"
-          style="font-family: 'Outfit', sans-serif; color: #798897;"
+          class="text-sm transition-colors duration-200 hover:text-[var(--fg)]"
+          style="font-family: 'Outfit', sans-serif; color: var(--muted);"
         >
           ← All projects
         </a>

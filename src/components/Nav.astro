@@ -1,4 +1,5 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
 /**
  * Nav.astro — Sticky navigation bar
  * Fixed to top, transparent -> solid on scroll, hamburger mobile menu.
@@ -36,7 +37,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="text-sm text-[#798897] transition-colors duration-200 hover:text-[#ffffff]"
+              class="text-sm text-[var(--muted)] transition-colors duration-200 hover:text-[var(--fg)]"
               style="font-family: 'Outfit', sans-serif;"
             >
               {link.label}
@@ -45,13 +46,19 @@ const navLinks = [
         ))}
       </ul>
 
-      <!-- Desktop CTA -->
-      <a
-        href="/contact"
-        class="hidden rounded-full px-5 py-2 text-sm font-semibold  transition-all duration-200 hover:scale-105 md:inline-block"
-        style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
-      >Book a call</a>
+      <!-- Desktop theme switch + CTA -->
+      <div class="hidden items-center gap-3 md:flex">
+        <ThemeToggle />
+        <a
+          href="/contact"
+          class="rounded-full px-5 py-2 text-sm font-semibold  transition-all duration-200 hover:scale-105"
+          style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;"
+        >Book a call</a>
+      </div>
 
+      <!-- Mobile theme switch + hamburger -->
+      <div class="flex items-center gap-1 md:hidden">
+      <ThemeToggle />
       <!-- Mobile Hamburger Button -->
       <button
         id="hamburger-btn"
@@ -63,17 +70,18 @@ const navLinks = [
       >
         <span
           id="hamburger-line-1"
-          class="block h-[2px] w-6 rounded-full bg-[#ffffff] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[var(--fg)] transition-all duration-300 ease-in-out"
         ></span>
         <span
           id="hamburger-line-2"
-          class="block h-[2px] w-6 rounded-full bg-[#ffffff] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[var(--fg)] transition-all duration-300 ease-in-out"
         ></span>
         <span
           id="hamburger-line-3"
-          class="block h-[2px] w-6 rounded-full bg-[#ffffff] transition-all duration-300 ease-in-out"
+          class="block h-[2px] w-6 rounded-full bg-[var(--fg)] transition-all duration-300 ease-in-out"
         ></span>
       </button>
+      </div>
     </div>
   </nav>
 
@@ -81,7 +89,7 @@ const navLinks = [
   <div
     id="mobile-menu"
     class="pointer-events-none fixed inset-x-0 top-0 z-40 translate-y-[-100%] opacity-0 transition-all duration-300 ease-in-out md:hidden"
-    style="background-color: rgba(0, 0, 0, 0.98); backdrop-filter: blur(16px);"
+    style="background-color: color-mix(in srgb, var(--bg) 98%, transparent); backdrop-filter: blur(16px);"
   >
     <div class="px-4 pb-8 pt-20 sm:px-6">
       <ul class="flex flex-col gap-4">
@@ -89,7 +97,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="mobile-nav-link block rounded-lg px-4 py-4 text-lg text-[#798897] transition-colors duration-200 hover:bg-white/5 hover:text-[#ffffff]"
+              class="mobile-nav-link block rounded-lg px-4 py-4 text-lg text-[var(--muted)] transition-colors duration-200 hover:bg-[var(--glass-hover)] hover:text-[var(--fg)]"
               style="font-family: 'Outfit', sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; min-height: 52px; display: flex; align-items: center;"
             >
               {link.label}
@@ -98,11 +106,11 @@ const navLinks = [
         ))}
       </ul>
       <!-- Mobile CTA -->
-      <div class="mt-6 border-t border-white/10 pt-6">
+      <div class="mt-6 border-t border-[var(--rule)] pt-6">
         <a
           href="/contact"
           class="mobile-nav-link block rounded-full px-4 py-3 text-center text-base font-semibold "
-          style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+          style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;"
         >Book a call</a>
       </div>
     </div>
@@ -129,10 +137,10 @@ const navLinks = [
     // ---------- Scroll: transparent -> solid ----------
     function updateNavBackground() {
       if (window.scrollY > 20) {
-        nav.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
+        nav.style.backgroundColor = "color-mix(in srgb, var(--bg) 75%, transparent)";
         nav.style.backdropFilter = "blur(16px)";
         nav.style.WebkitBackdropFilter = "blur(16px)";
-        nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.08)";
+        nav.style.borderBottom = "1px solid color-mix(in srgb, var(--fg) 8%, transparent)";
       } else if (!isMenuOpen) {
         nav.style.backgroundColor = "transparent";
         nav.style.backdropFilter = "none";
@@ -157,7 +165,7 @@ const navLinks = [
       // Lock body scroll
       document.body.style.overflow = "hidden";
       // Ensure nav stays solid while menu open
-      nav.style.backgroundColor = "rgba(0, 0, 0, 0.75)";
+      nav.style.backgroundColor = "color-mix(in srgb, var(--bg) 75%, transparent)";
       nav.style.backdropFilter = "blur(16px)";
       nav.style.WebkitBackdropFilter = "blur(16px)";
     }

@@ -8,6 +8,73 @@
 @import "tailwindcss";
 
 /* ==========================================================================
+   Theme tokens — dark ("Signal") and light ("paper blueprint"), Sep 2026.
+   Every colour on the site should come from these. The theme is set on
+   <html data-theme> by the inline script in Layout.astro (visitor's choice,
+   else their device setting). Dark is the default if nothing is known.
+   Light = drafting paper: near-white paper, dark ink, the same orange.
+   ========================================================================== */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;          /* page */
+  --surface: #0b0d0f;     /* raised card */
+  --surface-2: #1a1a1a;   /* elevated / nav when solid */
+  --panel: #050607;       /* schematic sheet */
+  --panel-2: #07090b;     /* card on a sheet */
+  --panel-accent: #0d0906;/* orange-tinted fill */
+  --fg: #ffffff;          /* primary text / ink */
+  --soft: #c4ccd4;        /* body text */
+  --muted: #798897;       /* secondary text */
+  --faint: #6b7682;       /* tertiary lines */
+  --rule: rgba(255, 255, 255, 0.09);
+  --rule-strong: rgba(255, 255, 255, 0.16);
+  --line: #2e363d;        /* schematic wires */
+  --line-strong: #3a434b; /* node outlines */
+  --grid: #101417;        /* drafting grid */
+  --grid-major: #182026;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-hover: rgba(255, 255, 255, 0.08);
+  --shadow: rgba(0, 0, 0, 0.35);
+  --accent: #f06000;
+  --accent-text: #f06000; /* orange used as text */
+  --accent-soft: rgba(240, 96, 0, 0.12);
+  --on-accent: #000000;   /* text on an orange fill */
+  --lake: #06121b;
+  --water-ink: #2a5a7a;
+}
+:root[data-theme="light"] {
+  /* White page; content boxes lightly shaded with a hairline; graph paper
+     only inside the drawings (schematics, blueprints, race course). */
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f6f7f5;     /* shaded content box */
+  --surface-2: #ffffff;
+  --panel: #fdfdfc;       /* drawing sheet (carries the grid) */
+  --panel-2: #f6f7f5;     /* card: light shade */
+  --panel-accent: #fff1e6;
+  --fg: #12171d;
+  --soft: #37424e;
+  --muted: #5d6874;
+  --faint: #8a95a0;
+  --rule: rgba(18, 23, 29, 0.11);
+  --rule-strong: rgba(18, 23, 29, 0.2);
+  --line: #c2c9d0;
+  --line-strong: #98a2ac;
+  --grid: #e8ebee;
+  --grid-major: #d8dde1;
+  --glass: #f6f7f5;
+  --glass-hover: #f1f3f0;
+  --shadow: rgba(18, 23, 29, 0.06);
+  --accent: #f06000;
+  --accent-text: #b84800; /* 5:1 on white */
+  --accent-soft: rgba(240, 96, 0, 0.1);
+  --on-accent: #000000;
+  --lake: #dde9f1;
+  --water-ink: #5b86a3;
+}
+
+/* ==========================================================================
    Theme — Custom Design Tokens for Tailwind v4
    Usage: bg-bg-primary, text-text-primary, border-border, font-heading, etc.
    ========================================================================== */
@@ -24,17 +91,17 @@
        --color-accent      #f06000   4.5:1  (AA for body text)
      --color-accent-fill is a half-stop deeper so white button labels clear
      AA (4.9:1); #f06000 behind white text would land at 4.34:1 and fail. */
-  --color-bg-primary: #000000;
+  --color-bg-primary: var(--bg);
   --color-accent-warm: #f06000;
-  --color-bg-elevated: #1a1a1a;
-  --color-bg-secondary: rgba(255, 255, 255, 0.04);
-  --color-bg-tertiary: rgba(255, 255, 255, 0.07);
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #798897;
-  --color-accent: #f06000;
+  --color-bg-elevated: var(--surface-2);
+  --color-bg-secondary: var(--glass);
+  --color-bg-tertiary: var(--glass-hover);
+  --color-text-primary: var(--fg);
+  --color-text-secondary: var(--muted);
+  --color-accent: var(--accent-text);
   --color-accent-fill: #f06000;
-  --color-accent-soft: rgba(240, 96, 0, 0.12);
-  --color-border: rgba(255, 255, 255, 0.09);
+  --color-accent-soft: var(--accent-soft);
+  --color-border: var(--rule);
   --color-glow: rgba(240, 96, 0, 0.14);
   --color-glow-strong: rgba(240, 96, 0, 0.22);
 
@@ -53,8 +120,9 @@ html {
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background-color .25s, color .25s;
   font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -98,7 +166,7 @@ a {
   .glass-card-light {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: rgba(0, 0, 0, 0.85);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
   }
 }
 
@@ -125,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Selection highlight */
 ::selection {
   background-color: rgba(240, 96, 0, 0.3);
-  color: #ffffff;
+  color: var(--fg);
 }
 
 /* ==========================================================================
@@ -138,12 +206,12 @@ h1, h2, h3, h4, h5, h6 {
    ------------------------------------------------------------------ */
 .glass-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--rule);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px var(--shadow);
 }
 
 .glass-card::before {
@@ -167,9 +235,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-card-hover:hover {
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(240, 96, 0, 0.15), 0 12px 48px rgba(0, 0, 0, 0.3);
+  background: var(--glass-hover);
+  border-color: var(--rule-strong);
+  box-shadow: 0 0 40px rgba(240, 96, 0, 0.15), 0 12px 48px var(--shadow);
 }
 
 /* --- Light Glass Variant ---
@@ -178,8 +246,8 @@ h1, h2, h3, h4, h5, h6 {
    ------------------------------------------------------------------ */
 .glass-card-light {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--glass);
+  border: 1px solid var(--rule);
   border-radius: 12px;
 }
 
@@ -212,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
   /* Kept as a class so no markup had to change, but headings are now solid.
      Gradient headline text cost real contrast — the purple half of the old
      ramp sat near 4:1 — and was the strongest "template" signal on the site. */
-  color: #ffffff;
+  color: var(--fg);
 }
 
 /* --- Code Comment Heading ---
@@ -223,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "JetBrains Mono", "Fira Code", monospace;
   /* Ember — the hot end of the oxide range. 7.5:1 on graphite, so it stays
      legible at the small sizes this mark is used at. */
-  color: #f06000;
+  color: var(--accent-text);
   font-weight: 400;
 }
 
@@ -261,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
    ------------------------------------------------------------------ */
 .gradient-border {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--rule);
   border-radius: 16px;
   transition: border-color 300ms ease;
 }

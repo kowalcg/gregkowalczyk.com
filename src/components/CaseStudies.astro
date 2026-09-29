@@ -168,19 +168,19 @@ const cases = [
   .cs-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
   .cs-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -.03em; margin: 14px 0 0; }
   .cs-list { display: grid; gap: 22px; margin-top: 36px; }
-  .cs-card { background: #07090b; border: 1px solid var(--color-border); border-radius: 14px; padding: 26px 26px 18px; }
+  .cs-card { background: var(--panel-2); border: 1px solid var(--color-border); border-radius: 14px; padding: 26px 26px 18px; }
   .cs-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
   .cs-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(240, 96, 0, .4); border-radius: 999px; padding: 5px 10px; }
   .cs-top h3 { font-family: var(--font-body); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.15; margin: 0; }
   .cs-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin-top: 20px; align-items: center; }
-  .cs-fig { margin: 0; background: #050607; border: 1px solid var(--color-border); border-radius: 10px; padding: 8px 8px 12px; min-width: 0; }
+  .cs-fig { margin: 0; background: var(--panel); border: 1px solid var(--color-border); border-radius: 10px; padding: 8px 8px 12px; min-width: 0; }
   .cs-fig svg { width: 100%; height: auto; display: block; }
-  .cs-fig figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 10px 0; font-size: 14px; line-height: 1.4; color: #c4ccd4; }
+  .cs-fig figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 10px 0; font-size: 14px; line-height: 1.4; color: var(--soft); }
   .cs-fig figcaption b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 2px; }
   .cs-fig figcaption span + span b { color: var(--color-accent); }
   .cs-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; margin: 0; }
   .cs-metrics div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
-  .cs-metrics dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.02em; color: #fff; }
+  .cs-metrics dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.02em; color: var(--fg); }
   .cs-metrics div:first-child dd { color: var(--color-accent); }
   .cs-metrics dt { color: var(--color-text-secondary); font-size: 13.5px; margin-top: 4px; }
   .cs-card details { margin-top: 18px; border-top: 1px dashed var(--color-border); padding-top: 10px; }
@@ -188,28 +188,28 @@ const cases = [
   .cs-card summary::-webkit-details-marker { display: none; }
   .cs-card summary::before { content: "+ "; color: var(--color-accent); }
   .cs-card details[open] summary::before { content: "− "; }
-  .cs-card summary:focus-visible, .cs-links a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .cs-card summary:focus-visible, .cs-links a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
   .cs-story { max-width: 70ch; padding-top: 8px; }
-  .cs-story p { color: #c4ccd4; font-size: 15px; line-height: 1.65; margin: 10px 0 0; }
+  .cs-story p { color: var(--soft); font-size: 15px; line-height: 1.65; margin: 10px 0 0; }
   .cs-story h4 { font-size: 15px; font-weight: 700; margin: 16px 0 6px; }
-  .cs-story ul { margin: 0; padding-left: 18px; color: #c4ccd4; font-size: 14.5px; line-height: 1.6; display: grid; gap: 4px; }
+  .cs-story ul { margin: 0; padding-left: 18px; color: var(--soft); font-size: 14.5px; line-height: 1.6; display: grid; gap: 4px; }
   .cs-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-  .cs-links a { color: #fff; text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; }
+  .cs-links a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; }
 
-  svg .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; fill: #fff; }
-  svg .lbl.dim { fill: #798897; font-size: 10px; }
-  svg .lbl.acc { fill: #f06000; }
-  svg .rail { fill: none; stroke: #1b2126; stroke-width: 26; stroke-linecap: round; }
-  svg .gate { fill: none; stroke: #6b7682; stroke-width: 2; stroke-dasharray: 4 4; }
+  svg .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; fill: var(--fg); }
+  svg .lbl.dim { fill: var(--muted); font-size: 10px; }
+  svg .lbl.acc { fill: var(--accent-text); }
+  svg .rail { fill: none; stroke: var(--grid-major); stroke-width: 26; stroke-linecap: round; }
+  svg .gate { fill: none; stroke: var(--faint); stroke-width: 2; stroke-dasharray: 4 4; }
   svg .jam { fill: #f06000; transform-box: fill-box; transform-origin: center; animation: cs-jam 1.6s ease-in-out infinite; }
   svg .j1 { animation-delay: .2s; } svg .j2 { animation-delay: .5s; } svg .j3 { animation-delay: .9s; }
   @keyframes cs-jam { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.5px); } }
-  svg .trickle { fill: #fff; animation: cs-trickle 3.2s linear infinite; }
+  svg .trickle { fill: var(--fg); animation: cs-trickle 3.2s linear infinite; }
   @keyframes cs-trickle { 0% { transform: translateX(0); opacity: 1; } 80% { transform: translateX(50px); opacity: 1; } 100% { transform: translateX(56px); opacity: 0; } }
-  svg .arrow { fill: none; stroke: #6b7682; stroke-width: 1.6; }
-  svg .sys { fill: #120b06; stroke: #f06000; stroke-width: 1.6; }
-  svg .flow { fill: #fff; }
-  svg .done { fill: #0d0906; stroke: #f06000; stroke-width: 1.6; }
+  svg .arrow { fill: none; stroke: var(--faint); stroke-width: 1.6; }
+  svg .sys { fill: var(--panel-accent); stroke: #f06000; stroke-width: 1.6; }
+  svg .flow { fill: var(--fg); }
+  svg .done { fill: var(--panel-accent); stroke: #f06000; stroke-width: 1.6; }
   svg .tick { fill: none; stroke: #f06000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   svg.paused, svg.paused * { animation-play-state: paused !important; }
 

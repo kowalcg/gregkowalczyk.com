@@ -41,24 +41,24 @@ const next = nextMeetup();
           <div class="flex-1 p-8 md:p-10">
             <span
               class="mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: #ff8a3d;"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: var(--accent-text);"
             >
               FREE MEETUP
             </span>
 
             <h2
               class="mb-3 text-2xl font-bold md:text-3xl"
-              style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.02em;"
+              style="font-family: 'Outfit', sans-serif; color: var(--fg); letter-spacing: -0.02em;"
             >
               {SERIES_NAME} — {next.city}
             </h2>
 
-            <p class="mb-4 text-lg" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
+            <p class="mb-4 text-lg" style="font-family: 'JetBrains Mono', monospace; color: var(--accent-text);">
               <time datetime={next.start}>{formatMeetupDate(next.date!)}</time>
               {next.timeLabel && <span> · {next.timeLabel}</span>}
             </p>
 
-            <p class="mb-6 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+            <p class="mb-6 max-w-2xl leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
               {next.blurb ??
                 'A monthly evening for local business owners on using AI to save time, improve margins, and get more done. Real examples, open Q&A, and a room full of other owners working on the same problem.'}
               {' '}{next.venue.name}, {fullAddress(next)}. Free to attend.
@@ -71,13 +71,13 @@ const next = nextMeetup();
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                  style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+                  style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;"
                 >Save your seat →</a>
               )}
               <a
                 href="/meetups"
                 class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
-                style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+                style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
               >All meetups</a>
             </div>
           </div>

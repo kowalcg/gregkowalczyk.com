@@ -91,14 +91,14 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
           {post.data.tag && (
             <span
               class="rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: #f06000;"
+              style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: var(--accent-text);"
             >
               {post.data.tag}
             </span>
           )}
           <span
             class="text-xs"
-            style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+            style="font-family: 'JetBrains Mono', monospace; color: var(--muted);"
           >
             {formattedDate}
           </span>
@@ -106,19 +106,19 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
 
         <h1
           class="mb-4 text-3xl font-bold leading-tight md:text-4xl"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--fg);"
         >
           {post.data.title}
         </h1>
 
         <p
           class="mb-4 text-lg leading-relaxed"
-          style="font-family: 'Outfit', sans-serif; color: #798897;"
+          style="font-family: 'Outfit', sans-serif; color: var(--muted);"
         >
           {post.data.description}
         </p>
 
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[#798897]"
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-[var(--muted)]"
              style="font-family: 'Outfit', sans-serif;">
           <span>~{readingTime} min read</span>
           <span style="color: rgba(240, 96, 0, 0.7); font-size: 0.7rem;">v{post.data.version}</span>
@@ -129,7 +129,7 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
 
         <!-- Author block -->
         <div class="flex items-center gap-4 mt-8 pb-8"
-          style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+          style="border-bottom: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);">
           <div class="flex items-center gap-4 flex-1">
             <img
               src="/images/greg-headshot.jpg"
@@ -143,11 +143,11 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
             />
             <div class="flex flex-col gap-0.5">
               <div class="flex items-center gap-1.5">
-                <span class="text-xs font-medium" style="color: #798897; font-family: 'Outfit', sans-serif;">Author:</span>
-                <strong class="text-sm" style="color: #ffffff; font-family: 'Outfit', sans-serif;">{post.data.author}</strong>
+                <span class="text-xs font-medium" style="color: var(--muted); font-family: 'Outfit', sans-serif;">Author:</span>
+                <strong class="text-sm" style="color: var(--fg); font-family: 'Outfit', sans-serif;">{post.data.author}</strong>
               </div>
-              <span class="text-xs" style="color: #798897; font-family: 'Outfit', sans-serif;">{post.data.authorTitle}</span>
-              <span class="text-xs" style="color: #798897; font-family: 'Outfit', sans-serif;">{formattedDate}</span>
+              <span class="text-xs" style="color: var(--muted); font-family: 'Outfit', sans-serif;">{post.data.authorTitle}</span>
+              <span class="text-xs" style="color: var(--muted); font-family: 'Outfit', sans-serif;">{formattedDate}</span>
             </div>
           </div>
           <a
@@ -196,7 +196,7 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
   .prose-blog {
     font-family: 'Outfit', sans-serif;
     font-size: 1.0625rem;
-    color: #ffffff;
+    color: var(--fg);
     line-height: 1.85;
   }
 
@@ -247,11 +247,11 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--fg);
     margin-top: 3rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 7%, transparent);
     letter-spacing: -0.01em;
   }
 
@@ -259,14 +259,14 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     font-family: 'Outfit', sans-serif;
     font-size: 1.15rem;
     font-weight: 600;
-    color: #9aa5b1;
+    color: var(--muted);
     margin-top: 2rem;
     margin-bottom: 0.625rem;
   }
 
   /* ── Paragraphs ──────────────────────────────────── */
   .prose-blog p {
-    color: #ffffff;
+    color: var(--fg);
     margin-bottom: 1.5rem;
   }
 
@@ -280,41 +280,41 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     position: relative;
     margin-bottom: 0.625rem;
     padding-left: 0.25rem;
-    color: #ffffff;
+    color: var(--fg);
   }
   .prose-blog ul li::before {
     content: '→';
     position: absolute;
     left: -1.25rem;
-    color: #f06000;
+    color: var(--accent-text);
     font-size: 0.8rem;
     top: 0.15rem;
   }
-  .prose-blog ol li { margin-bottom: 0.625rem; color: #ffffff; }
+  .prose-blog ol li { margin-bottom: 0.625rem; color: var(--fg); }
 
   /* ── Inline emphasis ─────────────────────────────── */
   .prose-blog strong {
-    color: #ffffff;
+    color: var(--fg);
     font-weight: 600;
   }
-  .prose-blog em { color: #9aa5b1; }
+  .prose-blog em { color: var(--muted); }
 
   /* ── Links ───────────────────────────────────────── */
   .prose-blog a {
-    color: #f06000;
+    color: var(--accent-text);
     text-decoration: none;
     border-bottom: 1px solid rgba(240, 96, 0, 0.35);
     transition: border-color 0.15s, color 0.15s;
   }
   .prose-blog a:hover {
-    color: #f06000;
+    color: var(--accent-text);
     border-bottom-color: rgba(56, 189, 248, 0.6);
   }
 
   /* ── Divider ─────────────────────────────────────── */
   .prose-blog hr {
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
     margin: 3rem 0;
   }
 
@@ -326,7 +326,7 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     border: 1px solid rgba(240, 96, 0, 0.15);
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
-    color: #f06000;
+    color: var(--accent-text);
   }
 
   /* ── Table ───────────────────────────────────────── */
@@ -342,7 +342,7 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     font-size: 0.9rem;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
   }
   .prose-blog thead {
     background: rgba(240, 96, 0, 0.08);
@@ -350,27 +350,27 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
   .prose-blog th {
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    color: #ffffff;
+    color: var(--fg);
     padding: 0.75rem 1rem;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
   .prose-blog td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 6%, transparent);
+    color: var(--fg);
     vertical-align: top;
   }
   .prose-blog td:first-child {
-    color: #ffffff;
+    color: var(--fg);
     font-weight: 500;
   }
   .prose-blog tbody tr:last-child td { border-bottom: none; }
   .prose-blog tbody tr:nth-child(even) td {
-    background: rgba(255, 255, 255, 0.02);
+    background: color-mix(in srgb, var(--fg) 2%, transparent);
   }
 
   /* ── Blockquote ──────────────────────────────────── */
@@ -380,16 +380,13 @@ const extraSchema = faqJsonLd ? [articleJsonLd, faqJsonLd] : [articleJsonLd];
     margin: 1.75rem 0;
     background: rgba(240, 96, 0, 0.04);
     border-radius: 0 6px 6px 0;
-    color: #9aa5b1;
+    color: var(--muted);
     font-style: italic;
   }
   .prose-blog blockquote p { margin-bottom: 0; }
 
-  /* ── Italic footer note ──────────────────────────── */
-  .prose-blog p em:only-child {
-    display: block;
-    font-size: 0.875rem;
-    color: #798897;
-    margin-top: 0;
-  }
+  /* The old "italic footer note" rule (p em:only-child → display:block) also
+     caught a single italic word inside a sentence — CSS can't tell them
+     apart — and broke it onto its own line. Removed Sep 2026; footer notes
+     stay italic and muted through the .prose-blog em rule above. */
 </style>

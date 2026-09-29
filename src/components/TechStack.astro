@@ -42,7 +42,7 @@ const categories = [
 
     <!-- Section Intro -->
     <p
-      class="mx-auto mb-16 max-w-2xl text-center text-[#798897]"
+      class="mx-auto mb-16 max-w-2xl text-center text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       I don't just use these tools — I build custom solutions on top of them.
@@ -54,7 +54,7 @@ const categories = [
         <div class="fade-in-up">
           {/* Category Label */}
           <p
-            class="mb-4 text-sm uppercase tracking-wider text-[#f06000]"
+            class="mb-4 text-sm uppercase tracking-wider text-[var(--accent-text)]"
             style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
           >
             {category.label}
@@ -64,8 +64,8 @@ const categories = [
           <div class="flex flex-wrap gap-3">
             {category.tools.map((tool) => (
               <span
-                class="tool-pill rounded-lg border border-white/[0.06] px-4 py-2 text-sm text-[#ffffff]"
-                style="background: rgba(255,255,255,0.03); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;"
+                class="tool-pill rounded-lg border border-white/[0.06] px-4 py-2 text-sm text-[var(--fg)]"
+                style="background: color-mix(in srgb, var(--fg) 3%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;"
               >
                 {tool}
               </span>

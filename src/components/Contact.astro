@@ -26,7 +26,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
 
     <!-- Section Intro -->
     <p
-      class="mx-auto mb-16 max-w-2xl text-center text-[#798897]"
+      class="mx-auto mb-16 max-w-2xl text-center text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Tell me what's eating your time or budget. I'll tell you if AI can fix it
@@ -43,18 +43,18 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <div>
               <label
                 for="contact-name"
-                class="mb-2 block text-sm text-[#798897]"
+                class="mb-2 block text-sm text-[var(--muted)]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Name <span class="text-[#f06000]">*</span>
+                Name <span class="text-[var(--accent-text)]">*</span>
               </label>
               <input
                 type="text"
                 id="contact-name"
                 name="name"
                 required
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
-                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+                class="contact-input w-full rounded-xl border border-[var(--rule)] px-4 py-3 text-[var(--fg)] placeholder-[var(--muted)]/50 outline-none"
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
 
@@ -62,18 +62,18 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <div>
               <label
                 for="contact-email"
-                class="mb-2 block text-sm text-[#798897]"
+                class="mb-2 block text-sm text-[var(--muted)]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Email <span class="text-[#f06000]">*</span>
+                Email <span class="text-[var(--accent-text)]">*</span>
               </label>
               <input
                 type="email"
                 id="contact-email"
                 name="email"
                 required
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
-                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+                class="contact-input w-full rounded-xl border border-[var(--rule)] px-4 py-3 text-[var(--fg)] placeholder-[var(--muted)]/50 outline-none"
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
 
@@ -81,7 +81,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <div>
               <label
                 for="contact-company"
-                class="mb-2 block text-sm text-[#798897]"
+                class="mb-2 block text-sm text-[var(--muted)]"
                 style="font-family: 'Outfit', sans-serif;"
               >
                 Company
@@ -90,8 +90,8 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
                 type="text"
                 id="contact-company"
                 name="company"
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
-                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+                class="contact-input w-full rounded-xl border border-[var(--rule)] px-4 py-3 text-[var(--fg)] placeholder-[var(--muted)]/50 outline-none"
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               />
             </div>
 
@@ -99,7 +99,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <div>
               <label
                 for="contact-budget"
-                class="mb-2 block text-sm text-[#798897]"
+                class="mb-2 block text-sm text-[var(--muted)]"
                 style="font-family: 'Outfit', sans-serif;"
               >
                 Approximate Budget
@@ -107,15 +107,15 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
               <select
                 id="contact-budget"
                 name="budget"
-                class="contact-input w-full rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] outline-none"
-                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+                class="contact-input w-full rounded-xl border border-[var(--rule)] px-4 py-3 text-[var(--fg)] outline-none"
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               >
-                <option value="" style="background: #1a1a1a;">Not sure yet</option>
-                <option value="under-2k" style="background: #1a1a1a;">Under $2,000</option>
-                <option value="2k-5k" style="background: #1a1a1a;">$2,000 – $5,000</option>
-                <option value="5k-10k" style="background: #1a1a1a;">$5,000 – $10,000</option>
-                <option value="10k-25k" style="background: #1a1a1a;">$10,000 – $25,000</option>
-                <option value="25k-plus" style="background: #1a1a1a;">$25,000+</option>
+                <option value="" style="background: var(--surface-2);">Not sure yet</option>
+                <option value="under-2k" style="background: var(--surface-2);">Under $2,000</option>
+                <option value="2k-5k" style="background: var(--surface-2);">$2,000 – $5,000</option>
+                <option value="5k-10k" style="background: var(--surface-2);">$5,000 – $10,000</option>
+                <option value="10k-25k" style="background: var(--surface-2);">$10,000 – $25,000</option>
+                <option value="25k-plus" style="background: var(--surface-2);">$25,000+</option>
               </select>
             </div>
 
@@ -123,10 +123,10 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <div>
               <label
                 for="contact-message"
-                class="mb-2 block text-sm text-[#798897]"
+                class="mb-2 block text-sm text-[var(--muted)]"
                 style="font-family: 'Outfit', sans-serif;"
               >
-                Message <span class="text-[#f06000]">*</span>
+                Message <span class="text-[var(--accent-text)]">*</span>
               </label>
               <textarea
                 id="contact-message"
@@ -134,13 +134,13 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
                 required
                 rows="5"
                 placeholder="What manual work or agency costs would you like to eliminate?"
-                class="contact-input w-full resize-y rounded-xl border border-white/10 px-4 py-3 text-[#ffffff] placeholder-[#798897]/50 outline-none"
-                style="background: rgba(255,255,255,0.05); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
+                class="contact-input w-full resize-y rounded-xl border border-[var(--rule)] px-4 py-3 text-[var(--fg)] placeholder-[var(--muted)]/50 outline-none"
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); font-family: 'Outfit', sans-serif; transition: border-color 200ms ease, box-shadow 200ms ease;"
               ></textarea>
             </div>
 
-            {/* Hidden field. Astro's {/* */} comments are not rendered, so this
-                stays out of the HTML — a <!-- --> comment would label the trap. */}
+            {/* Hidden honeypot field. JSX comments are not rendered, so this note
+                stays out of the HTML; an HTML comment would label the trap for bots. */}
             <div class="absolute -left-[9999px]" aria-hidden="true">
               <label for="contact-website">Website</label>
               <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
@@ -151,7 +151,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
               type="submit"
               id="contact-submit"
               class="w-full cursor-pointer rounded-full px-8 py-4 text-base font-semibold  transition-transform duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
-              style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+              style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;"
             >
               Send Message
             </button>
@@ -175,7 +175,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <!-- Email -->
             <a
               href="mailto:prekoconsult@gmail.com"
-              class="contact-link flex items-center gap-3 text-[#798897]"
+              class="contact-link flex items-center gap-3 text-[var(--muted)]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -199,7 +199,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
             <!-- Phone -->
             <a
               href="tel:+19053349282"
-              class="contact-link flex items-center gap-3 text-[#798897]"
+              class="contact-link flex items-center gap-3 text-[var(--muted)]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -224,7 +224,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
               href="https://www.linkedin.com/in/gregkowalczyk/"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#798897]"
+              class="contact-link flex items-center gap-3 text-[var(--muted)]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -251,7 +251,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
               href="https://x.com/kowalcg"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#798897]"
+              class="contact-link flex items-center gap-3 text-[var(--muted)]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -272,7 +272,7 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
               href="https://www.facebook.com/Kowalcg/"
               target="_blank"
               rel="noopener noreferrer"
-              class="contact-link flex items-center gap-3 text-[#798897]"
+              class="contact-link flex items-center gap-3 text-[var(--muted)]"
               style="font-family: 'Outfit', sans-serif; transition: color 200ms ease;"
             >
               <svg
@@ -294,11 +294,11 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
           </div>
 
           <!-- Divider -->
-          <div class="my-6" style="border-top: 1px solid rgba(255,255,255,0.08);"></div>
+          <div class="my-6" style="border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"></div>
 
           <!-- Location -->
           <p
-            class="text-sm text-[#798897]"
+            class="text-sm text-[var(--muted)]"
             style="font-family: 'Outfit', sans-serif;"
           >
             Based in Oakville, Ontario — serving the Greater Toronto Area and beyond
@@ -317,12 +317,12 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
   }
 
   select.contact-input option {
-    background: #1a1a1a;
-    color: #ffffff;
+    background: var(--surface-2);
+    color: var(--fg);
   }
 
   .contact-link:hover {
-    color: #ffffff;
+    color: var(--fg);
   }
 </style>
 

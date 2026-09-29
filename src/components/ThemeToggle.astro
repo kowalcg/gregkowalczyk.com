@@ -1,0 +1,43 @@
+---
+// Light ("paper blueprint") / dark switch in the top bar (Sep 2026).
+// The initial theme is set before paint by the inline script in Layout.astro;
+// this button flips it, remembers the choice, and tells the WebGL/SVG
+// animations to recolour ('gk-theme' event).
+---
+
+<button type="button" class="tt" data-theme-toggle aria-label="Switch to light theme" title="Switch theme">
+  <svg class="tt-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+  <svg class="tt-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z" /></svg>
+</button>
+
+<script>
+  function setup(btn: HTMLButtonElement) {
+    const label = () => {
+      const light = document.documentElement.dataset.theme === 'light';
+      btn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+      btn.setAttribute('aria-pressed', String(light));
+    };
+    label();
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('gk-theme', next); } catch { /* private mode: still switches for this visit */ }
+      document.querySelectorAll('[data-theme-toggle]').forEach((b) => b.dispatchEvent(new Event('gk-sync')));
+      window.dispatchEvent(new CustomEvent('gk-theme', { detail: next }));
+    });
+    btn.addEventListener('gk-sync', label);
+  }
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach(setup);
+</script>
+
+<style>
+  .tt { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--rule-strong); background: transparent; color: var(--fg); cursor: pointer; transition: border-color .2s, background .2s; flex: none; }
+  .tt:hover { border-color: var(--accent); }
+  .tt:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tt svg { width: 18px; height: 18px; grid-area: 1 / 1; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; transition: opacity .25s, transform .35s; }
+  .tt-moon { fill: currentColor; stroke: none; }
+  /* show the theme you would switch TO */
+  :global([data-theme="dark"]) .tt-moon, :global(:root:not([data-theme])) .tt-moon { opacity: 0; transform: rotate(-40deg) scale(.6); }
+  :global([data-theme="light"]) .tt-sun { opacity: 0; transform: rotate(40deg) scale(.6); }
+  @media (prefers-reduced-motion: reduce) { .tt svg { transition: none; } }
+</style>

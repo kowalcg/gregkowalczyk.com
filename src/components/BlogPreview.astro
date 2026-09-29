@@ -18,7 +18,7 @@ const recentPosts = allPosts
     </h2>
     <p
       class="mb-12 text-center"
-      style="font-family: 'Outfit', sans-serif; color: #798897;"
+      style="font-family: 'Outfit', sans-serif; color: var(--muted);"
     >
       Practical posts on AI tools, automation, and building things that actually work.
     </p>
@@ -38,7 +38,7 @@ const recentPosts = allPosts
     ) : (
       <div
         class="glass-card p-8 text-center"
-        style="font-family: 'Outfit', sans-serif; color: #798897;"
+        style="font-family: 'Outfit', sans-serif; color: var(--muted);"
       >
         <p>First post coming soon.</p>
       </div>
@@ -48,23 +48,23 @@ const recentPosts = allPosts
       <a
         href="/news"
         class="inline-block rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105"
-        style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+        style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
       >
         Read All Posts →
       </a>
     </div>
 
     <!-- Brand blogs -->
-    <div class="mt-12 border-t pt-10" style="border-color: rgba(255,255,255,0.06);">
+    <div class="mt-12 border-t pt-10" style="border-color: color-mix(in srgb, var(--fg) 6%, transparent);">
       <p
         class="mb-2 text-center text-sm"
-        style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+        style="font-family: 'JetBrains Mono', monospace; color: var(--muted);"
       >
         <span class="comment-prefix">// </span>Also writing across the brands
       </p>
       <p
         class="mb-8 text-center text-sm"
-        style="font-family: 'Outfit', sans-serif; color: #798897;"
+        style="font-family: 'Outfit', sans-serif; color: var(--muted);"
       >
         Every brand publishes its own blog — all written by Greg.
       </p>
@@ -133,20 +133,20 @@ const recentPosts = allPosts
               ></span>
               <span
                 class="text-base font-semibold"
-                style="font-family: 'Outfit', sans-serif; color: #ffffff;"
+                style="font-family: 'Outfit', sans-serif; color: var(--fg);"
               >
                 {brand.name}
               </span>
             </div>
             <p
               class="mb-3 text-sm"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
+              style="font-family: 'Outfit', sans-serif; color: var(--muted);"
             >
               {brand.desc}
             </p>
             <span
               class="text-xs transition-colors duration-200 group-hover:text-white"
-              style="font-family: 'JetBrains Mono', monospace; color: #798897;"
+              style="font-family: 'JetBrains Mono', monospace; color: var(--muted);"
             >
               {brand.domain} ↗
             </span>

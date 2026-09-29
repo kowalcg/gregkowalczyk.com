@@ -1,6 +1,6 @@
 // Homepage "Proof of work" (Act 1) and "Draw your blueprint" (Act 2).
 // Every number here must match the live product or its /projects/ page.
-// Screenshots: public/images/proof/ (live captures, Sep 28 2026) and public/images/projects/.
+// Screenshots: public/images/proof/ (live captures, Sep 28–29 2026) and public/images/projects/.
 
 export interface ProofProject {
   slug: string;
@@ -44,6 +44,20 @@ export const PROOF_PROJECTS: ProofProject[] = [
     stats: [['875', 'runners, sold out in year one'], ['1,800+', 'race photos archived'], ['3 races', 'in 2027: 5K, 10K and Kids 1K']],
     link: 'https://www.bronteharbourclassic.com/',
     linkLabel: 'bronteharbourclassic.com',
+    external: true,
+  },
+  {
+    slug: 'bronte-runners',
+    img: '/images/proof/bronterunners-live.webp',
+    url: 'bronterunners.vercel.app',
+    name: 'Bronte Runners',
+    tag: 'Community running club website',
+    status: 'Shipped',
+    constraint: 'A free club with 800+ members needed one place for this week’s runs, the routes, events and photos.',
+    built: 'The club website: a live countdown to the next run, mapped routes, events, news, photo albums, team and partner pages. Volunteers update it by editing simple files.',
+    stats: [['800+', 'members in Oakville and Burlington'], ['1 day', 'to build and ship it'], ['3', 'group runs a week, year-round']],
+    link: 'https://bronterunners.vercel.app/',
+    linkLabel: 'bronterunners.vercel.app',
     external: true,
   },
   {
@@ -136,29 +150,29 @@ export interface BlueprintLeak {
   system: string;
   parts: string[]; // TOOLS and NOUN are filled in on the client
   outcome: string;
-  proof: number; // index into PROOF_PROJECTS
+  proof: string; // slug in PROOF_PROJECTS (not a position: the list can grow)
   proofText: string;
 }
 
 export const BLUEPRINT_LEAKS: BlueprintLeak[] = [
   { id: 'reports', label: 'Reports and numbers take hours', system: 'Decision dashboard with an AI analyst',
     parts: ['Nightly sync from TOOLS', 'One screen for NOUN’s numbers', 'Ask questions in plain English'],
-    outcome: 'Answers in a sentence, not an afternoon of spreadsheets', proof: 0, proofText: 'Helm, built for my own two brands' },
+    outcome: 'Answers in a sentence, not an afternoon of spreadsheets', proof: 'helm', proofText: 'Helm, built for my own two brands' },
   { id: 'found', label: 'People can’t find us online', system: 'Search-first website',
     parts: ['A page for every service and area', 'Structured for Google and AI answers', 'Shows which pages bring customers'],
-    outcome: 'Found by the people already searching for NOUN', proof: 2, proofText: 'SportClinicFinder: 12,777 clinics, 519 cities' },
+    outcome: 'Found by the people already searching for NOUN', proof: 'sportsclinicfinder', proofText: 'SportClinicFinder: 12,777 clinics, 519 cities' },
   { id: 'leads', label: 'Inquiries slip through the cracks', system: 'Lead catcher with instant follow-up',
     parts: ['Every form and email lands in one place', 'Instant reply plus follow-up reminders', 'Weekly list: who asked, who bought'],
-    outcome: 'No inquiry waits until Monday', proof: 2, proofText: 'SportClinicFinder: clinic claims verify and upgrade automatically' },
+    outcome: 'No inquiry waits until Monday', proof: 'sportsclinicfinder', proofText: 'SportClinicFinder: clinic claims verify and upgrade automatically' },
   { id: 'admin', label: 'The same admin and emails every day', system: 'Admin autopilot',
     parts: ['Drafts the routine emails', 'Files and tags what comes in', 'Sends you one daily brief'],
-    outcome: 'Your mornings back', proof: 0, proofText: 'Helm: daily ad review and weekly brief by email' },
+    outcome: 'Your mornings back', proof: 'helm', proofText: 'Helm: daily ad review and weekly brief by email' },
   { id: 'app', label: 'Customers want an app or a tool', system: 'Your own customer app',
     parts: ['Built around the one number customers care about', 'Brings people back to NOUN', 'Live on the App Store'],
-    outcome: 'A reason to open NOUN every day', proof: 4, proofText: 'SunUp and RunMate Pro, both live on the App Store' },
+    outcome: 'A reason to open NOUN every day', proof: 'sunup', proofText: 'SunUp and RunMate Pro, both live on the App Store' },
   { id: 'event', label: 'Running an event or community', system: 'Event hub',
     parts: ['Registration, course and sponsor pages', 'Sponsor pages that last all year', 'A permanent photo and results archive'],
-    outcome: 'Year two starts with an audience, not from zero', proof: 1, proofText: 'Bronte Harbour Classic, sold out in year one' },
+    outcome: 'Year two starts with an audience, not from zero', proof: 'bronte-harbour-classic', proofText: 'Bronte Harbour Classic, sold out in year one' },
 ];
 
 export const BLUEPRINT_TOOLS = ['Shopify', 'Amazon', 'Square or POS', 'QuickBooks', 'Google Sheets', 'Gmail or Outlook', 'Instagram / Meta', 'Google Ads', 'WordPress or Wix', 'Booking software'];

@@ -7,10 +7,10 @@
 import { currentYear } from '../data/site';
 ---
 
-<footer style="background-color: #1a1a1a; border-top: 1px solid rgba(255,255,255,0.08);">
+<footer style="background-color: var(--surface-2); border-top: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);">
   <div class="mx-auto max-w-6xl px-6 pt-6">
     <p
-      class="text-center text-sm text-[#798897]"
+      class="text-center text-sm text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Things I've built:
@@ -35,7 +35,7 @@ import { currentYear } from '../data/site';
       <a href="/skills/video-to-skill/" class="footer-social" style="transition: color 200ms ease;">Free skill: video-to-skill</a>
     </p>
     <p
-      class="mt-3 text-center text-sm text-[#798897]"
+      class="mt-3 text-center text-sm text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Free monthly meetup:
@@ -47,7 +47,7 @@ import { currentYear } from '../data/site';
   <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
     <!-- Left: Copyright -->
     <p
-      class="text-sm text-[#798897]"
+      class="text-sm text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       &copy; {currentYear} Greg Kowalczyk. Built with Astro.
@@ -59,7 +59,7 @@ import { currentYear } from '../data/site';
         href="https://www.linkedin.com/in/gregkowalczyk/"
         target="_blank"
         rel="noopener noreferrer"
-        class="footer-social text-[#798897]"
+        class="footer-social text-[var(--muted)]"
         aria-label="Greg Kowalczyk on LinkedIn"
         style="transition: color 200ms ease;"
       >
@@ -83,7 +83,7 @@ import { currentYear } from '../data/site';
         href="https://x.com/kowalcg"
         target="_blank"
         rel="noopener noreferrer"
-        class="footer-social text-[#798897]"
+        class="footer-social text-[var(--muted)]"
         aria-label="Greg Kowalczyk on X"
         style="transition: color 200ms ease;"
       >
@@ -101,7 +101,7 @@ import { currentYear } from '../data/site';
         href="https://www.facebook.com/Kowalcg/"
         target="_blank"
         rel="noopener noreferrer"
-        class="footer-social text-[#798897]"
+        class="footer-social text-[var(--muted)]"
         aria-label="Greg Kowalczyk on Facebook"
         style="transition: color 200ms ease;"
       >
@@ -123,7 +123,7 @@ import { currentYear } from '../data/site';
 
     <!-- Right: Tagline -->
     <p
-      class="text-sm text-[#798897]"
+      class="text-sm text-[var(--muted)]"
       style="font-family: 'Outfit', sans-serif;"
     >
       Business Growth Engineer &middot; Oakville, Ontario
@@ -133,6 +133,6 @@ import { currentYear } from '../data/site';
 
 <style>
   .footer-social:hover {
-    color: #ffffff;
+    color: var(--fg);
   }
 </style>

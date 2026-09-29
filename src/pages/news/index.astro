@@ -31,7 +31,7 @@ function readingTime(body: string) {
       <div class="mx-auto max-w-6xl px-6">
 
         {posts.length === 0 ? (
-          <div class="glass-card p-12 text-center" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          <div class="glass-card p-12 text-center" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
             <p>First post coming soon.</p>
           </div>
         ) : (
@@ -41,7 +41,7 @@ function readingTime(body: string) {
               <a
                 href={`/news/${featured.slug}`}
                 class="group block rounded-2xl overflow-hidden mb-10 transition-all duration-300 hover:-translate-y-1"
-                style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); text-decoration: none;"
+                style="background: color-mix(in srgb, var(--fg) 4%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent); text-decoration: none;"
               >
                 <div class="grid md:grid-cols-2 gap-0">
 
@@ -58,12 +58,12 @@ function readingTime(body: string) {
                         decoding="async"
                       />
                     ) : (
-                      <div class="absolute inset-0" style="background: linear-gradient(135deg, #1a1a1a 0%, #1a1a1a 100%);">
+                      <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface-2) 100%);">
                         <div class="absolute inset-0 opacity-20" style="background: radial-gradient(circle at 30% 70%, #f06000 0%, transparent 60%);"></div>
                       </div>
                     )}
                     <div class="absolute top-5 left-5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
-                      style="background: rgba(240, 96, 0, 0.9); color: #000000; font-family: 'JetBrains Mono', monospace;">
+                      style="background: rgba(240, 96, 0, 0.9); color: var(--on-accent); font-family: 'JetBrains Mono', monospace;">
                       Featured
                     </div>
                   </div>
@@ -73,20 +73,20 @@ function readingTime(body: string) {
                     {featured.data.tag && (
                       <div class="mb-4">
                         <span class="rounded-full px-3 py-1 text-xs"
-                          style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: #f06000;">
+                          style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: var(--accent-text);">
                           {featured.data.tag}
                         </span>
                       </div>
                     )}
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight transition-colors duration-200 group-hover:text-[#f06000]"
-                      style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 leading-tight transition-colors duration-200 group-hover:text-[var(--accent-text)]"
+                      style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">
                       {featured.data.title}
                     </h2>
-                    <p class="text-sm leading-relaxed mb-6" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                    <p class="text-sm leading-relaxed mb-6" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
                       {featured.data.description}
                     </p>
                     <div class="flex items-center justify-between flex-wrap gap-3">
-                      <div class="flex items-center gap-2 text-xs" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                      <div class="flex items-center gap-2 text-xs" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
                         <span>{featured.data.author}</span>
                         <span>&middot;</span>
                         <time datetime={featured.data.pubDate.toISOString()}>
@@ -96,7 +96,7 @@ function readingTime(body: string) {
                         <span>{readingTime(featured.body)} min read</span>
                       </div>
                       <span class="text-sm font-semibold flex items-center gap-1 transition-all duration-200 group-hover:translate-x-1"
-                        style="font-family: 'Outfit', sans-serif; color: #f06000;">
+                        style="font-family: 'Outfit', sans-serif; color: var(--accent-text);">
                         Read &rarr;
                       </span>
                     </div>
@@ -113,7 +113,7 @@ function readingTime(body: string) {
                   <a
                     href={`/news/${post.slug}`}
                     class="group block rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-                    style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); text-decoration: none;"
+                    style="background: color-mix(in srgb, var(--fg) 4%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent); text-decoration: none;"
                   >
                     {/* Thumbnail */}
                     <div class="h-44 relative overflow-hidden">
@@ -128,7 +128,7 @@ function readingTime(body: string) {
                           decoding="async"
                         />
                       ) : (
-                        <div class="absolute inset-0" style="background: linear-gradient(135deg, #1a1a1a 0%, #1a1a1a 100%);">
+                        <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface-2) 100%);">
                           <div class="absolute inset-0 opacity-15" style="background: radial-gradient(circle at 50% 50%, #f06000 0%, transparent 70%);"></div>
                         </div>
                       )}
@@ -139,23 +139,23 @@ function readingTime(body: string) {
                       {post.data.tag && (
                         <div class="mb-3">
                           <span class="rounded-full px-3 py-1 text-xs"
-                            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: #f06000;">
+                            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: var(--accent-text);">
                             {post.data.tag}
                           </span>
                         </div>
                       )}
-                      <h3 class="text-base font-bold mb-3 leading-snug transition-colors duration-200 group-hover:text-[#f06000]"
-                        style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">
+                      <h3 class="text-base font-bold mb-3 leading-snug transition-colors duration-200 group-hover:text-[var(--accent-text)]"
+                        style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">
                         {post.data.title}
                       </h3>
-                      <p class="text-sm leading-relaxed mb-4 line-clamp-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                      <p class="text-sm leading-relaxed mb-4 line-clamp-2" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
                         {post.data.description}
                       </p>
-                      <div class="flex items-center justify-between text-xs" style="font-family: 'Outfit', sans-serif; color: #798897;">
+                      <div class="flex items-center justify-between text-xs" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
                         <time datetime={post.data.pubDate.toISOString()}>
                           {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </time>
-                        <span style="color: #f06000; font-weight: 600;">{readingTime(post.body)} min read</span>
+                        <span style="color: var(--accent-text); font-weight: 600;">{readingTime(post.body)} min read</span>
                       </div>
                     </div>
                   </a>

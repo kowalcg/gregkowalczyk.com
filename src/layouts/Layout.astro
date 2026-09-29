@@ -215,6 +215,16 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    {/* Theme before first paint (no flash): the visitor's saved choice, else
+        their device setting, else dark. ThemeToggle.astro changes it. */}
+    <script is:inline>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('gk-theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <!-- Google Fonts (preconnect + non-blocking load) -->
@@ -235,7 +245,8 @@ const structuredData = { "@context": "https://schema.org", "@graph": graph };
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
     <!-- RSS -->
     <link

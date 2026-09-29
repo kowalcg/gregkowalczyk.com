@@ -53,7 +53,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
 
         <h3
           class="mb-4 text-xl font-bold md:text-2xl"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--fg);"
         >
           {name}
         </h3>
@@ -61,7 +61,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
         {callout && (
           <div
             class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
-            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); border-left: 3px solid #f06000; color: #ff8a3d;"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); border-left: 3px solid #f06000; color: var(--accent-text);"
           >
             {callout}
           </div>
@@ -69,12 +69,12 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
 
         <p
           class="mb-6 text-sm leading-relaxed md:text-base"
-          style="font-family: 'Outfit', sans-serif; color: #798897;"
+          style="font-family: 'Outfit', sans-serif; color: var(--muted);"
         >
           {description}
         </p>
 
-        <ul class="mb-6 space-y-2 text-sm md:text-base" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <ul class="mb-6 space-y-2 text-sm md:text-base" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           {stats.map((stat) => (
             <li class="flex items-start gap-3">
               <span
@@ -90,7 +90,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
           {tech.map((t) => (
             <span
               class="rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.08);"
+              style="font-family: 'JetBrains Mono', monospace; background: color-mix(in srgb, var(--fg) 5%, transparent); color: var(--muted); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
             >
               {t}
             </span>
@@ -104,7 +104,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+              style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
             >
               {link.label} {link.external ? '↗' : '→'}
             </a>
@@ -116,7 +116,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
       <div class="flex items-center justify-center lg:justify-end">
         <div
           class="overflow-hidden rounded-2xl w-full"
-          style="border: 1px solid rgba(255,255,255,0.10); aspect-ratio: 16/10; box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);"
+          style="border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent); aspect-ratio: 16/10; box-shadow: 0 8px 32px color-mix(in srgb, var(--bg) 40%, transparent), 0 0 0 1px color-mix(in srgb, var(--fg) 5%, transparent);"
         >
           <img
             src={image}
@@ -142,7 +142,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
 
         <h3
           class="mb-4 text-xl font-bold md:text-2xl"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--fg);"
         >
           {name}
         </h3>
@@ -150,7 +150,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
         {callout && (
           <div
             class="mb-4 rounded-lg px-4 py-3 text-sm font-semibold"
-            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); border-left: 3px solid #f06000; color: #ff8a3d;"
+            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); border-left: 3px solid #f06000; color: var(--accent-text);"
           >
             {callout}
           </div>
@@ -158,12 +158,12 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
 
         <p
           class="mb-6 leading-relaxed"
-          style="font-family: 'Outfit', sans-serif; color: #798897;"
+          style="font-family: 'Outfit', sans-serif; color: var(--muted);"
         >
           {description}
         </p>
 
-        <ul class="mb-6 space-y-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <ul class="mb-6 space-y-2" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           {stats.map((stat) => (
             <li class="flex items-start gap-3">
               <span
@@ -179,7 +179,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
           {tech.map((t) => (
             <span
               class="rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: #798897; border: 1px solid rgba(255,255,255,0.08);"
+              style="font-family: 'JetBrains Mono', monospace; background: color-mix(in srgb, var(--fg) 5%, transparent); color: var(--muted); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
             >
               {t}
             </span>
@@ -193,7 +193,7 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
-              style="background: rgba(255,255,255,0.06); color: #ffffff; border: 1px solid rgba(255,255,255,0.12); font-family: 'Outfit', sans-serif;"
+              style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
             >
               {link.label} {link.external ? '↗' : '→'}
             </a>
@@ -204,11 +204,11 @@ const tagFg = tagColor === 'purple' ? '#f06000' : '#f06000';
       <div class="flex items-end justify-center md:justify-end">
         <div
           class="flex h-24 w-24 items-center justify-center rounded-2xl md:h-32 md:w-32"
-          style="background: rgba(240, 96, 0, 0.10); border: 1px solid rgba(255,255,255,0.08);"
+          style="background: rgba(240, 96, 0, 0.10); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);"
         >
           <span
             class="text-2xl font-bold opacity-40 md:text-3xl"
-            style="font-family: 'JetBrains Mono', monospace; color: #ffffff;"
+            style="font-family: 'JetBrains Mono', monospace; color: var(--fg);"
           >
             {initials}
           </span>

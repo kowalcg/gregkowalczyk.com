@@ -18,7 +18,7 @@ import { yearsInEngineering } from '../data/site';
         <!-- Eyebrow — the one place the accent appears above the fold -->
         <p
           class="mb-5 text-sm sm:text-base"
-          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #f06000; letter-spacing: 0.08em;"
+          style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: var(--accent-text); letter-spacing: 0.08em;"
         >
           business growth &middot; engineered
         </p>
@@ -26,18 +26,18 @@ import { yearsInEngineering } from '../data/site';
         <!-- H1 Headline -->
         <h1
           class="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl"
-          style="font-family: 'Outfit', sans-serif; color: #ffffff; letter-spacing: -0.035em; line-height: 1.04; text-wrap: balance;"
+          style="font-family: 'Outfit', sans-serif; color: var(--fg); letter-spacing: -0.035em; line-height: 1.04; text-wrap: balance;"
         >
           I grow businesses like an engineer.
         </h1>
 
         <!-- Sub-headline -->
         <p
-          class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[#798897] sm:text-lg lg:mx-0"
+          class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-[var(--muted)] sm:text-lg lg:mx-0"
           style="font-family: 'Outfit', sans-serif;"
         >
           Find the constraint. Fix it. Automate it. {yearsInEngineering} years in engineering, from
-          draftsman to manager of a 70-person department. Two e-commerce brands built and run since 2014.
+          mechanical designer to Manager of Engineering for a 70-person department. Two e-commerce brands built and run since 2014.
           AI is my current best tool — it replaced $75K+ a year of agency work in my own businesses
           before I ever built a system for a client.
         </p>
@@ -46,14 +46,14 @@ import { yearsInEngineering } from '../data/site';
         <div class="mb-4">
           <a
             href="/contact"
-            class="inline-block rounded-full px-8 py-4 text-base font-semibold  shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f06000] focus-visible:ring-offset-2 focus-visible:ring-offset-[#1a1a1a]"
-            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;"
+            class="inline-block rounded-full px-8 py-4 text-base font-semibold  shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#f06000] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface-2)]"
+            style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;"
           >Book a call</a>
         </div>
 
         <!-- Location Subtext -->
         <p
-          class="text-sm text-[#798897]"
+          class="text-sm text-[var(--muted)]"
           style="font-family: 'Outfit', sans-serif;"
         >
           Based in Oakville, Ontario — serving the GTA and beyond
@@ -64,17 +64,17 @@ import { yearsInEngineering } from '../data/site';
       <div class="flex w-full justify-center lg:w-[40%]">
         <div
           class="relative h-[280px] w-[280px] overflow-hidden rounded-2xl sm:h-[320px] sm:w-[320px]"
-          style="padding: 1px; background: rgba(255,255,255,0.14);"
+          style="padding: 1px; background: color-mix(in srgb, var(--fg) 14%, transparent);"
         >
           <!-- Inner container with rounded corners -->
-          <div class="relative h-full w-full overflow-hidden rounded-2xl" style="background-color: rgba(255, 255, 255, 0.05);">
+          <div class="relative h-full w-full overflow-hidden rounded-2xl" style="background-color: color-mix(in srgb, var(--fg) 5%, transparent);">
             <!-- Fallback gradient background -->
             <div
               class="absolute inset-0 flex items-center justify-center"
               style="background: rgba(240, 96, 0, 0.10);"
             >
               <span
-                class="text-5xl text-[#798897] opacity-30"
+                class="text-5xl text-[var(--muted)] opacity-30"
                 style="font-family: 'JetBrains Mono', monospace;"
               >
                 GK

@@ -72,32 +72,32 @@ const schema = [
   <main>
     <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
       <header class="mb-10">
-        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
-          <a href="/" class="hover:text-[#ffffff]">Home</a>
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
+          <a href="/" class="hover:text-[var(--fg)]">Home</a>
           <span class="mx-2">/</span>
-          <a href="/projects" class="hover:text-[#ffffff]">Projects</a>
+          <a href="/projects" class="hover:text-[var(--fg)]">Projects</a>
           <span class="mx-2">/</span>
-          <span style="color: #ffffff;">{skill.name}</span>
+          <span style="color: var(--fg);">{skill.name}</span>
         </nav>
         <div class="mb-4 flex flex-wrap items-center gap-3">
-          <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: #f06000;">
+          <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: var(--accent-text);">
             Claude Code skill · Free
           </span>
-          <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: #798897;">
+          <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
             v{skill.version} · {skill.size}
           </span>
         </div>
         <h1 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;">
           <span class="gradient-text">{skill.name}</span>
         </h1>
-        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           {skill.description}
         </p>
       </header>
 
       <div class="glass-card mb-12 p-8">
-        <h2 class="mb-4 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">What it does</h2>
-        <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <h2 class="mb-4 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">What it does</h2>
+        <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           {skill.whatItDoes.map((item) => (
             <li class="flex items-start gap-3">
               <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
@@ -108,25 +108,25 @@ const schema = [
       </div>
 
       <section id="download" class="glass-card mb-12 p-8" data-webhook={SHEETS_WEBHOOK_URL} data-download={skill.download} data-slug={skill.slug}>
-        <h2 class="mb-2 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Get the skill</h2>
-        <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <h2 class="mb-2 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">Get the skill</h2>
+        <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           Leave your name and email and the download appears right here. I'll send one follow-up with what people build with it, and an invitation to the next
-          <a href="/meetups" style="color: #f06000;">AI for Business meetup</a>. No newsletter, no drip.
+          <a href="/meetups" style="color: var(--accent-text);">AI for Business meetup</a>. No newsletter, no drip.
         </p>
 
         <form id="skill-form" class="space-y-4">
           <div class="grid gap-4 md:grid-cols-2">
             <div>
-              <label for="skill-name" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">Name</label>
+              <label for="skill-name" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">Name</label>
               <input id="skill-name" name="name" type="text" required autocomplete="name"
                 class="w-full rounded-lg px-4 py-3"
-                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; font-family: 'Outfit', sans-serif;" />
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); color: var(--fg); font-family: 'Outfit', sans-serif;" />
             </div>
             <div>
-              <label for="skill-email" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">Email</label>
+              <label for="skill-email" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">Email</label>
               <input id="skill-email" name="email" type="email" required autocomplete="email"
                 class="w-full rounded-lg px-4 py-3"
-                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: #ffffff; font-family: 'Outfit', sans-serif;" />
+                style="background: color-mix(in srgb, var(--fg) 5%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); color: var(--fg); font-family: 'Outfit', sans-serif;" />
             </div>
           </div>
           <div class="hidden" aria-hidden="true">
@@ -136,7 +136,7 @@ const schema = [
           <input type="hidden" name="message" value={`${skill.name} v${skill.version}`} />
           <button id="skill-submit" type="submit"
             class="rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
-            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;">
+            style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;">
             Show me the download
           </button>
           <p id="skill-status" class="hidden text-sm" style="font-family: 'Outfit', sans-serif;"></p>
@@ -145,37 +145,37 @@ const schema = [
         <div id="skill-ready" class="hidden">
           <a id="skill-download-link" href={skill.download} download
             class="inline-block rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
-            style="background: #f06000; color: #000000; font-family: 'Outfit', sans-serif;">
+            style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;">
             Download {skill.name}.zip ({skill.size}) ↓
           </a>
-          <p class="mt-4 text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          <p class="mt-4 text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
             Unzip it, then follow the install steps below. The README inside repeats them.
           </p>
         </div>
       </section>
 
       <section class="mb-12">
-        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Install in about 90 seconds</h2>
-        <ol class="space-y-4" style="font-family: 'Outfit', sans-serif; color: #798897;">
+        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Install in about 90 seconds</h2>
+        <ol class="space-y-4" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
           <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">1</span>
-            <span>Install <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer" style="color: #f06000;">Claude Code</a> if you don't have it, open a terminal, run <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">claude</code> once and sign in.</span>
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">1</span>
+            <span>Install <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer" style="color: var(--accent-text);">Claude Code</a> if you don't have it, open a terminal, run <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">claude</code> once and sign in.</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">2</span>
-            <span>Unzip the download and copy the <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">video-to-skill</code> folder into <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">~/.claude/skills/</code>. The README has the one-line command for Mac, Linux and Windows.</span>
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">2</span>
+            <span>Unzip the download and copy the <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">video-to-skill</code> folder into <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">~/.claude/skills/</code>. The README has the one-line command for Mac, Linux and Windows.</span>
           </li>
           <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: #f06000; font-family: 'JetBrains Mono', monospace;">3</span>
-            <span>Run <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">claude</code>, type <code style="font-family: 'JetBrains Mono', monospace; color: #ffffff;">/video-to-skill</code> and paste a YouTube link. Claude asks one question and gets to work.</span>
+            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">3</span>
+            <span>Run <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">claude</code>, type <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">/video-to-skill</code> and paste a YouTube link. Claude asks one question and gets to work.</span>
           </li>
         </ol>
         <div class="glass-card mt-6 p-6">
-          <p class="mb-2 text-sm font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Requirements</p>
-          <ul class="space-y-2 text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
+          <p class="mb-2 text-sm font-semibold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">Requirements</p>
+          <ul class="space-y-2 text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
             {skill.requirements.map((r) => (
               <li class="flex items-start gap-3">
-                <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #798897;"></span>
+                <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: var(--muted);"></span>
                 <span>{r}</span>
               </li>
             ))}
@@ -184,7 +184,7 @@ const schema = [
       </section>
 
       <section class="mb-12">
-        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Why I'm giving it away</h2>
+        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Why I'm giving it away</h2>
         <div class="prose-blog">
           <p>
             This is the skill I use to learn. A useful talk goes in, and a reference document I can search, share with my team and act on comes out, with the method captured as a skill Claude applies the next time I need it. It has replaced hours of note-taking for me, and it is the clearest demonstration I have of what a Claude Code skill is: a plain text file that turns a repeatable job into one command.
@@ -196,19 +196,19 @@ const schema = [
       </section>
 
       <section class="mt-14" aria-labelledby="skill-faq">
-        <h2 id="skill-faq" class="mb-6 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: #ffffff;">Frequently asked questions</h2>
+        <h2 id="skill-faq" class="mb-6 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Frequently asked questions</h2>
         <div class="space-y-4">
           {skill.faq.map(({ q, a }) => (
             <details class="glass-card p-6">
-              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">{q}</summary>
-              <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #798897;">{a}</p>
+              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">{q}</summary>
+              <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">{a}</p>
             </details>
           ))}
         </div>
       </section>
 
       <p class="mt-12">
-        <a href="/projects" class="text-sm transition-colors duration-200 hover:text-[#ffffff]" style="font-family: 'Outfit', sans-serif; color: #798897;">← All projects and skills</a>
+        <a href="/projects" class="text-sm transition-colors duration-200 hover:text-[var(--fg)]" style="font-family: 'Outfit', sans-serif; color: var(--muted);">← All projects and skills</a>
       </p>
     </article>
 

@@ -219,7 +219,18 @@ Each of these corresponds to a defect that was live in production before July 20
 - **Run `node scripts/audit-build.mjs` after every build.**
 - **Static build:** keep `output: 'static'`.
 - **Font loading:** keep the non-blocking preconnect pattern.
-- **Glass design tokens:** use the CSS custom properties, don't hardcode colours.
+- **Two themes (Sep 2026): dark "Signal" and light "paper blueprint".** Every colour comes
+  from the tokens at the top of `src/styles/global.css` (`--bg`, `--fg`, `--soft`, `--muted`,
+  `--rule`, `--panel`, `--grid`, `--line`, `--accent-text`…), defined for `:root` (dark) and
+  `:root[data-theme="light"]`. **Never hardcode a hex/rgba colour** in a component — it will
+  be wrong in one theme. Orange as a fill stays `#f06000`; orange as TEXT is
+  `var(--accent-text)` (deeper on white). Light = white page, lightly shaded boxes, graph
+  paper only inside drawings. The theme is set before paint by the inline script in
+  `Layout.astro` (localStorage `gk-theme`, else device setting); `ThemeToggle.astro` in the
+  Nav switches it and fires a `gk-theme` event — WebGL/canvas code must listen for it
+  (see `PALETTES` in `src/scripts/proof-scene.js`). The race bibs are paper in both themes.
+- **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
+
 
 ## CONTENT OWNERSHIP
 
