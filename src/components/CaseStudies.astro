@@ -1,8 +1,8 @@
 ---
 /**
  * CaseStudies.astro — Proof, Not Promises. Used on / and /services/.
- * Rebuilt Sep 2026 as before/after panels: a jammed queue on the left, the
- * built system flowing on the right, the real results in big type, and the
+ * Rebuilt Sep 2026 as before/after panels, one literal scene per story (shop →
+ * three sales channels; a 5-day week → a phone chat; cash leaving → cash kept), the real results in big type, and the
  * full story behind "Read the full story". All figures and copy below were
  * already live in the July–August 2026 version; do not add new ones.
  *
@@ -35,7 +35,7 @@
 const cases = [
   {
     tag: 'Client project',
-    icons: ['i-bag', 'i-box', 'i-mail'], beforeHead: 'One owner, every job by hand', afterHead: 'The shop now runs online',
+    scene: 'shop', beforeHead: 'One shop, one door', afterHead: 'Selling online, to companies, at better prices',
     title: 'Traditional retail shop to full e-commerce operation',
     before: 'New owner, 84+ hours a week, zero e-commerce experience',
     after: 'A complete digital operation, delivered in 6 weeks',
@@ -53,7 +53,7 @@ const cases = [
   },
   {
     tag: 'Built without waiting',
-    icons: ['i-doc', 'i-page', 'i-phone'], beforeHead: 'Every change waits for a developer', afterHead: 'Changes go live in minutes',
+    scene: 'speed', beforeHead: 'One small change took all week', afterHead: 'Now it takes minutes, from a phone',
     title: 'It used to take days. Now I do it from my phone.',
     before: 'Every change: brief a developer, wait days, review, wait again',
     after: 'Minutes: live before the conversation is over',
@@ -78,7 +78,7 @@ const cases = [
   },
   {
     tag: 'My businesses',
-    icons: ['i-mail', 'i-mega', 'i-doc'], beforeHead: 'Paying agencies for routine work', afterHead: 'The routine work runs itself',
+    scene: 'agency', beforeHead: 'Money out the door every month', afterHead: 'The money stays; the content multiplies',
     title: 'Two e-commerce brands running on AI tools I built myself',
     before: '$75K–$125K a year to agencies, freelancers and services',
     after: 'Systems I built, running every day',
@@ -101,7 +101,7 @@ const cases = [
   <div class="cs-head">
     <div class="cs-eyebrow">Proof, not promises</div>
     <h2 id="cs-heading">Before and after.</h2>
-    <p>Each little icon is a real piece of work: an order, an email, a page to change. Watch where it goes.</p>
+    <p>Three real jobs. On the left, how it was. On the right, what changed.</p>
   </div>
 
   <div class="cs-list">
@@ -113,52 +113,114 @@ const cases = [
         </div>
 
         <div class="cs-ba">
-          {/* BEFORE: work piles up in front of one busy person */}
+          {/* BEFORE / AFTER: each story draws its own scene (c.scene) */}
           <figure class="cs-panel cs-before">
             <figcaption class="cs-cap"><span class="cs-pill">Before</span><b>{c.beforeHead}</b></figcaption>
             <svg viewBox="0 0 320 170" aria-hidden="true" data-anim>
-              <path d="M8 138 H312" class="floor" />
-              {/* the pile keeps growing */}
-              {[[166, 112], [190, 112], [214, 112], [178, 90], [202, 90], [190, 68]].map(([x, y], k) => (
-                <use href={`#${c.icons[k % 3]}`} x={x} y={y} width="26" height="26" class="pile" />
-              ))}
-              {/* new work keeps arriving */}
-              {[0, 1, 2].map((k) => (
-                <use href={`#${c.icons[k]}`} width="26" height="26" class="incoming">
-                  <animateMotion dur="3s" begin={`-${k}s`} repeatCount="indefinite" path="M-10 108 L150 108" />
-                  <animate attributeName="opacity" dur="3s" begin={`-${k}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.85;1" />
-                </use>
-              ))}
-              <use href="#i-person" x="248" y="84" width="54" height="54" class="who" />
-              <use href="#i-clock" x="262" y="28" width="30" height="30" class="clock" />
-              <path d="M246 70 l-8 -8 M300 70 l8 -8 M274 22 v-8" class="stress" />
+              {c.scene === 'shop' && (
+                <g>
+                  <path d="M6 146 H314" class="floor" />
+                  {/* the shop: one door, open 9 to 5 */}
+                  <rect x="170" y="62" width="120" height="84" class="bld" />
+                  <path d="M162 62 h136 l-8 -20 h-120 z" class="awn" />
+                  {[0, 1, 2, 3, 4, 5].map((k) => <path d={`M${170 + k * 20} 42 h10 v20 h-10 z`} class="awn-s" />)}
+                  <rect x="214" y="98" width="30" height="48" class="door" />
+                  <rect x="180" y="74" width="26" height="20" class="win" /><rect x="254" y="74" width="26" height="20" class="win" />
+                  <text x="230" y="36" text-anchor="middle" class="say sm">Owner: 84+ hrs a week</text>
+                  {[0, 1].map((k) => (
+                    <use href="#i-person" width="28" height="28" class="walker">
+                      <animateMotion dur="6s" begin={`-${k * 3}s`} repeatCount="indefinite" path="M-10 116 L150 116" />
+                      <animate attributeName="opacity" dur="6s" begin={`-${k * 3}s`} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.1;.85;1" />
+                    </use>
+                  ))}
+                  <text x="12" y="30" class="say">Walk-in customers only</text>
+                </g>
+              )}
+              {c.scene === 'speed' && (
+                <g>
+                  {[['Mon', 'Brief', 'i-doc'], ['Tue', 'Wait', 'i-clock'], ['Wed', 'Review', 'i-person'], ['Thu', 'Wait', 'i-clock'], ['Fri', 'Live', 'i-check']].map(([d, what, ico], k) => (
+                    <g class={`day d${k}`}>
+                      <rect x={8 + k * 62} y="34" width="56" height="92" rx="8" class="daybox" />
+                      <text x={36 + k * 62} y="54" text-anchor="middle" class="say">{d}</text>
+                      <use href={`#${ico}`} x={24 + k * 62} y="64" width="24" height="24" class="dayico" />
+                      <text x={36 + k * 62} y="112" text-anchor="middle" class="say sm">{what}</text>
+                    </g>
+                  ))}
+                  <rect x="8" y="140" width="304" height="8" rx="4" class="track" />
+                  <rect x="8" y="140" width="304" height="8" rx="4" class="slowbar" />
+                  <text x="160" y="22" text-anchor="middle" class="say">5 days for one small change</text>
+                </g>
+              )}
+              {c.scene === 'agency' && (
+                <g>
+                  <path d="M6 146 H314" class="floor" />
+                  <use href="#i-bag" x="14" y="70" width="46" height="46" class="brand" />
+                  <text x="37" y="136" text-anchor="middle" class="say sm">Your brands</text>
+                  <path id="cs-cash" d="M64 92 C 130 60, 190 60, 236 92" class="wire" />
+                  {[0, 1, 2, 3].map((k) => (
+                    <use href="#i-dollar" width="22" height="22" x="-11" y="-11" class="coin">
+                      <animateMotion dur="2.8s" begin={`-${k * 0.7}s`} repeatCount="indefinite"><mpath href="#cs-cash" /></animateMotion>
+                    </use>
+                  ))}
+                  <rect x="236" y="54" width="70" height="92" class="bld" />
+                  {[0, 1, 2].map((r) => [0, 1].map((cc) => <rect x={248 + cc * 26} y={66 + r * 24} width="18" height="14" class="win" />))}
+                  <text x="271" y="42" text-anchor="middle" class="say">Agencies</text>
+                  <text x="12" y="30" class="say">Every month, out the door</text>
+                </g>
+              )}
             </svg>
             <p class="cs-say">{c.before}</p>
           </figure>
 
           <div class="cs-arrow" aria-hidden="true"><span>→</span></div>
 
-          {/* AFTER: the same work flows through a system and comes out done */}
+          {/* AFTER */}
           <figure class="cs-panel cs-after">
             <figcaption class="cs-cap"><span class="cs-pill cs-pill-on">After</span><b>{c.afterHead}</b></figcaption>
             <svg viewBox="0 0 320 170" aria-hidden="true" data-anim>
-              <path d="M8 138 H312" class="floor" />
-              <path id={`cs-in${i}`} d="M-10 96 H120" class="lane" />
-              <path id={`cs-out${i}`} d="M200 96 H300" class="lane" />
-              <rect x="118" y="60" width="84" height="72" rx="12" class="machine" />
-              <g class="gear"><use href="#i-gear" x="136" y="72" width="48" height="48" /><animateTransform attributeName="transform" type="rotate" from="0 160 96" to="360 160 96" dur="3s" repeatCount="indefinite" /></g>
-              {[0, 1, 2, 3].map((k) => (
-                <use href={`#${c.icons[k % 3]}`} width="24" height="24" class="flowing">
-                  <animateMotion dur="2.4s" begin={`-${k * 0.6}s`} repeatCount="indefinite"><mpath href={`#cs-in${i}`} /></animateMotion>
-                </use>
-              ))}
-              {[0, 1, 2, 3].map((k) => (
-                <use href="#i-check" width="24" height="24" class="done">
-                  <animateMotion dur="2.4s" begin={`-${k * 0.6}s`} repeatCount="indefinite"><mpath href={`#cs-out${i}`} /></animateMotion>
-                </use>
-              ))}
-              <use href="#i-person" x="266" y="20" width="44" height="44" class="who-ok" />
-              <use href="#i-heart" x="244" y="18" width="22" height="22" class="happy" />
+              {c.scene === 'shop' && (
+                <g>
+                  {/* the same shop, now selling three ways */}
+                  <rect x="10" y="70" width="70" height="56" class="bld" />
+                  <path d="M4 70 h82 l-6 -14 h-70 z" class="awn" />
+                  <rect x="36" y="96" width="18" height="30" class="door" />
+                  {[[34, 'Online', 'i-page', 'i-bag'], [88, 'Companies', 'i-box', 'i-box'], [142, 'Better prices', 'i-dollar', 'i-dollar']].map(([y, label, ico, mover], k) => (
+                    <g>
+                      <path id={`cs-sh${k}`} d={`M84 98 C 140 98, 150 ${Number(y) + 12}, 214 ${Number(y) + 12}`} class="wire" />
+                      <use href={`#${mover}`} width="18" height="18" x="-9" y="-9" class="mover">
+                        <animateMotion dur="2.4s" begin={`-${k * 0.8}s`} repeatCount="indefinite"><mpath href={`#cs-sh${k}`} /></animateMotion>
+                      </use>
+                      <use href={`#${ico}`} x="216" y={Number(y) - 2} width="28" height="28" class="dest" />
+                      <text x="250" y={Number(y) + 17} class="say sm">{label}</text>
+                    </g>
+                  ))}
+                </g>
+              )}
+              {c.scene === 'speed' && (
+                <g>
+                  {/* the phone chat: ask, and it is live */}
+                  <rect x="96" y="8" width="128" height="156" rx="18" class="phone" />
+                  <rect x="146" y="16" width="28" height="5" rx="2.5" class="notch" />
+                  <g class="b1"><rect x="112" y="34" width="100" height="36" rx="10" class="bub-me" /><text x="162" y="50" text-anchor="middle" class="bub-t on">Change the price</text><text x="162" y="63" text-anchor="middle" class="bub-t on">to $29</text></g>
+                  <g class="b2"><rect x="108" y="80" width="104" height="36" rx="10" class="bub-it" /><text x="160" y="96" text-anchor="middle" class="bub-t">Done — it's live</text><use href="#i-check" x="148" y="100" width="14" height="14" class="ok" /></g>
+                  <g class="b3"><use href="#i-clock" x="116" y="128" width="20" height="20" class="clk" /><text x="142" y="143" class="say">Minutes</text></g>
+                </g>
+              )}
+              {c.scene === 'agency' && (
+                <g>
+                  <path d="M6 146 H314" class="floor" />
+                  {/* money stays in the jar; the system makes the content */}
+                  <path d="M22 60 h60 v80 a6 6 0 0 1 -6 6 h-48 a6 6 0 0 1 -6 -6 z" class="jar" />
+                  <rect x="24" y="62" width="56" height="82" class="jar-fill" />
+                  <use href="#i-dollar" x="38" y="86" width="28" height="28" class="coin-in" />
+                  <text x="52" y="44" text-anchor="middle" class="say">Kept</text>
+                  <rect x="118" y="64" width="60" height="60" rx="12" class="machine" />
+                  <g><use href="#i-gear" x="130" y="76" width="36" height="36" class="gearc" /><animateTransform attributeName="transform" type="rotate" from="0 148 94" to="360 148 94" dur="3s" repeatCount="indefinite" /></g>
+                  <text x="148" y="140" text-anchor="middle" class="say sm">Your system</text>
+                  {[0, 1, 2, 3, 4, 5].map((k) => <use href="#i-doc" x={206 + (k % 3) * 34} y={96 - Math.floor(k / 3) * 36} width="30" height="30" class={`page p${k}`} />)}
+                  <text x="258" y="44" text-anchor="middle" class="say">5–10× content</text>
+                </g>
+              )}
             </svg>
             <p class="cs-say">{c.after}</p>
           </figure>
@@ -234,26 +296,55 @@ const cases = [
   .cs-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
   .cs-links a { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
 
-  /* the drawings */
+  /* the drawings — one scene per story */
+  svg .say { font-family: var(--font-body); font-weight: 700; font-size: 13px; fill: var(--fg); }
+  svg .say.sm { font-weight: 600; font-size: 11.5px; fill: var(--muted); }
   svg .floor { stroke: var(--line); stroke-width: 2; }
-  svg .lane { fill: none; stroke: var(--grid-major); stroke-width: 30; stroke-linecap: round; }
-  svg .pile { color: var(--accent); animation: cs-wobble 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
-  svg .pile:nth-of-type(2n) { animation-delay: .4s; }
-  svg .incoming { color: var(--muted); }
-  svg .who { color: var(--muted); }
-  svg .clock { color: var(--accent); }
-  svg .clock { animation: cs-tick 1s steps(2) infinite; transform-box: fill-box; transform-origin: center; }
-  svg .stress { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; animation: cs-blink 1.2s ease-in-out infinite; }
-  svg .machine { fill: var(--panel-accent); stroke: var(--accent); stroke-width: 2; }
-  svg .gear { color: var(--accent); }
-  svg .flowing { color: var(--fg); }
-  svg .done { color: var(--accent); }
-  svg .who-ok { color: var(--fg); }
-  svg .happy { color: var(--accent); }
-  @keyframes cs-wobble { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(3deg); } }
-  @keyframes cs-tick { 50% { transform: rotate(8deg); } }
-  @keyframes cs-blink { 50% { opacity: .2; } }
-  @keyframes cs-spin { to { transform: rotate(360deg); } }
+  svg .wire { fill: none; stroke: var(--line); stroke-width: 2; stroke-dasharray: 4 5; }
+  svg .bld { fill: var(--panel-2); stroke: var(--fg); stroke-width: 2; }
+  svg .awn { fill: #f06000; }
+  svg .awn-s { fill: var(--panel); opacity: .9; }
+  svg .door { fill: var(--line-strong); }
+  svg .win { fill: color-mix(in srgb, var(--water-ink) 25%, var(--panel)); stroke: var(--fg); stroke-width: 1.2; }
+  svg .walker { color: var(--muted); }
+  svg .mover { color: #f06000; }
+  svg .dest { color: var(--fg); }
+  svg .dest, svg .mover { animation: cs-pop 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes cs-pop { 0%, 70%, 100% { transform: scale(1); } 85% { transform: scale(1.15); } }
+  /* speed: the week crawls */
+  svg .daybox { fill: var(--panel-2); stroke: var(--line-strong); stroke-width: 1.5; }
+  svg .dayico { color: var(--muted); }
+  svg .day { animation: cs-day 8s infinite; }
+  svg .d1 { animation-delay: 1.6s; } svg .d2 { animation-delay: 3.2s; } svg .d3 { animation-delay: 4.8s; } svg .d4 { animation-delay: 6.4s; }
+  @keyframes cs-day { 0%, 20%, 100% { opacity: .45; } 2%, 18% { opacity: 1; } }
+  svg .track { fill: var(--grid-major); }
+  svg .slowbar { fill: #f06000; transform-box: fill-box; transform-origin: left; animation: cs-bar 8s linear infinite; }
+  @keyframes cs-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  svg .phone { fill: var(--panel-2); stroke: var(--fg); stroke-width: 2.5; }
+  svg .notch { fill: var(--fg); }
+  svg .bub-me { fill: #f06000; }
+  svg .bub-it { fill: var(--panel); stroke: var(--line-strong); stroke-width: 1.5; }
+  svg .bub-t { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; fill: var(--fg); }
+  svg .bub-t.on { fill: #000; }
+  svg .ok { color: #1f9d55; }
+  svg .clk { color: #f06000; }
+  svg .b1, svg .b2, svg .b3 { animation: cs-chat 5s infinite; }
+  svg .b2 { animation-name: cs-chat2; } svg .b3 { animation-name: cs-chat3; }
+  @keyframes cs-chat { 0%, 4% { opacity: 0; transform: translateY(6px); } 10%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+  @keyframes cs-chat2 { 0%, 30% { opacity: 0; transform: translateY(6px); } 38%, 92% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+  @keyframes cs-chat3 { 0%, 50% { opacity: 0; } 58%, 92% { opacity: 1; } 100% { opacity: 0; } }
+  /* agency: coins leave vs coins stay */
+  svg .brand { color: var(--fg); }
+  svg .coin { color: #f06000; }
+  svg .jar { fill: none; stroke: var(--fg); stroke-width: 2.5; }
+  svg .jar-fill { fill: color-mix(in srgb, #f06000 30%, var(--panel)); transform-box: fill-box; transform-origin: bottom; animation: cs-fill 5s ease-in-out infinite; }
+  @keyframes cs-fill { 0% { transform: scaleY(.15); } 80%, 100% { transform: scaleY(1); } }
+  svg .coin-in { color: #f06000; }
+  svg .machine { fill: var(--panel-accent); stroke: #f06000; stroke-width: 2; }
+  svg .gearc { color: #f06000; }
+  svg .page { color: var(--fg); opacity: 0; animation: cs-page 5s infinite; }
+  svg .p1 { animation-delay: .5s; } svg .p2 { animation-delay: 1s; } svg .p3 { animation-delay: 1.5s; } svg .p4 { animation-delay: 2s; } svg .p5 { animation-delay: 2.5s; }
+  @keyframes cs-page { 0% { opacity: 0; transform: translateX(-10px); } 10%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; } }
   svg.paused, svg.paused * { animation-play-state: paused !important; }
 
   @media (max-width: 860px) {
@@ -266,6 +357,6 @@ const cases = [
     .cs-metrics dt { font-size: 15px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    svg .pile, svg .clock, svg .stress { animation: none; }
+    svg .day, svg .slowbar, svg .b1, svg .b2, svg .b3, svg .jar-fill, svg .page, svg .dest, svg .mover { animation: none; opacity: 1; }
   }
 </style>
