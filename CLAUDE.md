@@ -248,7 +248,8 @@ Each of these corresponds to a defect that was live in production before July 20
   "Behind the work" = `ToolFlow.astro`: the real stack as a clickable diagram (jobs play icons
   along the wires; wide + phone layouts from one data list). Agents (Meta Muse, Hermes) are
   "rolling out now" — update that wording when they are live. Only real tools and real links.
-- **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
+- **Greg's career wording:** mechanical designer (1997–2007) → Manager of Engineering (2007–2011), 70-person
+  department, PRO-ECO / SMS-Siemag. Never "draftsman", never "14 years leading engineering teams".
 
 
 ## CONTENT OWNERSHIP

@@ -12,7 +12,8 @@ export const SITE_URL = "https://www.gregkowalczyk.com";
 /* ── The actual timeline (confirmed by Greg, 2026-07-30) ──────────────────
  *
  *   1997        Graduated, straight into a mechanical design role.
- *   1997–2011   PRO-ECO / SMS-Siemag. Mechanical designer → Manager of
+ *   1997–2011   PRO-ECO / SMS-Siemag. Mechanical designer 1997–2007 →
+ *               Manager of Engineering 2007–2011 (Greg, Sep 29 2026). Mechanical designer → Manager of
  *               Engineering, ~70-person department. (Greg, Sep 29 2026:
  *               never "draftsman".)
  *   2011–2019   Left the corporate job; continued as an independent
