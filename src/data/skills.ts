@@ -73,6 +73,14 @@ export const skills: Skill[] = [
         a: 'Nothing beyond your Claude subscription. Transcription and diagram rendering are local. No API keys are needed.',
       },
       {
+        q: 'I typed /video-to-skill and nothing happened. What now?',
+        a: 'The folder is in the wrong place. It must end up as ~/.claude/skills/video-to-skill/SKILL.md — a video-to-skill folder directly inside skills, with SKILL.md inside it (not a folder inside a folder). Fix the location, then quit Claude Code and run claude again so it picks the skill up.',
+      },
+      {
+        q: 'Which should I pick: Full Skill, Guide Only or Quick Summary?',
+        a: 'Full Skill when the video teaches a method you will use again (a sales process, a prompt technique, a hiring framework). Guide Only for training material and reference documents. Quick Summary when you only want to know what is in the video before spending an hour on it. If you just paste a link, it does a Full Skill.',
+      },
+      {
         q: 'Can I change it for my business?',
         a: 'That is the point. The guide structure, the output folder, the sections Claude writes and the quality rules are all in SKILL.md and GUIDE-STANDARD.md as plain text. Edit them and Claude follows the new version. MIT licence.',
       },

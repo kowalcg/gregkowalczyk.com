@@ -2,6 +2,13 @@
 /**
  * /skills/<slug>/ — one page per giveaway skill, with a gated download.
  *
+ * Rebuilt Sep 2026 as the landing page people reach after the AI for Business
+ * meetups: explain what it does in one picture, what you get, the download,
+ * a visual install (OS tabs, copy buttons, a folder diagram, a terminal
+ * preview), where the files go, then FAQ. Written for owners, not developers;
+ * mobile first. Install commands mirror the README inside the zip — keep the
+ * two in step with public/downloads/<slug>.zip.
+ *
  * The gate is deliberately light: name + email, posted to the same Google
  * Sheet as the contact form (Contact.astro), then the download link is shown
  * on the page. No email round-trip. A localStorage flag skips the form on
@@ -61,6 +68,13 @@ const schema = [
     })),
   },
 ];
+
+// Install commands — copied from the README inside the zip.
+const MAC_COPY = 'mkdir -p ~/.claude/skills\ncp -R "video-to-skill" ~/.claude/skills/video-to-skill';
+const WIN_COPY = 'New-Item -ItemType Directory -Force "$HOME\\.claude\\skills" | Out-Null\nCopy-Item -Recurse "video-to-skill" "$HOME\\.claude\\skills\\video-to-skill"';
+const PIP = 'pip3 install youtube-transcript-api markdown';
+const RUN = '/video-to-skill https://www.youtube.com/watch?v=…';
+const OPTIONAL_MAC = 'brew install ffmpeg yt-dlp\npip3 install openai-whisper';
 ---
 
 <Layout
@@ -69,148 +83,233 @@ const schema = [
   extraSchema={schema}
 >
   <Nav />
-  <main>
-    <article class="mx-auto max-w-3xl px-6 py-16 md:py-24">
-      <header class="mb-10">
-        <nav aria-label="Breadcrumb" class="mb-6 text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
-          <a href="/" class="hover:text-[var(--fg)]">Home</a>
-          <span class="mx-2">/</span>
-          <a href="/projects" class="hover:text-[var(--fg)]">Projects</a>
-          <span class="mx-2">/</span>
-          <span style="color: var(--fg);">{skill.name}</span>
-        </nav>
-        <div class="mb-4 flex flex-wrap items-center gap-3">
-          <span class="rounded-full px-3 py-1 text-xs" style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.1); color: var(--accent-text);">
-            Claude Code skill · Free
-          </span>
-          <span class="text-sm" style="font-family: 'JetBrains Mono', monospace; color: var(--muted);">
-            v{skill.version} · {skill.size}
-          </span>
-        </div>
-        <h1 class="mb-5 text-3xl font-bold md:text-4xl lg:text-5xl" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;">
-          <span class="gradient-text">{skill.name}</span>
-        </h1>
-        <p class="text-lg leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-          {skill.description}
-        </p>
-      </header>
+  <main class="sk">
+    {/* ── 1. What this is ───────────────────────────────────────────── */}
+    <header class="sk-hero">
+      <nav aria-label="Breadcrumb" class="sk-crumb">
+        <a href="/">Home</a><span>/</span><a href="/projects">Projects</a><span>/</span><b>{skill.name}</b>
+      </nav>
+      <div class="sk-badges">
+        <span class="sk-badge sk-badge-on">Free bonus · AI for Business</span>
+        <span class="sk-badge">Claude Code skill</span>
+        <span class="sk-badge">v{skill.version} · MIT licence</span>
+      </div>
+      <h1>Turn any video into a <em>step-by-step guide</em> — and a skill Claude remembers.</h1>
+      <p class="sk-lead">Paste a YouTube link, a podcast or a talk. A few minutes later you have a written guide with diagrams you can read, search and share with your team — and, if you want, the expert's method saved as a skill Claude can use on your next job.</p>
+      <div class="sk-ctas">
+        <a class="sk-btn" href="#download">Get the free skill ↓</a>
+        <a class="sk-link" href="#install">How to install it</a>
+      </div>
+      <ul class="sk-facts">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock" /></svg>About 5 minutes to set up</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-dollar" /></svg>No extra cost beyond your Claude plan</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-person" /></svg>No coding needed</li>
+      </ul>
+    </header>
 
-      <div class="glass-card mb-12 p-8">
-        <h2 class="mb-4 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">What it does</h2>
-        <ul class="space-y-3" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-          {skill.whatItDoes.map((item) => (
-            <li class="flex items-start gap-3">
-              <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+    {/* ── 2. What it does, in one picture ───────────────────────────── */}
+    <section class="sk-sec" aria-labelledby="how-it-works">
+      <div class="sk-eyebrow">What it does</div>
+      <h2 id="how-it-works">One link in. A guide and a skill out.</h2>
+      <ol class="sk-flow">
+        <li class="sk-node">
+          <div class="sk-ico-row"><svg viewBox="0 0 24 24"><use href="#i-play" /></svg><svg viewBox="0 0 24 24"><use href="#i-mic" /></svg></div>
+          <b>1 · You paste a link</b>
+          <span>A YouTube video, a podcast, a webinar, a Facebook or Vimeo video, or an audio file on your computer.</span>
+        </li>
+        <li class="sk-pipe" aria-hidden="true"><i></i></li>
+        <li class="sk-node sk-node-hot">
+          <div class="sk-ico-row"><svg viewBox="0 0 24 24"><use href="#i-spark" /></svg></div>
+          <b>2 · Claude does the homework</b>
+          <span>Gets the transcript, looks up the speaker, checks what has changed since the video was made, and finds the steps worth copying.</span>
+        </li>
+        <li class="sk-pipe" aria-hidden="true"><i></i></li>
+        <li class="sk-node">
+          <div class="sk-ico-row"><svg viewBox="0 0 24 24"><use href="#i-page" /></svg><svg viewBox="0 0 24 24"><use href="#i-gear" /></svg></div>
+          <b>3 · You get the results</b>
+          <span>A visual guide you can open in any browser, plus a skill Claude installs so it can use the method from now on.</span>
+        </li>
+      </ol>
+    </section>
+
+    {/* ── 3. What you get + the three ways to run it ─────────────────── */}
+    <section class="sk-sec" aria-labelledby="what-you-get">
+      <div class="sk-eyebrow">What you get</div>
+      <h2 id="what-you-get">Three things land in one folder.</h2>
+      <div class="sk-cards">
+        <article class="sk-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-doc" /></svg>
+          <h3>The transcript</h3>
+          <p>Every word from the video, saved as text. Taken from YouTube captions, or transcribed on your own computer when there are none.</p>
+        </article>
+        <article class="sk-card sk-card-hot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-page" /></svg>
+          <h3>A visual guide</h3>
+          <p>An 8,000–12,000 word reference with 8–20 diagrams, in one file that works offline. It ends with <b>“Applying this in your business”</b>: the cost of every tool mentioned, and a cheaper alternative.</p>
+        </article>
+        <article class="sk-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-gear" /></svg>
+          <h3>A skill Claude keeps</h3>
+          <p>The expert's method, written as a Claude skill and installed for you, so next time you ask for help with that kind of work, Claude already knows the method.</p>
+        </article>
       </div>
 
-      <section id="download" class="glass-card mb-12 p-8" data-webhook={SHEETS_WEBHOOK_URL} data-download={skill.download} data-slug={skill.slug}>
-        <h2 class="mb-2 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">Get the skill</h2>
-        <p class="mb-6 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-          Leave your name and email and the download appears right here. I'll send one follow-up with what people build with it, and an invitation to the next
-          <a href="/meetups" style="color: var(--accent-text);">AI for Business meetup</a>. No newsletter, no drip.
-        </p>
+      <h3 class="sk-sub">Pick how much you want each time</h3>
+      <div class="sk-modes">
+        <div class="sk-mode"><b>Full Skill</b><span>Transcript + guide + skill. For a method you will use again: a sales process, a hiring checklist, a prompt technique.</span><em>Default if you just paste a link</em></div>
+        <div class="sk-mode"><b>Guide Only</b><span>Transcript + guide. For training material, SOPs and reference documents.</span></div>
+        <div class="sk-mode"><b>Quick Summary</b><span>Key points right in the chat, nothing saved. To see what's in a video before you spend an hour on it.</span></div>
+      </div>
+    </section>
 
-        <form id="skill-form" class="space-y-4">
-          <div class="grid gap-4 md:grid-cols-2">
-            <div>
-              <label for="skill-name" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">Name</label>
-              <input id="skill-name" name="name" type="text" required autocomplete="name"
-                class="w-full rounded-lg px-4 py-3"
-                style="background: color-mix(in srgb, var(--fg) 5%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); color: var(--fg); font-family: 'Outfit', sans-serif;" />
-            </div>
-            <div>
-              <label for="skill-email" class="mb-1 block text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">Email</label>
-              <input id="skill-email" name="email" type="email" required autocomplete="email"
-                class="w-full rounded-lg px-4 py-3"
-                style="background: color-mix(in srgb, var(--fg) 5%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); color: var(--fg); font-family: 'Outfit', sans-serif;" />
-            </div>
+    {/* ── 4. The download ────────────────────────────────────────────── */}
+    <section id="download" class="sk-sec sk-download" data-webhook={SHEETS_WEBHOOK_URL} data-download={skill.download} data-slug={skill.slug} aria-labelledby="get-it">
+      <div class="sk-eyebrow">Step 0</div>
+      <h2 id="get-it">Get the skill</h2>
+      <p>Leave your name and email and the download appears right here. I'll send one follow-up with what people build with it, and an invitation to the next <a href="/meetups">AI for Business meetup</a>. No newsletter, no drip.</p>
+
+      <form id="skill-form" class="sk-form">
+        <div class="sk-fields">
+          <label for="skill-name">Name<input id="skill-name" name="name" type="text" required autocomplete="name" /></label>
+          <label for="skill-email">Email<input id="skill-email" name="email" type="email" required autocomplete="email" /></label>
+        </div>
+        <div class="sk-hp" aria-hidden="true"><input type="text" id="skill-website" name="website" tabindex="-1" autocomplete="off" /></div>
+        <input type="hidden" name="budget" value="Skill download" />
+        <input type="hidden" name="message" value={`${skill.name} v${skill.version}`} />
+        <button id="skill-submit" type="submit" class="sk-btn">Show me the download</button>
+        <p id="skill-status" class="hidden"></p>
+      </form>
+
+      <div id="skill-ready" class="hidden sk-ready">
+        <a id="skill-download-link" href={skill.download} download class="sk-btn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-download" /></svg>Download {skill.name}.zip ({skill.size})
+        </a>
+        <p>Saved to your <b>Downloads</b> folder. Double-click the zip to unzip it, then follow the three steps below.</p>
+      </div>
+    </section>
+
+    {/* ── 5. Install, drawn out ──────────────────────────────────────── */}
+    <section id="install" class="sk-sec" aria-labelledby="install-h">
+      <div class="sk-eyebrow">Install</div>
+      <h2 id="install-h">Three steps, about 5 minutes.</h2>
+      <p class="sk-intro">You will type a few lines into the <b>Terminal</b> (Mac) or <b>PowerShell</b> (Windows). Each box below has a copy button — paste, press Enter, done.</p>
+
+      <div class="sk-os" role="tablist" aria-label="Your computer">
+        <button type="button" role="tab" aria-selected="true" data-os="mac" id="tab-mac">Mac</button>
+        <button type="button" role="tab" aria-selected="false" data-os="win" id="tab-win">Windows</button>
+      </div>
+
+      <ol class="sk-steps">
+        <li class="sk-step">
+          <div class="sk-num">1</div>
+          <div class="sk-step-body">
+            <h3>Install Claude Code and sign in</h3>
+            <p>Get it free from <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer">claude.com/claude-code</a> (it uses your Claude subscription). Then open a terminal, type <code>claude</code>, press Enter and sign in once.</p>
+            <p class="sk-os-only" data-for="mac"><b>Open the Terminal:</b> press <kbd>⌘</kbd> + <kbd>Space</kbd>, type <i>Terminal</i>, press Enter.</p>
+            <p class="sk-os-only" data-for="win" hidden><b>Open PowerShell:</b> press the <kbd>Windows</kbd> key, type <i>PowerShell</i>, press Enter.</p>
           </div>
-          <div class="hidden" aria-hidden="true">
-            <input type="text" id="skill-website" name="website" tabindex="-1" autocomplete="off" />
+        </li>
+
+        <li class="sk-step">
+          <div class="sk-num">2</div>
+          <div class="sk-step-body">
+            <h3>Put the folder where Claude looks for skills</h3>
+            <p class="sk-os-only" data-for="mac">First go to your Downloads folder, where the unzipped <b>video-to-skill</b> folder is: type <code>cd ~/Downloads</code> and press Enter. Then paste this:</p>
+            <p class="sk-os-only" data-for="win" hidden>Windows' <i>Extract All</i> puts the folder inside a folder of the same name, so first step into the outer one: type <code>cd ~\Downloads\video-to-skill</code> and press Enter. Then paste this:</p>
+            <div class="sk-code sk-os-only" data-for="mac"><pre><code>{MAC_COPY}</code></pre><button type="button" class="sk-copy" data-copy={MAC_COPY}>Copy</button></div>
+            <div class="sk-code sk-os-only" data-for="win" hidden><pre><code>{WIN_COPY}</code></pre><button type="button" class="sk-copy" data-copy={WIN_COPY}>Copy</button></div>
+
+            <figure class="sk-tree" aria-label="Where the folder must end up">
+              <figcaption>It must end up exactly like this:</figcaption>
+              <div class="sk-tree-row"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span class="sk-os-only" data-for="mac">Your home folder</span><span class="sk-os-only" data-for="win" hidden>C:\Users\<i>you</i></span></div>
+              <div class="sk-tree-row d1"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span>.claude <small>hidden folder</small></span></div>
+              <div class="sk-tree-row d2"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span>skills</span></div>
+              <div class="sk-tree-row d3 hot"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span><b>video-to-skill</b> <small>← the folder you just copied</small></span></div>
+              <div class="sk-tree-row d4"><svg viewBox="0 0 24 24"><use href="#i-doc" /></svg><span>SKILL.md <small>Claude reads this</small></span></div>
+              <p class="sk-tip sk-os-only" data-for="mac">Want to see it in Finder? The <b>.claude</b> folder is hidden: in your home folder press <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd> to show hidden folders.</p>
+              <p class="sk-tip sk-os-only" data-for="win" hidden>Want to see it in File Explorer? Paste <code>%USERPROFILE%\.claude\skills</code> into the address bar.</p>
+            </figure>
           </div>
-          <input type="hidden" name="budget" value="Skill download" />
-          <input type="hidden" name="message" value={`${skill.name} v${skill.version}`} />
-          <button id="skill-submit" type="submit"
-            class="rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
-            style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;">
-            Show me the download
-          </button>
-          <p id="skill-status" class="hidden text-sm" style="font-family: 'Outfit', sans-serif;"></p>
-        </form>
+        </li>
 
-        <div id="skill-ready" class="hidden">
-          <a id="skill-download-link" href={skill.download} download
-            class="inline-block rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-all duration-200 hover:scale-105"
-            style="background: #f06000; color: var(--on-accent); font-family: 'Outfit', sans-serif;">
-            Download {skill.name}.zip ({skill.size}) ↓
-          </a>
-          <p class="mt-4 text-sm leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-            Unzip it, then follow the install steps below. The README inside repeats them.
-          </p>
-        </div>
-      </section>
-
-      <section class="mb-12">
-        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Install in about 90 seconds</h2>
-        <ol class="space-y-4" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-          <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">1</span>
-            <span>Install <a href="https://claude.com/claude-code" target="_blank" rel="noopener noreferrer" style="color: var(--accent-text);">Claude Code</a> if you don't have it, open a terminal, run <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">claude</code> once and sign in.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">2</span>
-            <span>Unzip the download and copy the <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">video-to-skill</code> folder into <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">~/.claude/skills/</code>. The README has the one-line command for Mac, Linux and Windows.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: rgba(240,96,0,0.15); color: var(--accent-text); font-family: 'JetBrains Mono', monospace;">3</span>
-            <span>Run <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">claude</code>, type <code style="font-family: 'JetBrains Mono', monospace; color: var(--fg);">/video-to-skill</code> and paste a YouTube link. Claude asks one question and gets to work.</span>
-          </li>
-        </ol>
-        <div class="glass-card mt-6 p-6">
-          <p class="mb-2 text-sm font-semibold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">Requirements</p>
-          <ul class="space-y-2 text-sm" style="font-family: 'Outfit', sans-serif; color: var(--muted);">
-            {skill.requirements.map((r) => (
-              <li class="flex items-start gap-3">
-                <span class="mt-2 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: var(--muted);"></span>
-                <span>{r}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section class="mb-12">
-        <h2 class="mb-4 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Why I'm giving it away</h2>
-        <div class="prose-blog">
-          <p>
-            This is the skill I use to learn. A useful talk goes in, and a reference document I can search, share with my team and act on comes out, with the method captured as a skill Claude applies the next time I need it. It has replaced hours of note-taking for me, and it is the clearest demonstration I have of what a Claude Code skill is: a plain text file that turns a repeatable job into one command.
-          </p>
-          <p>
-            {skill.origin}. If you make it better, tell me. If you want the same idea built for a job specific to your business, that is <a href="/services">what I do</a>.
-          </p>
-        </div>
-      </section>
-
-      <section class="mt-14" aria-labelledby="skill-faq">
-        <h2 id="skill-faq" class="mb-6 text-2xl font-bold" style="font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; color: var(--fg);">Frequently asked questions</h2>
-        <div class="space-y-4">
-          {skill.faq.map(({ q, a }) => (
-            <details class="glass-card p-6">
-              <summary class="cursor-pointer text-base font-semibold" style="font-family: 'Outfit', sans-serif; color: var(--fg);">{q}</summary>
-              <p class="mt-3 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: var(--muted);">{a}</p>
+        <li class="sk-step">
+          <div class="sk-num">3</div>
+          <div class="sk-step-body">
+            <h3>Add two small helpers</h3>
+            <p>The skill uses Python to fetch transcripts and build the guide. Claude will offer to install these the first time it needs them — or do it now:</p>
+            <div class="sk-code"><pre><code>{PIP}</code></pre><button type="button" class="sk-copy" data-copy={PIP}>Copy</button></div>
+            <details class="sk-more">
+              <summary>Optional: podcasts, audio files and videos without captions</summary>
+              <p>These let it transcribe audio on your own computer (free, no account needed).</p>
+              <div class="sk-code sk-os-only" data-for="mac"><pre><code>{OPTIONAL_MAC}</code></pre><button type="button" class="sk-copy" data-copy={OPTIONAL_MAC}>Copy</button></div>
+              <p class="sk-os-only" data-for="win" hidden>Install <a href="https://ffmpeg.org" target="_blank" rel="noopener noreferrer">ffmpeg</a> and <a href="https://github.com/yt-dlp/yt-dlp" target="_blank" rel="noopener noreferrer">yt-dlp</a>, then run <code>pip3 install openai-whisper</code>.</p>
             </details>
-          ))}
-        </div>
-      </section>
+          </div>
+        </li>
+      </ol>
 
-      <p class="mt-12">
-        <a href="/projects" class="text-sm transition-colors duration-200 hover:text-[var(--fg)]" style="font-family: 'Outfit', sans-serif; color: var(--muted);">← All projects and skills</a>
-      </p>
-    </article>
+      {/* ── Use it: a terminal preview ── */}
+      <div class="sk-use">
+        <div>
+          <div class="sk-eyebrow">Use it</div>
+          <h3 class="sk-use-h">Now try it.</h3>
+          <p>Close and reopen Claude Code (type <code>claude</code>), then type this with any YouTube link. Or just say <i>“learn from this video”</i> and paste the link.</p>
+          <div class="sk-code"><pre><code>{RUN}</code></pre><button type="button" class="sk-copy" data-copy="/video-to-skill ">Copy</button></div>
+        </div>
+        <figure class="sk-term" aria-label="What you will see in the terminal">
+          <div class="sk-term-bar"><i></i><i></i><i></i><span>claude</span></div>
+          <div class="sk-term-body">
+            <p class="t1"><span class="p">&gt;</span> /video-to-skill https://youtube.com/watch?v=…</p>
+            <p class="t2">What do you need from this video?</p>
+            <p class="t3"><b>1</b> Full Skill — guide + a skill I keep</p>
+            <p class="t4"><b>2</b> Guide Only — the visual guide</p>
+            <p class="t5"><b>3</b> Quick Summary — key points here</p>
+            <p class="t6"><span class="p">&gt;</span> 1</p>
+            <p class="t7 ok">✓ Transcript saved</p>
+            <p class="t8 ok">✓ Guide written — 14 diagrams checked</p>
+            <p class="t9 ok">✓ Skill installed</p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    {/* ── 6. Where your files go ─────────────────────────────────────── */}
+    <section class="sk-sec" aria-labelledby="files-h">
+      <div class="sk-eyebrow">Where your files go</div>
+      <h2 id="files-h">Everything in one place: Downloads › Video Skills.</h2>
+      <div class="sk-files">
+        <figure class="sk-tree">
+          <div class="sk-tree-row"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span>Downloads</span></div>
+          <div class="sk-tree-row d1"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span>Video Skills</span></div>
+          <div class="sk-tree-row d2 hot"><svg viewBox="0 0 24 24"><use href="#i-folder" /></svg><span><b>one folder per video</b></span></div>
+          <div class="sk-tree-row d3"><svg viewBox="0 0 24 24"><use href="#i-doc" /></svg><span>transcript.txt</span></div>
+          <div class="sk-tree-row d3"><svg viewBox="0 0 24 24"><use href="#i-page" /></svg><span>…-guide.html <small>open this one</small></span></div>
+          <div class="sk-tree-row d3"><svg viewBox="0 0 24 24"><use href="#i-doc" /></svg><span>…-guide.md</span></div>
+          <div class="sk-tree-row d3"><svg viewBox="0 0 24 24"><use href="#i-gear" /></svg><span>SKILL.md <small>Full Skill only</small></span></div>
+        </figure>
+        <p>Nothing else on your computer is touched. In Full Skill mode Claude tells you before it installs the new skill, so you stay in charge.</p>
+      </div>
+    </section>
+
+    {/* ── 7. Why + FAQ ───────────────────────────────────────────────── */}
+    <section class="sk-sec sk-why" aria-labelledby="why-h">
+      <h2 id="why-h">Why I'm giving it away</h2>
+      <p>This is the skill I use to learn. A useful talk goes in, and a reference document I can search, share with my team and act on comes out, with the method captured as a skill Claude applies the next time I need it. It has replaced hours of note-taking for me, and it is the clearest demonstration I have of what a Claude Code skill is: a plain text file that turns a repeatable job into one command.</p>
+      <p>{skill.origin}. If you make it better, tell me. If you want the same idea built for a job specific to your business, that is <a href="/services">what I do</a>.</p>
+    </section>
+
+    <section class="sk-sec" aria-labelledby="skill-faq">
+      <h2 id="skill-faq">Questions</h2>
+      <div class="sk-faq">
+        {skill.faq.map(({ q, a }) => (
+          <details>
+            <summary>{q}</summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
+      <p class="sk-back"><a href="/projects">← All projects and skills</a></p>
+    </section>
 
     <ContactCTA
       heading="Want a skill built for your business?"
@@ -220,6 +319,7 @@ const schema = [
   <Footer />
 
   <script>
+    // ── Download gate (unchanged behaviour) ──
     const section = document.getElementById('download');
     const form = document.getElementById('skill-form') as HTMLFormElement | null;
     const ready = document.getElementById('skill-ready');
@@ -232,21 +332,13 @@ const schema = [
       form?.classList.add('hidden');
       ready?.classList.remove('hidden');
     }
-
-    try {
-      if (localStorage.getItem(storageKey)) reveal();
-    } catch {
-      /* storage unavailable; show the form */
-    }
+    try { if (localStorage.getItem(storageKey)) reveal(); } catch { /* storage unavailable; show the form */ }
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       if (!submitBtn || !section) return;
       const honeypot = (form.querySelector('#skill-website') as HTMLInputElement | null)?.value;
-      if (honeypot) {
-        reveal();
-        return;
-      }
+      if (honeypot) { reveal(); return; }
       submitBtn.disabled = true;
       submitBtn.textContent = 'One second…';
       try {
@@ -254,23 +346,185 @@ const schema = [
         for (const [key, value] of new FormData(form).entries()) params.append(key, String(value));
         params.append('company', 'skill download');
         params.append('pageUrl', window.location.href);
-        await fetch(section.dataset.webhook ?? '', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString(),
-        });
-      } catch {
-        /* the sheet write failed; still hand over the file */
-      } finally {
-        try {
-          localStorage.setItem(storageKey, '1');
-        } catch {
-          /* ignore */
-        }
+        await fetch(section.dataset.webhook ?? '', { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() });
+      } catch { /* the sheet write failed; still hand over the file */ } finally {
+        try { localStorage.setItem(storageKey, '1'); } catch { /* ignore */ }
         reveal();
         if (status) status.classList.add('hidden');
       }
     });
+
+    // ── Mac / Windows tabs (remembered; Windows preselected on Windows) ──
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>('.sk-os [data-os]')];
+    function showOS(os: string) {
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.os === os)));
+      document.querySelectorAll<HTMLElement>('.sk-os-only').forEach((el) => { el.hidden = el.dataset.for !== os; });
+      try { localStorage.setItem('sk-os', os); } catch { /* ignore */ }
+    }
+    let os = /Win/i.test(navigator.userAgent) ? 'win' : 'mac';
+    try { os = localStorage.getItem('sk-os') || os; } catch { /* ignore */ }
+    showOS(os);
+    tabs.forEach((t) => t.addEventListener('click', () => showOS(t.dataset.os!)));
+
+    // ── Copy buttons ──
+    document.querySelectorAll<HTMLButtonElement>('.sk-copy').forEach((b) => b.addEventListener('click', async () => {
+      const text = b.dataset.copy || '';
+      try { await navigator.clipboard.writeText(text); b.textContent = 'Copied ✓'; }
+      catch {
+        const pre = b.parentElement?.querySelector('pre');
+        if (pre) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s?.removeAllRanges(); s?.addRange(r); }
+        b.textContent = 'Selected — copy it';
+      }
+      setTimeout(() => { b.textContent = 'Copy'; }, 1800);
+    }));
+
+    // ── Terminal preview types itself once it scrolls into view ──
+    const term = document.querySelector('.sk-term');
+    if (term) new IntersectionObserver(([e], io) => { if (e.isIntersecting) { term.classList.add('play'); io.disconnect(); } }, { threshold: 0.4 }).observe(term);
   </script>
 </Layout>
+
+<style>
+  .sk { --w: 62rem; }
+  .sk-hero, .sk-sec { max-width: var(--w); margin: 0 auto; padding-inline: 1.25rem; }
+  .sk-hero { padding-top: 3rem; padding-bottom: 2rem; }
+  .sk-sec { padding-top: 3.5rem; padding-bottom: 1rem; scroll-margin-top: 72px; }
+  .sk-crumb { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .sk-crumb a:hover { color: var(--fg); }
+  .sk-crumb b { color: var(--fg); font-weight: 500; }
+  .sk-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .sk-badge { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--muted); }
+  .sk-badge-on { background: var(--color-accent-fill); color: var(--on-accent); border-color: var(--accent); font-weight: 700; }
+  .sk h1 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 5.6vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 0 0 18px; text-wrap: balance; }
+  .sk h1 em { font-style: normal; color: var(--color-accent); }
+  .sk-lead { font-size: clamp(17px, 2vw, 20px); line-height: 1.55; color: var(--soft); max-width: 58ch; margin: 0; }
+  .sk-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 26px 0 22px; }
+  .sk-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--color-accent-fill); color: var(--on-accent); font-weight: 700; font-size: 17px; padding: 15px 24px; border-radius: 999px; border: 0; cursor: pointer; }
+  .sk-btn svg { width: 20px; height: 20px; }
+  .sk-btn:focus-visible, .sk-link:focus-visible, .sk-copy:focus-visible, .sk-os button:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+  .sk-link { color: var(--fg); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+  .sk-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
+  .sk-facts li { display: flex; align-items: center; gap: 8px; font-size: 15.5px; color: var(--soft); }
+  .sk-facts svg { width: 22px; height: 22px; color: var(--accent); }
+
+  .sk-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .sk h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3.8vw, 44px); line-height: 1.08; letter-spacing: -.025em; margin: 10px 0 22px; text-wrap: balance; }
+  .sk h3 { font-family: var(--font-body); font-weight: 700; font-size: 19px; line-height: 1.25; margin: 0; }
+  .sk p { font-size: 17px; line-height: 1.6; color: var(--soft); }
+  .sk a:not(.sk-btn):not(.sk-link) { color: var(--color-accent); }
+  .sk code { font-family: var(--font-mono); font-size: .9em; background: var(--surface); border: 1px solid var(--color-border); padding: 1px 6px; border-radius: 5px; color: var(--fg); }
+  .sk kbd { font-family: var(--font-mono); font-size: .85em; border: 1px solid var(--rule-strong); border-bottom-width: 2px; padding: 1px 6px; border-radius: 5px; background: var(--surface); color: var(--fg); }
+
+  /* one picture: link → Claude → results */
+  .sk-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) 70px minmax(0, 1fr) 70px minmax(0, 1fr); align-items: stretch; }
+  .sk-node { background: var(--surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .sk-node-hot { border-color: var(--accent); background: var(--panel-accent); }
+  .sk-node b { font-size: 18px; color: var(--fg); }
+  .sk-node span { font-size: 15.5px; line-height: 1.5; color: var(--soft); }
+  .sk-ico-row { display: flex; gap: 8px; }
+  .sk-ico-row svg { width: 44px; height: 44px; color: var(--accent); }
+  .sk-pipe { position: relative; display: grid; place-items: center; }
+  .sk-pipe::before { content: ""; position: absolute; left: 6px; right: 6px; top: 50%; height: 3px; background: var(--line); border-radius: 2px; }
+  .sk-pipe::after { content: ""; position: absolute; right: 2px; top: calc(50% - 6px); border: 7px solid transparent; border-left-color: var(--line); border-right: 0; }
+  .sk-pipe i { position: absolute; top: calc(50% - 6px); left: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); animation: sk-travel 1.8s ease-in-out infinite; }
+  @keyframes sk-travel { from { transform: translateX(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } to { transform: translateX(44px); opacity: 0; } }
+
+  .sk-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .sk-card { background: var(--surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 22px; }
+  .sk-card-hot { border-color: var(--accent); }
+  .sk-card svg { width: 40px; height: 40px; color: var(--accent); margin-bottom: 10px; }
+  .sk-card p { font-size: 16px; margin: 8px 0 0; }
+  .sk-card b { color: var(--fg); }
+  .sk-sub { margin: 30px 0 12px !important; font-size: 21px !important; }
+  .sk-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .sk-mode { border: 1px solid var(--color-border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .sk-mode:first-child { border-color: var(--accent); }
+  .sk-mode b { font-size: 17.5px; color: var(--fg); }
+  .sk-mode span { font-size: 15.5px; line-height: 1.5; color: var(--soft); }
+  .sk-mode em { font-style: normal; font-weight: 700; font-size: 13.5px; color: var(--color-accent); }
+
+  /* download */
+  .sk-download { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; padding: 28px 24px; margin-top: 3.5rem; max-width: calc(var(--w) - 2.5rem); }
+  .sk-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  .sk-fields label { display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--muted); }
+  .sk-fields input { font: inherit; font-size: 17px; color: var(--fg); background: var(--bg); border: 1px solid var(--rule-strong); border-radius: 10px; padding: 13px 14px; }
+  .sk-fields input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .sk-hp { position: absolute; left: -9999px; }
+  .sk-ready p { margin-top: 14px; }
+
+  /* install */
+  .sk-intro { margin: -8px 0 18px; }
+  .sk-os { display: inline-flex; border: 1px solid var(--rule-strong); border-radius: 999px; padding: 4px; margin-bottom: 18px; }
+  .sk-os button { font: inherit; font-size: 15.5px; font-weight: 600; padding: 8px 20px; border-radius: 999px; border: 0; background: none; color: var(--muted); cursor: pointer; }
+  .sk-os button[aria-selected="true"] { background: var(--fg); color: var(--bg); }
+  .sk-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; position: relative; }
+  .sk-step { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 16px; background: var(--surface); border: 1px solid var(--color-border); border-radius: 16px; padding: 20px; }
+  .sk-num { width: 48px; height: 48px; border-radius: 50%; background: var(--color-accent-fill); color: var(--on-accent); display: grid; place-items: center; font-weight: 800; font-size: 22px; }
+  .sk-step-body { min-width: 0; }
+  .sk-step-body p { margin: 8px 0 0; font-size: 16.5px; }
+  .sk-code { position: relative; margin-top: 12px; background: #0d1014; border-radius: 10px; border: 1px solid var(--color-border); }
+  .sk-code pre { margin: 0; padding: 14px 16px; padding-right: 86px; overflow-x: auto; }
+  .sk-code pre code { background: none; border: 0; padding: 0; color: #e8edf1; font-size: 14.5px; line-height: 1.6; white-space: pre; }
+  .sk-copy { position: absolute; top: 8px; right: 8px; font: 600 13px/1 var(--font-body); padding: 8px 12px; border-radius: 999px; border: 0; background: var(--color-accent-fill); color: var(--on-accent); cursor: pointer; }
+  .sk-tree { margin: 16px 0 0; border: 1px dashed var(--rule-strong); border-radius: 12px; padding: 14px 16px; background: var(--panel); display: grid; gap: 6px; }
+  .sk-tree figcaption { font-size: 15px; color: var(--muted); margin-bottom: 4px; }
+  .sk-tree-row { display: flex; align-items: center; gap: 10px; font-size: 16px; color: var(--fg); }
+  .sk-tree-row svg { width: 24px; height: 24px; color: var(--muted); flex: none; }
+  .sk-tree-row small { color: var(--muted); font-size: 13.5px; }
+  .sk-tree-row.d1 { padding-left: 22px; } .sk-tree-row.d2 { padding-left: 44px; } .sk-tree-row.d3 { padding-left: 66px; } .sk-tree-row.d4 { padding-left: 88px; }
+  .sk-tree-row.hot svg { color: var(--accent); }
+  .sk-tree-row.hot small { color: var(--color-accent); font-weight: 700; }
+  .sk-tip { font-size: 15px !important; margin-top: 8px !important; }
+  .sk-more { margin-top: 12px; }
+  .sk-more summary { cursor: pointer; font-weight: 600; color: var(--fg); font-size: 16px; }
+
+  /* use it + terminal */
+  .sk-use { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 34px; }
+  .sk-use > *, .sk-files > *, .sk-flow > *, .sk-cards > *, .sk-modes > * { min-width: 0; } /* long commands scroll inside their box, never widen the page */
+  .sk-use-h { font-size: 26px !important; margin-top: 8px !important; }
+  .sk-term { margin: 0; border-radius: 12px; overflow: hidden; background: #0d1014; border: 1px solid var(--color-border); box-shadow: 0 18px 40px var(--shadow); }
+  .sk-term-bar { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: #1a1f25; }
+  .sk-term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; } .sk-term-bar i:nth-child(2) { background: #febc2e; } .sk-term-bar i:nth-child(3) { background: #28c840; }
+  .sk-term-bar span { margin-left: 8px; font: 12px var(--font-mono); color: #8b96a1; }
+  .sk-term-body { padding: 16px; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.8; min-height: 290px; }
+  .sk-term-body p { margin: 0; color: #d8dee4; font-size: inherit; line-height: inherit; }
+  .sk-term-body .p { color: #f06000; }
+  .sk-term-body b { color: #f06000; }
+  .sk-term-body .ok { color: #7ee2a8; }
+  .sk-term-body p { opacity: 0; }
+  .sk-term.play .sk-term-body p { animation: sk-line .35s ease forwards; }
+  .sk-term.play .t2 { animation-delay: .9s !important; } .sk-term.play .t3 { animation-delay: 1.3s !important; } .sk-term.play .t4 { animation-delay: 1.5s !important; }
+  .sk-term.play .t5 { animation-delay: 1.7s !important; } .sk-term.play .t6 { animation-delay: 2.6s !important; } .sk-term.play .t7 { animation-delay: 3.6s !important; }
+  .sk-term.play .t8 { animation-delay: 4.8s !important; } .sk-term.play .t9 { animation-delay: 5.8s !important; }
+  @keyframes sk-line { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  .sk-files { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+  .sk-files .sk-tree { margin: 0; }
+  .sk-why p { margin: 0 0 14px; }
+  .sk-faq { display: grid; gap: 10px; }
+  .sk-faq details { background: var(--surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 16px 18px; }
+  .sk-faq summary { cursor: pointer; font-weight: 700; font-size: 17px; color: var(--fg); }
+  .sk-faq p { margin: 10px 0 0; font-size: 16.5px; }
+  .sk-back { margin: 26px 0 3rem; }
+  .sk-back a { color: var(--muted) !important; }
+
+  @media (max-width: 860px) {
+    .sk-flow { grid-template-columns: 1fr; }
+    .sk-pipe { height: 46px; }
+    .sk-pipe::before { left: calc(50% - 1.5px); right: auto; top: 4px; bottom: 4px; width: 3px; height: auto; }
+    .sk-pipe::after { left: calc(50% - 7px); right: auto; top: auto; bottom: 0; border: 7px solid transparent; border-top-color: var(--line); border-bottom: 0; }
+    .sk-pipe i { left: calc(50% - 6px); top: 4px; animation-name: sk-drop; }
+    @keyframes sk-drop { from { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } to { transform: translateY(26px); opacity: 0; } }
+    .sk-cards, .sk-modes, .sk-use, .sk-files { grid-template-columns: 1fr; }
+    .sk-fields { grid-template-columns: 1fr; }
+    .sk-step { grid-template-columns: 1fr; padding: 18px 16px; }
+    .sk-num { width: 42px; height: 42px; font-size: 20px; }
+    .sk-tree-row.d3 { padding-left: 48px; } .sk-tree-row.d4 { padding-left: 64px; }
+    .sk-download { margin-inline: 1rem; padding: 24px 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sk-pipe i { animation: none; opacity: 1; }
+    .sk-term-body p { opacity: 1; }
+    .sk-term.play .sk-term-body p { animation: none; }
+  }
+</style>
