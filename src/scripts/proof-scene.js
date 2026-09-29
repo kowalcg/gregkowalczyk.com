@@ -99,7 +99,8 @@ export function startProof(root, projects) {
     pauseBtn?.addEventListener('click', () => { userPaused = !userPaused; setPauseLabel(); });
     stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hoverPaused = true; });
     stage.addEventListener('pointerleave', () => { hoverPaused = false; });
-    stage.addEventListener('focusin', () => { focusPaused = true; });
+    // Only keyboard focus pauses; a mouse click on an arrow leaves focus on the button.
+    stage.addEventListener('focusin', (e) => { focusPaused = e.target.matches(':focus-visible'); });
     stage.addEventListener('focusout', () => { focusPaused = false; });
     setPauseLabel();
   }
@@ -126,8 +127,7 @@ export function startProof(root, projects) {
     stamps.forEach((s, k) => s && s.classList.toggle('in', reveals[k] > 0.97));
     const ar = i < N ? reveals[i] : 1;
     if (auto) {
-      const paused = userPaused || hoverPaused || focusPaused;
-      const text = `Project ${i + 1} of ${N}${paused && !reduce ? ' · paused' : ''}`;
+      const text = `Project ${i + 1} of ${N}${userPaused && !reduce ? ' · paused' : ''}`;
       if (text !== lastCue) { lastCue = text; cueTxt.textContent = text; }
       cueBar.style.width = ((slideT / PERIOD) * 100).toFixed(1) + '%';
       return { i, ar };
@@ -250,8 +250,14 @@ export function startProof(root, projects) {
     if (!running) return;
     const dt = Math.min(64, (now || performance.now()) - lastT);
     lastT = now || performance.now();
-    if (auto && !(userPaused || hoverPaused || focusPaused || document.hidden)) {
-      slideT += dt;
+    // Hover, focus or the pause button stop the carousel moving ON, but the
+    // current screen always finishes building first — a resting cursor must
+    // never leave a project stuck as a half-drawn blueprint.
+    if (auto && !document.hidden) {
+      const held = userPaused || hoverPaused || focusPaused;
+      const HOLD = PERIOD * 0.6;
+      if (!held) slideT += dt;
+      else if (slideT < HOLD) slideT = Math.min(HOLD, slideT + dt);
       if (slideT >= PERIOD) { slideT = 0; slide = (slide + 1) % N; }
     }
     const target = auto ? autoP() : scrollP();

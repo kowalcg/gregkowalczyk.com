@@ -151,6 +151,7 @@ import { services } from '../data/services';
         <div class="sg-body">
           <h3>{s.title}</h3>
           <p>{s.line}</p>
+          {s.examples && <ul class="sg-tags" aria-label="Examples">{s.examples.map((e) => <li>{e}</li>)}</ul>}
           <div class="sg-stat"><b>{s.stat}</b><span>{s.statLabel}</span></div>
           <div class="sg-links">
             <a href={s.link.href}>{s.link.label} →</a>
@@ -195,6 +196,8 @@ import { services } from '../data/services';
   .sg-fig svg { width: 100%; height: auto; display: block; }
   .sg-body { padding: 20px 22px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .sg-body h3 { font-family: var(--font-body); font-weight: 700; font-size: 22px; line-height: 1.15; letter-spacing: -.015em; margin: 0; }
+  .sg-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .sg-tags li { font-size: 12.5px; line-height: 1.2; color: #fff; border: 1px solid rgba(240, 96, 0, .45); background: #0d0906; border-radius: 999px; padding: 5px 10px; }
   .sg-body > p { color: #c4ccd4; font-size: 15.5px; line-height: 1.5; margin: 0; }
   .sg-stat { display: flex; align-items: baseline; gap: 10px; border-top: 1px solid var(--color-border); padding-top: 12px; margin-top: auto; }
   .sg-stat b { font-family: var(--font-body); font-weight: 800; font-size: 28px; letter-spacing: -.02em; color: var(--color-accent); white-space: nowrap; }

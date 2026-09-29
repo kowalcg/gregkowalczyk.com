@@ -257,7 +257,8 @@ const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282
     .rc-grid { display: flex; flex-direction: column-reverse; gap: 0; }
     .rc-fig { top: 64px; z-index: 5; width: 100%; padding: 4px; border-radius: 10px; }
     .rc-fig figcaption { display: none; }
-    .rc-step { min-height: 64vh; justify-content: flex-start; padding-top: 24px; }
+    /* text sits in the lower part of each step, so the active one is never under the pinned map */
+    .rc-step { min-height: 84vh; justify-content: flex-end; padding: 0 0 6vh 18px; }
   }
   @media (prefers-reduced-motion: reduce) {
     svg .runner-halo { animation: none; }

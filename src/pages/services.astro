@@ -36,7 +36,7 @@ const catalogSchema = {
         '@type': 'Service',
         '@id': `${pageUrl}#${s.slug}`,
         name: s.title,
-        description: `${s.line} ${s.body}`,
+        description: `${s.line} ${s.body}${s.examples ? ' Examples: ' + s.examples.join(', ') + '.' : ''}`,
         url: `${pageUrl}#${s.slug}`,
         provider: { '@id': `${SITE_URL}/#person` },
         areaServed,

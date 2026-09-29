@@ -8,6 +8,7 @@ export interface ServiceItem {
   slug: string; title: string; anim: string; line: string;
   stat: string; statLabel: string; proof: string; body: string;
   tracks?: { name: string; points: string[] }[];
+  examples?: string[]; // shown as tags on the card and listed in the schema
   link: { href: string; label: string };
   wide?: boolean;
 }
@@ -15,6 +16,7 @@ export interface ServiceItem {
 export const services: ServiceItem[] = [
   {
     slug: 'custom-ai-tools', title: 'Custom AI tools for small business', anim: 'tools',
+    examples: ['Lead generation', 'AI receptionist', 'Social media expert', 'Content creator', 'Copywriter', 'Research for newsletters, blogs and emails', 'Facebook and Instagram media buyer'],
     line: 'Tools built around how your business actually works. You own them.',
     stat: '6 wks', statLabel: 'client build, now running daily',
     proof: 'Built Content Creator PRO for a client in 6 weeks. Running in production daily.',
