@@ -1,0 +1,59 @@
+---
+// "Pick your distance" — the four ways to work together on /race-directors/,
+// drawn as race bibs: Kids 1K = the free call, 5K = the website, 10K = the
+// AI toolkit, half marathon = the season retainer. Tier copy comes from
+// src/data/raceDirectors.ts. No prices on this page (see that file).
+import { RACE_CTA, tiers } from '../data/raceDirectors';
+const distances = ['1K', '5K', '10K', '21.1K'];
+const names = ['Kids 1K', '5K', '10K', 'Half marathon'];
+---
+
+<section class="rd" id="pick-your-distance" aria-labelledby="rd-heading">
+  <div class="rd-head">
+    <div class="rd-eyebrow">Four ways to work together</div>
+    <h2 id="rd-heading">Pick your distance.</h2>
+    <p>Every race is a different size with a different budget, so there are no packages to pick from a list. Start with the free call; you get a quote after it, not before.</p>
+  </div>
+  <div class="rd-grid">
+    {tiers.map((t, i) => (
+      <article class={`rd-bib${i === 0 ? ' rd-first' : ''}`}>
+        <span class="pin tl" aria-hidden="true"></span><span class="pin tr" aria-hidden="true"></span>
+        <span class="pin bl" aria-hidden="true"></span><span class="pin br" aria-hidden="true"></span>
+        <div class="rd-strip"><span>{names[i]}</span><span>No. {t.step}</span></div>
+        <div class="rd-num" aria-hidden="true">{distances[i]}</div>
+        <h3>{t.name}</h3>
+        <p class="rd-sum">{t.summary}</p>
+        <ul>{t.points.map((pt) => <li>{pt}</li>)}</ul>
+        <a class="rd-cta" href={RACE_CTA}>{i === 0 ? 'Book the free call →' : 'Start with the free call →'}</a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .rd { max-width: 80rem; margin: 0 auto; padding: 4rem 1.5rem; scroll-margin-top: 64px; }
+  .rd-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .rd-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(40px, 6vw, 80px); line-height: .95; letter-spacing: -.035em; margin: 14px 0 16px; }
+  .rd-head p { color: #c4ccd4; font-size: 17px; max-width: 60ch; margin: 0; }
+  .rd-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 40px; align-items: stretch; }
+  .rd-bib { position: relative; background: #f4f5f2; color: #111; border-radius: 10px; padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.45); transform: rotate(-1deg); transition: transform .25s; }
+  .rd-bib:nth-child(2n) { transform: rotate(1deg); }
+  .rd-bib:hover { transform: rotate(0) translateY(-4px); }
+  .pin { position: absolute; width: 9px; height: 9px; border-radius: 50%; background: #000; box-shadow: inset 0 0 0 2px #b9bdb5; }
+  .pin.tl { top: 8px; left: 8px; } .pin.tr { top: 8px; right: 8px; } .pin.bl { bottom: 8px; left: 8px; } .pin.br { bottom: 8px; right: 8px; }
+  .rd-strip { display: flex; justify-content: space-between; margin: 4px 8px 0; padding: 6px 10px; background: #111; color: #fff; border-radius: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+  .rd-first .rd-strip { background: var(--color-accent-fill); color: #000; font-weight: 700; }
+  .rd-num { font-family: var(--font-body); font-weight: 800; font-size: clamp(56px, 6vw, 84px); line-height: .9; letter-spacing: -.04em; text-align: center; padding: 8px 0 4px; border-bottom: 2px dashed #c9ccc4; font-variant-numeric: tabular-nums; }
+  .rd-first .rd-num { color: #c44f00; }
+  .rd-bib h3 { font-family: var(--font-body); font-weight: 800; font-size: 20px; line-height: 1.15; margin: 2px 0 0; color: #111; }
+  .rd-sum { font-size: 14.5px; line-height: 1.5; color: #2b3138; margin: 0; }
+  .rd-bib ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .rd-bib li { font-size: 13.5px; line-height: 1.4; color: #2b3138; padding-left: 16px; position: relative; }
+  .rd-bib li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 2px; background: #c44f00; }
+  .rd-cta { margin-top: auto; align-self: flex-start; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: #111; padding: 10px 12px; border-radius: 999px; }
+  .rd-first .rd-cta { background: var(--color-accent-fill); color: #000; font-weight: 700; }
+  .rd-cta:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  @media (max-width: 1100px) { .rd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .rd-grid { grid-template-columns: 1fr; } .rd-bib, .rd-bib:nth-child(2n) { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .rd-bib, .rd-bib:hover { transition: none; } }
+</style>

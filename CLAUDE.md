@@ -209,6 +209,13 @@ Each of these corresponds to a defect that was live in production before July 20
   keep their original long copy inside `<details>`; case study figures
   (`CaseStudies.astro`) are the pre-existing ones only. SMIL dots use negative
   `begin` offsets or start hidden, otherwise they sit at (0,0) until they start.
+- **Race directors, visual (Sep 2026).** `/race-directors/` = `RaceCourse.astro` (the
+  season as a 5K loop; km markers = jobs, splits = proof from `raceDirectors.ts`; lap two =
+  year two) + `RaceDistances.astro` (tiers as bibs: 1K free call → 21.1K retainer).
+  `RaceFeature.astro` is the "For race directors" band on / and /services/ (owns the
+  `#race-directors` anchor). Still no 2027 date, prices or sponsor list on these.
+- **/services/ jump menu + schema.** `ServicesNav.astro` and the `OfferCatalog` schema in
+  `services.astro` both read `src/data/services.ts` — edit services there, once.
 - **Run `node scripts/audit-build.mjs` after every build.**
 - **Static build:** keep `output: 'static'`.
 - **Font loading:** keep the non-blocking preconnect pattern.

@@ -1,0 +1,40 @@
+---
+// "Services offered" — the jump menu at the top of /services/ (Sep 2026).
+// Plain links with descriptive text, so it doubles as a crawlable summary of
+// every service for search engines and AI answer engines.
+import { services } from '../data/services';
+const extras = [
+  { href: '#how-it-works', label: 'How it works and pricing' },
+  { href: '#results', label: 'Results, before and after' },
+  { href: '#who-this-is-for', label: 'Who this is for' },
+];
+---
+
+<nav class="sn" aria-labelledby="sn-heading">
+  <h2 id="sn-heading">Services offered</h2>
+  <ol class="sn-list">
+    {services.map((s, i) => (
+      <li><a href={`#${s.slug}`}><span class="sn-n">{String(i + 1).padStart(2, '0')}</span><b>{s.title}</b><span class="sn-line">{s.line}</span></a></li>
+    ))}
+    <li class="sn-race"><a href="#race-directors"><span class="sn-n">{String(services.length + 1).padStart(2, '0')}</span><b>AI for race directors and events</b><span class="sn-line">Registration, sponsor pages, emails and race photos, proven on a sold-out race.</span></a></li>
+  </ol>
+  <p class="sn-extra">
+    {extras.map((e) => <a href={e.href}>{e.label} ↓</a>)}
+  </p>
+</nav>
+
+<style>
+  .sn { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem 2.5rem; }
+  .sn h2 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); margin: 0 0 14px; }
+  .sn-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 10px; }
+  .sn-list a { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 10px; background: #07090b; transition: border-color .2s, background .2s; height: 100%; }
+  .sn-list a:hover { border-color: var(--color-accent); background: #0d0906; }
+  .sn-list a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .sn-n { grid-row: 1 / span 2; font-family: var(--font-mono); font-size: 12px; color: var(--color-accent); padding-top: 3px; }
+  .sn-list b { font-weight: 700; font-size: 16px; color: #fff; line-height: 1.3; }
+  .sn-line { color: var(--color-text-secondary); font-size: 13.5px; line-height: 1.4; }
+  .sn-race a { border-color: rgba(240, 96, 0, .45); }
+  .sn-extra { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 16px 0 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .sn-extra a { color: #c4ccd4; }
+  .sn-extra a:hover { color: var(--color-accent); }
+</style>

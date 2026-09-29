@@ -1,0 +1,118 @@
+---
+// "For race directors" — a feature band on / and /services/ (Sep 2026).
+// Race directors are a niche of their own; this used to be one tile in the
+// "What that's looked like" roster. A compact version of the /race-directors/
+// course map: the runner laps on its own (SMIL, no scroll), each km marker
+// lights as it passes. Numbers come from src/data/raceDirectors.ts.
+import { RACE_CTA } from '../data/raceDirectors';
+const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282 C 760 265, 860 250, 900 300 C 940 350, 880 420, 780 430 C 680 440, 600 470, 500 500 C 400 530, 260 540, 200 510 C 170 495, 165 480, 170 470';
+const LAP = 12; // seconds per lap
+// fraction of the lap, label, and which side the label sits on
+const marks: [number, string, 'l' | 'r' | 't' | 'b'][] = [
+  [0.2, 'SPONSOR PAGES', 't'], [0.4, 'PARTICIPANT EMAILS', 't'], [0.6, 'WATER · SUN SAFETY', 'l'], [0.8, 'PHOTOS BY BIB', 'b'],
+];
+---
+
+<section class="rf" id="race-directors" aria-labelledby="rf-heading">
+  <div class="rf-inner">
+    <figure class="rf-fig" aria-hidden="true">
+      <svg viewBox="60 200 920 380" data-rf>
+        <defs><pattern id="rf-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#0f1316" /></pattern></defs>
+        <rect x="60" y="200" width="920" height="380" fill="#050607" /><rect x="60" y="200" width="920" height="380" fill="url(#rf-g)" />
+        <path d="M60 200 H980 V232 C 850 244, 700 226, 560 238 C 430 250, 300 226, 60 240 Z" class="lake" />
+        <text x="960" y="222" text-anchor="end" class="t water">LAKE ONTARIO</text>
+        <path id="rf-course" d={COURSE} class="base" />
+        <path d={COURSE} class="trail" pathLength="1" />
+        {Array.from({ length: 14 }, (_, k) => (
+          <circle r="2.4" class="crowd"><animateMotion dur={`${LAP * 1.6}s`} begin={`-${(k * LAP * 1.6) / 14}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion></circle>
+        ))}
+        <g data-marks></g>
+        <path d="M138 505 V430 H202 V505 M138 442 H202" class="arch" />
+        <text x="170" y="422" text-anchor="middle" class="t acc">START · FINISH</text>
+        <circle r="7" class="runner"><animateMotion dur={`${LAP}s`} repeatCount="indefinite"><mpath href="#rf-course" /></animateMotion></circle>
+      </svg>
+    </figure>
+
+    <div class="rf-copy">
+      <div class="rf-eyebrow">For race directors and event organizers</div>
+      <h2 id="rf-heading">A race that gets easier to run every year.</h2>
+      <p>I'm the Race Director of the Mercedes-Benz Oakville Bronte Harbour Classic. Our first year sold out, run by a small team with AI doing the work of an agency. I build the same system for other races and events.</p>
+      <dl class="rf-stats">
+        <div><dt>runners, sold out in year one</dt><dd>875</dd></div>
+        <div><dt>permanent sponsor and vendor pages</dt><dd>80</dd></div>
+        <div><dt>race photos sorted by bib with AI</dt><dd>1,843</dd></div>
+      </dl>
+      <div class="rf-row">
+        <a class="rf-cta" href="/race-directors/">See how it works →</a>
+        <a class="rf-go" href={RACE_CTA}>Book a free race-tech call</a>
+      </div>
+      <p class="rf-note">Festivals, charity walks and tournaments have the same shape. The same system fits.</p>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ marks, LAP }}>
+  // Place km markers on the real path, and time each one to light as the runner passes.
+  document.querySelectorAll('[data-rf]').forEach((svg) => {
+    const NS = 'http://www.w3.org/2000/svg';
+    const path = svg.querySelector('#rf-course');
+    const L = path.getTotalLength();
+    const g = svg.querySelector('[data-marks]');
+    marks.forEach(([f, label, side], i) => {
+      const p = path.getPointAtLength(f * L);
+      const dx = side === 'r' ? 18 : side === 'l' ? -18 : 0, dy = side === 't' ? -18 : side === 'b' ? 28 : 5;
+      const anchor = side === 'r' ? 'start' : side === 'l' ? 'end' : 'middle';
+      const m = document.createElementNS(NS, 'g');
+      m.setAttribute('class', 'rf-mk');
+      m.style.animationDelay = `${f * LAP - 0.3}s`;
+      m.innerHTML = `<rect x="${p.x - 10}" y="${p.y - 3.5}" width="20" height="7" rx="2"/>` +
+        `<text x="${p.x + dx}" y="${p.y + dy}" text-anchor="${anchor}">${i + 1} KM · ${label}</text>`;
+      g.appendChild(m);
+    });
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { svg.pauseAnimations(); svg.classList.add('paused'); return; }
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { svg.unpauseAnimations(); svg.classList.remove('paused'); }
+      else { svg.pauseAnimations(); svg.classList.add('paused'); }
+    }).observe(svg);
+  });
+</script>
+
+<style>
+  .rf { padding: 5rem 1.5rem; scroll-margin-top: 64px; background: linear-gradient(180deg, rgba(240,96,0,.06), rgba(240,96,0,0) 60%); border-block: 1px solid var(--color-border); }
+  .rf-inner { max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .rf-fig { margin: 0; border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; background: #050607; min-width: 0; }
+  .rf-fig svg { width: 100%; height: auto; display: block; }
+  .rf-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .rf-copy h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 4.2vw, 58px); line-height: 1; letter-spacing: -.03em; margin: 12px 0 16px; text-wrap: balance; }
+  .rf-copy > p { color: #c4ccd4; font-size: 16.5px; line-height: 1.6; margin: 0; }
+  .rf-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 22px 0; }
+  .rf-stats div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
+  .rf-stats dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3vw, 40px); letter-spacing: -.02em; line-height: 1; }
+  .rf-stats div:first-child dd { color: var(--color-accent); }
+  .rf-stats dt { color: var(--color-text-secondary); font-size: 13px; line-height: 1.35; margin-top: 6px; }
+  .rf-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .rf-cta { background: var(--color-accent-fill); color: #000; font-weight: 700; font-size: 16px; padding: 14px 22px; border-radius: 999px; }
+  .rf-go { color: #fff; text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 4px; }
+  .rf-cta:focus-visible, .rf-go:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .rf-note { margin-top: 18px !important; font-size: 14px !important; color: var(--color-text-secondary) !important; }
+
+  svg .lake { fill: #06121b; }
+  svg .t { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: #fff; }
+  svg .t.water { fill: #2a5a7a; font-size: 11px; }
+  svg .t.acc { fill: #f06000; }
+  svg .base { fill: none; stroke: #2e363d; stroke-width: 10; stroke-linecap: round; }
+  svg .trail { fill: none; stroke: #f06000; stroke-width: 3; stroke-dasharray: .12 .88; animation: rf-trail 12s linear infinite; }
+  @keyframes rf-trail { from { stroke-dashoffset: .12; } to { stroke-dashoffset: -.88; } }
+  svg .crowd { fill: #c4ccd4; opacity: .5; }
+  svg .runner { fill: #f06000; stroke: #000; stroke-width: 2; }
+  svg .arch { fill: none; stroke: #f06000; stroke-width: 3; }
+  svg :global(.rf-mk) { color: #6b7682; animation: rf-mk 12s infinite; }
+  svg :global(.rf-mk rect) { fill: currentColor; }
+  svg :global(.rf-mk text) { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; fill: currentColor; }
+  @keyframes rf-mk { 0%, 24%, 100% { color: #6b7682; } 2%, 20% { color: #f06000; } }
+  svg.paused, svg.paused * { animation-play-state: paused !important; }
+
+  @media (max-width: 900px) { .rf-inner { grid-template-columns: 1fr; gap: 28px; } }
+  @media (max-width: 520px) { .rf-stats { grid-template-columns: 1fr 1fr; } .rf-stats div:last-child { grid-column: 1 / -1; } }
+</style>

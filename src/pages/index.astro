@@ -5,6 +5,7 @@ import Hero from '../components/Hero.astro';
 import ProofOfWork from '../components/ProofOfWork.astro';
 import BlueprintBuilder from '../components/BlueprintBuilder.astro';
 import BuildProcess from '../components/BuildProcess.astro';
+import RaceFeature from '../components/RaceFeature.astro';
 import ResultsBar from '../components/ResultsBar.astro';
 import CaseStudies from '../components/CaseStudies.astro';
 import CommercialConsultingBlock from '../components/CommercialConsultingBlock.astro';
@@ -37,6 +38,8 @@ import Footer from '../components/Footer.astro';
     <ProofOfWork mode="auto" />
     <BlueprintBuilder />
     <BuildProcess />
+    {/* Race directors are their own niche, not one tile in a roster. */}
+    <RaceFeature />
     <ResultsBar />
     <AsHeardOn />
     <MeetupPreview />

@@ -5,9 +5,55 @@ import PageHero from '../components/PageHero.astro';
 import BuildProcess from '../components/BuildProcess.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import CaseStudies from '../components/CaseStudies.astro';
+import RaceFeature from '../components/RaceFeature.astro';
 import CommercialConsultingBlock from '../components/CommercialConsultingBlock.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import ServicesNav from '../components/ServicesNav.astro';
+import { services } from '../data/services';
+import { SITE_URL } from '../data/site';
+
+// Every service as structured data, tied to the same Person/ProfessionalService
+// entity as the rest of the site — what Google and AI answer engines read to
+// answer "who builds X near Oakville / in Canada".
+const pageUrl = `${SITE_URL}/services/`;
+const areaServed = [
+  { '@type': 'City', name: 'Oakville', containedInPlace: { '@type': 'AdministrativeArea', name: 'Ontario' } },
+  { '@type': 'Place', name: 'Greater Toronto Area' },
+  { '@type': 'Country', name: 'Canada' },
+];
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  '@id': `${pageUrl}#catalog`,
+  name: 'Services offered by Greg Kowalczyk',
+  url: pageUrl,
+  provider: { '@id': `${SITE_URL}/#service` },
+  itemListElement: [
+    ...services.map((s, i) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        '@id': `${pageUrl}#${s.slug}`,
+        name: s.title,
+        description: `${s.line} ${s.body}`,
+        url: `${pageUrl}#${s.slug}`,
+        provider: { '@id': `${SITE_URL}/#person` },
+        areaServed,
+      },
+    })),
+    { '@type': 'Offer', itemOffered: { '@id': `${SITE_URL}/race-directors/#service` } },
+  ],
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${pageUrl}#breadcrumb`,
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: pageUrl },
+  ],
+};
 ---
 
 {/*
@@ -52,6 +98,7 @@ import Footer from '../components/Footer.astro';
 <Layout
   title="Custom AI Tools & Automation for Small Business | Greg Kowalczyk"
   description="I find the manual work eating your week and build the system that kills it. Custom AI tools you own outright — for any business, not just e-commerce. Free 15-minute assessment. Based in Oakville, working across the GTA."
+  extraSchema={[catalogSchema, breadcrumbSchema]}
 >
   <Nav />
   <main>
@@ -64,9 +111,11 @@ import Footer from '../components/Footer.astro';
         service cards became animated mini-schematics (ServiceGrid, full copy in
         each card's Details), and DigitalLaunch's two tracks moved into the
         "Digital launch and growth" card. Visible words in <main>: 2,298 → 1,382. */}
+    <ServicesNav />
     <span id="how-to-start" aria-hidden="true"></span>
     <BuildProcess showBuilds={false} lead="From first call to a system" />
     <ServiceGrid />
+    <RaceFeature />
     <CaseStudies />
     <CommercialConsultingBlock />
     <ContactCTA

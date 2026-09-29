@@ -14,6 +14,8 @@ import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import RaceCourse from '../components/RaceCourse.astro';
+import RaceDistances from '../components/RaceDistances.astro';
 import { SITE_URL } from '../data/site';
 import { RACE_CTA, problems, proof, tiers, playbook, faq } from '../data/raceDirectors';
 
@@ -118,105 +120,11 @@ const mutedStyle = "font-family: 'Outfit', sans-serif; color: #798897;";
       </div>
     </section>
 
-    {/* ── Proof ───────────────────────────────────────────────────── */}
-    <section class="py-12">
-      <div class="mx-auto max-w-5xl px-6">
-        <h2 class={h2Class} style={h2Style}>
-          <span class="comment-prefix" style="font-size: 0.8em;">// </span>What we built for our own race
-        </h2>
-        <div class="grid gap-6 md:grid-cols-2">
-          {proof.map((card) => (
-            <div class="fade-in-up glass-card flex flex-col p-7">
-              <h3 class="mb-3 text-lg font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
-                {card.title}
-              </h3>
-              <p class="leading-relaxed" style={mutedStyle}>{card.body}</p>
-              {card.href && (
-                <a
-                  href={card.href}
-                  class="mt-4 inline-block text-sm font-semibold"
-                  style="font-family: 'Outfit', sans-serif; color: #f06000;"
-                >How it works →</a>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    {/* ── Proof + year two, as the course (Sep 2026) ──────────────── */}
+    <RaceCourse />
 
-    {/* ── Year two ────────────────────────────────────────────────── */}
-    <section class="py-12">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="fade-in-up glass-card p-8 md:p-10">
-          <span
-            class="mb-4 inline-block rounded-full px-3 py-1 text-xs font-semibold"
-            style="font-family: 'JetBrains Mono', monospace; background: rgba(240, 96, 0, 0.14); color: #ff8a3d;"
-          >
-            YEAR TWO
-          </span>
-          <h2 class="mb-4 text-2xl font-bold md:text-3xl" style={h2Style}>
-            The same system, scaled
-          </h2>
-          <p class="mb-4 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
-            The 2027 Mercedes-Benz Oakville Bronte Harbour Classic is doubling: three races — a
-            Kids 1K, the 5K and a new 10K — with room for 1,500 runners, up from 875. More vendors,
-            more sponsors, more charity involvement, and a more attractive course. Registration is
-            already open.
-          </p>
-          <p class="mb-6 leading-relaxed" style={mutedStyle}>
-            None of it started from a blank page. The archive, the partner pages and the email
-            system from year one carried straight into year two. That is what I build for other
-            race directors: a race that gets easier to run every year, not harder.
-          </p>
-          <a
-            href="https://www.bronteharbourclassic.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class={primaryBtn}
-            style={secondaryStyle}
-          >bronteharbourclassic.com ↗</a>
-        </div>
-      </div>
-    </section>
-
-    {/* ── Ways to work together ───────────────────────────────────── */}
-    <section class="py-12">
-      <div class="mx-auto max-w-5xl px-6">
-        <h2 class="mb-3 text-2xl font-bold md:text-3xl" style={h2Style}>
-          <span class="comment-prefix" style="font-size: 0.8em;">// </span>Four ways to work together
-        </h2>
-        <p class="mb-8 max-w-2xl leading-relaxed" style={mutedStyle}>
-          Every race is a different size with a different budget, so there are no packages to
-          pick from a list. Start with the free call; you get a quote after it, not before.
-        </p>
-        <div class="grid gap-6 md:grid-cols-2">
-          {tiers.map((tier) => (
-            <div class="fade-in-up glass-card flex flex-col p-7">
-              <p class="mb-2 text-sm" style="font-family: 'JetBrains Mono', monospace; color: #f06000;">
-                {tier.step}
-              </p>
-              <h3 class="mb-3 text-xl font-bold" style="font-family: 'Outfit', sans-serif; color: #ffffff;">
-                {tier.name}
-              </h3>
-              <p class="mb-5 leading-relaxed" style="font-family: 'Outfit', sans-serif; color: #ffffff; opacity: 0.85;">
-                {tier.summary}
-              </p>
-              <ul class="mb-6 flex flex-col gap-3 p-0" style="list-style: none;">
-                {tier.points.map((point) => (
-                  <li class="flex gap-3 text-sm leading-relaxed" style={mutedStyle}>
-                    <span style="color: #f06000;">→</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href={RACE_CTA} class={`${primaryBtn} mt-auto self-start`} style={tier.step === '01' ? primaryStyle : secondaryStyle}>
-                Book the free call →
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    {/* ── Ways to work together, as race bibs (Sep 2026) ─────────── */}
+    <RaceDistances />
 
     {/* ── Not just races ──────────────────────────────────────────── */}
     <section class="py-12">

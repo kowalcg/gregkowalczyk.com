@@ -1,0 +1,266 @@
+---
+// "Run the course" — /race-directors/ (Sep 2026). The race season drawn as a
+// 5K loop: each km marker is one job the system takes off the race director,
+// with its proof as the split at the timing mat. The finish line is the start
+// line: lap two (year two) runs on everything lap one built.
+// Copy comes from src/data/raceDirectors.ts (proof cards, every number traced
+// there). Same scroll pattern as BuildProcess: the map stays put while the
+// steps scroll normally — the page is never held.
+import { proof } from '../data/raceDirectors';
+
+const byTitle = (t: string) => proof.find((p) => p.title.startsWith(t))!;
+const steps = [
+  { km: 'Start line', at: 0, card: byTitle('Next year'), split: '1 session', splitLabel: 'to build the full 2027 registration event' },
+  { km: '1 km', at: 0.2, card: byTitle('80 permanent'), split: '80', splitLabel: 'permanent sponsor, vendor and organizer pages' },
+  { km: '2 km', at: 0.4, card: byTitle('Participant emails'), split: 'Your OK', splitLabel: 'nothing goes out without your approval' },
+  { km: '3 km · water station', at: 0.6, card: byTitle('A sun-safety'), split: '875', splitLabel: 'runners covered by one sun-safety plan' },
+  { km: '4 km', at: 0.8, card: byTitle('Race photos'), split: '1,843', splitLabel: 'photos sorted by bib · 92% of bibs read · about $5 of AI' },
+  { km: 'Finish', at: 1, card: byTitle('QR code medals'), split: 'Every medal', splitLabel: 'opens the permanent race archive' },
+  { km: 'Lap two · year two', at: 2, card: byTitle('A race website that grows'), split: '875 → 1,500', splitLabel: 'room for runners in 2027, three races, nothing rebuilt' },
+];
+const COURSE = 'M170 470 C 260 470, 300 400, 380 360 C 460 320, 560 300, 660 282 C 760 265, 860 250, 900 300 C 940 350, 880 420, 780 430 C 680 440, 600 470, 500 500 C 400 530, 260 540, 200 510 C 170 495, 165 480, 170 470';
+---
+
+<section class="rc" id="the-course" aria-labelledby="rc-heading" data-rc>
+  <div class="rc-head">
+    <div class="rc-eyebrow">What we built for our own race</div>
+    <h2 id="rc-heading">Run the course.</h2>
+    <p>Your race season is a 5K. Every km marker is one job the system takes off your plate. Scroll and follow the runner.</p>
+  </div>
+
+  <div class="rc-grid">
+    <ol class="rc-steps">
+      {steps.map((s, i) => (
+        <li class={`rc-step${i === 0 ? ' on' : ''}${i === steps.length - 1 ? ' rc-lap' : ''}`} data-step={i} data-at={s.at} data-cap={`${s.km.toUpperCase()} · ${s.split} — ${s.splitLabel}`}>
+          <div class="rc-km">{s.km}</div>
+          <h3>{s.card.title}</h3>
+          <div class="rc-split"><b>{s.split}</b><span>{s.splitLabel}</span></div>
+          <p>{s.card.body}</p>
+          {i === steps.length - 1 && (
+            <p>The 2027 Mercedes-Benz Oakville Bronte Harbour Classic has three races — a Kids 1K, the 5K and a new 10K — with room for 1,500 runners, up from 875. None of it started from a blank page: the archive, the partner pages and the email system from year one carried straight into year two.</p>
+          )}
+          {s.card.href && <a href={s.card.href}>How it works →</a>}
+        </li>
+      ))}
+    </ol>
+
+    <figure class="rc-fig">
+      <svg viewBox="0 0 1000 620" role="img" aria-labelledby="rc-svg-t rc-svg-d" data-lap="1">
+        <title id="rc-svg-t">The race season as a 5K course</title>
+        <desc id="rc-svg-d">A loop course along the harbour. Start line: registration. 1 km: sponsor pages. 2 km: participant emails. 3 km: water station and sun safety. 4 km: race photos sorted by bib. Finish: QR code medals. The finish is the start of lap two, year two.</desc>
+        <defs>
+          <pattern id="rc-g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#0f1316" stroke-width="1" /></pattern>
+        </defs>
+        <rect width="1000" height="620" fill="#050607" />
+        <rect width="1000" height="620" fill="url(#rc-g)" />
+
+        {/* the lake and the harbour */}
+        <path d="M0 0 H1000 V150 C 850 175, 700 140, 560 165 C 430 188, 300 150, 160 175 C 90 187, 40 180, 0 170 Z" class="lake" />
+        {[40, 70, 100, 125].map((y, i) => (
+          <path d={`M${60 + i * 30} ${y} q 20 -6 40 0 t 40 0 M${520 + i * 25} ${y + 8} q 20 -6 40 0 t 40 0`} class="wave" />
+        ))}
+        <path d="M600 166 L612 112 L700 104 M612 112 L560 90" class="pier" />
+        <text x="760" y="70" class="t-mono t-water">LAKE ONTARIO</text>
+        <text x="630" y="96" class="t-mono t-water sm">HARBOUR</text>
+        {[[90, 560], [120, 580], [300, 590], [860, 520], [930, 470], [960, 560], [720, 560], [640, 585]].map(([x, y]) => (
+          <circle cx={x} cy={y} r="11" class="tree" />
+        ))}
+
+        {/* the course: remaining (dashed), covered (orange), lap two (white) */}
+        <path d={COURSE} class="course-base" id="rc-course" />
+        <path d={COURSE} class="course-done" pathLength="1" data-done />
+        <path d={COURSE} class="course-lap2" pathLength="1" data-lap2 />
+
+        <g data-crowd></g>
+        <g data-markers></g>
+
+        {/* start / finish arch */}
+        <g class="arch">
+          <path d="M138 505 V430 H202 V505" />
+          <path d="M138 442 H202" />
+          <text x="170" y="424" text-anchor="middle" class="t-mono t-accent">START · FINISH</text>
+        </g>
+
+        <circle r="9" class="runner-halo" data-halo />
+        <circle r="6" class="runner" data-runner />
+
+        {/* HUD */}
+        <text x="30" y="600" class="t-mono t-muted">COURSE · 5K LOOP · BRONTE HARBOUR</text>
+        <text x="970" y="600" text-anchor="end" class="t-mono t-accent" data-hud>START LINE</text>
+        <g class="lap-badge">
+          <rect x="330" y="228" width="200" height="34" rx="17" />
+          <text x="430" y="250" text-anchor="middle" class="t-mono t-dark">LAP 2 · YEAR TWO</text>
+        </g>
+      </svg>
+      <figcaption data-cap>{`${steps[0].km.toUpperCase()} · ${steps[0].split} — ${steps[0].splitLabel}`}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-rc]');
+  if (root) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = root.querySelector('svg')!;
+    const course = svg.querySelector<SVGPathElement>('#rc-course')!;
+    const done = svg.querySelector<SVGPathElement>('[data-done]')!;
+    const lap2 = svg.querySelector<SVGPathElement>('[data-lap2]')!;
+    const runner = svg.querySelector<SVGCircleElement>('[data-runner]')!;
+    const halo = svg.querySelector<SVGCircleElement>('[data-halo]')!;
+    const hud = svg.querySelector<SVGTextElement>('[data-hud]')!;
+    const cap = root.querySelector<HTMLElement>('figcaption[data-cap]')!;
+    const steps = [...root.querySelectorAll<HTMLElement>('[data-step]')];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const L = course.getTotalLength();
+    const pt = (f: number) => course.getPointAtLength(((f % 1) + 1) % 1 * L);
+
+    // km markers with a timing mat and an icon for the job done there
+    const ICONS = [
+      '<path d="M-9 -7 h18 v14 h-18 z M-5 -2 h10 M-5 3 h6" />',                 // registration form
+      '<path d="M-6 9 V-9 M-6 -9 H8 L4 -4 L8 1 H-6" />',                          // sponsor flag
+      '<path d="M-9 -6 h18 v12 h-18 z M-9 -6 L0 1 L9 -6" />',                     // email
+      '<path d="M-6 -8 h12 l-2 16 h-8 z M-5 -3 h10" />',                          // water cup
+      '<path d="M-9 -5 h5 l2 -3 h4 l2 3 h5 v12 h-18 z" /><circle r="3.5" cy="1" />', // camera
+      '<circle r="6" cy="3" /><path d="M-4 -3 L-6 -10 M4 -3 L6 -10" />',          // medal
+    ];
+    const OFFS = [[-58, 30], [-10, -46], [10, -44], [52, 0], [0, 44], [-58, 30]];
+    const SIDE = ['', 'l', 'r', 'l', 'r']; // km label side, away from the icon
+    const mg = svg.querySelector('[data-markers]')!;
+    const markers = [0, 0.2, 0.4, 0.6, 0.8].map((f, i) => {
+      const p = pt(f);
+      const g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'mk');
+      const label = i === 0 ? '' : `${i} KM`;
+      const [ox, oy] = OFFS[i];
+      g.innerHTML = `<rect class="mat" x="${p.x - 9}" y="${p.y - 3}" width="18" height="6" rx="2"/>` +
+        (label ? `<text class="t-mono km" x="${p.x + (SIDE[i] === 'l' ? -14 : 14)}" y="${p.y + 4}" text-anchor="${SIDE[i] === 'l' ? 'end' : 'start'}">${label}</text>` : '') +
+        `<g class="ico" transform="translate(${p.x + ox} ${p.y + oy})"><circle r="20" class="ico-bg"/>${ICONS[i]}</g>`;
+      mg.appendChild(g);
+      return g;
+    });
+    const finishIcon = document.createElementNS(NS, 'g');
+    finishIcon.setAttribute('class', 'mk');
+    finishIcon.innerHTML = `<g class="ico" transform="translate(262 402)"><circle r="20" class="ico-bg"/>${ICONS[5]}</g>`;
+    mg.appendChild(finishIcon);
+    markers.push(finishIcon);
+
+    // other runners on the course — more of them on lap two
+    const crowdG = svg.querySelector('[data-crowd]')!;
+    const crowd = Array.from({ length: 44 }, (_, k) => {
+      const c = document.createElementNS(NS, 'circle');
+      c.setAttribute('r', '2.6'); c.setAttribute('class', 'crowd');
+      crowdG.appendChild(c);
+      return { el: c, f: Math.random(), v: 0.012 + Math.random() * 0.01, lap2Only: k >= 22 };
+    });
+
+    let lap = 1, target = 0, pos = 0, active = -1;
+    function setStep(i: number) {
+      if (i === active) return;
+      active = i;
+      steps.forEach((s, k) => s.classList.toggle('on', k === i));
+      target = Number(steps[i].dataset.at);
+      cap.textContent = steps[i].dataset.cap || '';
+      hud.textContent = (steps[i].querySelector('.rc-km')?.textContent || '').toUpperCase();
+      lap = target > 1 ? 2 : 1;
+      svg.dataset.lap = String(lap);
+      markers.forEach((m, k) => m.classList.toggle('lit', lap === 2 || k <= i));
+      markers.forEach((m, k) => m.classList.toggle('now', lap === 1 && k === i));
+      if (reduce) pos = target;
+    }
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setStep(Number((e.target as HTMLElement).dataset.step)); }), { rootMargin: '-45% 0px -45% 0px' });
+    steps.forEach((s) => io.observe(s));
+
+    let running = false, last = 0;
+    function frame(now: number) {
+      if (!running) return;
+      const dt = Math.min(64, now - last); last = now;
+      // the runner eases toward the active marker (never jumps backwards through the arch)
+      pos += (target - pos) * Math.min(1, dt * 0.0035);
+      if (Math.abs(target - pos) < 0.0005) pos = target;
+      const p = pt(Math.min(pos, 1.9999));
+      runner.setAttribute('cx', p.x.toFixed(1)); runner.setAttribute('cy', p.y.toFixed(1));
+      halo.setAttribute('cx', p.x.toFixed(1)); halo.setAttribute('cy', p.y.toFixed(1));
+      done.style.strokeDashoffset = String(1 - Math.min(pos, 1));
+      lap2.style.strokeDashoffset = String(1 - Math.max(0, Math.min(pos - 1, 1)));
+      if (!reduce) crowd.forEach((c) => {
+        const show = !c.lap2Only || lap === 2;
+        c.el.style.opacity = show ? '0.55' : '0';
+        c.f = (c.f + c.v * dt / 1000) % 1;
+        const q = pt(c.f);
+        c.el.setAttribute('cx', q.x.toFixed(1)); c.el.setAttribute('cy', q.y.toFixed(1));
+      });
+      requestAnimationFrame(frame);
+    }
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !running) { running = true; last = performance.now(); requestAnimationFrame(frame); }
+      else if (!e.isIntersecting) running = false;
+    }).observe(svg);
+    setStep(0);
+    if (reduce) crowd.forEach((c) => { const q = pt(c.f); c.el.setAttribute('cx', String(q.x)); c.el.setAttribute('cy', String(q.y)); c.el.style.opacity = c.lap2Only ? '0' : '0.4'; });
+  }
+</script>
+
+<style>
+  .rc { max-width: 80rem; margin: 0 auto; padding: 4rem 1.5rem 3rem; scroll-margin-top: 64px; }
+  .rc-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .rc-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(40px, 6.4vw, 88px); line-height: .95; letter-spacing: -.035em; margin: 14px 0 16px; }
+  .rc-head p { color: #c4ccd4; font-size: 18px; max-width: 56ch; margin: 0; }
+  .rc-grid { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 48px; margin-top: 40px; align-items: start; }
+  .rc-steps { list-style: none; margin: 0; padding: 0; }
+  .rc-step { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; gap: 10px; opacity: .35; transition: opacity .4s; border-left: 2px solid var(--color-border); padding-left: 22px; }
+  .rc-step.on { opacity: 1; border-left-color: var(--color-accent); }
+  .rc-km { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .rc-step h3 { font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+  .rc-split { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .rc-split b { font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 3vw, 40px); color: var(--color-accent); letter-spacing: -.02em; white-space: nowrap; }
+  .rc-split span { color: var(--color-text-secondary); font-size: 14px; line-height: 1.35; }
+  .rc-step p { color: #c4ccd4; font-size: 15.5px; line-height: 1.6; margin: 0; }
+  .rc-step a { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+  .rc-step a:hover { color: var(--color-accent); }
+  .rc-step a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .rc-fig { margin: 0; position: sticky; top: 88px; border: 1px solid var(--color-border); border-radius: 14px; background: #050607; padding: 8px; min-width: 0; }
+  .rc-fig svg { width: 100%; height: auto; display: block; }
+  .rc-fig figcaption { padding: 12px 10px 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; color: #fff; min-height: 2.6em; }
+
+  svg .lake { fill: #06121b; }
+  svg .wave { fill: none; stroke: #12283a; stroke-width: 1.4; }
+  svg .pier { fill: none; stroke: #2e363d; stroke-width: 4; stroke-linecap: round; }
+  svg .tree { fill: #0b1510; stroke: #173022; }
+  svg .t-mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; fill: #fff; }
+  svg .t-water { fill: #2a5a7a; }
+  svg .t-water.sm { font-size: 10px; }
+  svg .t-muted { fill: #798897; }
+  svg .t-accent { fill: #f06000; }
+  svg .t-dark { fill: #000; font-weight: 700; font-size: 11px; }
+  svg .course-base { fill: none; stroke: #2e363d; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+  svg .course-done { fill: none; stroke: #f06000; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  svg .course-lap2 { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .9; }
+  svg .crowd { fill: #c4ccd4; transition: opacity .6s; }
+  svg .runner { fill: #f06000; }
+  svg .runner-halo { fill: none; stroke: #f06000; stroke-width: 2; opacity: .5; animation: rc-pulse 1.4s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes rc-pulse { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.4); opacity: 0; } }
+  svg .arch path { fill: none; stroke: #f06000; stroke-width: 3; }
+  svg :global(.mk .mat) { fill: #3a434b; transition: fill .3s; }
+  svg :global(.mk .km) { font-size: 11px; fill: #798897; transition: fill .3s; }
+  svg :global(.mk .ico-bg) { fill: #0b0e10; stroke: #3a434b; stroke-width: 1.4; transition: stroke .3s, fill .3s; }
+  svg :global(.mk .ico path), svg :global(.mk .ico > circle:not(.ico-bg)) { fill: none; stroke: #6b7682; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke .3s; }
+  svg :global(.mk.lit .mat) { fill: #f06000; }
+  svg :global(.mk.lit .km) { fill: #fff; }
+  svg :global(.mk.lit .ico-bg) { stroke: #f06000; }
+  svg :global(.mk.lit .ico path), svg :global(.mk.lit .ico > circle:not(.ico-bg)) { stroke: #fff; }
+  svg :global(.mk.now .ico-bg) { fill: #2a1405; }
+  svg .lap-badge { opacity: 0; transition: opacity .5s; }
+  svg .lap-badge rect { fill: #f06000; }
+  svg[data-lap="2"] .lap-badge { opacity: 1; }
+
+  @media (max-width: 900px) {
+    .rc-grid { display: flex; flex-direction: column-reverse; gap: 0; }
+    .rc-fig { top: 64px; z-index: 5; width: 100%; padding: 4px; border-radius: 10px; }
+    .rc-fig figcaption { display: none; }
+    .rc-step { min-height: 64vh; justify-content: flex-start; padding-top: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    svg .runner-halo { animation: none; }
+    .rc-step { transition: none; }
+  }
+</style>
