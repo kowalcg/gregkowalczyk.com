@@ -38,13 +38,15 @@ const nodes: N[] = [
   { id: 'emails', label: 'Emails', sub: 'sent by Klaviyo', icon: 'i-mail', d: [880, 318, 200, 56], m: [15, 672, 175, 54] },
   { id: 'you', label: 'You', sub: 'approve what matters', icon: 'i-check', d: [880, 390, 200, 56], m: [210, 672, 175, 54], kind: 'you' },
 
-  { id: 'idea', label: 'The idea', sub: 'in plain English', icon: 'i-bulb', d: [20, 540, 200, 56], m: [100, 800, 200, 54] },
-  { id: 'code', label: 'Claude Code', sub: 'writes the code', icon: 'i-terminal', d: [270, 540, 190, 56], m: [15, 890, 175, 54] },
-  { id: 'vibe', label: 'VibeCode + Expo', sub: 'builds phone apps', icon: 'i-phone', d: [270, 630, 190, 56], m: [210, 890, 175, 54] },
-  { id: 'github', label: 'GitHub', sub: 'keeps every version', icon: 'i-folder', d: [500, 540, 180, 56], m: [15, 980, 175, 54] },
-  { id: 'appstore', label: 'App Store', sub: 'Apple review', icon: 'i-star', d: [500, 630, 180, 56], m: [210, 980, 175, 54] },
-  { id: 'vercel', label: 'Vercel', sub: 'puts it online', icon: 'i-spark', d: [720, 540, 150, 56], m: [15, 1070, 175, 54] },
-  { id: 'live', label: 'Live', sub: 'apps, sites, Helm', icon: 'i-flag', d: [910, 540, 170, 146], m: [100, 1160, 200, 60], kind: 'you' },
+  { id: 'idea', label: 'The idea', sub: 'in plain English', icon: 'i-bulb', d: [20, 600, 180, 56], m: [100, 800, 200, 54] },
+  { id: 'code', label: 'Claude Code', sub: 'writes the code', icon: 'i-terminal', d: [240, 530, 190, 56], m: [15, 890, 175, 54] },
+  { id: 'codex', label: 'Codex', sub: 'writes the code too', icon: 'i-terminal', d: [240, 600, 190, 56], m: [210, 890, 175, 54] },
+  { id: 'vibe', label: 'VibeCode', sub: 'app from a prompt', icon: 'i-gear', d: [240, 670, 190, 56], m: [100, 970, 200, 54] },
+  { id: 'github', label: 'GitHub', sub: 'keeps every version', icon: 'i-folder', d: [480, 545, 175, 56], m: [15, 1060, 175, 54] },
+  { id: 'expo', label: 'Expo', sub: 'turns it into an app', icon: 'i-phone', d: [480, 655, 175, 56], m: [210, 1060, 175, 54] },
+  { id: 'vercel', label: 'Vercel', sub: 'puts it online', icon: 'i-spark', d: [700, 545, 170, 56], m: [15, 1150, 175, 54] },
+  { id: 'appstore', label: 'App Store', sub: 'Apple review', icon: 'i-star', d: [700, 655, 170, 56], m: [210, 1150, 175, 54] },
+  { id: 'live', label: 'Live', sub: 'apps, sites, Helm', icon: 'i-flag', d: [910, 530, 170, 196], m: [100, 1240, 200, 60], kind: 'you' },
 ];
 
 type Step = { e: string[][]; nodes?: string[]; say: string };
@@ -79,14 +81,15 @@ const jobs: { id: string; chip: string; icon: string; packet: string; steps: Ste
     { e: [['agents', 'you']], say: 'They take the routine rounds (checks, follow-ups, admin) and bring you only what needs a decision.' },
   ] },
   { id: 'site', chip: 'A new website or tool', icon: 'i-terminal', packet: 'i-terminal', steps: [
-    { e: [['idea', 'code']], say: 'I describe what it should do, in plain English.' },
-    { e: [['code', 'github']], say: 'Claude Code writes the code, and GitHub keeps every version so nothing is ever lost.' },
+    { e: [['idea', 'code'], ['idea', 'codex']], say: 'I describe what it should do, in plain English, to Claude Code or Codex.' },
+    { e: [['code', 'github'], ['codex', 'github']], say: 'They write the code, and GitHub keeps every version so nothing is ever lost.' },
     { e: [['github', 'vercel']], say: 'Vercel puts it online by itself every time it changes.' },
     { e: [['vercel', 'live']], say: 'Live: Helm, SportClinicFinder, SleepClinicFinder, the race website and this one.' },
   ] },
   { id: 'app', chip: 'A phone app', icon: 'i-phone', packet: 'i-phone', steps: [
-    { e: [['idea', 'vibe']], say: 'Same start: describe the app and what it should do for people.' },
-    { e: [['vibe', 'appstore']], say: 'VibeCode and Expo turn it into an iPhone app, then it goes to Apple for review.' },
+    { e: [['idea', 'vibe'], ['idea', 'code'], ['idea', 'codex']], say: 'Same start, three ways to build it: VibeCode, Claude Code or Codex.' },
+    { e: [['vibe', 'expo'], ['code', 'expo'], ['codex', 'expo']], say: 'Whichever one builds it, Expo turns it into a real iPhone app.' },
+    { e: [['expo', 'appstore']], say: 'Then it goes to Apple for review.' },
     { e: [['appstore', 'live']], say: 'Live in the App Store: SunUp and RunMate Pro. RunMate was rejected 39 times first.' },
   ] },
 ];
@@ -116,11 +119,11 @@ function path(a: N, b: N, L: 'd' | 'm') {
 }
 
 const layouts = [
-  { L: 'd' as const, vb: '0 0 1100 700', heads: [[120, 16, 'Where the numbers come from'], [555, 16, 'The engine I built'], [980, 16, 'What comes out'], [120, 520, 'How I build things']] },
-  { L: 'm' as const, vb: '0 0 400 1240', heads: [[200, 24, 'Where the numbers come from'], [200, 248, 'The engine I built'], [200, 526, 'What comes out'], [200, 782, 'How I build things']] },
+  { L: 'd' as const, vb: '0 0 1100 745', heads: [[120, 16, 'Where the numbers come from'], [555, 16, 'The engine I built'], [980, 16, 'What comes out'], [120, 520, 'How I build things']] },
+  { L: 'm' as const, vb: '0 0 400 1320', heads: [[200, 24, 'Where the numbers come from'], [200, 248, 'The engine I built'], [200, 526, 'What comes out'], [200, 782, 'How I build things']] },
 ];
 const toolbox = [
-  ['AI & building', ['Claude', 'Claude Code', 'Cursor', 'ChatGPT', 'Perplexity', 'GitHub', 'Vercel']],
+  ['AI & building', ['Claude', 'Claude Code', 'Codex', 'Cursor', 'ChatGPT', 'Perplexity', 'GitHub', 'Vercel']],
   ['Agents & automation', ['Meta Muse', 'Hermes Agent', 'Custom-built automations', 'N8N', 'Zapier', 'Make', 'Custom APIs']],
   ['Marketing', ['Klaviyo', 'Google Ads', 'Meta Ads', 'Amazon PPC', 'GA4', 'Search Console', 'Clarity']],
   ['Selling', ['Shopify', 'Amazon Seller Central', 'Faire']],
@@ -149,7 +152,7 @@ const toolbox = [
     </div>
 
     {layouts.map(({ L, vb, heads }) => (
-      <svg class={`tf-svg tf-${L}`} viewBox={vb} role="img" aria-label="Diagram of how Greg's tools connect: data from Amazon, Shopify, Meta, Google, Klaviyo and Clarity flows into Helm, Claude and AI agents (Meta Muse, Hermes) read it, and briefs, ad fixes, listings, blog posts and emails come out for approval. Below, ideas become websites through Claude Code, GitHub and Vercel, and phone apps through VibeCode and the App Store.">
+      <svg class={`tf-svg tf-${L}`} viewBox={vb} role="img" aria-label="Diagram of how Greg's tools connect: data from Amazon, Shopify, Meta, Google, Klaviyo and Clarity flows into Helm, Claude and AI agents (Meta Muse, Hermes) read it, and briefs, ad fixes, listings, blog posts and emails come out for approval. Below, ideas become websites through Claude Code or Codex, GitHub and Vercel, and phone apps through VibeCode, Claude Code or Codex, then Expo and the App Store.">
         {heads.map(([x, y, t]) => <text x={x} y={y} text-anchor="middle" class="tf-head">{t}</text>)}
         {L === 'd' && <path d="M20 500 H1080" class="tf-rule" />}
         {L === 'm' && <path d="M15 770 H385" class="tf-rule" />}
