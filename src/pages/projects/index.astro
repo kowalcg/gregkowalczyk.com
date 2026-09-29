@@ -11,6 +11,7 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import PageHero from '../../components/PageHero.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
+import ProofOfWork from '../../components/ProofOfWork.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_URL } from '../../data/site';
@@ -48,6 +49,8 @@ const itemListSchema = {
       title="Things I've Built"
       subtitle="Not client decks. Not demos. Actual tools, apps, and systems deployed and running in the real world."
     />
+    {/* The full scroll-driven story (the homepage plays a short autoplay version). */}
+    <ProofOfWork mode="scroll" finalHref="/#blueprint" finalLabel="Draw your blueprint →" />
 
     <section class="pb-12 pt-0 md:pb-16">
       <div class="mx-auto max-w-6xl px-6">

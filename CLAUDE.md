@@ -126,7 +126,7 @@ every podcast/talk URL from `src/data/media.ts`.
 | Route | Purpose |
 |---|---|
 | `/` | Hero, results, **next meetup banner**, services preview, case studies, projects preview, commercial block, about teaser, testimonials, **as-heard-on**, FAQ, blog preview, contact CTA |
-| `/services/` | Six services, case studies, digital launch, how I work |
+| `/services/` | Live process schematic with the three prices (`BuildProcess`), animated service grid (`ServiceGrid`, full copy in each card's Details), before/after case studies, who it's for |
 | `/projects/` | All 12 projects, rendered from the content collection |
 | `/projects/<slug>/` | Build stories — sunup, runmate-pro, sportsclinicfinder, bronte-harbour-classic, helm, magpie |
 | `/media/` | Podcasts, talks, teaching — plus the entity schema |
@@ -197,6 +197,18 @@ Each of these corresponds to a defect that was live in production before July 20
   event day push any commit (or redeploy) for the homepage banner to move on.
 - **A new page needs an entry in `pageFiles` in `astro.config.mjs`**, or it
   ships without `<lastmod>` and the build audit fails.
+- **Homepage Proof of Work + Draw your blueprint (Sep 2026).** Copy, numbers and
+  screenshots live in `src/data/proof.ts`; every stat must match the live product or its
+  `/projects/` page. The three.js stage (`src/scripts/proof-scene.js`) is dynamically
+  imported when the section nears the viewport — never import `three` statically, or it
+  lands in the Hero's load. The blueprint reaches the contact form through
+  `sessionStorage['gk-blueprint']` + `?topic=blueprint` (read in `Contact.astro`).
+  Build off Drive: clone the repo to /tmp, copy changes in, `npm ci && npm run build`.
+- **/services/ is shown, not told (Sep 2026).** Prices live in `BuildProcess.astro`
+  step 02 ($1,000, credited) — keep it a number. Service cards (`ServiceGrid.astro`)
+  keep their original long copy inside `<details>`; case study figures
+  (`CaseStudies.astro`) are the pre-existing ones only. SMIL dots use negative
+  `begin` offsets or start hidden, otherwise they sit at (0,0) until they start.
 - **Run `node scripts/audit-build.mjs` after every build.**
 - **Static build:** keep `output: 'static'`.
 - **Font loading:** keep the non-blocking preconnect pattern.

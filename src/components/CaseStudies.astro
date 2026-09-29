@@ -1,415 +1,223 @@
 ---
 /**
- * CaseStudies.astro — Proof, Not Promises
- * Two case study cards showcasing real client and own-brand results.
- * Grid layout: details left (60%), results right (40%) on desktop.
+ * CaseStudies.astro — Proof, Not Promises. Used on / and /services/.
+ * Rebuilt Sep 2026 as before/after panels: a jammed queue on the left, the
+ * built system flowing on the right, the real results in big type, and the
+ * full story behind "Read the full story". All figures and copy below were
+ * already live in the July–August 2026 version; do not add new ones.
+ *
+ * Client case study — anonymised: figures yes, names never. The build gate
+ * (scripts/audit-build.mjs) fails on a client name, including in comments,
+ * because Astro renders JSX comments into the HTML.
+ *
+ * Own-build card ("Built without waiting"). Replaced an auto-shop client case
+ * study on 2026-08-02: that project was a first trial done for family, it is
+ * being handed over, and there was nothing shippable to point at. The client
+ * card answers "has he done this for someone like me", this one answers "can
+ * he actually build at this level". Keep both. Cutting either leaves an
+ * obvious hole.
+ *
+ * FRAMING — do not undo this. The own-build card is about SPEED, not
+ * headcount. Greg's point (2026-08-02) is that every change used to require
+ * going to a developer and waiting days; now he makes it himself, often from
+ * his phone, and it is live immediately. That is the thing clients actually
+ * buy, and it is a pain every business owner has felt. Never write "I fired my
+ * developers" or any variant. Same underlying fact, but an owner reads it as
+ * "this man replaces people" — and it contradicts the position taken at the
+ * Oakville meetup, where the honest answer is that AI replaced the agency, not
+ * the staff. Client work stays visible on purpose: Greg was explicit that
+ * client builds should not be discarded in favour of own-brand work; saying
+ * "built for a client" is fine.
+ *
+ * Own brands — GearTOP + TapeGeeks, safe to name.
  */
+
+const cases = [
+  {
+    tag: 'Client project',
+    title: 'Traditional retail shop to full e-commerce operation',
+    before: 'New owner, 84+ hours a week, zero e-commerce experience',
+    after: 'A complete digital operation, delivered in 6 weeks',
+    metrics: [['6 weeks', 'delivery time'], ['Six figures', 'added from pricing alone'], ['New channel', 'corporate gifting, built from zero'], ['~2×', 'revenue trajectory']],
+    story: ['New owner, one week into a long-established specialty retail business. Zero e-commerce experience. Working 84+ hours a week. Needed a complete digital transformation plan — fast.'],
+    listTitle: 'What I built',
+    list: [
+      '18 deliverable areas — competitive analysis, pricing strategy, SEO, email, social, UGC, partnerships, financial tracking',
+      'Custom Content Creator PRO v5.3 — web app for generating platform-specific AI prompts, handed over running',
+      'Corporate gifting program with B2B sales materials — a six-figure channel that didn’t exist before',
+      'Pricing optimization strategy — a six-figure annual gain from margin adjustments alone',
+      'Interactive client dashboard deployed on GitHub Pages — live, browser-based, no downloads',
+    ],
+    links: [],
+  },
+  {
+    tag: 'Built without waiting',
+    title: 'It used to take days. Now I do it from my phone.',
+    before: 'Every change: brief a developer, wait days, review, wait again',
+    after: 'Minutes: live before the conversation is over',
+    metrics: [['Minutes', 'to ship a change, not days'], ['2', 'apps live in the App Store'], ['12', 'projects shipped'], ['$75K+', 'annual agency cost removed']],
+    story: [
+      'Every change used to mean going to a developer. A blog post, a price update, a page that needed fixing — write the brief, wait, review it, wait again. Days, every time, for work that took minutes to describe. And nothing shipped while you waited.',
+      'That’s the part that changed. I make the change myself now, often from my phone, and it’s live before the conversation is over. Not because I became a programmer — I’m a mechanical engineer and I’ve never written software professionally. Because describing the work precisely is now enough to get it built.',
+      'This is the same capability I hand over. When a client wants a page changed, a post published, or a price updated, the answer stops being “I’ll ask the developer and get back to you next week.”',
+    ],
+    listTitle: 'What’s been shipped that way',
+    list: [
+      'Two iOS apps, live in the App Store — SunUp, which calculates real burn time from skin type and live UV, and RunMate Pro, GPS tracking with shoe-mileage management. RunMate was rejected 39 times before it was approved.',
+      'Helm — seller intelligence that pulls Amazon SP-API, Amazon Ads, Shopify, Meta, Klaviyo and Search Console into one place, then exposes it to Claude as tools.',
+      'A full event platform for a chip-timed road race I direct — 875 runners in its first year, plus their families, spectators and 80 local partners.',
+      'Two Shopify stores running on API connections, with product content and blog production automated end to end.',
+      'SportsClinicFinder — a Canada-wide clinic directory covering every province and territory, searchable by city, injury, and specialty.',
+      'Magpie — a shared research brain for the team, so nobody researches the same thing twice.',
+      'Marketing sites for both apps, plus this one — statically built, deployed on Vercel, with a post-build audit that fails the deploy on a dead link or a broken image.',
+      'Content Creator PRO — built for a client, handed over running, so they stopped needing an agency on retainer to do it.',
+    ],
+    links: [{ href: '/projects/', label: 'See all of it, with the stack behind each one' }, { href: '/race-directors/', label: 'I build this for other race directors' }],
+  },
+  {
+    tag: 'My businesses',
+    title: 'Two e-commerce brands running on AI tools I built myself',
+    before: '$75K–$125K a year to agencies, freelancers and services',
+    after: 'Systems I built, running every day',
+    metrics: [['$75K+', 'annual savings'], ['5–10×', 'content volume'], ['15–20×', 'email marketing ROI'], ['2', 'apps live in the App Store']],
+    story: ['Two e-commerce brands. $2M+ in ad spend. Paying $75K-$125K annually for agencies, freelancers, and services. Needed to cut costs without cutting results.'],
+    listTitle: 'What I built',
+    list: [
+      'Custom AI content generation systems (100+ product descriptions, brand voice maintained)',
+      'Marketing automation workflows replacing manual email, social, and ad management',
+      '2 iOS apps (SunUp by GearTOP, RunMate Pro) — built as a non-coder using AI tools',
+      'Analytics dashboards aggregating data from Shopify, Amazon, Google, Meta',
+      'Operational automation (inventory alerts, reorder triggers, journey orchestration)',
+    ],
+    links: [],
+  },
+];
 ---
 
-<section id="results" class="pb-8 pt-24 md:pt-32">
-  <div class="mx-auto max-w-6xl px-6">
-    <!-- Section Heading -->
-    <h2
-      class="mb-16 text-center text-3xl font-bold md:text-4xl"
-      style="font-family: 'Outfit', sans-serif; letter-spacing: -0.025em;"
-    >
-      <span class="comment-prefix">// </span><span class="gradient-text">Proof, Not Promises</span>
-    </h2>
+<section id="results" class="cs" aria-labelledby="cs-heading">
+  <div class="cs-head">
+    <div class="cs-eyebrow">Proof, not promises</div>
+    <h2 id="cs-heading">Before and after.</h2>
+  </div>
 
-    <!-- Cards Container -->
-    <div class="flex flex-col gap-8">
-
-      {/* Client case study — anonymised: figures yes, names never */}
-      <div
-        class="fade-in-up glass-card overflow-hidden p-8 md:p-10"
-      >
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_2fr] md:gap-10">
-          <!-- Left: Details -->
-          <div>
-            <!-- Tag -->
-            <span
-              class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background-color: rgba(240, 96, 0, 0.1); color: #f06000;"
-            >
-              Client Project
-            </span>
-
-            <!-- Title -->
-            <h3
-              class="mb-4 text-xl font-bold md:text-2xl"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-            >
-              Traditional Retail Shop to Full E-Commerce Operation
-            </h3>
-
-            <!-- Challenge -->
-            <p
-              class="mb-6 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
-            >
-              New owner, one week into a long-established specialty retail business. Zero e-commerce experience. Working 84+ hours a week. Needed a complete digital transformation plan — fast.
-            </p>
-
-            <!-- What I built -->
-            <h4
-              class="mb-3 text-base font-semibold"
-              style="font-family: 'Outfit', sans-serif; color: #ffffff;"
-            >
-              What I built
-            </h4>
-            <ul class="space-y-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>18 deliverable areas — competitive analysis, pricing strategy, SEO, email, social, UGC, partnerships, financial tracking</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Custom Content Creator PRO v5.3 — web app for generating platform-specific AI prompts, handed over running</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Corporate gifting program with B2B sales materials — a six-figure channel that didn't exist before</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Pricing optimization strategy — a six-figure annual gain from margin adjustments alone</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Interactive client dashboard deployed on GitHub Pages — live, browser-based, no downloads</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Right: Results -->
-          <div class="flex flex-col gap-6 md:border-l md:pl-10" style="border-color: rgba(255,255,255,0.08);">
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                6 Weeks
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Delivery Time
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                Six Figures
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Added From Pricing Alone
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                New Channel
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Corporate Gifting, Built From Zero
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                ~2×
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Revenue Trajectory
-              </div>
-            </div>
-          </div>
+  <div class="cs-list">
+    {cases.map((c, i) => (
+      <article class="cs-card">
+        <div class="cs-top">
+          <span class="cs-tag">{c.tag}</span>
+          <h3>{c.title}</h3>
         </div>
-      </div>
+        <div class="cs-main">
+          <figure class="cs-fig">
+            <svg viewBox="0 0 640 170" aria-hidden="true" data-anim>
+              <path d="M20 96 H200" class="rail" />
+              <path d="M200 60 V132" class="gate" />
+              {Array.from({ length: 16 }, (_, k) => (
+                <circle cx={194 - (k % 8) * 12} cy={k < 8 ? 90 : 102} r="4.2" class={`jam j${k % 4}`} />
+              ))}
+              <circle cx="232" cy="96" r="4.2" class="trickle" />
+              <text x="20" y="160" class="lbl dim">ONE THING AT A TIME</text>
 
-      {/* Own-build portfolio. Replaced an auto-shop client case study on
-          2026-08-02: that project was a first trial done for family, it is
-          being handed over, and there was nothing shippable to point at.
+              <path d="M290 96 H340 M332 88 L342 96 L332 104" class="arrow" />
 
-          This card carries the range argument the auto shop used to carry, but
-          it does it differently — the client card above answers "has he done
-          this for someone like me", this one answers "can he actually build at
-          this level". Keep both. Cutting either leaves an obvious hole.
-
-          FRAMING — do not undo this. The card is about SPEED, not headcount.
-          Greg's point (2026-08-02) is that every change used to require going
-          to a developer and waiting days; now he makes it himself, often from
-          his phone, and it is live immediately. That is the thing clients
-          actually buy, and it is a pain every business owner has felt.
-
-          Never write "I fired my developers" or any variant. Same underlying
-          fact, but an owner reads it as "this man replaces people" — and it
-          contradicts the position taken at the Oakville meetup, where the
-          honest answer is that AI replaced the agency, not the staff.
-
-          Client work stays visible here on purpose. Greg was explicit that
-          client builds should not be discarded in favour of own-brand work;
-          saying "built for a client" is fine.
-          Anonymisation still applies: Astro renders <!-- --> into the HTML,
-          {/* */} it does not. The build gate fails on a client name either way. */}
-      <div
-        class="fade-in-up glass-card overflow-hidden p-8 md:p-10"
-      >
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_2fr] md:gap-10">
-          <!-- Left: Details -->
-          <div>
-            <!-- Tag -->
-            <span
-              class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background-color: rgba(240, 96, 0, 0.1); color: #f06000;"
-            >
-              Built Without Waiting
-            </span>
-
-            <!-- Title -->
-            <h3
-              class="mb-4 text-xl font-bold md:text-2xl"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-            >
-              It Used to Take Days. Now I Do It From My Phone.
-            </h3>
-
-            <!-- Challenge -->
-            <p
-              class="mb-4 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
-            >
-              Every change used to mean going to a developer. A blog post, a price update, a page that needed fixing — write the brief, wait, review it, wait again. Days, every time, for work that took minutes to describe. And nothing shipped while you waited.
-            </p>
-
-            <p
-              class="mb-6 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
-            >
-              That's the part that changed. I make the change myself now, often from my phone, and it's live before the conversation is over. Not because I became a programmer — I'm a mechanical engineer and I've never written software professionally. Because describing the work precisely is now enough to get it built.
-            </p>
-
-            <!-- What I built -->
-            <h4
-              class="mb-3 text-base font-semibold"
-              style="font-family: 'Outfit', sans-serif; color: #ffffff;"
-            >
-              What's been shipped that way
-            </h4>
-            <ul class="space-y-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Two iOS apps, live in the App Store</strong> — SunUp, which calculates real burn time from skin type and live UV, and RunMate Pro, GPS tracking with shoe-mileage management. RunMate was rejected 39 times before it was approved.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Helm</strong> — seller intelligence that pulls Amazon SP-API, Amazon Ads, Shopify, Meta, Klaviyo and Search Console into one place, then exposes it to Claude as tools. "Why did ACOS jump last week" gets answered in a sentence instead of an afternoon.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">A full event platform</strong> for a chip-timed road race I direct — 875 runners in its first year, plus their families, spectators and 80 local partners. Registration, course and festival info, sponsor pages, and a permanent searchable photo archive. <a href="/race-directors/" style="color: #f06000;">I build this for other race directors →</a></span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Two Shopify stores</strong> running on API connections, with product content and blog production automated end to end.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">SportsClinicFinder</strong> — a Canada-wide clinic directory covering every province and territory, searchable by city, injury, and specialty.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Magpie</strong> — a shared research brain for the team. Drop in a link and it enriches, categorises, and makes it searchable across every brand, so nobody researches the same thing twice.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Marketing sites for both apps</strong>, plus this one — statically built, deployed on Vercel, with a post-build audit that fails the deploy on a dead link or a broken image.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span><strong style="color: #ffffff;">Content Creator PRO — built for a client</strong>, handed over running. A web app that produces on-brand content for Instagram, email, Google Ads and product pages, so they stopped needing an agency on retainer to do it.</span>
-              </li>
-            </ul>
-
-            <p
-              class="mt-6 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
-            >
-              This is the same capability I hand over. When a client wants a page changed, a post published, or a price updated, the answer stops being "I'll ask the developer and get back to you next week."
-            </p>
-            <a
-              href="/projects/"
-              class="mt-6 inline-block text-sm font-semibold transition-opacity hover:opacity-70"
-              style="font-family: 'Outfit', sans-serif; color: #f06000;"
-            >See all of it, with the stack behind each one →</a>
-          </div>
-
-          <!-- Right: Results -->
-          <div class="flex flex-col gap-6 md:border-l md:pl-10" style="border-color: rgba(255,255,255,0.08);">
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                Minutes
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                To Ship a Change — Not Days
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                2 Apps
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Live in the App Store
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                12
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Projects Shipped
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                $75K+
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Annual Agency Cost Removed
-              </div>
-            </div>
-          </div>
+              <path id={`cs-flow${i}`} d="M370 96 H620" class="rail" />
+              <rect x="450" y="68" width="92" height="56" rx="8" class="sys" />
+              <text x="496" y="58" text-anchor="middle" class="lbl acc">SYSTEM</text>
+              {[0, 1, 2, 3, 4, 5, 6].map((k) => (
+                <circle r="4.2" class="flow"><animateMotion dur="2.8s" begin={`-${k * 0.4}s`} repeatCount="indefinite"><mpath href={`#cs-flow${i}`} /></animateMotion></circle>
+              ))}
+              <circle cx="612" cy="96" r="13" class="done" /><path d="M606 96 l5 5 l8 -9" class="tick" />
+              <text x="370" y="160" class="lbl dim">IT FLOWS</text>
+            </svg>
+            <figcaption>
+              <span><b>Before</b>{c.before}</span>
+              <span><b>After</b>{c.after}</span>
+            </figcaption>
+          </figure>
+          <dl class="cs-metrics">
+            {c.metrics.map(([v, l]) => <div><dt>{l}</dt><dd>{v}</dd></div>)}
+          </dl>
         </div>
-      </div>
-
-      {/* Own brands — GearTOP + TapeGeeks, safe to name */}
-      <div
-        class="fade-in-up glass-card overflow-hidden p-8 md:p-10"
-      >
-        <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_2fr] md:gap-10">
-          <!-- Left: Details -->
-          <div>
-            <!-- Tag -->
-            <span
-              class="mb-4 inline-block rounded-full px-3 py-1 text-xs"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; background-color: rgba(240, 96, 0, 0.1); color: #f06000;"
-            >
-              My Businesses
-            </span>
-
-            <!-- Title -->
-            <h3
-              class="mb-4 text-xl font-bold md:text-2xl"
-              style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-            >
-              Two E-Commerce Brands Running on AI Tools I Built Myself
-            </h3>
-
-            <!-- Challenge -->
-            <p
-              class="mb-6 leading-relaxed"
-              style="font-family: 'Outfit', sans-serif; color: #798897;"
-            >
-              Two e-commerce brands. $2M+ in ad spend. Paying $75K-$125K annually for agencies, freelancers, and services. Needed to cut costs without cutting results.
-            </p>
-
-            <!-- What I built -->
-            <h4
-              class="mb-3 text-base font-semibold"
-              style="font-family: 'Outfit', sans-serif; color: #ffffff;"
-            >
-              What I built
-            </h4>
-            <ul class="space-y-2" style="font-family: 'Outfit', sans-serif; color: #798897;">
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Custom AI content generation systems (100+ product descriptions, brand voice maintained)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Marketing automation workflows replacing manual email, social, and ad management</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>2 iOS apps (SunUp by GearTOP, RunMate Pro) — built as a non-coder using AI tools</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Analytics dashboards aggregating data from Shopify, Amazon, Google, Meta</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="mt-1.5 block h-1.5 w-1.5 flex-shrink-0 rounded-full" style="background-color: #f06000;"></span>
-                <span>Operational automation (inventory alerts, reorder triggers, journey orchestration)</span>
-              </li>
-            </ul>
+        <details>
+          <summary>Read the full story</summary>
+          <div class="cs-story">
+            {c.story.map((p) => <p>{p}</p>)}
+            <h4>{c.listTitle}</h4>
+            <ul>{c.list.map((li) => <li>{li}</li>)}</ul>
+            {c.links.length > 0 && <p class="cs-links">{c.links.map((l) => <a href={l.href}>{l.label} →</a>)}</p>}
           </div>
-
-          <!-- Right: Results -->
-          <div class="flex flex-col gap-6 md:border-l md:pl-10" style="border-color: rgba(255,255,255,0.08);">
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                $75K+
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Annual Savings
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                5-10x
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Content Volume
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                15-20x
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Email Marketing ROI
-              </div>
-            </div>
-            <div>
-              <div
-                class="text-3xl font-bold"
-                style="font-family: 'JetBrains Mono', 'Fira Code', monospace; color: #ffffff;"
-              >
-                2 Apps
-              </div>
-              <div class="text-sm" style="font-family: 'Outfit', sans-serif; color: #798897;">
-                Live in App Store
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+        </details>
+      </article>
+    ))}
   </div>
 </section>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<SVGSVGElement>('.cs [data-anim]').forEach((svg) => {
+    if (reduce) { svg.pauseAnimations(); svg.classList.add('paused'); return; }
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { svg.unpauseAnimations(); svg.classList.remove('paused'); }
+      else { svg.pauseAnimations(); svg.classList.add('paused'); }
+    }).observe(svg);
+  });
+</script>
+
+<style>
+  .cs { max-width: 80rem; margin: 0 auto; padding: 6rem 1.5rem 3rem; scroll-margin-top: 64px; }
+  .cs-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-accent); }
+  .cs-head h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(34px, 5vw, 64px); line-height: 1; letter-spacing: -.03em; margin: 14px 0 0; }
+  .cs-list { display: grid; gap: 22px; margin-top: 36px; }
+  .cs-card { background: #07090b; border: 1px solid var(--color-border); border-radius: 14px; padding: 26px 26px 18px; }
+  .cs-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+  .cs-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-accent); border: 1px solid rgba(240, 96, 0, .4); border-radius: 999px; padding: 5px 10px; }
+  .cs-top h3 { font-family: var(--font-body); font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.15; margin: 0; }
+  .cs-main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin-top: 20px; align-items: center; }
+  .cs-fig { margin: 0; background: #050607; border: 1px solid var(--color-border); border-radius: 10px; padding: 8px 8px 12px; min-width: 0; }
+  .cs-fig svg { width: 100%; height: auto; display: block; }
+  .cs-fig figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 10px 0; font-size: 14px; line-height: 1.4; color: #c4ccd4; }
+  .cs-fig figcaption b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 2px; }
+  .cs-fig figcaption span + span b { color: var(--color-accent); }
+  .cs-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; margin: 0; }
+  .cs-metrics div { display: flex; flex-direction: column-reverse; border-top: 1px solid var(--color-border); padding-top: 10px; }
+  .cs-metrics dd { margin: 0; font-family: var(--font-body); font-weight: 800; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; letter-spacing: -.02em; color: #fff; }
+  .cs-metrics div:first-child dd { color: var(--color-accent); }
+  .cs-metrics dt { color: var(--color-text-secondary); font-size: 13.5px; margin-top: 4px; }
+  .cs-card details { margin-top: 18px; border-top: 1px dashed var(--color-border); padding-top: 10px; }
+  .cs-card summary { cursor: pointer; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-secondary); list-style: none; }
+  .cs-card summary::-webkit-details-marker { display: none; }
+  .cs-card summary::before { content: "+ "; color: var(--color-accent); }
+  .cs-card details[open] summary::before { content: "− "; }
+  .cs-card summary:focus-visible, .cs-links a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .cs-story { max-width: 70ch; padding-top: 8px; }
+  .cs-story p { color: #c4ccd4; font-size: 15px; line-height: 1.65; margin: 10px 0 0; }
+  .cs-story h4 { font-size: 15px; font-weight: 700; margin: 16px 0 6px; }
+  .cs-story ul { margin: 0; padding-left: 18px; color: #c4ccd4; font-size: 14.5px; line-height: 1.6; display: grid; gap: 4px; }
+  .cs-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .cs-links a { color: #fff; text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; }
+
+  svg .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; fill: #fff; }
+  svg .lbl.dim { fill: #798897; font-size: 10px; }
+  svg .lbl.acc { fill: #f06000; }
+  svg .rail { fill: none; stroke: #1b2126; stroke-width: 26; stroke-linecap: round; }
+  svg .gate { fill: none; stroke: #6b7682; stroke-width: 2; stroke-dasharray: 4 4; }
+  svg .jam { fill: #f06000; transform-box: fill-box; transform-origin: center; animation: cs-jam 1.6s ease-in-out infinite; }
+  svg .j1 { animation-delay: .2s; } svg .j2 { animation-delay: .5s; } svg .j3 { animation-delay: .9s; }
+  @keyframes cs-jam { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.5px); } }
+  svg .trickle { fill: #fff; animation: cs-trickle 3.2s linear infinite; }
+  @keyframes cs-trickle { 0% { transform: translateX(0); opacity: 1; } 80% { transform: translateX(50px); opacity: 1; } 100% { transform: translateX(56px); opacity: 0; } }
+  svg .arrow { fill: none; stroke: #6b7682; stroke-width: 1.6; }
+  svg .sys { fill: #120b06; stroke: #f06000; stroke-width: 1.6; }
+  svg .flow { fill: #fff; }
+  svg .done { fill: #0d0906; stroke: #f06000; stroke-width: 1.6; }
+  svg .tick { fill: none; stroke: #f06000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  svg.paused, svg.paused * { animation-play-state: paused !important; }
+
+  @media (max-width: 860px) {
+    .cs-main { grid-template-columns: 1fr; }
+    .cs-card { padding: 20px 16px 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    svg .jam, svg .trickle { animation: none; }
+  }
+</style>

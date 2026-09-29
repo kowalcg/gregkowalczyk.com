@@ -2,11 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
-import OfferLadder from '../components/OfferLadder.astro';
-import Services from '../components/Services.astro';
+import BuildProcess from '../components/BuildProcess.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
 import CaseStudies from '../components/CaseStudies.astro';
-import DigitalLaunch from '../components/DigitalLaunch.astro';
-import HowIWork from '../components/HowIWork.astro';
 import CommercialConsultingBlock from '../components/CommercialConsultingBlock.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
@@ -42,7 +40,7 @@ import Footer from '../components/Footer.astro';
   first. The documented primary angle is "The Anti-Consultant", which is
   industry-agnostic by design.
 
-  On the published $1,000 in OfferLadder.astro: it is deliberate. It qualifies
+  On the published $1,000 (now in BuildProcess.astro, step 02; was OfferLadder.astro): it is deliberate. It qualifies
   before the call, it anchors tier 3, and "credited against a build" is
   meaningless without a figure attached. It also follows docs/brand-voice.md —
   "shares real numbers freely, doesn't hide behind vague language, the
@@ -61,12 +59,16 @@ import Footer from '../components/Footer.astro';
       title="I find the manual work eating your week — and I build the system that kills it."
       subtitle="22 years an engineer. 12 running my own brands. Now I build custom AI tools for businesses that need execution, not another strategy deck — pottery studios, gyms, specialty food retailers, consultancies, e-commerce operators. I code it, deploy it, and train your team to run it without me."
     />
-    <OfferLadder />
-    <CommercialConsultingBlock />
-    <Services />
+    {/* Sep 2026: shown, not told. The offer ladder and "How I work" became the
+        live schematic (BuildProcess, which carries the three prices), the
+        service cards became animated mini-schematics (ServiceGrid, full copy in
+        each card's Details), and DigitalLaunch's two tracks moved into the
+        "Digital launch and growth" card. Visible words in <main>: 2,298 → 1,382. */}
+    <span id="how-to-start" aria-hidden="true"></span>
+    <BuildProcess showBuilds={false} lead="From first call to a system" />
+    <ServiceGrid />
     <CaseStudies />
-    <DigitalLaunch />
-    <HowIWork />
+    <CommercialConsultingBlock />
     <ContactCTA
       heading="Start with 15 free minutes"
       body="Tell me the part of your week that shouldn't need a human. I'll tell you whether AI can take it, name the tool, and give you the first step — at no cost, whether or not we ever work together."

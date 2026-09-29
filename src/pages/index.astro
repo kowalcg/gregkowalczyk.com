@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import ProofOfWork from '../components/ProofOfWork.astro';
+import BlueprintBuilder from '../components/BlueprintBuilder.astro';
+import BuildProcess from '../components/BuildProcess.astro';
 import ResultsBar from '../components/ResultsBar.astro';
-import ServicesPreview from '../components/ServicesPreview.astro';
 import CaseStudies from '../components/CaseStudies.astro';
-import ProjectsPreview from '../components/ProjectsPreview.astro';
 import CommercialConsultingBlock from '../components/CommercialConsultingBlock.astro';
 import AboutTeaser from '../components/AboutTeaser.astro';
 import AsHeardOn from '../components/AsHeardOn.astro';
@@ -28,12 +29,18 @@ import Footer from '../components/Footer.astro';
         podcast appearances — buried at position nine. Now: claim, numbers,
         third-party proof, offer, evidence, objections, ask. */}
     <Hero />
+    {/* Sep 2026: proof before claims. Seven real products build themselves
+        from blueprints (autoplay — never holds the page's scroll; the full
+        scroll story lives on /projects/), the visitor draws their own, then sees how
+        the build works. Replaced ServicesPreview and ProjectsPreview, which
+        repeated what these three sections now show. */}
+    <ProofOfWork mode="auto" />
+    <BlueprintBuilder />
+    <BuildProcess />
     <ResultsBar />
     <AsHeardOn />
     <MeetupPreview />
-    <ServicesPreview />
     <CaseStudies />
-    <ProjectsPreview />
     <AboutTeaser />
     <CommercialConsultingBlock />
     <FAQ />
