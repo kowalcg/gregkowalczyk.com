@@ -13,6 +13,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import MeetupGuide from '../components/MeetupGuide.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_URL } from '../data/site';
 import {
@@ -78,9 +79,11 @@ const notThis = [
       subtitle="A free session for local business owners who want to use AI to save time, improve margins, and get more done. Two locations, each once a month: an evening in Hamilton and a lunch hour in Oakville. Hosted by Patricia & Greg Kowalczyk — a father-and-daughter team running consumer brands for over a decade."
     />
 
+    <MeetupGuide part="nav" />
+
     {/* ── Next event ─────────────────────────────────────────────── */}
     {next && (
-      <section class="pb-12 pt-0">
+      <section id="next-meetup" class="pb-4 pt-6" style="scroll-margin-top: 72px;">
         <div class="mx-auto max-w-5xl px-6">
           <div class="fade-in-up glass-card overflow-hidden p-0">
             <div class="flex flex-col md:flex-row">
@@ -183,15 +186,17 @@ const notThis = [
       </section>
     )}
 
+    <MeetupGuide part="run" />
+
     {/* ── How each format runs ────────────────────────────────────── */}
     {formats.length > 0 && (
-      <section class="py-12">
+      <section class="pb-12 pt-8">
         <div class="mx-auto max-w-5xl px-6">
           <h2
             class="mb-8 text-2xl font-bold md:text-3xl"
             style="font-family: 'Outfit', sans-serif; color: var(--fg); letter-spacing: -0.02em;"
           >
-            <span class="comment-prefix" style="font-size: 0.8em;">// </span>How it runs
+            <span class="comment-prefix" style="font-size: 0.8em;">// </span>Minute by minute
           </h2>
 
           <div class={`grid gap-6 ${formats.length > 1 ? 'md:grid-cols-2' : ''}`}>
@@ -276,6 +281,8 @@ const notThis = [
         </div>
       </div>
     </section>
+
+    <MeetupGuide part="rest" />
 
     {/* ── The schedule ahead ──────────────────────────────────────── */}
     {later.length > 0 && (

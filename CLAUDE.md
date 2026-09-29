@@ -235,6 +235,11 @@ Each of these corresponds to a defect that was live in production before July 20
   owner understands. Captions that carry the meaning live in HTML (readable on phones), not
   as tiny SVG text. The How-it-works schematic zooms per step on phones (`VIEWS` in
   BuildProcess.astro); the blueprint builder auto-fits every label inside its box (`data-fit`).
+- **/meetups/ answers the four questions attendees ask (Sep 2026).** `MeetupGuide.astro`
+  (parts `nav` / `run` / `rest`): how the meetups work, what you walk away with, how we help
+  (the four BuildProcess steps + prices), what we help with (reads `services.ts`), then
+  "Met us at a meetup?" → `/contact/?topic=meetup` (prefilled in `Contact.astro`). Event
+  dates/venues still come only from `meetups.ts`.
 - **Greg's career wording:** mechanical designer → Manager of Engineering. Never "draftsman".
 
 

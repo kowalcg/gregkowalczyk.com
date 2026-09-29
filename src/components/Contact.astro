@@ -345,6 +345,12 @@ const SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyNoyM1DHsnL
     messageEl.value = 'Race/event: ';
   }
 
+  // /meetups/ "Met us at a meetup?" links here with ?topic=meetup.
+  if (new URLSearchParams(window.location.search).get('topic') === 'meetup' && messageEl && !messageEl.value) {
+    messageEl.placeholder = 'Which meetup you came to, your business, and the one job you would like off your plate.';
+    messageEl.value = 'I came to the AI for Business meetup in (Hamilton / Oakville).\nMy business: \nThe job I would like help with: ';
+  }
+
   // The homepage "Draw your blueprint" builder links here with ?topic=blueprint
   // and leaves the visitor's blueprint in sessionStorage.
   if (new URLSearchParams(window.location.search).get('topic') === 'blueprint' && messageEl && !messageEl.value) {

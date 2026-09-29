@@ -1,0 +1,205 @@
+---
+/**
+ * MeetupGuide.astro — the part of /meetups/ written for people who came to (or
+ * are about to come to) AI for Business and want to know four things:
+ *   1. how the meetups run      2. what they get out of one
+ *   3. how we help a business   4. what we help with
+ * …then a "Met us at a meetup?" door to the contact form (?topic=meetup,
+ * prefilled in Contact.astro).
+ *
+ * Copy rules: nothing here is new. The four steps and prices mirror
+ * BuildProcess.astro step copy; the service list reads src/data/services.ts;
+ * the free skill is the one shared at the Hamilton meetup. Colours are tokens
+ * only (two themes). Icons come from IconSprite.astro.
+ */
+import { services } from '../data/services';
+
+// /meetups/ places these in three spots: the jump menu under the hero, the
+// "how it works" flow above the agenda, and the rest below "Come if".
+interface Props { part: 'nav' | 'run' | 'rest' }
+const { part } = Astro.props;
+
+const runs = [
+  { icon: 'i-cal', head: 'Free, monthly, in person', text: 'An evening in Hamilton and a lunch hour in Oakville. A real room with other local owners, not a webinar.' },
+  { icon: 'i-play', head: 'Shown live, on real work', text: 'We open the tools we use in our own businesses and do the work on screen: quotes, follow-ups, listings, posts.' },
+  { icon: 'i-mic', head: 'Your question, answered', text: 'Open Q&A on the thing you are stuck on. Bring one job you would hand off to AI tomorrow if you knew how.' },
+  { icon: 'i-person', head: 'Owners around the room', text: 'Time to compare notes with people running businesses like yours. Nobody is selling to you.' },
+];
+
+const value = [
+  { icon: 'i-check', head: 'One workflow you can use the next morning', text: 'Leave with something you can copy into your own business, not a list of tools to look up.' },
+  { icon: 'i-clock', head: 'Hours back, pointed out', text: 'See where AI saves real time in marketing, admin and customer service, on examples you recognise.' },
+  { icon: 'i-bulb', head: 'An honest answer', text: 'What is worth doing now, what can wait, and what is hype. From people who run businesses, not a vendor.' },
+  { icon: 'i-download', head: 'Free resources afterwards', text: 'What we show gets shared, like the free Claude Code skill from the first Hamilton night.' },
+];
+
+const help = [
+  { n: '01', icon: 'i-search', head: 'Find the constraint', price: 'Free 15-minute call', text: 'Every business has one place where work piles up. We find yours and name the tool that fixes it.' },
+  { n: '02', icon: 'i-sheet', head: 'Map it and price it', price: '$1,000, credited against a build', text: 'Every repeated process mapped and ranked by what it costs you. A written plan with real tools and real costs.' },
+  { n: '03', icon: 'i-gear', head: 'Build the system', price: 'Fixed price, you own it', text: 'Your existing tools connected, AI doing the reading, sorting and drafting, and you approving what matters.' },
+  { n: '04', icon: 'i-flag', head: 'Hand it over', price: 'Training included', text: 'Documented, your team trained to run it without me, or we keep going on the next constraint monthly.' },
+];
+
+const icons: Record<string, string> = {
+  'custom-ai-tools': 'i-gear', 'ecommerce-ai': 'i-bag', 'marketing-automation': 'i-mail',
+  'ai-assessment': 'i-chart', 'digital-launch': 'i-search', 'product-research': 'i-box',
+};
+const offers = [
+  ...services.map((s) => ({ icon: icons[s.slug] ?? 'i-spark', head: s.title, text: s.line, href: `/services/#${s.slug}` })),
+  { icon: 'i-runner', head: 'AI for race directors and events', text: 'The system behind the Bronte Harbour Classic, set up for your event.', href: '/race-directors/' },
+];
+
+const jump = [
+  ['#next-meetup', 'Next meetup'], ['#how-meetups-run', 'How it runs'], ['#why-come', 'What you get'],
+  ['#how-we-help', 'How we help'], ['#what-we-help-with', 'What we help with'], ['#met-us', 'Met us at a meetup?'],
+];
+---
+
+{part === 'nav' && (<nav class="mg-jump" aria-label="On this page">
+  {jump.map(([h, l]) => <a href={h}>{l}</a>)}
+</nav>)}
+
+{part === 'run' && (<section class="mg" id="how-meetups-run" aria-labelledby="mg-run">
+  <div class="mg-eyebrow">1 · How the meetups work</div>
+  <h2 id="mg-run">A room, a screen, and your questions.</h2>
+  <ol class="mg-flow">
+    {runs.map((r, i) => (
+      <li class="mg-step">
+        <span class="mg-ico"><svg aria-hidden="true"><use href={`#${r.icon}`} /></svg></span>
+        <b>{r.head}</b>
+        <p>{r.text}</p>
+        {i < runs.length - 1 && <span class="mg-link" aria-hidden="true"></span>}
+      </li>
+    ))}
+  </ol>
+</section>)}
+
+{part === 'rest' && (<Fragment>
+<section class="mg" id="why-come" aria-labelledby="mg-why">
+  <div class="mg-eyebrow">2 · What you walk away with</div>
+  <h2 id="mg-why">Worth the hour, or it isn't worth running.</h2>
+  <div class="mg-grid">
+    {value.map((v) => (
+      <div class="mg-tile">
+        <span class="mg-ico"><svg aria-hidden="true"><use href={`#${v.icon}`} /></svg></span>
+        <div><b>{v.head}</b><p>{v.text}</p></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="mg" id="how-we-help" aria-labelledby="mg-help">
+  <div class="mg-eyebrow">3 · How we help a business</div>
+  <h2 id="mg-help">Find the one place work piles up. Fix it. Hand it over.</h2>
+  <p class="mg-lead">The meetup shows what is possible. When you want it done in your business, this is how it goes. You can stop after any step, and the first one costs nothing.</p>
+  <ol class="mg-help">
+    {help.map((h) => (
+      <li>
+        <div class="mg-help-top">
+          <span class="mg-n">{h.n}</span>
+          <span class="mg-ico"><svg aria-hidden="true"><use href={`#${h.icon}`} /></svg></span>
+        </div>
+        <b>{h.head}</b>
+        <span class="mg-price">{h.price}</span>
+        <p>{h.text}</p>
+      </li>
+    ))}
+  </ol>
+  <a class="mg-more" href="/services/#how-it-works">Watch the process step by step →</a>
+</section>
+
+<section class="mg" id="what-we-help-with" aria-labelledby="mg-what">
+  <div class="mg-eyebrow">4 · What we help with</div>
+  <h2 id="mg-what">The jobs we take off your plate.</h2>
+  <div class="mg-offers">
+    {offers.map((o) => (
+      <a class="mg-offer" href={o.href}>
+        <span class="mg-ico"><svg aria-hidden="true"><use href={`#${o.icon}`} /></svg></span>
+        <span><b>{o.head}</b><span class="mg-offer-t">{o.text}</span></span>
+        <span class="mg-arrow" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section class="mg" id="met-us" aria-labelledby="mg-met">
+  <div class="mg-cta">
+    <div>
+      <div class="mg-eyebrow">Met us at a meetup?</div>
+      <h2 id="mg-met">Tell us the one job you want off your plate.</h2>
+      <p>Say which meetup you came to and what you would like help with. We reply personally, and the first 15 minutes are free.</p>
+    </div>
+    <div class="mg-cta-btns">
+      <a class="mg-btn" href="/contact/?topic=meetup">Get in touch →</a>
+      <a class="mg-btn2" href="/skills/video-to-skill/">Get the free skill</a>
+    </div>
+  </div>
+</section>
+</Fragment>)}
+
+<style>
+  .mg-jump { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .mg-jump a { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg); border: 1px solid var(--rule-strong); border-radius: 999px; padding: 8px 12px; background: var(--panel); }
+  .mg-jump a:hover { border-color: var(--accent); }
+  .mg { max-width: 64rem; margin: 0 auto; padding: 3.5rem 1.5rem 0; scroll-margin-top: 72px; }
+  .mg-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); }
+  .mg h2 { font-family: var(--font-body); font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; letter-spacing: -.03em; margin: 12px 0 20px; color: var(--fg); }
+  .mg .mg-lead { color: var(--soft); font-size: 17px; line-height: 1.55; max-width: 62ch; margin: -6px 0 24px; }
+  .mg b { font-family: var(--font-body); font-weight: 700; font-size: 17px; line-height: 1.25; color: var(--fg); display: block; }
+  .mg p { color: var(--soft); font-size: 15.5px; line-height: 1.5; margin: 6px 0 0; }
+  .mg-ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--panel-accent); color: var(--accent-text); border: 1px solid color-mix(in srgb, #f06000 35%, transparent); flex-shrink: 0; }
+  .mg-ico svg { width: 24px; height: 24px; }
+
+  /* 1 — the evening as a flow, left to right (top to bottom on phones) */
+  .mg-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .mg-step { position: relative; background: var(--surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .mg-step p { margin: 0; }
+  .mg-link { position: absolute; top: 40px; right: -17px; width: 18px; border-top: 2px dashed #f06000; z-index: 1; }
+
+  /* 2 — value tiles */
+  .mg-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .mg-tile { display: flex; gap: 14px; align-items: flex-start; background: var(--surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 18px; min-width: 0; }
+
+  /* 3 — the four steps */
+  .mg-help { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; counter-reset: s; }
+  .mg-help li { background: var(--panel); border: 1px solid var(--color-border); border-top: 3px solid #f06000; border-radius: 14px; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .mg-help li:first-child { background: var(--panel-accent); }
+  .mg-help-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .mg-n { font-family: var(--font-body); font-weight: 800; font-size: 34px; letter-spacing: -.03em; color: var(--accent-text); line-height: 1; }
+  .mg-price { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--muted); }
+  .mg-more { display: inline-block; margin-top: 16px; color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; font-weight: 600; }
+
+  /* 4 — what we help with */
+  .mg-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .mg-offer { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 14px 16px; min-width: 0; transition: border-color .2s, transform .2s; }
+  .mg-offer:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .mg-offer > span:nth-child(2) { flex: 1; min-width: 0; }
+  .mg-offer b { font-size: 16px; }
+  .mg-offer-t { display: block; color: var(--soft); font-size: 14.5px; line-height: 1.45; margin-top: 3px; }
+  .mg-arrow { color: var(--accent-text); font-weight: 700; }
+
+  /* the door */
+  .mg-cta { display: flex; gap: 24px; align-items: center; justify-content: space-between; background: var(--panel-accent); border: 1px solid color-mix(in srgb, #f06000 45%, transparent); border-radius: 18px; padding: 28px; }
+  .mg-cta h2 { margin-bottom: 8px; }
+  .mg-cta p { max-width: 56ch; }
+  .mg-cta-btns { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+  .mg-btn, .mg-btn2 { display: inline-block; text-align: center; border-radius: 999px; padding: 13px 22px; font-weight: 700; font-size: 15px; }
+  .mg-btn { background: #f06000; color: var(--on-accent); }
+  .mg-btn2 { border: 1px solid var(--rule-strong); color: var(--fg); background: var(--panel); }
+  .mg a:focus-visible, .mg-jump a:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  @media (max-width: 900px) {
+    .mg-flow, .mg-help { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mg-link { display: none; }
+  }
+  @media (max-width: 620px) {
+    .mg-flow, .mg-help, .mg-grid, .mg-offers { grid-template-columns: 1fr; }
+    .mg-step { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .mg-step b { flex: 1; }
+    .mg-step p { flex-basis: 100%; }
+    .mg-cta { flex-direction: column; align-items: stretch; padding: 22px; }
+    .mg-jump { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; }
+    .mg-jump a { white-space: nowrap; }
+  }
+  @media (prefers-reduced-motion: reduce) { .mg-offer { transition: none; } }
+</style>
