@@ -55,6 +55,14 @@ const traits = [
   { icon: 'i-search', head: 'An engineer’s method', text: 'Find the one place work piles up, fix it, automate it, then move to the next one.' },
 ];
 
+// Oct 2026: why one person can do the whole job. Evidence is what is already
+// on this site. Nothing here is a new claim.
+const skills = [
+  { icon: 'i-person', head: 'I have run the work', text: '22 years in engineering, ending as Manager of Engineering for a 70-person department. Two e-commerce brands run with my daughter since 2014. I know which steps matter and which are habit.' },
+  { icon: 'i-terminal', head: 'I build it myself', text: 'I write the code and deploy it. Helm, two iOS apps, two national clinic directories and the system behind a sold-out race are all running today.' },
+  { icon: 'i-spark', head: 'I know where AI belongs', text: 'Some steps need AI. More need plain rules, and some need deleting. I sort them before I build, and a person approves what matters.' },
+];
+
 const path = [
   { year: '1997', icon: 'i-gear', head: 'Mechanical designer', text: 'Straight out of university, at PRO-ECO / SMS-Siemag. Ten years designing global-scale steel equipment.' },
   { year: '2007', icon: 'i-person', head: 'Manager of Engineering', text: 'Led the 70-person engineering department until 2011.' },
@@ -113,6 +121,21 @@ const path = [
           </article>
         ))}
       </div>
+    </section>
+
+    {/* Three skills, one person */}
+    <section class="ab-wrap" aria-labelledby="ab-skills">
+      <div class="ab-eyebrow">Why one person</div>
+      <h2 id="ab-skills">Most projects need three people. You get one who does all three.</h2>
+      <div class="ab-traits">
+        {skills.map((t) => (
+          <div class="ab-trait fade-in-up">
+            <span class="ab-ico"><svg aria-hidden="true"><use href={`#${t.icon}`} /></svg></span>
+            <div><b>{t.head}</b><p>{t.text}</p></div>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top: 1.25rem;"><a href="/method/" style="color: var(--accent-text); font-weight: 600;">How I work, step by step →</a></p>
     </section>
 
     <!-- Working with me -->

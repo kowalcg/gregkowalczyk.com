@@ -1,0 +1,218 @@
+---
+/**
+ * /method/ — how I work: map, sort, build, prove.
+ *
+ * Positioning (docs/positioning.md, Oct 4 2026): the title stays "Business
+ * Growth Engineer". "Forward deployed" describes the way of working — inside
+ * the business, in its own tools — and is never used as the job title.
+ * No client names, no revenue, no results that have not been measured.
+ */
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PageHero from '../components/PageHero.astro';
+import RealProcess from '../components/RealProcess.astro';
+import FourBuckets from '../components/FourBuckets.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  { n: '01', head: 'Find the real process', text: 'I sit with the people who do the work and watch them do it. Then I read what your inbox and your systems recorded. People give me the why. The records give me the what.' },
+  { n: '02', head: 'Time the work against the waiting', text: 'A job that takes ten days often holds twenty minutes of work. The rest is waiting on someone. I measure both, because the waiting is where the fix is.' },
+  { n: '03', head: 'One process, one owner', text: 'One person has to be able to say yes to the change. We name that person before anything is built. This step has nothing to do with AI.' },
+  { n: '04', head: 'Sort every step', text: 'Delete it, give it to plain code, give it to an AI agent, or keep it with a person. In that order.' },
+  { n: '05', head: 'Write the numbers down first', text: 'Before I build, we record how the process runs today: steps, days, how often work goes backwards, hands-on minutes. That is the mark I am held to.' },
+  { n: '06', head: 'Build it, then measure again', text: 'I build inside the tools you already use. At 30 and 90 days I measure against the same numbers. If it did not move, you will see that too.' },
+];
+
+const fields = [
+  {
+    icon: 'i-heart', head: 'Clinics',
+    why: 'I run two national clinic directories, so I see how patients find a clinic and how enquiries arrive.',
+    maps: ['Enquiry to booked appointment', 'Reminders and no-shows', 'Visit to invoice to payment', 'Getting found, and following up on new leads'],
+  },
+  {
+    icon: 'i-box', head: 'Amazon and online sellers',
+    why: 'I have run two brands on Amazon and Shopify since 2014. I built Helm for this work, including tracking reimbursement claims.',
+    maps: ['Reimbursement claims, from finding to filing', 'Wholesale order to invoice to payment', 'Stock checks and reorders', 'Customer service inbox'],
+  },
+  {
+    icon: 'i-doc', head: 'Offices that run on paperwork',
+    why: 'Accounting, legal, property and trades offices share one problem: chasing people for documents.',
+    maps: ['Collecting documents from clients', 'Quotes, invoices and follow-ups', 'Month-end hand-offs', 'New client intake'],
+  },
+  {
+    icon: 'i-flag', head: 'Events and races',
+    why: 'I am Race Director of the Bronte Harbour Classic and built the system behind it.',
+    maps: ['Registration to race-day communication', 'Sponsor and vendor pages', 'Results and photos after the event', 'Volunteer scheduling'],
+  },
+];
+
+const weeks = [
+  { when: 'Day 1', head: 'Free 15-minute call', text: 'We find the one place where work piles up. You leave with a first step you can take without me.' },
+  { when: 'Week 1', head: 'Map', text: 'I watch the work, talk to the people who do it, and read what the systems recorded. Read-only. I change nothing.' },
+  { when: 'Week 2', head: 'Sort and write the numbers down', text: 'Every step sorted into its place. Today’s numbers recorded. A written build plan with real tools and real costs.' },
+  { when: 'Weeks 3–8', head: 'Build inside your tools', text: 'Deleted steps first, then plain rules, then AI where it earns its place. It runs beside your team before it takes over.' },
+  { when: 'Day 30 and 90', head: 'Prove', text: 'Same numbers, measured again. Documentation and training, so your team runs it without me.' },
+];
+
+const starts = [
+  { head: 'Free 15-minute assessment', price: 'No cost', text: 'One bottleneck, one tool named, one first step.' },
+  { head: 'The AI Assessment', price: '$1,000, credited against a build', text: 'One process mapped and sorted, with a written build plan.' },
+  { head: 'Process Map Sprint', price: 'From $3,500, credited against a build', text: 'A whole department over two to three weeks: interviews, a read-only look at your systems, and today’s numbers written down.' },
+  { head: 'Fixed-price build', price: 'You own everything', text: 'Built inside your tools, measured at 30 and 90 days, handed over with training.' },
+];
+---
+
+<Layout
+  title="How I Work: Map, Sort, Build, Prove | Greg Kowalczyk"
+  description="I work inside your business. I map how the work really runs, sort every step, build the fix in the tools you already use, and measure it before and after. Based in Oakville, Ontario."
+>
+  <Nav />
+  <main class="mth">
+    <PageHero
+      title="I work inside your business, not from a slide deck."
+      subtitle="Some call this a forward deployed engineer: an engineer who sits with your team, learns how the work really runs, and builds the fix in the tools you already use. I call it engineering. Map, sort, build, prove."
+    />
+
+    <section class="mth-wrap" aria-labelledby="mth-origin">
+      <div class="mth-eyebrow">Where the method comes from</div>
+      <h2 id="mth-origin">I did this for years before AI existed.</h2>
+      <div class="mth-prose">
+        <p>I spent 22 years in engineering, the last four as Manager of Engineering for a 70-person department. A large part of that job was standardization. Find the work that repeats. Agree on one way to do it. Stop doing it from scratch every time.</p>
+        <p>It saved the company time and money, and it never started with a new tool. It started with watching how the work was really done.</p>
+        <p>AI changed what I can build. It did not change the method. Since 2014 I have used it on my own two brands first, and now on other people’s businesses.</p>
+      </div>
+    </section>
+
+    <RealProcess />
+
+    <section class="mth-wrap" aria-labelledby="mth-steps">
+      <div class="mth-eyebrow">The method</div>
+      <h2 id="mth-steps">Six steps. The same six for a clinic, a shop or a factory office.</h2>
+      <ol class="mth-steps">
+        {steps.map((s) => (
+          <li class="fade-in-up">
+            <span class="mth-n">{s.n}</span>
+            <div><h3>{s.head}</h3><p>{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <FourBuckets link={false} />
+
+    <section class="mth-wrap" aria-labelledby="mth-inside">
+      <div class="mth-eyebrow">Step 03, up close</div>
+      <h2 id="mth-inside">No new app for your team to learn.</h2>
+      <div class="mth-prose">
+        <p>I do not ask you to replace your accounting system, your store or your booking system. The fix runs inside them. Your team keeps working where they work today.</p>
+        <p>When a decision needs a person, it arrives as an email or a Slack message with the facts laid out and a clear yes or no. The AI prepares the work, then stops. A person decides.</p>
+        <p>You own all of it: the code, the accounts, the data. No licence, no lock-in.</p>
+      </div>
+    </section>
+
+    <section class="mth-wrap" aria-labelledby="mth-fields">
+      <div class="mth-eyebrow">Where it fits</div>
+      <h2 id="mth-fields">The method is the same. The process I map depends on your business.</h2>
+      <div class="mth-fields">
+        {fields.map((f) => (
+          <article class="mth-field fade-in-up">
+            <div class="mth-field-top"><span class="mth-ico"><svg aria-hidden="true"><use href={`#${f.icon}`} /></svg></span><h3>{f.head}</h3></div>
+            <p>{f.why}</p>
+            <div class="mth-sub">What I would map</div>
+            <ul>{f.maps.map((m) => <li>{m}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mth-wrap" aria-labelledby="mth-weeks">
+      <div class="mth-eyebrow">What working together looks like</div>
+      <h2 id="mth-weeks">From first call to measured result.</h2>
+      <ol class="mth-weeks">
+        {weeks.map((w) => (
+          <li class="fade-in-up">
+            <span class="mth-when">{w.when}</span>
+            <div><h3>{w.head}</h3><p>{w.text}</p></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="mth-wrap" aria-labelledby="mth-start">
+      <div class="mth-eyebrow">Ways to start</div>
+      <h2 id="mth-start">Start small. Every step is credited against the next.</h2>
+      <div class="mth-starts">
+        {starts.map((s) => (
+          <div class="mth-start fade-in-up">
+            <h3>{s.head}</h3>
+            <div class="mth-price">{s.price}</div>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <ContactCTA
+      heading="Start with 15 free minutes"
+      body="Tell me the job in your business that takes days and should take minutes. I will tell you where I would start, at no cost, whether or not we ever work together."
+    />
+  </main>
+  <Footer />
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+  </script>
+</Layout>
+
+<style>
+  .mth { font-family: 'Outfit', sans-serif; }
+  .mth-wrap { max-width: 72rem; margin: 0 auto; padding: 3rem 1.5rem; }
+  .mth-eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: .75rem; }
+  .mth-wrap h2, .mth-wrap h3 { font-family: 'Outfit', sans-serif; }
+  .mth-wrap h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--fg); font-weight: 700; max-width: 46rem; text-wrap: balance; margin-bottom: 1.5rem; }
+  .mth-prose { max-width: 42rem; display: grid; gap: 1rem; }
+  .mth-prose p { color: var(--soft); font-size: 1.05rem; line-height: 1.65; }
+
+  .mth-steps, .mth-weeks { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+  .mth-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mth-steps li, .mth-weeks li { display: flex; gap: 1rem; background: var(--panel-2); border: 1px solid var(--rule); border-radius: .75rem; padding: 1.25rem; }
+  .mth-n { font-family: var(--font-mono); font-size: .85rem; color: var(--accent-text); padding-top: .15rem; }
+  .mth-when { flex: none; width: 7.5rem; font-family: var(--font-mono); font-size: .8rem; color: var(--accent-text); padding-top: .2rem; }
+  .mth-wrap h3 { font-size: 1.08rem; font-weight: 700; color: var(--fg); margin-bottom: .35rem; }
+  .mth-steps p, .mth-weeks p, .mth-field p, .mth-start p { color: var(--soft); font-size: .96rem; line-height: 1.55; }
+
+  .mth-fields { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mth-field { background: var(--panel-2); border: 1px solid var(--rule); border-radius: .75rem; padding: 1.4rem; }
+  .mth-field-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+  .mth-field-top h3 { margin: 0; }
+  .mth-ico { width: 2.25rem; height: 2.25rem; border-radius: .5rem; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent-text); flex: none; }
+  .mth-ico svg { width: 1.2rem; height: 1.2rem; }
+  .mth-sub { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: 1rem 0 .5rem; padding-top: .9rem; border-top: 1px solid var(--rule); }
+  .mth-field ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .35rem; }
+  .mth-field li { color: var(--soft); font-size: .95rem; padding-left: 1.1rem; position: relative; }
+  .mth-field li::before { content: "→"; position: absolute; left: 0; color: var(--accent-text); }
+
+  .mth-starts { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mth-start { background: var(--panel-2); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: .75rem; padding: 1.25rem; }
+  .mth-price { font-family: var(--font-mono); font-size: .78rem; color: var(--accent-text); margin-bottom: .6rem; }
+
+  @media (max-width: 900px) { .mth-starts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 720px) {
+    .mth-steps, .mth-fields { grid-template-columns: 1fr; }
+    .mth-weeks li { flex-direction: column; gap: .35rem; }
+    .mth-when { width: auto; }
+  }
+  @media (max-width: 520px) { .mth-starts { grid-template-columns: 1fr; } }
+</style>

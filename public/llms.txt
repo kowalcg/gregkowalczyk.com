@@ -10,6 +10,7 @@
 - Digital launch, local SEO and AI-search visibility.
 - AI for race directors and event organizers.
 - How engagements start: a free 15-minute call, then a $1,000 assessment credited against a build, then a fixed-price build with training included.
+- Method: map how the work really runs, sort every step (delete it, plain code, an AI agent, or a person), build inside the tools the business already uses, then measure before and after. Full method: https://www.gregkowalczyk.com/method/
 
 ## Proof
 - A traditional retail shop taken to a full e-commerce operation in 6 weeks (client, anonymised).

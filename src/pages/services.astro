@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import PageHero from '../components/PageHero.astro';
+import FourBuckets from '../components/FourBuckets.astro';
 import BuildProcess from '../components/BuildProcess.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import CaseStudies from '../components/CaseStudies.astro';
@@ -104,7 +105,7 @@ const breadcrumbSchema = {
   <main>
     <PageHero
       title="I find the manual work eating your week — and I build the system that kills it."
-      subtitle="22 years an engineer. 12 running my own brands. Now I build custom AI tools for businesses that need execution, not another strategy deck — pottery studios, gyms, specialty food retailers, consultancies, e-commerce operators. I code it, deploy it, and train your team to run it without me."
+      subtitle="22 years an engineer. 12 running my own brands. Now I build custom AI tools for businesses that need execution, not another strategy deck — pottery studios, gyms, specialty food retailers, consultancies, e-commerce operators. I work inside your business, in the tools you already use. I code it, deploy it, and train your team to run it without me."
     />
     {/* Sep 2026: shown, not told. The offer ladder and "How I work" became the
         live schematic (BuildProcess, which carries the three prices), the
@@ -114,6 +115,7 @@ const breadcrumbSchema = {
     <ServicesNav />
     <span id="how-to-start" aria-hidden="true"></span>
     <BuildProcess showBuilds={false} lead="From first call to a system" />
+    <FourBuckets />
     <ServiceGrid />
     <RaceFeature />
     <CaseStudies />

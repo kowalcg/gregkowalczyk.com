@@ -1,0 +1,64 @@
+---
+// "Written down vs what really happens" — an illustration of the gap between
+// the process a business describes and the one its inbox and systems show.
+// Deliberately no numbers: this is a drawing of the idea, not a result. When
+// the first measured case study exists, swap in the real mapped strip.
+
+const written = ['Order comes in', 'Enter it', 'Ship it', 'Invoice it', 'Get paid'];
+const real = [
+  { t: 'Order comes in' },
+  { t: 'Ask for the missing detail', x: true },
+  { t: 'Wait for the reply', x: true },
+  { t: 'Enter it' },
+  { t: 'Enter it again in the second system', x: true },
+  { t: 'Ship it' },
+  { t: 'Invoice it' },
+  { t: 'Fix the invoice', x: true },
+  { t: 'Chase the payment', x: true },
+  { t: 'Get paid' },
+];
+---
+
+<section class="rlp" aria-labelledby="rlp-heading">
+  <div class="rlp-head">
+    <div class="rlp-eyebrow">Step 01, up close</div>
+    <h2 id="rlp-heading">What is written down is never what really happens.</h2>
+    <p>Ask anyone how a job gets done and you hear the short version. Watch the job, and read what the inbox and the systems recorded, and you find the rest.</p>
+  </div>
+
+  <div class="rlp-sheet">
+    <div class="rlp-row">
+      <div class="rlp-label">How it is described</div>
+      <ol class="rlp-steps">
+        {written.map((w) => <li>{w}</li>)}
+      </ol>
+    </div>
+    <div class="rlp-row">
+      <div class="rlp-label">How it really runs</div>
+      <ol class="rlp-steps">
+        {real.map((r) => <li class={r.x ? 'x' : ''}>{r.t}</li>)}
+      </ol>
+    </div>
+    <p class="rlp-key"><i></i> Chasing, waiting and doing it twice. Nobody lists these steps, and they are where the days go.</p>
+  </div>
+  <p class="rlp-note">An illustration, not a client result. Your map is drawn from your own work.</p>
+</section>
+
+<style>
+  .rlp { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.5rem; font-family: 'Outfit', sans-serif; }
+  .rlp-head { max-width: 44rem; margin-bottom: 2rem; }
+  .rlp-eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: .75rem; }
+  .rlp h2 { font-family: 'Outfit', sans-serif; }
+  .rlp h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--fg); font-weight: 700; text-wrap: balance; }
+  .rlp-head p { margin-top: .9rem; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+  .rlp-sheet { background: var(--panel); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; }
+  .rlp-row + .rlp-row { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--line); }
+  .rlp-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+  .rlp-steps { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; counter-reset: s; }
+  .rlp-steps li { counter-increment: s; background: var(--panel-2); border: 1px solid var(--line-strong); border-radius: .4rem; padding: .5rem .7rem; font-size: .9rem; color: var(--fg); }
+  .rlp-steps li::before { content: counter(s) " "; font-family: var(--font-mono); font-size: .72rem; color: var(--faint); margin-right: .25rem; }
+  .rlp-steps li.x { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-text); }
+  .rlp-key { margin-top: 1.25rem; font-size: .9rem; color: var(--soft); display: flex; align-items: baseline; gap: .6rem; }
+  .rlp-key i { flex: none; width: .8rem; height: .8rem; border-radius: .2rem; background: var(--accent-soft); border: 1px solid var(--accent); transform: translateY(.1rem); }
+  .rlp-note { margin-top: .9rem; font-size: .82rem; color: var(--faint); }
+</style>

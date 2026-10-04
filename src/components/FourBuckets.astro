@@ -1,0 +1,77 @@
+---
+// "Sort every step" — the four places a step can go, in the order I try them.
+// Sits under BuildProcess on / and /services/, and on /method/. Plain cards,
+// no animation. Every colour is a token (CLAUDE.md), so both themes work.
+
+interface Props { link?: boolean }
+const { link = true } = Astro.props;
+
+const buckets = [
+  {
+    n: '1', icon: 'i-check', head: 'Delete it',
+    text: 'Some steps exist only because an earlier step went wrong. Fix the cause and the step is gone.',
+    eg: 'Chasing a missing detail. Typing the same order twice. Checking the same thing a second time.',
+  },
+  {
+    n: '2', icon: 'i-gear', head: 'Give it to plain code',
+    text: 'If the rule is “when this happens, do that”, it needs no AI. Code is cheaper and never guesses.',
+    eg: 'Order paid, send the invoice. New booking, add it to the calendar.',
+  },
+  {
+    n: '3', icon: 'i-spark', head: 'Give it to an AI agent',
+    text: 'Where the work takes reading and judgement, an agent prepares it. Then it stops and asks.',
+    eg: 'Read the email, pull out the details, draft the reply for you to approve.',
+  },
+  {
+    n: '4', icon: 'i-person', head: 'Keep it with a person',
+    text: 'Anything you cannot afford to get wrong stays with you or your team.',
+    eg: 'Approving a refund. Sending money. Signing a quote. Talking to the client.',
+  },
+];
+---
+
+<section class="fbk" aria-labelledby="fbk-heading">
+  <div class="fbk-head">
+    <div class="fbk-eyebrow">Step 02, up close</div>
+    <h2 id="fbk-heading">Every step goes in one of four places. <em>In this order.</em></h2>
+    <p>Most people start with AI. I start by deleting. Many steps never need AI at all.</p>
+  </div>
+  <ol class="fbk-grid">
+    {buckets.map((b) => (
+      <li class="fbk-card fade-in-up">
+        <div class="fbk-top">
+          <span class="fbk-ico"><svg aria-hidden="true"><use href={`#${b.icon}`} /></svg></span>
+          <span class="fbk-n">0{b.n}</span>
+        </div>
+        <h3>{b.head}</h3>
+        <p>{b.text}</p>
+        <p class="fbk-eg"><span>For example</span>{b.eg}</p>
+      </li>
+    ))}
+  </ol>
+  {link && <p class="fbk-more"><a href="/method/">See the full method, step by step →</a></p>}
+</section>
+
+<style>
+  .fbk { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.5rem; font-family: 'Outfit', sans-serif; }
+  .fbk-head { max-width: 44rem; margin-bottom: 2rem; }
+  .fbk-eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-text); margin-bottom: .75rem; }
+  .fbk h2, .fbk h3 { font-family: 'Outfit', sans-serif; }
+  .fbk h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--fg); font-weight: 700; text-wrap: balance; }
+  .fbk h2 em { font-style: normal; color: var(--accent-text); }
+  .fbk-head p { margin-top: .9rem; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+  .fbk-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .fbk-card { background: var(--panel-2); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: .75rem; padding: 1.25rem; display: flex; flex-direction: column; }
+  .fbk-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .9rem; }
+  .fbk-ico { width: 2.25rem; height: 2.25rem; border-radius: .5rem; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent-text); }
+  .fbk-ico svg { width: 1.2rem; height: 1.2rem; }
+  .fbk-n { font-family: var(--font-mono); font-size: .8rem; color: var(--faint); }
+  .fbk-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--fg); margin-bottom: .45rem; }
+  .fbk-card p { color: var(--soft); font-size: .95rem; line-height: 1.55; }
+  .fbk-eg { margin-top: auto; padding-top: .9rem; color: var(--muted) !important; font-size: .88rem !important; }
+  .fbk-eg span { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin: .9rem 0 .3rem; border-top: 1px solid var(--rule); padding-top: .75rem; }
+  .fbk-more { margin-top: 1.5rem; }
+  .fbk-more a { color: var(--accent-text); font-weight: 600; }
+  @media (max-width: 900px) { .fbk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .fbk-grid { grid-template-columns: 1fr; } }
+</style>

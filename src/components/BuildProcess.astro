@@ -12,27 +12,27 @@ const { showBuilds = true, lead = 'From blueprint to a system' } = Astro.props;
 
 const steps = [
   {
-    n: '01', key: 'Find the constraint', offer: 'Free 15-minute assessment', price: 'No cost',
+    n: '01', key: 'Map the work', offer: 'Free 15-minute assessment', price: 'No cost',
     body: 'Every business has one place where work piles up. On a short call we find yours. I name the tool that fixes it and give you a first step you can take without me.',
     points: ['One bottleneck, examined properly', 'One tool named, with what it costs', 'One first step you can take yourself'],
     cta: { label: 'Book the free 15 minutes', href: '/contact/' },
   },
   {
-    n: '02', key: 'Map it and price it', offer: 'The AI Assessment', price: '$1,000, credited against a build',
-    body: 'I watch how the work really happens, map every repeated process and rank each one by what it costs you. You get a written build plan with real tools and real costs.',
-    points: ['Every process mapped and ranked by return', 'A written plan with tools and costs', 'Yours to keep, whether or not I build it'],
+    n: '02', key: 'Sort every step', offer: 'The AI Assessment', price: '$1,000, credited against a build',
+    body: 'I watch how the work really happens and write down every step. Then I sort each one: delete it, hand it to plain code, hand it to an AI agent, or keep it with a person. You get a written build plan with real tools and real costs.',
+    points: ['Every step sorted, and ranked by what it costs you', 'A written plan with tools and costs', 'Yours to keep, whether or not I build it'],
     cta: { label: 'Start with the assessment', href: '/contact/' },
   },
   {
-    n: '03', key: 'Build the system', offer: 'Fixed-price build', price: 'You own everything',
+    n: '03', key: 'Build inside your tools', offer: 'Fixed-price build', price: 'You own everything',
     body: 'I connect the tools you already use, add AI where reading and writing eat your time, and add checks so you approve what matters. I write the code and deploy it.',
-    points: ['Connects to your existing tools', 'AI reads, sorts and drafts', 'No licence, no lock-in'],
+    points: ['Works inside the tools you already use', 'Approvals arrive by email or Slack', 'No licence, no lock-in'],
     cta: null,
   },
   {
-    n: '04', key: 'Run it, then hand it over', offer: 'Handover or monthly', price: 'Training included, always',
-    body: 'The system reports back to you. I document it and train your team to run it without me, or stay on monthly and we keep finding and killing manual work.',
-    points: ['Documentation and training included', 'Reports that come to you', 'Then on to the next constraint'],
+    n: '04', key: 'Prove it, then hand it over', offer: 'Handover or monthly', price: 'Training included, always',
+    body: 'Before I build, we write down today’s numbers. At 30 and 90 days I measure again, against the same numbers. I document the system and train your team to run it without me, or stay on monthly for the next constraint.',
+    points: ['Measured before and after', 'Documentation and training included', 'Then on to the next constraint'],
     cta: { label: 'Talk about a build', href: '/contact/' },
   },
 ];
@@ -51,7 +51,7 @@ const builds = [
   <div class="bpx-head">
     <div class="bpx-eyebrow">How it works</div>
     <h2 id="bpx-heading">{lead} <em>you own.</em></h2>
-    <p>Four steps. Watch what happens to the work at each one.</p>
+    <p>Four steps. Watch what happens to the work at each one. <a href="/method/" style="color: var(--accent-text); white-space: nowrap;">See the full method →</a></p>
   </div>
 
   <div class="bpx-grid">
@@ -86,7 +86,7 @@ const builds = [
         <rect x="12" y="12" width="976" height="616" fill="none" stroke="var(--line)" />
         <path d="M12 32V12H32M968 628H988V608" fill="none" stroke="#f06000" stroke-width="2" />
         <text x="40" y="52" class="t-mono t-muted">SCHEMATIC · WHERE YOUR WORK GOES</text>
-        <text x="960" y="52" text-anchor="end" class="t-mono t-accent" data-stage-label>STAGE 01 / 04 · FIND THE CONSTRAINT</text>
+        <text x="960" y="52" text-anchor="end" class="t-mono t-accent" data-stage-label>STAGE 01 / 04 · MAP THE WORK</text>
 
         {/* sources */}
         <text x="40" y="126" class="t-mono t-muted">WORK COMES IN FROM</text>
@@ -224,7 +224,7 @@ const builds = [
     const svg = root.querySelector('svg')!;
     const q = <T extends Element = SVGElement>(s: string) => svg.querySelector<T>(s)!;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const LABELS = ['Find the constraint', 'Map it and price it', 'Build the system', 'Run it, then hand it over'];
+    const LABELS = ['Map the work', 'Sort every step', 'Build inside your tools', 'Prove it, then hand it over'];
     const steps = [...root.querySelectorAll<HTMLElement>('[data-step]')];
     const CAPS = steps.map((st) => st.dataset.cap || '');
     const rail = root.querySelector<HTMLElement>('[data-rail]')!;

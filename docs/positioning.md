@@ -132,3 +132,20 @@ logically… we cannot focus on AI only."
 **Title:** "AI & Digital Growth Consultant" → **"Business Growth Engineer"** everywhere
 (Person schema jobTitle, og:site_name, page titles, footer, all 14 blog bylines).
 Services page keeps its AI-explicit copy — AI is correctly the method at service level.
+
+---
+
+## DECISION — Oct 4, 2026: forward deployed is how Greg works, not his title
+
+- **Title unchanged:** "Business Growth Engineer" everywhere (jobTitle, og:site_name, footer, bylines).
+- **Working model:** forward deployed. Greg works inside the client's business, builds in the tools
+  they already use, and proves the result with before/after numbers. Use "forward deployed engineer"
+  only as a description ("some call this…"), never as the job title, and do not chase it as a keyword.
+- **Method names:** Map → Sort → Build → Prove (BuildProcess, MeetupGuide, llms.txt, /method/).
+- **Sort = four places, in order:** delete it, plain code, an AI agent, a person.
+- **Origin story:** standardization work as Manager of Engineering (70-person department). No figures
+  until Greg supplies them.
+- **Stage 2 (not yet):** headline change and a measured results strip wait for case study #1
+  (Amazon reimbursements, Greg's own business) with numbers written down before the build.
+- **Never on the site:** another firm's slides, examples or numbers. Source of the method notes:
+  `10. Skills/82. Forward Deployed Engineer Playbook…`.

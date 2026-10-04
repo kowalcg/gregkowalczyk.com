@@ -68,4 +68,19 @@ export const faqs: Faq[] = [
     answer:
       "Platform fees are low — Shopify starts at $39/month, Amazon at $39.99/month. The real investment is the setup: getting listings right, content optimized, and systems in place so you don't waste money on ads before the foundation is solid. My coaching engagements typically run $3,000–$8,000 for the initial setup phase. After that you're running independently with AI tools I've built for you.",
   },
+  {
+    question: "What is a forward deployed engineer?",
+    answer:
+      "An engineer who works inside your business instead of handing you a report. I watch how the work really runs, write down every step, and build the fix inside the tools you already use. Then I measure it against the numbers we wrote down first. It is how I have worked since my engineering years: on the floor, not in a meeting room.",
+  },
+  {
+    question: "Do I need new software to use AI in my business?",
+    answer:
+      "Usually not. I build inside the tools you already use, such as your inbox, your accounting system, your store or your booking system. Your team keeps working where they work today. When a decision needs a person, it arrives as an email or a Slack message with a clear yes or no.",
+  },
+  {
+    question: "Will AI take over the jobs of my staff?",
+    answer:
+      "The work changes, the decisions stay with people. When I sort a process, the first steps to go are the ones nobody wanted: chasing, re-typing and doing the same check twice. Many of those are deleted or handled by plain rules, with no AI at all. Approvals, signatures, payments and client conversations stay with your team.",
+  },
 ];

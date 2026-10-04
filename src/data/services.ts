@@ -41,10 +41,10 @@ export const services: ServiceItem[] = [
   },
   {
     slug: 'ai-assessment', title: 'AI Readiness Assessment', anim: 'rank',
-    line: 'Not sure where to start? I measure the work and rank what to fix first.',
+    line: 'Not sure where to start? I map the work and sort what to fix first.',
     stat: '6 wks', statLabel: 'from audit to full roadmap, retail client',
     proof: 'Local retail client: operations audited and a full e-commerce growth roadmap delivered in 6 weeks.',
-    body: 'Not sure where to start with AI? I audit your operations, identify the highest-ROI automation opportunities, and build a practical implementation roadmap. Then I build it.',
+    body: 'Not sure where to start with AI? I watch how the work really runs and write down every step. Then I sort each one: delete it, hand it to plain code, hand it to an AI agent, or keep it with a person. You get a ranked plan with real costs. Then I build it.',
     link: { href: '#how-step-2', label: 'How the assessment works' },
   },
   {
