@@ -17,6 +17,19 @@ const real = [
   { t: 'Chase the payment', x: true },
   { t: 'Get paid' },
 ];
+
+// Drawing geometry (viewBox 1000 x 330). Ten real steps on one line; the five
+// described steps sit directly above the real step they turn into, so the gaps
+// between them show where the unlisted work hides.
+const BW = 88, BH = 58, TOP = 44, BOT = 186;
+const bx = (i: number) => 6 + i * 100;
+const lines: string[][] = [
+  ['Order', 'comes in'], ['Ask for the', 'missing', 'detail'], ['Wait for', 'the reply'], ['Enter it'],
+  ['Enter it', 'again, in a', 'second system'], ['Ship it'], ['Invoice it'], ['Fix the', 'invoice'],
+  ['Chase the', 'payment'], ['Get paid'],
+];
+const topAt = [0, 3, 5, 6, 9]; // which real step each described step lines up with
+const ty = (n: number, k: number, y: number) => y + BH / 2 + 4 - ((n - 1) * 13) / 2 + k * 13;
 ---
 
 <section class="rlp" aria-labelledby="rlp-heading">
@@ -25,6 +38,52 @@ const real = [
     <h2 id="rlp-heading">What is written down is never what really happens.</h2>
     <p>Ask anyone how a job gets done and you hear the short version. Watch the job, and read what the inbox and the systems recorded, and you find the rest.</p>
   </div>
+
+  <figure class="rlp-fig">
+    <svg viewBox="0 0 1000 330" role="img" aria-label="Diagram. Described: order comes in, enter it, ship it, invoice it, get paid. In reality five more steps sit between them: ask for the missing detail, wait for the reply, enter it again in a second system, fix the invoice, chase the payment. Two of them loop back.">
+      <defs>
+        <marker id="rlp-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="rlp-ah" /></marker>
+        <marker id="rlp-arr-x" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="rlp-ah-x" /></marker>
+      </defs>
+
+      <text x="6" y="26" class="rlp-lane">HOW IT IS DESCRIBED</text>
+      <text x="6" y="168" class="rlp-lane">HOW IT REALLY RUNS</text>
+
+      {/* described lane: five boxes, long arrows between them */}
+      {topAt.slice(0, -1).map((i, k) => (
+        <line x1={bx(i) + BW} y1={TOP + BH / 2} x2={bx(topAt[k + 1]) - 3} y2={TOP + BH / 2} class="rlp-wire" marker-end="url(#rlp-arr)" />
+      ))}
+      {topAt.map((i) => (
+        <g>
+          <line x1={bx(i) + BW / 2} y1={TOP + BH} x2={bx(i) + BW / 2} y2={BOT} class="rlp-drop" />
+          <rect x={bx(i)} y={TOP} width={BW} height={BH} rx="6" class="rlp-box" />
+          <text text-anchor="middle" class="rlp-t">
+            {lines[i].map((ln, k) => <tspan x={bx(i) + BW / 2} y={ty(lines[i].length, k, TOP)}>{ln}</tspan>)}
+          </text>
+        </g>
+      ))}
+
+      {/* real lane: ten boxes, short arrows */}
+      {real.slice(0, -1).map((_, i) => (
+        <line x1={bx(i) + BW} y1={BOT + BH / 2} x2={bx(i + 1) - 2} y2={BOT + BH / 2} class="rlp-wire" marker-end="url(#rlp-arr)" />
+      ))}
+      {real.map((r, i) => (
+        <g>
+          <rect x={bx(i)} y={BOT} width={BW} height={BH} rx="6" class={r.x ? 'rlp-box x' : 'rlp-box'} />
+          <text text-anchor="middle" class={r.x ? 'rlp-t x' : 'rlp-t'}>
+            {lines[i].map((ln, k) => <tspan x={bx(i) + BW / 2} y={ty(lines[i].length, k, BOT)}>{ln}</tspan>)}
+          </text>
+        </g>
+      ))}
+
+      {/* the two loops back */}
+      <path d={`M${bx(2) + BW / 2} ${BOT + BH} C${bx(2) + BW / 2} ${BOT + BH + 44}, ${bx(1) + BW / 2} ${BOT + BH + 44}, ${bx(1) + BW / 2} ${BOT + BH + 3}`} class="rlp-loop" marker-end="url(#rlp-arr-x)" />
+      <text x={bx(1) + BW + 6} y={BOT + BH + 52} text-anchor="middle" class="rlp-lt">no answer, ask again</text>
+      <path d={`M${bx(8) + BW / 2} ${BOT + BH} C${bx(8) + BW / 2} ${BOT + BH + 44}, ${bx(6) + BW / 2} ${BOT + BH + 44}, ${bx(6) + BW / 2} ${BOT + BH + 3}`} class="rlp-loop" marker-end="url(#rlp-arr-x)" />
+      <text x={bx(7) + BW / 2} y={BOT + BH + 52} text-anchor="middle" class="rlp-lt">not paid, send it again</text>
+    </svg>
+    <figcaption><i></i> Chasing, waiting and doing it twice. Nobody lists these steps, and they are where the days go.</figcaption>
+  </figure>
 
   <div class="rlp-sheet">
     <div class="rlp-row">
@@ -51,6 +110,24 @@ const real = [
   .rlp h2 { font-family: 'Outfit', sans-serif; }
   .rlp h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.1; letter-spacing: -.02em; color: var(--fg); font-weight: 700; text-wrap: balance; }
   .rlp-head p { margin-top: .9rem; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+  /* Wide screens get the drawing; phones get the step list below, which stays readable at 390px. */
+  .rlp-fig { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: .75rem; padding: 1.25rem 1.25rem 1rem; }
+  .rlp-fig svg { display: block; width: 100%; height: auto; }
+  .rlp-lane { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; fill: var(--muted); }
+  .rlp-box { fill: var(--panel-2); stroke: var(--line-strong); stroke-width: 1; }
+  .rlp-box.x { fill: var(--accent-soft); stroke: var(--accent); }
+  .rlp-t { font-family: 'Outfit', sans-serif; font-size: 11.5px; fill: var(--fg); }
+  .rlp-t.x { fill: var(--accent-text); font-weight: 600; }
+  .rlp-wire { stroke: var(--line-strong); stroke-width: 1.2; }
+  .rlp-drop { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 4; }
+  .rlp-ah { fill: var(--line-strong); }
+  .rlp-ah-x { fill: var(--accent); }
+  .rlp-loop { fill: none; stroke: var(--accent); stroke-width: 1.3; stroke-dasharray: 5 4; }
+  .rlp-lt { font-family: 'Outfit', sans-serif; font-size: 11px; fill: var(--accent-text); }
+  .rlp-fig figcaption { margin-top: .75rem; font-size: .9rem; color: var(--soft); display: flex; align-items: baseline; gap: .6rem; }
+  .rlp-fig figcaption i { flex: none; width: .8rem; height: .8rem; border-radius: .2rem; background: var(--accent-soft); border: 1px solid var(--accent); transform: translateY(.1rem); }
+  .rlp-sheet { display: none; }
+  @media (max-width: 760px) { .rlp-fig { display: none; } .rlp-sheet { display: block !important; } }
   .rlp-sheet { background: var(--panel); border: 1px solid var(--line); border-radius: .75rem; padding: 1.5rem; }
   .rlp-row + .rlp-row { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--line); }
   .rlp-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
