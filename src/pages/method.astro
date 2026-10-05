@@ -27,7 +27,7 @@ const steps = [
 const fields = [
   {
     icon: 'i-heart', head: 'Clinics',
-    why: 'I run two national clinic directories, so I see how patients find a clinic and how enquiries arrive.',
+    why: 'Clinics are where I most want to help. I run two national clinic directories, and I am taking on my first clinic process projects now.',
     maps: ['Enquiry to booked appointment', 'Reminders and no-shows', 'Visit to invoice to payment', 'Getting found, and following up on new leads'],
   },
   {
@@ -44,6 +44,40 @@ const fields = [
     icon: 'i-flag', head: 'Events and races',
     why: 'I am Race Director of the Bronte Harbour Classic and built the system behind it.',
     maps: ['Registration to race-day communication', 'Sponsor and vendor pages', 'Results and photos after the event', 'Volunteer scheduling'],
+  },
+];
+
+// Own-business proof only. Every figure here is already published elsewhere
+// on the site (proof.ts, about.astro, Hero). Accounting carries no figure
+// until it has been measured.
+const done = [
+  {
+    head: 'A race, from nothing', tag: 'Bronte Harbour Classic',
+    was: 'No website, no way to reach sponsors and vendors, no system for photos.',
+    built: 'The site, sponsor and vendor outreach, a permanent page for each partner, and the photo system.',
+    result: '875 runners at the first event. 1,800+ photos published.',
+    href: '/projects/bronte-harbour-classic/',
+  },
+  {
+    head: 'Marketing without the agencies', tag: 'My two brands',
+    was: 'Content, email and social media were bought from agencies, month after month.',
+    built: 'My own tools for content, email and scheduled social posts.',
+    result: '$75K+ a year of agency work replaced.',
+    href: '/services/',
+  },
+  {
+    head: 'Amazon numbers in one place', tag: 'Helm',
+    was: 'Sales, ads, stock and reimbursement claims lived in separate reports.',
+    built: 'Helm: one tool that reads 6 sources and tells us what to do next.',
+    result: 'My team runs reimbursement claims from it today.',
+    href: '/projects/helm/',
+  },
+  {
+    head: 'Invoices in one system', tag: 'My companies’ books · in progress',
+    was: 'Invoices arrived from several places and had to be matched by hand.',
+    built: 'One system that reads and recognizes all of them. Still being built.',
+    result: 'I am measuring my hours and the corrections, before and after. Numbers when they are real.',
+    href: '',
   },
 ];
 
@@ -78,9 +112,31 @@ const starts = [
       <div class="mth-eyebrow">Where the method comes from</div>
       <h2 id="mth-origin">I did this for years before AI existed.</h2>
       <div class="mth-prose">
-        <p>I spent 22 years in engineering, the last four as Manager of Engineering for a 70-person department. A large part of that job was standardization. Find the work that repeats. Agree on one way to do it. Stop doing it from scratch every time.</p>
-        <p>It saved the company time and money, and it never started with a new tool. It started with watching how the work was really done.</p>
+        <p>I spent 22 years in engineering, the last four as Manager of Engineering for a 70-person department. Twenty years ago, a large part of that work was standardizing equipment and whole production lines. Find what repeats. Agree on one way to do it. Stop designing it from scratch every time.</p>
+        <p>It saved a lot of time, and it never started with a new tool. It started with watching how the work was really done. That was a long time ago, and I do not claim it as recent work. It is where I learned to solve problems this way.</p>
         <p>AI changed what I can build. It did not change the method. Since 2014 I have used it on my own two brands first, and now on other people’s businesses.</p>
+      </div>
+    </section>
+
+    <section class="mth-wrap" aria-labelledby="mth-done">
+      <div class="mth-eyebrow">Where I have already done this</div>
+      <h2 id="mth-done">I build these systems for my own businesses first.</h2>
+      <div class="mth-prose" style="margin-bottom: 1.5rem;">
+        <p>I am early in doing this for other companies, and I will say so. What I can show you is my own work: real problems, in businesses and an event I run, solved with systems I built.</p>
+      </div>
+      <div class="mth-fields">
+        {done.map((d) => (
+          <article class="mth-field fade-in-up">
+            <div class="mth-sub" style="margin-top: 0; padding-top: 0; border-top: 0;">{d.tag}</div>
+            <h3>{d.head}</h3>
+            <dl class="mth-done">
+              <dt>The problem</dt><dd>{d.was}</dd>
+              <dt>What I built</dt><dd>{d.built}</dd>
+              <dt>The result</dt><dd>{d.result}</dd>
+            </dl>
+            {d.href && <p style="margin-top: .9rem;"><a href={d.href} style="color: var(--accent-text); font-weight: 600;">See it →</a></p>}
+          </article>
+        ))}
       </div>
     </section>
 
@@ -204,6 +260,9 @@ const starts = [
   .mth-field li { color: var(--soft); font-size: .95rem; padding-left: 1.1rem; position: relative; }
   .mth-field li::before { content: "→"; position: absolute; left: 0; color: var(--accent-text); }
 
+  .mth-done { margin: .6rem 0 0; display: grid; gap: .2rem; }
+  .mth-done dt { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); margin-top: .6rem; }
+  .mth-done dd { margin: 0; color: var(--soft); font-size: .96rem; line-height: 1.5; }
   .mth-starts { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .mth-start { background: var(--panel-2); border: 1px solid var(--rule); border-top: 2px solid var(--accent); border-radius: .75rem; padding: 1.25rem; }
   .mth-price { font-family: var(--font-mono); font-size: .78rem; color: var(--accent-text); margin-bottom: .6rem; }
