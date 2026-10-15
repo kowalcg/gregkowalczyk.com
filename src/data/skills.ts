@@ -34,11 +34,12 @@ export const skills: Skill[] = [
       'A Claude Code skill that takes a YouTube video, podcast episode, webinar or audio file, pulls the transcript, researches the speaker, and writes a comprehensive guide with diagrams as a single HTML file that works offline. In Full Skill mode it also writes and installs a Claude skill that applies the method in your future work. Everything lands in one folder under Downloads.',
     download: '/downloads/video-to-skill.zip',
     size: '1 MB',
-    version: '1.0',
-    released: '2026-09-06',
-    origin: 'Shared at the AI for Business meetup, Hamilton, September 10, 2026',
+    version: '1.1',
+    released: '2026-10-15',
+    origin: 'Shared at the AI for Business meetups, Hamilton (September 2026) and Oakville (October 2026)',
     whatItDoes: [
       'Fetches the transcript from YouTube captions, or transcribes audio locally with Whisper (no API key, no cost)',
+      'New in 1.1: captures a screenshot of every slide the speaker shows, including progressive builds, and builds the guide slide by slide with the exact words said under each one',
       'Works with YouTube, podcast pages, direct MP3 links, Facebook, Vimeo, TikTok and local video or audio files',
       'Researches the speaker and checks what has changed since the video was recorded',
       'Writes an 8,000 to 12,000 word reference guide with 8 to 20 Mermaid diagrams, built into one self-contained HTML file',
@@ -49,6 +50,7 @@ export const skills: Skill[] = [
     requirements: [
       'Claude Code (free to install, uses your Claude subscription)',
       'Python 3 with two packages: youtube-transcript-api and markdown',
+      'For slide capture: ffmpeg, yt-dlp, and the Python packages numpy and Pillow (on a Mac the text on each slide is read too)',
       'Optional: ffmpeg, yt-dlp and openai-whisper for podcasts, audio files and videos without captions',
     ],
     faq: [
@@ -79,6 +81,10 @@ export const skills: Skill[] = [
       {
         q: 'Which should I pick: Full Skill, Guide Only or Quick Summary?',
         a: 'Full Skill when the video teaches a method you will use again (a sales process, a prompt technique, a hiring framework). Guide Only for training material and reference documents. Quick Summary when you only want to know what is in the video before spending an hour on it. If you just paste a link, it does a Full Skill.',
+      },
+      {
+        q: 'What does slide capture do?',
+        a: 'When a video shows slides, a screen share or a whiteboard, the skill downloads the video, finds every distinct slide (including each build step and hover tooltip), saves it as a PNG with a timestamp, and attaches what the speaker said while it was on screen. On a Mac it also reads the text on every slide. The guide is then written page by page from the real slides, so the numbers and diagrams are the speaker\'s own rather than a paraphrase. Videos without slides still work as before.',
       },
       {
         q: 'Can I change it for my business?',
