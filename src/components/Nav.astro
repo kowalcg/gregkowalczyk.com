@@ -1,5 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
 /**
  * Nav.astro — Sticky navigation bar
  * Fixed to top, transparent -> solid on scroll, hamburger mobile menu.
@@ -46,9 +45,8 @@ const navLinks = [
         ))}
       </ul>
 
-      <!-- Desktop theme switch + CTA -->
+      <!-- Desktop CTA -->
       <div class="hidden items-center gap-3 md:flex">
-        <ThemeToggle />
         <a
           href="/contact"
           class="rounded-full px-5 py-2 text-sm font-semibold  transition-all duration-200 hover:scale-105"
@@ -56,9 +54,8 @@ const navLinks = [
         >Book a call</a>
       </div>
 
-      <!-- Mobile theme switch + hamburger -->
+      <!-- Mobile hamburger -->
       <div class="flex items-center gap-1 md:hidden">
-      <ThemeToggle />
       <!-- Mobile Hamburger Button -->
       <button
         id="hamburger-btn"

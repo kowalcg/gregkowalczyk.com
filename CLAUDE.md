@@ -219,7 +219,7 @@ Each of these corresponds to a defect that was live in production before July 20
 - **Run `node scripts/audit-build.mjs` after every build.**
 - **Static build:** keep `output: 'static'`.
 - **Font loading:** keep the non-blocking preconnect pattern.
-- **Two themes (Sep 2026): dark "Signal" and light "paper blueprint".** Every colour comes
+- **LIGHT ONLY since Oct 21, 2026** (Greg: light is the main theme; dark parked, toggle removed from Nav, `<html data-theme="light">` hard-set in Layout.astro). Dark tokens kept for a possible return. History: **Two themes (Sep 2026): dark "Signal" and light "paper blueprint".** Every colour comes
   from the tokens at the top of `src/styles/global.css` (`--bg`, `--fg`, `--soft`, `--muted`,
   `--rule`, `--panel`, `--grid`, `--line`, `--accent-text`…), defined for `:root` (dark) and
   `:root[data-theme="light"]`. **Never hardcode a hex/rgba colour** in a component — it will
