@@ -60,7 +60,7 @@ Provincial college databases with no search. Generic wellness directories packed
 
 Nothing built for the person who just tweaked their IT band and needs a sports physio in Oakville by Thursday.
 
-So I built it. [SportClinicFinder.com](https://www.sportsclinicfinder.com) — physiotherapy, chiropractic, massage therapy, athletic therapy, sports medicine, and podiatry, across every province and territory in Canada.
+So I built it. <a href="https://www.sportsclinicfinder.com" rel="nofollow">SportClinicFinder.com</a> — physiotherapy, chiropractic, massage therapy, athletic therapy, sports medicine, and podiatry, across every province and territory in Canada.
 
 ## The Tech Stack
 
@@ -171,4 +171,4 @@ Data quality. Getting the initial data is straightforward. Getting it to a state
 
 ---
 
-**[SportClinicFinder.com](https://www.sportsclinicfinder.com) is live.** Full stack: Next.js 16, Neon Postgres, Drizzle ORM, Tailwind CSS 4, Vercel. Built with Claude Code. If you're thinking about building a directory and want to talk through the architecture, [get in touch](/contact).
+**<a href="https://www.sportsclinicfinder.com" rel="nofollow">SportClinicFinder.com</a> is live.** Full stack: Next.js 16, Neon Postgres, Drizzle ORM, Tailwind CSS 4, Vercel. Built with Claude Code. If you're thinking about building a directory and want to talk through the architecture, [get in touch](/contact).

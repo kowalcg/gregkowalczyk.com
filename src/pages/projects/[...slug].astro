@@ -195,7 +195,7 @@ const extraSchema = faqSchema ? [schema, breadcrumbSchema, faqSchema] : [schema,
             <a
               href={link.href}
               target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'noopener noreferrer' : undefined}
+              rel={link.external ? (link.href.includes('sportsclinicfinder') ? 'noopener noreferrer nofollow' : 'noopener noreferrer') : (link.href.includes('sportsclinicfinder') ? 'nofollow' : undefined)}
               class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 hover:scale-105"
               style="background: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent); font-family: 'Outfit', sans-serif;"
             >

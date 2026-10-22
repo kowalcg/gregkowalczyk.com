@@ -123,7 +123,7 @@ const recentPosts = allPosts
           <a
             href={brand.url}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={brand.url.includes('sportsclinicfinder') ? 'noopener noreferrer nofollow' : 'noopener noreferrer'}
             class="glass-card group block w-full p-5 transition-all duration-200 hover:-translate-y-1 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.75rem)]"
           >
             <div class="mb-2 flex items-center gap-2.5">

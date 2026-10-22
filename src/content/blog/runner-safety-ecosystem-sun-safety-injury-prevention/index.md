@@ -74,7 +74,7 @@ The second number is what to do about the soreness that shows up before you repl
 
 Prevention fails sometimes, and when it does, the next problem is purely logistical: who treats this, and are they any good? In Canada that's a surprisingly hard question to answer quickly — physiotherapy and sports-medicine clinics are scattered across provincial registries, Google listings, and clinic websites of wildly varying quality.
 
-**[SportClinicFinder.com](https://www.sportsclinicfinder.com/)** is a directory of 12,770 active clinics across 521 cities — every Canadian province and territory — searchable by city, injury type, or specialty, with insurance details and booking links where they exist. It's the piece of the ecosystem that isn't about Bronte Harbour Classic at all; it's a national resource that happens to answer the question a runner in Oakville, or anywhere else in the country, asks the day something actually hurts.
+**<a href="https://www.sportsclinicfinder.com/" rel="nofollow">SportClinicFinder.com</a>** is a directory of 12,770 active clinics across 521 cities — every Canadian province and territory — searchable by city, injury type, or specialty, with insurance details and booking links where they exist. It's the piece of the ecosystem that isn't about Bronte Harbour Classic at all; it's a national resource that happens to answer the question a runner in Oakville, or anywhere else in the country, asks the day something actually hurts.
 
 ## Why a runner safety ecosystem means four products, not one app
 
